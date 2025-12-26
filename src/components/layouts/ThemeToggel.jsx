@@ -8,8 +8,11 @@ const ThemeToggle = () => {
   const isDark = (resolvedTheme ?? theme) === "dark";
 
   return (
-    <button onClick={() => setTheme(isDark ? "light" : "dark")}>
-      {!isDark ? <Sun size={18} /> : <Moon size={18} />}
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="inset-shadow dark: cursor-pointer rounded-md px-2.5 py-2.5 duration-200 hover:bg-neutral-100 dark:inset-shadow-neutral-800/60 hover:dark:bg-neutral-900/60"
+    >
+      {!isDark ? <Sun size={16} /> : <Moon size={18} />}
     </button>
   );
 };
