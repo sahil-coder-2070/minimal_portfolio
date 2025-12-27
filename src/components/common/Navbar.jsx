@@ -11,7 +11,9 @@ const navList = [
 
 export const Navbar = () => {
   return (
-    <Container className={`flex items-center justify-between gap-2 px-7 py-4`}>
+    <Container
+      className={`sticky top-0 z-100 flex items-center justify-between gap-2 px-7 py-4 backdrop-blur-md`}
+    >
       <div>
         <div className="box-border h-12 w-12 overflow-hidden rounded-md border-2 border-neutral-300 bg-blue-300 p-1 duration-200 hover:scale-90 dark:border-neutral-200 dark:bg-yellow-300">
           <Link to={"/ "}>

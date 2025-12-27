@@ -14,8 +14,8 @@ import { Link } from "react-router-dom";
 
 const SocialLinks = () => {
   return (
-    <Container>
-      <div className="mt-8 flex gap-2">
+    <Container className={`pl-0`}>
+      <div className="mt-8 flex gap-2 ">
         {socialLinks.map((link) => (
           <Tooltip key={link.name} delayDuration={0}>
             <TooltipTrigger asChild>

@@ -26,7 +26,6 @@ const Hero = () => {
       <BioText />
       <ResumeButton />
       <SocialLinks />
-      <Spotify/>
     </Container>
   );
 };

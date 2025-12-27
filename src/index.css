@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-/* --font-sans: 'Hanken Grotesk', sans-serif; */
+  /* --font-sans: 'Hanken Grotesk', sans-serif; */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,7 +116,6 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.439 0 0);
 }
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
