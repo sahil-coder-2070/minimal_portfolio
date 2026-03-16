@@ -1,14 +1,12 @@
-import React from "react";
-import Container from "../layouts/Container";
 import { Link } from "react-router-dom";
+import { CardCta } from "../../components/ui/CardCta";
 import BorderContainer from "../common/BorderContainer";
 
 const CTA = () => {
   return (
     <>
-      <BorderContainer className={"py-8"}>
+      <CardCta>
         <div className="mt-6 w-full flex-col px-6 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
-          
           <p className="mb-4 text-center text-base opacity-70 sm:mb-3 md:text-xl">
             If you've read this far, you might be interested in what I do.
           </p>
@@ -54,7 +52,7 @@ const CTA = () => {
             </div>
           </div>
         </div>
-      </BorderContainer>
+      </CardCta>
     </>
   );
 };
