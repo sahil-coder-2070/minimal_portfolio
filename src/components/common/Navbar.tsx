@@ -33,15 +33,8 @@ export const Navbar = () => {
     <>
       <Container className="sticky top-0 z-100 pt-2">
         <motion.div
-          animate={{
-            width: scrolled ? "95%" : "100%",
-          }}
-          transition={{
-            duration: 0.3,
-            ease: [0.22, 1, 0.36, 1],
-          }}
           className={`m-auto flex w-full items-center justify-between gap-2 border-b px-3 py-3 backdrop-blur-md md:px-6 md:py-4 ${
-            scrolled ? "rounded-3xl border md:py-3" : ""
+            scrolled ? "rounded-xl border-x md:py-3" : ""
           }`}
         >
           <div>
