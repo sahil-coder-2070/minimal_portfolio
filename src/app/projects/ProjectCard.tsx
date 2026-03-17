@@ -13,6 +13,11 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import { motion as Motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const ProjectCard = ({ completed = ProjectCardData, limit }) => {
   const displayedProjects = useMemo(() => {
@@ -38,7 +43,7 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
           >
             <Card
               className={
-                "flex gap-6 overflow-hidden border-0 border-t-2 border-b-2 px-3 py-4 md:flex-row md:gap-3 dark:bg-neutral-900/25"
+                "flex gap-6 overflow-hidden border-0 border-t-2 border-b-2 px-3 py-4 md:flex-row md:gap-3 dark:bg-neutral-900/30 dark:border-neutral-700/60"
               }
             >
               <div className="bg-muted relative aspect-video w-full overflow-hidden rounded-md sm:w-64 sm:shrink-0">
@@ -102,7 +107,27 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                             target="_blank"
                             className={`inline-flex items-center self-end rounded-md border border-black/10 bg-black/2 px-2 py-1 text-sm text-black dark:border-white/15 dark:bg-white/5 dark:text-white`}
                           >
-                            <p className="ml-1 text-xs">{tech.name}</p>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <a
+                                  href={tech.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center self-end text-black dark:text-white/90"
+                                >
+                                  <p className="ml-1 text-xs">{tech.name}</p>
+                                </a>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <span className="flex">
+                                  <div className="size-4 shrink-0">
+                                    {tech.icon}
+                                  </div>
+
+                                  <p className="ml-1 text-xs">{tech.name}</p>
+                                </span>
+                              </TooltipContent>
+                            </Tooltip>
                           </Link>
                         );
                       })}
