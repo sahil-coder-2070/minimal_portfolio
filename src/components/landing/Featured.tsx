@@ -47,6 +47,10 @@ const Featured = () => {
             colorScheme={currentTheme === "dark" ? "dark" : "light"}
             showTotalCount={false}
             // year={2026}
+            // theme={{
+            //   light: ['hsl(0, 0%, 92%)', 'firebrick'],
+            //   dark: ['#333', 'rgb(247, 253, 4)'],
+            // }}
           />
         </Motion.div>
       </div>
