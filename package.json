@@ -25,7 +25,6 @@
     "fastify-cors": "^6.1.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
-    "lenis": "^1.3.17",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "react": "^18.3.1",

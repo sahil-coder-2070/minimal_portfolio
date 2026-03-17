@@ -4,18 +4,15 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./components/common/ScrollToTop";
-import { ReactLenis } from "./lib/lenis";
 import { inject } from "@vercel/analytics";
 
 inject();
 
 createRoot(document.getElementById("root")).render(
   <HelmetProvider>
-    <ReactLenis root>
-      <BrowserRouter>
-        <ScrollToTop />
-        <App />
-      </BrowserRouter>
-    </ReactLenis>
+    <BrowserRouter>
+      <ScrollToTop />
+      <App />
+    </BrowserRouter>
   </HelmetProvider>,
 );

@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
-import { motion as Motion } from "motion/react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -29,14 +29,16 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
     <Container className={`mt-8 grid grid-cols-1 gap-8`}>
       {displayedProjects.map((items, index) => {
         return (
-          <Motion.div
+          <motion.div
             key={items.id ?? items.title}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.3,
-              delay: index * 0.05,
+              duration: 0.4,
+              delay: index * 0.1,
+              ease: "easeOut",
             }}
+            viewport={{ once: true, margin: "-50px" }}
             className="flex flex-col gap-4"
           >
             <Card
@@ -121,7 +123,7 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                                   <p className="ml-1 text-xs">{tech.name}</p>
                                 </a>
                               </TooltipTrigger>
-                              <TooltipContent>
+                              <TooltipContent className="">
                                 <span className="flex">
                                   <div className="size-4 shrink-0">
                                     {tech.icon}
@@ -169,7 +171,7 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                 </CardFooter>
               </div>
             </Card>
-          </Motion.div>
+          </motion.div>
         );
       })}
     </Container>
