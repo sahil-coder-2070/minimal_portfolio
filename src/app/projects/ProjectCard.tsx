@@ -31,34 +31,37 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
         return (
           <Motion.div
             key={items.id ?? items.title}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.4,
-              delay: index * 0.08,
-              ease: [0.25, 0.1, 0.25, 1],
+              duration: 0.3,
+              delay: index * 0.05,
             }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="will-change-opacity flex flex-col gap-4"
+            className="flex flex-col gap-4"
           >
             <Card
               className={
-                "flex gap-6 overflow-hidden border-0 border-t-2 border-b-2 px-3 py-4 md:flex-row md:gap-3 dark:bg-neutral-900/30 dark:border-neutral-700/60"
+                "flex gap-6 overflow-hidden border-0 border-t-2 border-b-2 px-3 py-4 md:flex-row md:gap-3 dark:border-neutral-700/60 dark:bg-neutral-900/30"
               }
             >
               <div className="bg-muted relative aspect-video w-full overflow-hidden rounded-md sm:w-64 sm:shrink-0">
                 <div className="h-full w-full">
-                  <img
-                    src={items.img.src}
-                    alt={items.img.alt}
-                    className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
-                  />
+                  <a href={items.links.website}>
+                    <img
+                      src={items.img.src}
+                      alt={items.img.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-center transition-all duration-200 hover:scale-110"
+                    />
+                  </a>
                 </div>
               </div>
               <div className="flex w-full flex-col gap-3">
                 <CardHeader className={"flex w-full flex-col gap-4 p-0 px-3"}>
                   <CardTitle className={"flex w-full justify-between text-xl"}>
-                    <div>{items.title}</div>
+                    <div>
+                      <a href={items.projectDetailsPageSlug}>{items.title}</a>
+                    </div>
                     <div className="flex items-center gap-2">
                       <Link
                         to={items.links.website}

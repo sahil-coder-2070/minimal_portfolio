@@ -25,3 +25,11 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: "Notify Vercel"
+        if: github.event_name == 'pull_request'
+        uses: "vercel/repository-dispatch/actions/status@v1"
+        with:
+          name: "Vercel - sahilcodex: build"
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
