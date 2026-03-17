@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ThemeToggel from "./ThemeToggel";
 import { Link } from "react-router-dom";
 import Container from "../layouts/Container";
-import { motion as Motion, useMotionValueEvent, useScroll } from "motion/react";
+import { motion } from "motion/react";
 
 const navList = [
   { name: "Work", href: "/work" },
@@ -12,29 +12,25 @@ const navList = [
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (lastest) => {
-    if (lastest > 20) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  });
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      setScrolled(window.scrollY > 20);
+    });
+  }
+
   return (
-    <Container className={`sticky top-0 z-100 pt-2`}>
-      <Motion.div
+    <Container className="sticky top-0 z-100 pt-2">
+      <motion.div
         animate={{
           width: scrolled ? "95%" : "100%",
         }}
-        layout
         transition={{
-          layout: {
-            duration: 0.3,
-            ease: [0.22, 1, 0.36, 1],
-          },
+          duration: 0.3,
+          ease: [0.22, 1, 0.36, 1],
         }}
         className={`m-auto flex w-full items-center justify-between gap-2 border-b px-3 py-3 backdrop-blur-md md:px-6 md:py-4 ${
-          scrolled && "rounded-2xl border md:py-3 "
+          scrolled ? "rounded-2xl border md:py-3" : ""
         }`}
       >
         <div>
@@ -62,11 +58,12 @@ export const Navbar = () => {
                 </Link>
               );
             })}
-            <Link />
           </div>
           <ThemeToggel />
         </div>
-      </Motion.div>
+      </motion.div>
     </Container>
   );
 };
+
+export default Navbar;
