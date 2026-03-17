@@ -5,14 +5,13 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import Website from "@/components/icons/social/Website";
-import Github from "@/components/icons/social/Github";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import { motion as Motion } from "motion/react";
-import Skill from "@/components/common/Skills";
 import { cn } from "@/lib/utils";
 
 const ProjectCard = ({ completed = ProjectCardData, limit }) => {
@@ -21,14 +20,8 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
     return arr.reverse();
   }, [completed, limit]);
 
-  const cardClasses = cn(
-    "group h-full w-full overflow-hidden border border-gray-200/70 p-0 shadow-sm dark:border-neutral-800",
-  );
-
   return (
-    <Container
-      className={`mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2`}
-    >
+    <Container className={`mt-8 grid grid-cols-1 gap-8`}>
       {displayedProjects.map((items, index) => {
         return (
           <Motion.div
@@ -43,71 +36,80 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
             viewport={{ once: true, margin: "-50px" }}
             className="will-change-opacity flex flex-col gap-4"
           >
-            <Card className={cardClasses}>
-              <CardHeader className="p-0">
-                <div className="relative aspect-video overflow-hidden">
+            <Card
+              className={
+                "flex gap-6 overflow-hidden border-0 border-t-2 border-b-2 px-3 py-4 md:flex-row md:gap-3 dark:bg-neutral-900/25"
+              }
+            >
+              <div className="bg-muted relative aspect-video w-full overflow-hidden rounded-md sm:w-64 sm:shrink-0">
+                <div className="h-full w-full">
                   <img
-                    width={1920}
-                    height={1080}
                     src={items.img.src}
                     alt={items.img.alt}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <Link to={items.projectDetailsPageSlug}>
-                      <h3 className="group-hover:text-primary text-xl leading-tight font-semibold hover:cursor-pointer">
-                        {items.title}
-                      </h3>
-                    </Link>
+              </div>
+              <div className="flex w-full flex-col gap-3">
+                <CardHeader className={"flex w-full flex-col gap-4 p-0 px-3"}>
+                  <CardTitle className={"flex w-full justify-between text-xl"}>
+                    <div>{items.title}</div>
                     <div className="flex items-center gap-2">
                       <Link
                         to={items.links.website}
-                        className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
+                        className="text-secondary hover:text-primary dark:bg-dark/5 flex items-center gap-1 rounded-md border border-black/10 bg-black/2 px-2 py-1 text-xs transition-colors dark:border-white/15 dark:text-white/70"
                         target="_blank"
                         title="View Website"
                       >
-                        <Website />
+                        <ExternalLink size={12} />
+                        Live
                       </Link>
                       <Link
                         to={items.links.github}
-                        className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
+                        className="text-secondary hover:text-primary dark:bg-dark/5 flex items-center gap-1 rounded-md border border-black/10 bg-black/2 px-2 py-1 text-xs transition-colors dark:border-white/15 dark:text-white/70"
                         target="_blank"
                         title="View GitHub"
                       >
-                        <Github />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                          <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                        Github
                       </Link>
                     </div>
-                  </div>
-                  <p className="text-secondary line-clamp-3">
+                  </CardTitle>
+                  <CardDescription className={"line-clamp-2 w-full"}>
                     {items.description}
-                  </p>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className={"p-0 px-3"}>
                   <div>
-                    <h4 className="text-secondary mb-2 text-sm font-medium">
-                      Technologies
-                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {items.technologies.slice(0, 4).map((tech, idx) => {
                         return (
-                          <Skill
-                            className={"text-black/75 dark:text-white/75"}
-                            key={idx}
-                            name={tech.name}
-                            href={tech.href}
+                          <Link
+                            to={tech.href || "#"}
+                            target="_blank"
+                            className={`inline-flex items-center self-end rounded-md border border-black/10 bg-black/2 px-2 py-1 text-sm text-black dark:border-white/15 dark:bg-white/5 dark:text-white`}
                           >
-                            {tech.icon}
-                          </Skill>
+                            <p className="ml-1 text-xs">{tech.name}</p>
+                          </Link>
                         );
                       })}
                     </div>
                   </div>
-                </div>
-              </CardContent>
-              {items.details && (
-                <CardFooter className="flex w-full items-center justify-between px-4 py-6 pt-0">
+                </CardContent>
+                <CardFooter className="mt-2 flex w-full items-center justify-between px-3 pt-0">
                   <div
                     className={cn(
                       "flex items-center gap-1 rounded-md px-2 py-1 text-xs",
@@ -119,7 +121,7 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                     {items.isWorking ? (
                       <>
                         <div className="size-2 animate-pulse rounded-full bg-green-500" />
-                        All Systems Operational
+                        Completed
                       </>
                     ) : (
                       <>
@@ -137,7 +139,7 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                     View Details <ArrowRight className="mt-0.5 size-4" />
                   </Link>
                 </CardFooter>
-              )}
+              </div>
             </Card>
           </Motion.div>
         );
