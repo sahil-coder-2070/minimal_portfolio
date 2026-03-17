@@ -17,8 +17,8 @@ const Featured = () => {
     loadContributions();
   }, []);
   
-  const { theme, systemTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const { theme } = useTheme();
+  const currentTheme = theme;
 
   return (
     <Container className={`mt-25`}>
@@ -46,7 +46,7 @@ const Featured = () => {
             blockMargin={5}
             colorScheme={currentTheme === "dark" ? "dark" : "light"}
             showTotalCount={false}
-            year={2026}
+            // year={2026}
           />
         </Motion.div>
       </div>

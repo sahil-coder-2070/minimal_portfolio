@@ -9,7 +9,7 @@ const CTA = () => {
       <BorderContainer className={"py-8"}>
         <div className="mt-6 w-full flex-col px-6 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
           
-          <p className="mb-4 text-center text-base opacity-50 sm:mb-3 md:text-xl">
+          <p className="mb-4 text-center text-base opacity-70 sm:mb-3 md:text-xl">
             If you've read this far, you might be interested in what I do.
           </p>
           <div className="mt-4 flex w-full justify-center sm:mt-0 sm:w-auto sm:justify-end">
