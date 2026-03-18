@@ -12,6 +12,9 @@ inject();
 
 const rootEl = document.getElementById("root");
 
+// Keep existing custom palette by default; remove this class to see shadcn defaults.
+document.documentElement.classList.add("theme-custom");
+
 function Root() {
   const prefersReduced =
     typeof window !== "undefined" &&
