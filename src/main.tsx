@@ -4,15 +4,33 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./components/common/ScrollToTop";
+import { MotionConfig } from "motion/react";
+import { useLenis } from "./hooks/useLenis";
 import { inject } from "@vercel/analytics";
 
 inject();
 
-createRoot(document.getElementById("root")).render(
-  <HelmetProvider>
-    <BrowserRouter>
-      <ScrollToTop />
-      <App />
-    </BrowserRouter>
-  </HelmetProvider>,
-);
+const rootEl = document.getElementById("root");
+
+function Root() {
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  useLenis(!prefersReduced);
+
+  return (
+    <HelmetProvider>
+      <MotionConfig reducedMotion={prefersReduced ? "always" : "user"}>
+        <BrowserRouter>
+          <ScrollToTop />
+          <App />
+        </BrowserRouter>
+      </MotionConfig>
+    </HelmetProvider>
+  );
+}
+
+if (rootEl) {
+  createRoot(rootEl).render(<Root />);
+}

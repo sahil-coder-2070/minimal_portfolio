@@ -30,16 +30,21 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
       {displayedProjects.map((items, index) => {
         return (
           <motion.div
-            key={items.id ?? items.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            layout
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{
-              duration: 0.4,
-              delay: index * 0.1,
+              duration: 0.35,
+              delay: index * 0.05,
               ease: "easeOut",
             }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, amount: 0.2 }}
             className="flex flex-col gap-4"
+            style={{
+              contentVisibility: "auto",
+              containIntrinsicSize: "380px",
+              willChange: "transform, opacity",
+            }}
           >
             <Card
               className={
@@ -52,7 +57,12 @@ const ProjectCard = ({ completed = ProjectCardData, limit }) => {
                     <img
                       src={items.img.src}
                       alt={items.img.alt}
+                      width={items.img?.width ?? 1280}
+                      height={items.img?.height ?? 720}
                       loading="lazy"
+                      decoding="async"
+                      fetchPriority={index < 2 ? "high" : "low"}
+                      sizes="(min-width: 1024px) 320px, 100vw"
                       className="h-full w-full object-cover object-center transition-all duration-200 hover:scale-110"
                     />
                   </a>
