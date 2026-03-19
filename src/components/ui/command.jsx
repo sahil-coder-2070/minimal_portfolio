@@ -145,9 +145,23 @@ function CommandShortcut({ className, ...props }) {
   );
 }
 
+function CommandDialogFooter({ className, ...props }) {
+  return (
+    <div
+      data-slot="command-dialog-footer"
+      className={cn(
+        "flex justify-between items-center px-3 py-2 border-t border-border/30 bg-popover/50",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
 export {
   Command,
   CommandDialog,
+  CommandDialogFooter,
   CommandInput,
   CommandList,
   CommandEmpty,

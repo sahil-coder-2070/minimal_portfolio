@@ -12,6 +12,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
+  CommandDialogFooter,
 } from "@/components/ui/command";
 import {
   BellIcon,
@@ -32,6 +33,7 @@ import {
   ListIcon,
   PlusIcon,
   ScissorsIcon,
+  Search,
   SettingsIcon,
   TrashIcon,
   UserIcon,
@@ -42,10 +44,33 @@ import {
 export function CommandMany() {
   const [open, setOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    const handleGlobalKeyPress = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "k") {
+        event.preventDefault();
+        setOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyPress);
+    return () => window.removeEventListener("keydown", handleGlobalKeyPress);
+  }, []);
+
   return (
     <div className="flex flex-col gap-4">
-      <Button onClick={() => setOpen(true)} variant="outline" className="w-fit">
-        Open Menu
+      <Button
+        onClick={() => setOpen(true)}
+        size="sm"
+        variant="outline"
+        className="w-fit rounded-2xl"
+      >
+        <Search size={8} />
+        <p className="bg-secondary/30 rounded-sm p-0.5 px-1 text-xs inset-shadow-sm">
+          Ctrl
+        </p>
+        <p className="bg-secondary/30 rounded-sm p-0.5 px-1.5 text-xs inset-shadow-sm">
+          K
+        </p>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
@@ -174,6 +199,7 @@ export function CommandMany() {
               </CommandItem>
             </CommandGroup>
           </CommandList>
+          <CommandDialogFooter />
         </Command>
       </CommandDialog>
     </div>
