@@ -159,9 +159,9 @@
 .theme-custom.dark {
   --background: oklch(13.441% 0.00002 271.152);
   --foreground: oklch(97.493% 0.01731 96.139);
-  --card: oklch(0.205 0 0);
+  --card: oklch(21.342% 0.00002 271.152);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(20.577% 0.00158 16.47);
+  --popover: oklch(17.764% 0.00002 271.152);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
