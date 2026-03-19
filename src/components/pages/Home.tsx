@@ -6,6 +6,7 @@ import Featured from "../landing/Featured";
 import Blog from "@/app/blog/Blog";
 import CTA from "../landing/CTA";
 import Setup from "../landing/Setup";
+import { CommandMany } from "../common/CommandMany";
 
 const sectionIds = {
   experience: "experience",
@@ -49,6 +50,7 @@ const Home = () => {
       <section id={sectionIds.setup}>
         <Setup />
       </section>
+      <CommandMany />
     </main>
   );
 };
