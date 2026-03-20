@@ -113,7 +113,7 @@ function CommandSeparator({ className, ...props }) {
   return (
     <CommandPrimitive.Separator
       data-slot="command-separator"
-      className={cn("bg-border -mx-1 h-px", className)}
+      className={cn("bg-border -mx-2 my-2 h-px", className)}
       {...props}
     />
   );
@@ -124,7 +124,7 @@ function CommandItem({ className, ...props }) {
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "dark:data-[selected=true]:bg-accent/40 data-[selected=true]:bg-accent  data-[selected=true]:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-lg px-2 py-1 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "dark:data-[selected=true]:bg-accent/40 data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-lg px-2 py-1 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -150,7 +150,7 @@ function CommandDialogFooter({ className, ...props }) {
     <div
       data-slot="command-dialog-footer"
       className={cn(
-        "flex justify-between items-center px-3 py-2 border-t border-border/30 bg-popover/50",
+        "border-border/30 bg-popover/50 flex items-center justify-between border-t px-3 py-2",
         className,
       )}
       {...props}
