@@ -41,10 +41,10 @@ function CommandDialog({
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent
-        className={cn("overflow-hidden p-0", className)}
+        className={cn("w-[600px] max-w-[90vw] overflow-hidden p-0", className)}
         showCloseButton={showCloseButton}
       >
-        <Command className="**:[[cmdk-group-heading]]:text-muted-foreground [&_**:[[cmdk-item]]:px-2 **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group]]:px-2 **:[[cmdk-input]]:h-12 **:[[cmdk-item]]:py-1.5">
+        <Command className="**:[[cmdk-group-heading]]:text-muted-foreground [&_**:[[cmdk-item]]:px-2 **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group]:not([hidden])_+[cmdk-group]]:pb-0 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group]]:px-2 **:[[cmdk-input]]:h-12 **:[[cmdk-item]]:py-1.5">
           {children}
         </Command>
       </DialogContent>
@@ -75,14 +75,17 @@ function CommandInput({ className, ...props }) {
 
 function CommandList({ className, ...props }) {
   return (
-    <CommandPrimitive.List
-      data-slot="command-list"
-      className={cn(
-        "max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto",
-        className,
-      )}
-      {...props}
-    />
+    <div className="relative">
+      <CommandPrimitive.List
+        data-slot="command-list"
+        className={cn(
+          "max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto",
+          className,
+        )}
+        {...props}
+      />
+      <div className="from-popover pointer-events-none absolute right-0 bottom-0 left-0 h-8 bg-gradient-to-t to-transparent" />
+    </div>
   );
 }
 
@@ -101,7 +104,7 @@ function CommandGroup({ className, ...props }) {
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 pt-2 pb-2 [&_[cmdk-group-heading]]:mt-0 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
         className,
       )}
       {...props}
@@ -150,7 +153,7 @@ function CommandDialogFooter({ className, ...props }) {
     <div
       data-slot="command-dialog-footer"
       className={cn(
-        "border-border/30 bg-popover/50 flex items-center justify-between border-t px-3 py-2",
+        "border-border/30 bg-popover/50 mt-[4px] flex items-center justify-between border-t px-3 py-2",
         className,
       )}
       {...props}

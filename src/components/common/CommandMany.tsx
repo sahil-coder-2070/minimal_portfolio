@@ -19,12 +19,14 @@ import {
   MoonIcon,
   SunIcon,
   MonitorIcon,
-  HomeIcon,
-  BriefcaseIcon,
-  FolderIcon,
-  FileTextIcon,
+  HouseIcon,
+  UserIcon,
+  LayersIcon,
+  BookOpenIcon,
   CornerDownLeftIcon,
   Search,
+  LaptopIcon,
+  RocketIcon,
 } from "lucide-react";
 import { useTheme } from "@/components/landing/theme-provider";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
@@ -114,7 +116,7 @@ export function CommandMany() {
                   setOpen(false);
                 }}
               >
-                <HomeIcon />
+                <HouseIcon />
                 <span>Home</span>
                 <CommandShortcut>H</CommandShortcut>
               </CommandItem>
@@ -124,7 +126,7 @@ export function CommandMany() {
                   setOpen(false);
                 }}
               >
-                <BriefcaseIcon />
+                <UserIcon />
                 <span>Work</span>
                 <CommandShortcut>W</CommandShortcut>
               </CommandItem>
@@ -134,7 +136,7 @@ export function CommandMany() {
                   setOpen(false);
                 }}
               >
-                <FolderIcon />
+                <LayersIcon />
                 <span>Projects</span>
                 <CommandShortcut>P</CommandShortcut>
               </CommandItem>
@@ -144,7 +146,7 @@ export function CommandMany() {
                   setOpen(false);
                 }}
               >
-                <FileTextIcon />
+                <BookOpenIcon />
                 <span>Blog</span>
                 <CommandShortcut>B</CommandShortcut>
               </CommandItem>
@@ -160,7 +162,7 @@ export function CommandMany() {
                     setOpen(false);
                   }}
                 >
-                  <FolderIcon />
+                  <RocketIcon />
                   <span>{project.title}</span>
                 </CommandItem>
               ))}
@@ -176,7 +178,7 @@ export function CommandMany() {
                     setOpen(false);
                   }}
                 >
-                  <FileTextIcon />
+                  <BookOpenIcon />
                   <span>{blog.title}</span>
                 </CommandItem>
               ))}
