@@ -15,46 +15,74 @@ import {
   CommandDialogFooter,
 } from "@/components/ui/command";
 import {
-  BellIcon,
-  CalculatorIcon,
-  CalendarIcon,
-  ClipboardPasteIcon,
-  CodeIcon,
-  CopyIcon,
-  CreditCardIcon,
-  FileTextIcon,
-  FolderIcon,
-  FolderPlusIcon,
-  HelpCircleIcon,
+  MoonIcon,
+  SunIcon,
+  MonitorIcon,
   HomeIcon,
-  ImageIcon,
-  InboxIcon,
-  LayoutGridIcon,
-  ListIcon,
-  PlusIcon,
-  ScissorsIcon,
+  BriefcaseIcon,
+  FolderIcon,
+  FileTextIcon,
+  CornerDownLeftIcon,
   Search,
-  SettingsIcon,
-  TrashIcon,
-  UserIcon,
-  ZoomInIcon,
-  ZoomOutIcon,
 } from "lucide-react";
+import { useTheme } from "@/components/landing/theme-provider";
+import { Link } from "react-router-dom";
+import { ProjectCardData } from "@/config/projects/ProjectCardData";
+import { BlogCardData } from "@/config/blog/BlogCardData";
 
 export function CommandMany() {
   const [open, setOpen] = React.useState(false);
+  const { setTheme } = useTheme();
 
   React.useEffect(() => {
-    const handleGlobalKeyPress = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === "k") {
-        event.preventDefault();
-        setOpen(true);
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
       }
     };
 
-    window.addEventListener("keydown", handleGlobalKeyPress);
-    return () => window.removeEventListener("keydown", handleGlobalKeyPress);
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
   }, []);
+
+  React.useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!open) return;
+      if (e.target instanceof HTMLInputElement) return;
+
+      switch (e.key.toLowerCase()) {
+        case "h":
+          setOpen(false);
+          window.location.href = "/";
+          break;
+        case "w":
+          setOpen(false);
+          window.location.href = "/#work";
+          break;
+        case "p":
+          setOpen(false);
+          window.location.href = "/projects";
+          break;
+        case "b":
+          setOpen(false);
+          window.location.href = "/blogs";
+          break;
+        case "d":
+          setTheme("dark");
+          break;
+        case "l":
+          setTheme("light");
+          break;
+        case "a":
+          setTheme("system");
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [open, setTheme]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -77,129 +105,122 @@ export function CommandMany() {
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
+
             <CommandGroup heading="Navigation">
               <CommandItem>
-                <HomeIcon />
-                <span>Home</span>
-                <CommandShortcut>⌘H</CommandShortcut>
+                <Link
+                  to="/"
+                  className="flex w-full items-center gap-2"
+                  onClick={() => setOpen(false)}
+                >
+                  <HomeIcon />
+                  <span>Home</span>
+                </Link>
+                <CommandShortcut>H</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <InboxIcon />
-                <span>Inbox</span>
-                <CommandShortcut>⌘I</CommandShortcut>
+                <Link
+                  to="/#work"
+                  className="flex w-full items-center gap-2"
+                  onClick={() => setOpen(false)}
+                >
+                  <BriefcaseIcon />
+                  <span>Work</span>
+                </Link>
+                <CommandShortcut>W</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <FileTextIcon />
-                <span>Documents</span>
-                <CommandShortcut>⌘D</CommandShortcut>
+                <Link
+                  to="/projects"
+                  className="flex w-full items-center gap-2"
+                  onClick={() => setOpen(false)}
+                >
+                  <FolderIcon />
+                  <span>Projects</span>
+                </Link>
+                <CommandShortcut>P</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <FolderIcon />
-                <span>Folders</span>
-                <CommandShortcut>⌘F</CommandShortcut>
-              </CommandItem>
-            </CommandGroup>
-            <CommandSeparator />
-            <CommandGroup heading="Actions">
-              <CommandItem>
-                <PlusIcon />
-                <span>New File</span>
-                <CommandShortcut>⌘N</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <FolderPlusIcon />
-                <span>New Folder</span>
-                <CommandShortcut>⇧⌘N</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <CopyIcon />
-                <span>Copy</span>
-                <CommandShortcut>⌘C</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <ScissorsIcon />
-                <span>Cut</span>
-                <CommandShortcut>⌘X</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <ClipboardPasteIcon />
-                <span>Paste</span>
-                <CommandShortcut>⌘V</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <TrashIcon />
-                <span>Delete</span>
-                <CommandShortcut>⌫</CommandShortcut>
+                <Link
+                  to="/blogs"
+                  className="flex w-full items-center gap-2"
+                  onClick={() => setOpen(false)}
+                >
+                  <FileTextIcon />
+                  <span>Blog</span>
+                </Link>
+                <CommandShortcut>B</CommandShortcut>
               </CommandItem>
             </CommandGroup>
+
             <CommandSeparator />
-            <CommandGroup heading="View">
-              <CommandItem>
-                <LayoutGridIcon />
-                <span>Grid View</span>
-              </CommandItem>
-              <CommandItem>
-                <ListIcon />
-                <span>List View</span>
-              </CommandItem>
-              <CommandItem>
-                <ZoomInIcon />
-                <span>Zoom In</span>
-                <CommandShortcut>⌘+</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <ZoomOutIcon />
-                <span>Zoom Out</span>
-                <CommandShortcut>⌘-</CommandShortcut>
-              </CommandItem>
+            <CommandGroup heading="Projects">
+              {ProjectCardData.map((project) => (
+                <CommandItem key={project.id}>
+                  <Link
+                    to={project.links.details}
+                    className="flex w-full items-center gap-2"
+                    onClick={() => setOpen(false)}
+                  >
+                    <FolderIcon />
+                    <span>{project.title}</span>
+                  </Link>
+                </CommandItem>
+              ))}
             </CommandGroup>
+
             <CommandSeparator />
-            <CommandGroup heading="Account">
-              <CommandItem>
-                <UserIcon />
-                <span>Profile</span>
-                <CommandShortcut>⌘P</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <CreditCardIcon />
-                <span>Billing</span>
-                <CommandShortcut>⌘B</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <SettingsIcon />
-                <span>Settings</span>
-                <CommandShortcut>⌘S</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <BellIcon />
-                <span>Notifications</span>
-              </CommandItem>
-              <CommandItem>
-                <HelpCircleIcon />
-                <span>Help & Support</span>
-              </CommandItem>
+            <CommandGroup heading="Blog">
+              {BlogCardData.map((blog) => (
+                <CommandItem key={blog.slug}>
+                  <Link
+                    to={`/blogs/${blog.slug}`}
+                    className="flex w-full items-center gap-2"
+                    onClick={() => setOpen(false)}
+                  >
+                    <FileTextIcon />
+                    <span>{blog.title}</span>
+                  </Link>
+                </CommandItem>
+              ))}
             </CommandGroup>
+
             <CommandSeparator />
-            <CommandGroup heading="Tools">
-              <CommandItem>
-                <CalculatorIcon />
-                <span>Calculator</span>
+            <CommandGroup heading="Theme">
+              <CommandItem onSelect={() => setTheme("light")}>
+                <SunIcon />
+                <span>Light</span>
+                <CommandShortcut>L</CommandShortcut>
               </CommandItem>
-              <CommandItem>
-                <CalendarIcon />
-                <span>Calendar</span>
+              <CommandItem onSelect={() => setTheme("dark")}>
+                <MoonIcon />
+                <span>Dark</span>
+                <CommandShortcut>D</CommandShortcut>
               </CommandItem>
-              <CommandItem>
-                <ImageIcon />
-                <span>Image Editor</span>
-              </CommandItem>
-              <CommandItem>
-                <CodeIcon />
-                <span>Code Editor</span>
+              <CommandItem onSelect={() => setTheme("system")}>
+                <MonitorIcon />
+                <span>Auto</span>
+                <CommandShortcut>A</CommandShortcut>
               </CommandItem>
             </CommandGroup>
           </CommandList>
-          <CommandDialogFooter />
+          <CommandDialogFooter>
+            <h2 className="text-secondary">Sahilcodex</h2>
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1 text-xs">
+                Go to page
+                <span className="bg-secondary/20 text-secondary rounded-[3px] px-1.5 py-1 text-xs inset-shadow-sm">
+                  <CornerDownLeftIcon size={10} />
+                </span>
+              </span>{" "}
+              <span className="text-muted-foreground flex items-center gap-1 text-xs">
+                Exit
+                <span className="bg-secondary/20 text-secondary py- rounded-[3px] px-1 text-xs inset-shadow-sm">
+                  Esc
+                </span>
+              </span>
+            </div>
+          </CommandDialogFooter>
         </Command>
       </CommandDialog>
     </div>
