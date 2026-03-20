@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -26,13 +27,13 @@ import {
   Search,
 } from "lucide-react";
 import { useTheme } from "@/components/landing/theme-provider";
-import { Link } from "react-router-dom";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import { BlogCardData } from "@/config/blog/BlogCardData";
 
 export function CommandMany() {
   const [open, setOpen] = React.useState(false);
   const { setTheme } = useTheme();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -54,19 +55,19 @@ export function CommandMany() {
       switch (e.key.toLowerCase()) {
         case "h":
           setOpen(false);
-          window.location.href = "/";
+          navigate("/");
           break;
         case "w":
           setOpen(false);
-          window.location.href = "/#work";
+          navigate("/work");
           break;
         case "p":
           setOpen(false);
-          window.location.href = "/projects";
+          navigate("/projects");
           break;
         case "b":
           setOpen(false);
-          window.location.href = "/blogs";
+          navigate("/blogs");
           break;
         case "d":
           setTheme("dark");
@@ -82,7 +83,7 @@ export function CommandMany() {
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [open, setTheme]);
+  }, [open, setTheme, navigate]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -107,48 +108,44 @@ export function CommandMany() {
             <CommandEmpty>No results found.</CommandEmpty>
 
             <CommandGroup heading="Navigation">
-              <CommandItem>
-                <Link
-                  to="/"
-                  className="flex w-full items-center gap-2"
-                  onClick={() => setOpen(false)}
-                >
-                  <HomeIcon />
-                  <span>Home</span>
-                </Link>
+              <CommandItem
+                onSelect={() => {
+                  navigate("/");
+                  setOpen(false);
+                }}
+              >
+                <HomeIcon />
+                <span>Home</span>
                 <CommandShortcut>H</CommandShortcut>
               </CommandItem>
-              <CommandItem>
-                <Link
-                  to="/#work"
-                  className="flex w-full items-center gap-2"
-                  onClick={() => setOpen(false)}
-                >
-                  <BriefcaseIcon />
-                  <span>Work</span>
-                </Link>
+              <CommandItem
+                onSelect={() => {
+                  navigate("/work");
+                  setOpen(false);
+                }}
+              >
+                <BriefcaseIcon />
+                <span>Work</span>
                 <CommandShortcut>W</CommandShortcut>
               </CommandItem>
-              <CommandItem>
-                <Link
-                  to="/projects"
-                  className="flex w-full items-center gap-2"
-                  onClick={() => setOpen(false)}
-                >
-                  <FolderIcon />
-                  <span>Projects</span>
-                </Link>
+              <CommandItem
+                onSelect={() => {
+                  navigate("/projects");
+                  setOpen(false);
+                }}
+              >
+                <FolderIcon />
+                <span>Projects</span>
                 <CommandShortcut>P</CommandShortcut>
               </CommandItem>
-              <CommandItem>
-                <Link
-                  to="/blogs"
-                  className="flex w-full items-center gap-2"
-                  onClick={() => setOpen(false)}
-                >
-                  <FileTextIcon />
-                  <span>Blog</span>
-                </Link>
+              <CommandItem
+                onSelect={() => {
+                  navigate("/blogs");
+                  setOpen(false);
+                }}
+              >
+                <FileTextIcon />
+                <span>Blog</span>
                 <CommandShortcut>B</CommandShortcut>
               </CommandItem>
             </CommandGroup>
@@ -156,15 +153,15 @@ export function CommandMany() {
             <CommandSeparator />
             <CommandGroup heading="Projects">
               {ProjectCardData.map((project) => (
-                <CommandItem key={project.id}>
-                  <Link
-                    to={project.links.details}
-                    className="flex w-full items-center gap-2"
-                    onClick={() => setOpen(false)}
-                  >
-                    <FolderIcon />
-                    <span>{project.title}</span>
-                  </Link>
+                <CommandItem
+                  key={project.id}
+                  onSelect={() => {
+                    navigate(project.links.details);
+                    setOpen(false);
+                  }}
+                >
+                  <FolderIcon />
+                  <span>{project.title}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -172,32 +169,47 @@ export function CommandMany() {
             <CommandSeparator />
             <CommandGroup heading="Blog">
               {BlogCardData.map((blog) => (
-                <CommandItem key={blog.slug}>
-                  <Link
-                    to={`/blogs/${blog.slug}`}
-                    className="flex w-full items-center gap-2"
-                    onClick={() => setOpen(false)}
-                  >
-                    <FileTextIcon />
-                    <span>{blog.title}</span>
-                  </Link>
+                <CommandItem
+                  key={blog.slug}
+                  onSelect={() => {
+                    navigate(`/blogs/${blog.slug}`);
+                    setOpen(false);
+                  }}
+                >
+                  <FileTextIcon />
+                  <span>{blog.title}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
 
             <CommandSeparator />
             <CommandGroup heading="Theme">
-              <CommandItem onSelect={() => setTheme("light")}>
+              <CommandItem
+                onSelect={() => {
+                  setTheme("light");
+                  setOpen(false);
+                }}
+              >
                 <SunIcon />
                 <span>Light</span>
                 <CommandShortcut>L</CommandShortcut>
               </CommandItem>
-              <CommandItem onSelect={() => setTheme("dark")}>
+              <CommandItem
+                onSelect={() => {
+                  setTheme("dark");
+                  setOpen(false);
+                }}
+              >
                 <MoonIcon />
                 <span>Dark</span>
                 <CommandShortcut>D</CommandShortcut>
               </CommandItem>
-              <CommandItem onSelect={() => setTheme("system")}>
+              <CommandItem
+                onSelect={() => {
+                  setTheme("system");
+                  setOpen(false);
+                }}
+              >
                 <MonitorIcon />
                 <span>Auto</span>
                 <CommandShortcut>A</CommandShortcut>
