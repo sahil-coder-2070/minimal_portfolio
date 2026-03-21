@@ -57,7 +57,6 @@ export const Navbar = () => {
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden items-center gap-3 md:flex">
-              <CommandMany />
               {navList.map((items) => {
                 return (
                   <Link
@@ -70,6 +69,7 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
+              <CommandMany />
             </div>
             <ThemeToggel />
           </div>
@@ -92,7 +92,17 @@ export const Navbar = () => {
               <Menu size={18} />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuContent
+            align="end"
+            side="top"
+            sideOffset={16}
+            className="w-48"
+          >
+            <DropdownMenuItem>
+              <Link to="/" className="w-full">
+                Home
+              </Link>
+            </DropdownMenuItem>
             {navList.map((items) => (
               <DropdownMenuItem key={items.name}>
                 <Link to={items.href} className="w-full">
