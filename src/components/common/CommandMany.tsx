@@ -32,8 +32,19 @@ import { useTheme } from "@/components/landing/theme-provider";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import { BlogCardData } from "@/config/blog/BlogCardData";
 
-export function CommandMany() {
-  const [open, setOpen] = React.useState(false);
+export function CommandMany({
+  open: externalOpen,
+  onOpenChange: externalOnOpenChange,
+  hideButton = false,
+}: {
+  open?: boolean;
+  onOpenChange?: React.Dispatch<React.SetStateAction<boolean>>;
+  hideButton?: boolean;
+} = {}) {
+  const [internalOpen, setInternalOpen] = React.useState(false);
+  const open = externalOpen !== undefined ? externalOpen : internalOpen;
+  const setOpen =
+    externalOnOpenChange !== undefined ? externalOnOpenChange : setInternalOpen;
   const { setTheme } = useTheme();
   const navigate = useNavigate();
 
@@ -89,20 +100,22 @@ export function CommandMany() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Button
-        onClick={() => setOpen(true)}
-        size="sm"
-        variant="outline"
-        className="w-fit rounded-2xl"
-      >
-        <Search size={8} />
-        <p className="bg-secondary/30 rounded-sm p-0.5 px-1 text-xs inset-shadow-sm">
-          Ctrl
-        </p>
-        <p className="bg-secondary/30 rounded-sm p-0.5 px-1.5 text-xs inset-shadow-sm">
-          K
-        </p>
-      </Button>
+      {!hideButton && (
+        <Button
+          onClick={() => setOpen(true)}
+          size="sm"
+          variant="outline"
+          className="w-fit rounded-2xl"
+        >
+          <Search size={8} />
+          <p className="bg-secondary/30 rounded-sm p-0.5 px-1 text-xs inset-shadow-sm">
+            Ctrl
+          </p>
+          <p className="bg-secondary/30 rounded-sm p-0.5 px-1.5 text-xs inset-shadow-sm">
+            K
+          </p>
+        </Button>
+      )}
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
           <CommandInput placeholder="Type a command or search..." />

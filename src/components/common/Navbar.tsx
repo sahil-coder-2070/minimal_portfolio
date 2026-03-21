@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import Container from "../layouts/Container";
 import { motion } from "motion/react";
 import { CommandMany } from "./CommandMany";
-import { Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const navList = [
   { name: "Work", href: "/work" },
@@ -20,6 +21,7 @@ const navList = [
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [commandOpen, setCommandOpen] = useState(false);
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
@@ -75,7 +77,15 @@ export const Navbar = () => {
       </Container>
 
       <div className="bg-background/95 fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden">
-        <CommandMany />
+        <Button
+          onClick={() => setCommandOpen(true)}
+          size="sm"
+          variant="outline"
+          className="w-fit gap-2 rounded-full"
+        >
+          <Search size={16} />
+          <span>Search</span>
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex h-8 w-8 items-center justify-center rounded-lg">
@@ -93,6 +103,12 @@ export const Navbar = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      <CommandMany
+        open={commandOpen}
+        onOpenChange={setCommandOpen}
+        hideButton
+      />
     </>
   );
 };
