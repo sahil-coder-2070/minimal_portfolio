@@ -18,7 +18,7 @@ export function BlogNavigation({ slug }: { slug?: string }) {
       const allblog = [];
       for (const path in blog) {
         const loader = blog[path];
-        const text = await loader();
+        const text = (await loader()) as string;
         const { data } = matter(text);
         const bloglug = path.split("/").pop().replace(".md", "");
         allblog.push({ slug: bloglug, title: data.title });

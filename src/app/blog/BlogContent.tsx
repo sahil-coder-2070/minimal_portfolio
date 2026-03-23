@@ -34,7 +34,7 @@ const BlogContent = () => {
 
         if (!loader) throw new Error("Project not found");
 
-        const text = await loader();
+        const text = (await loader()) as string;
         const { data, content } = matter(text);
 
         setMeta(data);

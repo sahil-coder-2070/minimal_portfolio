@@ -13,9 +13,6 @@ export function useLenis(enabled = true) {
 
     const lenis = new Lenis({
       lerp: 0.12,
-      smoothWheel: true,
-      smoothTouch: false,
-      normalizeWheel: true,
     });
 
     lenisRef.current = lenis;

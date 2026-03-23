@@ -47,6 +47,7 @@ const Button = React.forwardRef(function Button(
     variant = "default",
     size = "default",
     asChild = false,
+    children,
     ...props
   }: {
     className?: string;
@@ -61,6 +62,7 @@ const Button = React.forwardRef(function Button(
       | "custom";
     size?: "default" | "sm" | "custom" | "lg" | "icon" | "icon-sm" | "icon-lg";
     asChild?: boolean;
+    children?: React.ReactNode;
   } & React.ComponentPropsWithoutRef<"button">,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
@@ -74,7 +76,9 @@ const Button = React.forwardRef(function Button(
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   );
 });
 

@@ -13,7 +13,7 @@ const IdeTimer = () => {
       timer = setInterval(() => {
         setTimeSpent((prev) => {
           const newTime = prev + 1000;
-          localStorage.setItem("timeSpent", newTime); // save progress
+          localStorage.setItem("timeSpent", String(newTime)); // save progress
           return newTime;
         });
       }, 1000);
@@ -44,7 +44,7 @@ const IdeTimer = () => {
         now.getSeconds() === 0
       ) {
         setTimeSpent(0);
-        localStorage.setItem("timeSpent", 0);
+        localStorage.setItem("timeSpent", "0");
       }
     }, 1000);
 
@@ -73,4 +73,4 @@ const IdeTimer = () => {
   );
 };
 
-export default IdeTimer
+export default IdeTimer;

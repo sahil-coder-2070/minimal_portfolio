@@ -18,7 +18,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
       const allProjects = [];
       for (const path in projects) {
         const loader = projects[path];
-        const text = await loader();
+        const text = (await loader()) as string;
         const { data } = matter(text);
         const projectSlug = path.split("/").pop().replace(".md", "");
         allProjects.push({ slug: projectSlug, title: data.title });

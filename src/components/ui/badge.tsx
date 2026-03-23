@@ -28,11 +28,13 @@ function Badge({
   className,
   variant,
   asChild = false,
+  children,
   ...props
 }: {
   className?: string;
   variant?: "default" | "secondary" | "destructive" | "outline";
   asChild?: boolean;
+  children?: React.ReactNode;
 }) {
   const Comp = asChild ? Slot : "span";
 
@@ -41,7 +43,9 @@ function Badge({
       data-slot="badge"
       className={cn(badgeVariants({ variant }), className)}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   );
 }
 

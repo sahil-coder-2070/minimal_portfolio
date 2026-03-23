@@ -15,13 +15,18 @@ import Container from "./components/layouts/Container";
 import Layout from "./components/common/Layout";
 import GearsPage from "./app/gear/Gear";
 import { useEffect } from "react";
+import { inject } from "@vercel/analytics";
 
 function App() {
   const location = useLocation();
 
   useEffect(() => {
+    inject();
+  }, []);
+
+  useEffect(() => {
     if (window.va) {
-      window.va("send", "pageview");
+      window.va("event", { name: "pageview", url: location.pathname });
     }
   }, [location.pathname]);
   return (
