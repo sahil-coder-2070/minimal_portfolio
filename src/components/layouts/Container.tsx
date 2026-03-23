@@ -2,7 +2,7 @@ import { motion as Motion } from "motion/react";
 import { ReactNode } from "react";
 
 interface ContainerProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 

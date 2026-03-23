@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
-const MarkdownRenderer = ({ content }) => {
+const MarkdownRenderer = ({ content = "" }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}

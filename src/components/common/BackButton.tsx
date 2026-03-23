@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Undo2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export function BackButton({text}) {
+export function BackButton({ text = "Go Back" }) {
   const navigate = useNavigate();
 
   return (

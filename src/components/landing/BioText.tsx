@@ -70,7 +70,11 @@ const Skills = [
   },
 ];
 
-const SkillTag = ({ skill }) => {
+const SkillTag = ({
+  skill,
+}: {
+  skill?: { name: string; element: React.ReactNode; link: string };
+}) => {
   return (
     <span>
       <Tooltip>

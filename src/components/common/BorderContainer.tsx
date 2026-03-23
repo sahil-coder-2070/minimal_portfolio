@@ -1,6 +1,11 @@
 import Container from "../layouts/Container";
 
-const BorderContainer = ({ children, className }) => {
+interface BorderContainerProps {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const BorderContainer = ({ children, className }: BorderContainerProps) => {
   return (
     <Container>
       <div className="relative">

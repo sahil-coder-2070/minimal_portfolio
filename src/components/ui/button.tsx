@@ -48,8 +48,21 @@ const Button = React.forwardRef(function Button(
     size = "default",
     asChild = false,
     ...props
-  },
-  ref,
+  }: {
+    className?: string;
+    variant?:
+      | "default"
+      | "destructive"
+      | "outline"
+      | "secondary"
+      | "toggle"
+      | "ghost"
+      | "link"
+      | "custom";
+    size?: "default" | "sm" | "custom" | "lg" | "icon" | "icon-sm" | "icon-lg";
+    asChild?: boolean;
+  } & React.ComponentPropsWithoutRef<"button">,
+  ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const Comp = asChild ? Slot : "button";
 

@@ -1,5 +1,5 @@
 import { motion as Motion } from "motion/react";
-const SectionHeading = ({ subHeading, heading }) => {
+const SectionHeading = ({ subHeading = "", heading = "" }) => {
   return (
     <Motion.div
       initial={{ y: 40, opacity: 0 }}

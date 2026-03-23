@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Skill({ name, href, children, className }) {
+interface SkillProps {
+  name?: string;
+  href?: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export default function Skill({ name, href, children, className }: SkillProps) {
   return (
     <Link
       to={href ?? ""}

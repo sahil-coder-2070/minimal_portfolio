@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import matter from "gray-matter";
 
-export function BlogNavigation({ slug }) {
+export function BlogNavigation({ slug }: { slug?: string }) {
   const [previous, setPrevious] = useState(null);
   const [next, setNext] = useState(null);
   const blog = import.meta.glob("/src/data/blog/*.md", {

@@ -33,7 +33,7 @@ const TechnologyComponents = {
 };
 
 // Technology badge
-const Technology = ({ name }) => {
+const Technology = ({ name = "" }) => {
   const TechComponent =
     TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
 
@@ -46,7 +46,7 @@ const Technology = ({ name }) => {
 };
 
 // Tech stack
-const TechStack = ({ technologies }) => (
+const TechStack = ({ technologies = [] }) => (
   <div className="bg-muted/20 my-6 rounded-lg border p-4">
     <h4 className="mb-3 text-lg font-semibold">Technology Stack</h4>
     <div className="flex flex-wrap gap-2">
@@ -58,7 +58,17 @@ const TechStack = ({ technologies }) => (
 );
 
 // Project meta
-const ProjectMeta = ({ timeline, role, team, status }) => (
+const ProjectMeta = ({
+  timeline,
+  role,
+  team,
+  status,
+}: {
+  timeline?: string;
+  role?: string;
+  team?: string;
+  status?: string;
+}) => (
   <div className="bg-muted/20 my-6 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
     {timeline && (
       <div>
@@ -103,7 +113,7 @@ const ProjectMeta = ({ timeline, role, team, status }) => (
 );
 
 // Challenges
-const Challenges = ({ challenges }) => (
+const Challenges = ({ challenges = [] }) => (
   <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
     <h4 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
       Key Challenges
@@ -123,7 +133,7 @@ const Challenges = ({ challenges }) => (
 );
 
 // Learnings
-const Learnings = ({ learnings }) => (
+const Learnings = ({ learnings = [] }) => (
   <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
     <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">
       Key Learnings
