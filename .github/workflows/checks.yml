@@ -34,5 +34,4 @@ jobs:
         uses: "vercel/repository-dispatch/actions/status@v1"
         with:
           name: "Vercel - sahilcodex: build"
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          github_token: ${{ github.token }}
