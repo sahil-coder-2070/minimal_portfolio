@@ -1,3 +1,4 @@
+import React from "react";
 import Bun from "@/components/icons/tech/Bun";
 import JavaScript from "@/components/icons/tech/JavaScript";
 import MongoDB from "@/components/icons/tech/MongoDB";
@@ -207,21 +208,6 @@ export const ProjectComponents = {
   ),
 
   pre: ({ children, ...props }) => {
-    const getTextContent = (node) => {
-      if (typeof node === "string" || typeof node === "number") {
-        return String(node);
-      }
-      if (Array.isArray(node)) {
-        return node.map(getTextContent).join("");
-      }
-      if (React.isValidElement(node)) {
-        return getTextContent(node.props?.children);
-      }
-      return "";
-    };
-
-    const codeText = getTextContent(children);
-
     return (
       <div className="group relative mb-4">
         <pre
@@ -230,7 +216,6 @@ export const ProjectComponents = {
         >
           {children}
         </pre>
-        <CodeCopyButton code={codeText} />
       </div>
     );
   },

@@ -20,18 +20,18 @@ const BlogCard = () => {
       {BlogCardData.map((items, index) => {
         return (
           <Motion.div
-            key={items.id || index}
+            key={index}
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{
               duration: 0.5,
               ease: "easeInOut",
-              delay: 0.2 * items.id,
+              delay: 0.2 * index,
             }}
             viewport={{ once: true }}
             className="flex flex-col gap-4"
           >
-            <Card className="group h-full w-full overflow-hidden border-gray-100 p-0   dark:border-gray-800 shadow-sm">
+            <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-sm dark:border-gray-800">
               <CardHeader className="p-0">
                 <div className="relative aspect-video overflow-hidden">
                   <Link to={`/blogs/${items.slug}`}>
