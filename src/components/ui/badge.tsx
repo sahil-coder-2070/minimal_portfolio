@@ -29,19 +29,22 @@ function Badge({
   variant,
   asChild = false,
   children,
+  onClick,
   ...props
 }: {
   className?: string;
   variant?: "default" | "secondary" | "destructive" | "outline";
   asChild?: boolean;
   children?: React.ReactNode;
+  onClick?: () => void;
 }) {
-  const Comp = asChild ? Slot : "span";
+  const Comp = asChild ? Slot : onClick ? "button" : "span";
 
   return (
     <Comp
       data-slot="badge"
       className={cn(badgeVariants({ variant }), className)}
+      onClick={onClick}
       {...props}
     >
       {children}

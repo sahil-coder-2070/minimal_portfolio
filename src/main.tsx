@@ -4,7 +4,6 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./components/common/ScrollToTop";
-import { MotionConfig } from "motion/react";
 import { useLenis } from "./hooks/useLenis";
 import { inject } from "@vercel/analytics";
 
@@ -12,7 +11,6 @@ inject();
 
 const rootEl = document.getElementById("root");
 
-// Keep existing custom palette by default; remove this class to see shadcn defaults.
 document.documentElement.classList.add("theme-custom");
 
 function Root() {
@@ -24,12 +22,10 @@ function Root() {
 
   return (
     <HelmetProvider>
-      <MotionConfig reducedMotion={prefersReduced ? "always" : "user"}>
-        <BrowserRouter>
-          <ScrollToTop />
-          <App />
-        </BrowserRouter>
-      </MotionConfig>
+      <BrowserRouter>
+        <ScrollToTop />
+        <App />
+      </BrowserRouter>
     </HelmetProvider>
   );
 }

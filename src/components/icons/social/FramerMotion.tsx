@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Motion({ className }) {
+export default function Motion({
+  className,
+}: {
+  className?: string;
+}): React.JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

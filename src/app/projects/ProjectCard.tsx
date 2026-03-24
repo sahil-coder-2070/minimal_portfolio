@@ -19,7 +19,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const ProjectCard = ({ completed = ProjectCardData, limit }) => {
+const ProjectCard = ({
+  completed = ProjectCardData,
+  limit,
+}: {
+  completed?: typeof ProjectCardData;
+  limit?: number;
+}) => {
   const displayedProjects = useMemo(() => {
     const arr = limit ? [...completed].slice(-limit) : [...completed];
     return arr.reverse();

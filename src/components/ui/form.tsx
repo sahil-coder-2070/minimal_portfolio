@@ -1,12 +1,7 @@
 "use client";
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import {
-  Controller,
-  FormProvider,
-  useFormContext,
-  useFormState,
-} from "react-hook-form";
+import { Controller, FormProvider, useFormContext } from "react-hook-form";
 
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
@@ -15,7 +10,7 @@ const Form = FormProvider;
 
 const FormFieldContext = React.createContext<{ name: string }>({ name: "" });
 
-const FormField = ({ ...props }: React.ComponentProps<typeof Controller>) => {
+const FormField = (props: any) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -47,7 +42,10 @@ const useFormField = () => {
 
 const FormItemContext = React.createContext<{ id?: string }>({});
 
-function FormItem({ className, ...props }) {
+function FormItem({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const id = React.useId();
 
   return (
@@ -61,7 +59,10 @@ function FormItem({ className, ...props }) {
   );
 }
 
-function FormLabel({ className, ...props }) {
+function FormLabel({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLLabelElement>) {
   const { error, formItemId } = useFormField();
 
   return (
@@ -75,7 +76,7 @@ function FormLabel({ className, ...props }) {
   );
 }
 
-function FormControl({ ...props }) {
+function FormControl({ ...props }: React.HTMLAttributes<HTMLElement>) {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
@@ -94,7 +95,10 @@ function FormControl({ ...props }) {
   );
 }
 
-function FormDescription({ className, ...props }) {
+function FormDescription({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -107,7 +111,10 @@ function FormDescription({ className, ...props }) {
   );
 }
 
-function FormMessage({ className, ...props }) {
+function FormMessage({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? "") : props.children;
 
