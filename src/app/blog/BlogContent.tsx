@@ -15,12 +15,21 @@ import { BackButton } from "@/components/common/BackButton";
 import { BlogNavigation } from "@/components/common/BlogNavigation";
 window.Buffer = Buffer;
 
+interface BlogMeta {
+  title?: string;
+  description?: string;
+  date?: string;
+  formattedDate?: string;
+  image?: string;
+  tags?: string[];
+}
+
 const BlogContent = () => {
   const { slug } = useParams();
   const [content, setContent] = useState("");
-  const [meta, setMeta] = useState({});
+  const [meta, setMeta] = useState<BlogMeta>({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const projects = import.meta.glob("/src/data/blog/*.md", {
     query: "?raw",
     import: "default",

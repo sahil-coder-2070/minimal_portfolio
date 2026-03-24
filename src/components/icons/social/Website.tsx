@@ -1,6 +1,6 @@
 import React from "react";
 
-const Website = () => {
+const Website = (): React.JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

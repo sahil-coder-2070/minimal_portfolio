@@ -16,12 +16,28 @@ import { Separator } from "@/components/ui/separator";
 import { ProjectNavigation } from "@/components/common/ProjectNavigation";
 import { BackButton } from "@/components/common/BackButton";
 
+interface ProjectMeta {
+  title?: string;
+  description?: string;
+  image?: string;
+  technologies?: string[];
+  status?: "completed" | "in-progress" | "planning";
+  statusVariant?: "default" | "secondary" | "destructive" | "outline";
+  timeline?: string;
+  role?: string;
+  team?: string;
+  live?: string;
+  github?: string;
+  challenges?: string[];
+  learnings?: string[];
+}
+
 const ProjectContent = () => {
   const { slug } = useParams();
   const [content, setContent] = useState("");
-  const [meta, setMeta] = useState({});
+  const [meta, setMeta] = useState<ProjectMeta>({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const projects = import.meta.glob("/src/data/projects/*.md", {
     query: "?raw",
     import: "default",
@@ -72,13 +88,7 @@ const ProjectContent = () => {
       <BackButton text={"Back to Project"} />
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
-          <img
-            src={meta.image}
-            alt={meta.title}
-            fill
-            className="object-cover"
-            priority
-          />
+          <img src={meta.image} alt={meta.title} className="object-cover" />
         </div>
 
         <div className="space-y-4">
@@ -140,30 +150,26 @@ const ProjectContent = () => {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3">
             {meta.live && (
-              <Button asChild>
-                <Link
-                  href={meta.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <Website className="size-4" />
-                  Live Demo
-                </Link>
-              </Button>
+              <a
+                href={meta.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs transition-all disabled:pointer-events-none disabled:opacity-50"
+              >
+                <Website className="size-4" />
+                Live Demo
+              </a>
             )}
             {meta.github && (
-              <Button variant="outline" asChild>
-                <Link
-                  href={meta.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <Github className="size-4" />
-                  Source Code
-                </Link>
-              </Button>
+              <a
+                href={meta.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs transition-all disabled:pointer-events-none disabled:opacity-50"
+              >
+                <Github className="size-4" />
+                Source Code
+              </a>
             )}
           </div>
         </div>
