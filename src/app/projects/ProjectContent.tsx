@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import matter from "gray-matter";
 
 import ReactMarkdown from "react-markdown";
@@ -9,7 +9,6 @@ import rehypeHighlight from "rehype-highlight";
 import Container from "@/components/layouts/Container";
 import { ProjectComponents } from "./ProjectComponents";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import Website from "@/components/icons/social/Website";
 import Github from "@/components/icons/social/Github";
 import { Separator } from "@/components/ui/separator";

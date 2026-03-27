@@ -9,6 +9,7 @@ import { Supabase } from "@/components/icons/tech/Supabase";
 import TailwindCss from "@/components/icons/tech/TailwindCss";
 import TypeScript from "@/components/icons/tech/TypeScript";
 import Vite from "@/components/icons/tech/Vite";
+import { NodeJs, Npm } from "@/lib/techIcons";
 
 export const ProjectCardData = [
   {
@@ -256,8 +257,13 @@ export const ProjectCardData = [
       },
       {
         name: "Node.js",
-        icon: <JavaScript />,
+        icon: <NodeJs />,
         href: "https://nodejs.org/",
+      },
+      {
+        name: "NPM-Cli Tool",
+        icon: <Npm />,
+        href: "https://www.npmjs.com/",
       },
     ],
     isWorking: true,

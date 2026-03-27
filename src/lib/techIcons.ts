@@ -30,6 +30,7 @@ import Docker from "@/components/icons/tech/Docker";
 import ReactNavigation from "@/components/icons/tech/ReactNavigation";
 import { Bootstrap } from "@/components/icons/tech/BootStrap";
 import { Python } from "@/components/icons/tech/Python";
+import Npm from "@/components/icons/tech/Npm";
 export {
   ReactIcon,
   Bun,
@@ -63,4 +64,5 @@ export {
   ReactNavigation,
   Bootstrap,
   Python,
+  Npm,
 };
