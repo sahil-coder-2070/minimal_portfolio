@@ -1,3 +1,32 @@
+---
+title: "tcxcommit - AI Git Commit Message Generator"
+description: "AI-powered git commit message generator that writes your commit messages for you using OpenRouter AI."
+image: "/comingsoon.webp"
+technologies:
+  - Node.js
+  - TypeScript
+  - OpenRouter AI
+  - Chalk
+github: "https://github.com/sahilcodexx/tcxcommit"
+live: "https://tcxcommit.vercel.app/"
+npm: "https://www.npmjs.com/package/tcxcommit"
+timeline: "2 Weeks"
+role: "Creator"
+team: "Solo"
+status: "Completed"
+featured: true
+challenges:
+  - CLI Interaction Design
+  - Git Integration
+  - API Key Management
+  - Terminal UI
+learnings:
+  - Node.js CLI Development
+  - OpenRouter API Integration
+  - Package Publishing
+isPublished: true
+---
+
 # tcxcommit
 
 AI-powered git commit message generator that writes your commit messages for you!
