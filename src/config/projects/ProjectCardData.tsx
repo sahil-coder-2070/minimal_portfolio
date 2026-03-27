@@ -231,4 +231,38 @@ export const ProjectCardData = [
     details: true,
     projectDetailsPageSlug: "/projects/pricetracker",
   },
+  {
+    id: 6,
+    title: "tcxcommit",
+    img: {
+      src: "/comingsoon.webp",
+      alt: "tcxcommit project image",
+      width: 1920,
+      height: 1080,
+    },
+    description:
+      "AI-powered git commit message generator that writes your commit messages for you! Uses OpenRouter AI to generate meaningful and conventional commit messages. Supports free trials and your own API key.",
+    links: {
+      website: "https://tcxcommit.vercel.app/",
+      github: "https://github.com/sahilcodexx/tcxcommit",
+      npm: "https://www.npmjs.com/package/tcxcommit",
+      details: "/projects/tcxcommit",
+    },
+    technologies: [
+      {
+        name: "TypeScript",
+        icon: <TypeScript />,
+        href: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Node.js",
+        icon: <JavaScript />,
+        href: "https://nodejs.org/",
+      },
+    ],
+    isWorking: true,
+    isBulding: false,
+    details: true,
+    projectDetailsPageSlug: "/projects/tcxcommit",
+  },
 ];
