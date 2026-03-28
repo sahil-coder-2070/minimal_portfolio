@@ -266,7 +266,7 @@ export const ProjectCardData = [
         href: "https://www.npmjs.com/",
       },
     ],
-    isWorking: true,
+    isWorking: false,
     isBulding: false,
     details: true,
     projectDetailsPageSlug: "/projects/tcxcommit",
