@@ -30,21 +30,21 @@ Before diving into the code, let's understand what makes Framer Motion stand out
 First, let's install Framer Motion in your React project. You can use npm, yarn, or any other package manager:
 
 ```bash
-npm install framer-motion
+npm install motion
 ```
 
 Or with yarn:
 
 ```bash
-yarn add framer-motion
+yarn add motion
 ```
 
 ### Basic Import
 
-Once installed, import the `motion` component from framer-motion:
+Once installed, import the `motion` component from motion:
 
 ```jsx
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 ```
 
 The `motion` component is the core of Framer Motion. It's a wrapper that adds animation capabilities to any HTML or SVG element.
@@ -56,7 +56,7 @@ The `motion` component is the core of Framer Motion. It's a wrapper that adds an
 Let's start with a basic fade-in animation. We'll animate a div from opacity 0 to 1:
 
 ```jsx
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function FadeInComponent() {
   return (
@@ -289,7 +289,7 @@ function AnimatedPage({ children }) {
 `AnimatePresence` enables exit animations when components unmount:
 
 ```jsx
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 
 function AnimatedList({ items }) {
   return (
@@ -317,7 +317,7 @@ function AnimatedList({ items }) {
 Motion values provide reactive animation state:
 
 ```jsx
-import { useMotionValue, useTransform } from "framer-motion";
+import { useMotionValue, useTransform } from "motion/react";
 
 function MotionValueExample() {
   const x = useMotionValue(0);
@@ -344,7 +344,7 @@ function MotionValueExample() {
 Create animations that respond to scroll position:
 
 ```jsx
-import { useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "motion/react";
 
 function ScrollAnimation() {
   const { scrollYProgress } = useScroll();
