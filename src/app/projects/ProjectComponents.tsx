@@ -211,7 +211,7 @@ export const ProjectComponents = {
     return (
       <div className="group relative mb-4">
         <pre
-          className="bg-muted/30 overflow-x-auto rounded-lg border p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
+          className="code-block overflow-x-auto rounded-lg text-sm"
           {...props}
         >
           {children}

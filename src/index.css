@@ -220,3 +220,10 @@
   filter: blur(3px);
 }
 
+/* Code block styling */
+.code-block {
+  background-color: hsl(210 40% 96.1%);
+}
+.dark .code-block {
+  background-color: oklch(55% 0 0);
+}
