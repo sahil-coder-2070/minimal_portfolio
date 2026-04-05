@@ -16,7 +16,7 @@ export const ProjectCardData = [
     id: 1,
     title: "Movie Finder",
     img: {
-      src: "/projects/project2.webp",
+      src: "/projects/project2.avif",
       alt: "Movie Finder project image",
       width: 1920,
       height: 1080,
@@ -64,7 +64,7 @@ export const ProjectCardData = [
     id: 2,
     title: "Nova Gaming",
     img: {
-      src: "/projects/project3.webp",
+      src: "/projects/project3.avif",
       alt: "Nova Gaming GSAP animated project image",
       width: 1920,
       height: 1080,
@@ -107,7 +107,7 @@ export const ProjectCardData = [
     id: 3,
     title: "ChefyAI",
     img: {
-      src: "/projects/project1.webp",
+      src: "/projects/project1.avif",
       alt: "ChefyAI project image",
       width: 1920,
       height: 1080,
@@ -150,7 +150,7 @@ export const ProjectCardData = [
     id: 4,
     title: "Image Editor AI",
     img: {
-      src: "/projects/project4.webp",
+      src: "/projects/project4.avif",
       alt: "Image Editor AI project image",
       width: 1920,
       height: 1080,
@@ -193,7 +193,7 @@ export const ProjectCardData = [
     id: 5,
     title: "Price Tracker",
     img: {
-      src: "/comingsoon.webp",
+      src: "/projects/comingsoon.avif",
       alt: "Price Tracker project image",
       width: 1920,
       height: 1080,
@@ -236,7 +236,7 @@ export const ProjectCardData = [
     id: 6,
     title: "tcxcommit",
     img: {
-      src: "/comingsoon.webp",
+      src: "/projects/comingsoon.avif",
       alt: "tcxcommit project image",
       width: 1920,
       height: 1080,

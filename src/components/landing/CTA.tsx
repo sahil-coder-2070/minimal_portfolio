@@ -20,7 +20,7 @@ const CTA = () => {
                       width={20}
                       height={20}
                       className="h-full w-full object-cover"
-                      src="/Avatar.png"
+                      src="/Avatar.avif"
                       style={{ color: "transparent" }}
                     />
                   </div>

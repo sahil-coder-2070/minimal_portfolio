@@ -1,7 +1,7 @@
 ---
 title: "Price Tracker - Automated  Price Tracker"
 description: "An open-source web application that allows users to monitor product prices from e-commerce platforms. It enables users to track price changes over time, receive updates, and make smarter purchasing decisions through automated tracking and data visualization features."
-image: "/comingsoon.webp"
+image: "/projects/comingsoon.avif"
 technologies:
   - TypeScript
   - Firecrawl

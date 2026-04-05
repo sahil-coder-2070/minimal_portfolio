@@ -39,7 +39,7 @@ const Hero = () => {
             className="box-border h-28 w-28 overflow-hidden rounded-full bg-blue-300 p-1 duration-200 dark:bg-yellow-300"
           >
             <Motion.img
-              src="./Avatar.png"
+              src="./Avatar.avif"
               alt="Avatar"
               className="box-border h-28 scale-105 object-cover"
             />

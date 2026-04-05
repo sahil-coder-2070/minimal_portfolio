@@ -41,7 +41,7 @@ export const Navbar = () => {
             <div className="box-border h-12 w-12 overflow-hidden rounded-md border-2 border-neutral-300 bg-blue-300 p-1 duration-200 hover:scale-90 dark:border-neutral-200 dark:bg-yellow-300">
               <Link to="/">
                 <img
-                  src="./Avatar.png"
+                  src="./Avatar.avif"
                   alt="Avatar"
                   className="box-border h-12 scale-105 cursor-pointer object-cover"
                 />
