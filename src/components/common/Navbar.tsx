@@ -31,34 +31,35 @@ export const Navbar = () => {
 
   return (
     <>
-      <Container className="bg-background before:bg-border after:bg-border relative sticky top-1.5 isolate z-50 mt-1 max-w-screen overflow-visible  transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]">
-        <motion.div
-          className={`m-auto flex w-full items-center justify-between gap-2 py-1.5 `}
-        >
-          <div>
-            <h2>SS</h2>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden items-center gap-3 md:flex">
-              {navList.map((items) => {
-                return (
-                  <Link
-                    key={items.name}
-                    to={items.href}
-                    className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
-                  >
-                    {" "}
-                    {items.name}{" "}
-                  </Link>
-                );
-              })}
-              <CommandMany />
+      <Container className="bg-background sticky top-0 isolate z-50 pt-1">
+        <div>
+          <motion.div
+            className={`before:bg-border after:bg-border relative m-auto mt-1 flex w-full max-w-screen items-center justify-between gap-2 overflow-visible py-1.5 transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]`}
+          >
+            <div>
+              <h2>SS</h2>
             </div>
-            <div className="border-l">
-              <ThemeToggel />
+            <div className="flex items-center gap-4">
+              <div className="hidden items-center gap-3 md:flex">
+                {navList.map((items) => {
+                  return (
+                    <Link
+                      key={items.name}
+                      to={items.href}
+                      className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
+                    >
+                      {" "}
+                      {items.name}{" "}
+                    </Link>
+                  );
+                })}
+                <CommandMany />
+              </div>
+              <span className="h-4 w-px bg-border"></span>
+                <ThemeToggel />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </Container>
 
       <div className="bg-background/95 fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden">

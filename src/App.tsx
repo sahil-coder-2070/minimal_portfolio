@@ -34,7 +34,6 @@ function App() {
       <div className="min-h-screen">
         <Container>
           <Layout>
-            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/work" element={<Work />} />

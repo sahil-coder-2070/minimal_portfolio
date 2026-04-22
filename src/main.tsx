@@ -24,6 +24,7 @@ function Root() {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        
         <App />
       </BrowserRouter>
     </HelmetProvider>
