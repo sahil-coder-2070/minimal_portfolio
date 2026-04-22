@@ -16,7 +16,7 @@ const Container = ({ children, className }: ContainerProps) => {
         ease: "easeInOut",
       }}
       viewport={{ once: true }}
-      className={`container mx-auto max-w-3xl px-2.5 font-sans ${className} `}
+      className={`container mx-auto max-w-3xl font-sans ${className} `}
     >
       {children}
     </Motion.div>

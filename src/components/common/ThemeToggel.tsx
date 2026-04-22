@@ -43,9 +43,9 @@ const ThemeToggle = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            variant="outline"
+            variant="ghost"
             onClick={toggleTheme}
-            className="cursor-pointer rounded-md px-2.5 py-2.5 duration-200 hover:bg-neutral-100 dark:inset-shadow-neutral-800/60 hover:dark:bg-neutral-900/60"
+            className="cursor-pointer "
             aria-label="Toggle theme"
           >
             {isDark ? <Moon size={18} /> : <Sun size={16} />}

@@ -31,22 +31,12 @@ export const Navbar = () => {
 
   return (
     <>
-      <Container className="sticky top-0 z-100 pt-2">
+      <Container className="bg-background before:bg-border after:bg-border relative sticky top-1.5 isolate z-50 mt-1 max-w-screen overflow-visible  transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]">
         <motion.div
-          className={`m-auto flex w-full items-center justify-between gap-2 border-b px-3 py-3 backdrop-blur-md md:px-6 md:py-4 ${
-            scrolled ? "rounded-xl border-x md:py-3" : ""
-          }`}
+          className={`m-auto flex w-full items-center justify-between gap-2 py-1.5 `}
         >
           <div>
-            <div className="box-border h-12 w-12 overflow-hidden rounded-md border-2 border-neutral-300 bg-blue-300 p-1 duration-200 hover:scale-90 dark:border-neutral-200 dark:bg-yellow-300">
-              <Link to="/">
-                <img
-                  src="./Avatar.avif"
-                  alt="Avatar"
-                  className="box-border h-12 scale-105 cursor-pointer object-cover"
-                />
-              </Link>
-            </div>
+            <h2>SS</h2>
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden items-center gap-3 md:flex">
@@ -55,7 +45,7 @@ export const Navbar = () => {
                   <Link
                     key={items.name}
                     to={items.href}
-                    className="text-md text-pretty underline-offset-5 duration-500 hover:underline"
+                    className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
                   >
                     {" "}
                     {items.name}{" "}
@@ -64,7 +54,9 @@ export const Navbar = () => {
               })}
               <CommandMany />
             </div>
-            <ThemeToggel />
+            <div className="border-l">
+              <ThemeToggel />
+            </div>
           </div>
         </motion.div>
       </Container>
