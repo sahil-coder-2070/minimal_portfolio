@@ -56,7 +56,6 @@ const Hero = () => {
         <div className="w-full flex-1">
           <h2 className="flex w-full flex-col text-4xl font-semibold text-neutral-700 dark:text-neutral-50">
             Sahil Singh
-            
             <span className="flex items-center gap-2 text-lg font-medium text-neutral-500/70 dark:text-neutral-400">
               Desgin Engineer.
               <h2 className="text-xs font-medium text-neutral-500/70 dark:text-neutral-400">

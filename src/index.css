@@ -157,7 +157,7 @@
 }
 
 .theme-custom.dark {
-  --background: oklch(13.441% 0.00002 271.152);
+  --background: #060607;
   --foreground: oklch(97.493% 0.01731 96.139);
   --card: oklch(21.342% 0.00002 271.152);
   --card-foreground: oklch(0.985 0 0);

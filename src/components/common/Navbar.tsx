@@ -55,8 +55,8 @@ export const Navbar = () => {
                 })}
                 <CommandMany />
               </div>
-              <span className="h-4 w-px bg-border"></span>
-                <ThemeToggel />
+              <span className="bg-border h-4 w-px"></span>
+              <ThemeToggel />
             </div>
           </motion.div>
         </div>

@@ -16,6 +16,7 @@ import Layout from "./components/common/Layout";
 import GearsPage from "./app/gear/Gear";
 import { useEffect } from "react";
 import { inject } from "@vercel/analytics";
+import TopBanner from "./components/ui/top-banner";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
       <div className="min-h-screen">
         <Container>
           <Layout>
+            <TopBanner />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/work" element={<Work />} />
