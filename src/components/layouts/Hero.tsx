@@ -30,29 +30,23 @@ const Hero = () => {
   return (
     <Container className={`flex flex-col items-start justify-center py-18`}>
       <div className="w-full items-center gap-3 md:flex">
-        <div className="w-fit rounded-full border p-[3.5px]">
+        <div className="w-fit rounded-[9px] dark:border-neutral-700 border p-[3.8px]">
           <Motion.div
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             viewport={{ once: true }}
-            className="box-border h-28 w-28 overflow-hidden rounded-full bg-blue-300 p-1 duration-200 dark:bg-yellow-300"
+            className="box-border h-28 w-28 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white"
           >
             <Motion.img
-              src="./Avatar.avif"
+              src="./myavart.png"
               alt="Avatar"
               className="box-border h-28 scale-105 object-cover"
             />
           </Motion.div>
         </div>
       </div>
-      <Motion.div
-        initial={{ y: 40, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        viewport={{ once: true }}
-        className="mt-8 flex w-full items-start justify-between"
-      >
+      <div className="mt-8 flex w-full items-start justify-between">
         <div className="w-full flex-1">
           <h2 className="flex w-full flex-col text-4xl font-semibold text-neutral-700 dark:text-neutral-50">
             Sahil Singh
@@ -85,7 +79,7 @@ const Hero = () => {
             <p>{stars} Stars on GitHub</p>
           </TooltipContent>
         </Tooltip>
-      </Motion.div>
+      </div>
       <Separator />
       <BioText />
       <ResumeButton />
