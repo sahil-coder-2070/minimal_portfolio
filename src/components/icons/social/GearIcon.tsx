@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Gear({ className }) {
+export default function Gear({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

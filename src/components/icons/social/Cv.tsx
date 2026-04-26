@@ -1,5 +1,3 @@
-import React from "react";
-
 const Cv = () => {
   return (
     <svg
@@ -11,5 +9,4 @@ const Cv = () => {
     </svg>
   );
 };
-
 export default Cv;

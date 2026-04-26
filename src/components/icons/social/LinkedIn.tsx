@@ -1,5 +1,3 @@
-import React from "react";
-
 const LinkedIn = () => {
   return (
     <svg
@@ -12,5 +10,4 @@ const LinkedIn = () => {
     </svg>
   );
 };
-
 export default LinkedIn;

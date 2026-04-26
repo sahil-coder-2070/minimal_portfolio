@@ -121,7 +121,7 @@ const ProjectCard = ({
                 <CardContent className={"p-0 px-3"}>
                   <div>
                     <div className="flex flex-wrap gap-2">
-                      {items.technologies.slice(0, 4).map((tech, idx) => {
+                      {items.technologies.slice(0, 4).map((tech) => {
                         return (
                           <Link
                             to={tech.href || "#"}

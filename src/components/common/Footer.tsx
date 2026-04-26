@@ -1,5 +1,4 @@
 import { footerConfig } from "@/config/Footer";
-import React from "react";
 import Container from "../layouts/Container";
 
 const Footer = () => {

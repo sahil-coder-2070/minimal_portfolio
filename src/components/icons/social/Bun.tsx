@@ -1,5 +1,3 @@
-import React from "react";
-
 const Bun = () => {
   return (
     <svg viewBox="0 0 128 128">
@@ -43,5 +41,4 @@ const Bun = () => {
     </svg>
   );
 };
-
 export default Bun;

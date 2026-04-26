@@ -1,5 +1,3 @@
-import React from "react";
-
 const Javascript = () => {
   return (
     <svg viewBox="0 0 128 128">
@@ -11,5 +9,4 @@ const Javascript = () => {
     </svg>
   );
 };
-
 export default Javascript;

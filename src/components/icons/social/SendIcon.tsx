@@ -1,5 +1,3 @@
-import React from "react";
-
 const SendIcon = () => {
   return (
     <svg
@@ -11,5 +9,4 @@ const SendIcon = () => {
     </svg>
   );
 };
-
 export default SendIcon;

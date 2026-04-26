@@ -1,5 +1,3 @@
-import React from "react";
-
 const MongoDb = () => {
   return (
     <svg viewBox="0 0 128 128">
@@ -102,5 +100,4 @@ const MongoDb = () => {
     </svg>
   );
 };
-
 export default MongoDb;

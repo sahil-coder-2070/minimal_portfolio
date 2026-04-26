@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ThemeToggel from "./ThemeToggel";
 import { Link } from "react-router-dom";
 import Container from "../layouts/Container";
@@ -20,7 +20,6 @@ const navList = [
 ];
 
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
 
   if (typeof window !== "undefined") {

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Website = ({ className }: { className?: string }): React.JSX.Element => {
   return (
     <svg
@@ -12,5 +10,4 @@ const Website = ({ className }: { className?: string }): React.JSX.Element => {
     </svg>
   );
 };
-
 export default Website;

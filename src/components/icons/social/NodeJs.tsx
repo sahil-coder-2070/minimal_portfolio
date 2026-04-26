@@ -1,5 +1,3 @@
-import React from "react";
-
 const NodeJs = () => {
   return (
     <svg viewBox="0 0 128 128">
@@ -10,5 +8,4 @@ const NodeJs = () => {
     </svg>
   );
 };
-
 export default NodeJs;

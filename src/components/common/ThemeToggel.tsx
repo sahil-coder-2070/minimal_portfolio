@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useTheme } from "../landing/theme-provider";
 import { Moon, Sun } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 
 const ThemeToggle = () => {
   const { setTheme, theme, resolvedTheme } = useTheme();
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const isDark = (resolvedTheme ?? theme) === "dark";
 
@@ -22,10 +22,11 @@ const ThemeToggle = () => {
   }, [isDark, setTheme]);
 
   const handleKeyDown = useCallback(
-    (e) => {
+    (e: KeyboardEvent) => {
       if (e.repeat) return;
-      const tag = e.target.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA" || e.target.isContentEditable)
+      const target = e.target as HTMLElement;
+      const tag = target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || target.isContentEditable)
         return;
       if (e.key.toLowerCase() === "d") toggleTheme();
     },
