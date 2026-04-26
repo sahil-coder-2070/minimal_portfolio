@@ -1,5 +1,4 @@
 import Container from "@/components/layouts/Container";
-import React from "react";
 import {
   Card,
   CardContent,

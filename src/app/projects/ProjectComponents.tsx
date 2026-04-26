@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import Bun from "@/components/icons/tech/Bun";
 import JavaScript from "@/components/icons/tech/JavaScript";
 import MongoDB from "@/components/icons/tech/MongoDB";
@@ -11,7 +11,7 @@ import TypeScript from "@/components/icons/tech/TypeScript";
 import { Badge } from "@/components/ui/badge";
 
 // Technology mapping
-const TechnologyComponents = {
+const TechnologyComponents: Record<string, () => JSX.Element> = {
   "Next.js": NextJS,
   nextjs: NextJS,
   React: ReactIcon,
@@ -34,7 +34,7 @@ const TechnologyComponents = {
 };
 
 // Technology badge
-const Technology = ({ name = "" }) => {
+const Technology = ({ name = "" }: { name?: string }) => {
   const TechComponent =
     TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
 
@@ -47,7 +47,7 @@ const Technology = ({ name = "" }) => {
 };
 
 // Tech stack
-const TechStack = ({ technologies = [] }) => (
+const TechStack = ({ technologies = [] }: { technologies?: string[] }) => (
   <div className="bg-muted/20 my-6 rounded-lg border p-4">
     <h4 className="mb-3 text-lg font-semibold">Technology Stack</h4>
     <div className="flex flex-wrap gap-2">
@@ -114,7 +114,7 @@ const ProjectMeta = ({
 );
 
 // Challenges
-const Challenges = ({ challenges = [] }) => (
+const Challenges = ({ challenges = [] }: { challenges?: string[] }) => (
   <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
     <h4 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
       Key Challenges
@@ -134,7 +134,7 @@ const Challenges = ({ challenges = [] }) => (
 );
 
 // Learnings
-const Learnings = ({ learnings = [] }) => (
+const Learnings = ({ learnings = [] }: { learnings?: string[] }) => (
   <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
     <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">
       Key Learnings
@@ -153,8 +153,25 @@ const Learnings = ({ learnings = [] }) => (
   </div>
 );
 
+interface ImageProps {
+  src: string;
+  alt: string;
+  [key: string]: unknown;
+}
+
+interface ChildrenProps {
+  children: ReactNode;
+  [key: string]: unknown;
+}
+
+interface CodeProps {
+  children: ReactNode;
+  className?: string;
+  [key: string]: unknown;
+}
+
 export const ProjectComponents = {
-  img: ({ src, alt, ...props }) => (
+  img: ({ src, alt, ...props }: ImageProps) => (
     <img
       src={src}
       alt={alt}
@@ -165,49 +182,49 @@ export const ProjectComponents = {
     />
   ),
 
-  h1: ({ children, ...props }) => (
+  h1: ({ children, ...props }: ChildrenProps) => (
     <h1 className="mb-6 text-4xl font-bold" {...props}>
       {children}
     </h1>
   ),
 
-  h2: ({ children, ...props }) => (
+  h2: ({ children, ...props }: ChildrenProps) => (
     <h2 className="mt-8 mb-4 text-3xl font-semibold" {...props}>
       {children}
     </h2>
   ),
 
-  h3: ({ children, ...props }) => (
+  h3: ({ children, ...props }: ChildrenProps) => (
     <h3 className="mt-6 mb-3 text-2xl font-medium" {...props}>
       {children}
     </h3>
   ),
 
-  p: ({ children, ...props }) => (
+  p: ({ children, ...props }: ChildrenProps) => (
     <p className="text-muted-foreground mb-4 leading-7" {...props}>
       {children}
     </p>
   ),
 
-  ul: ({ children, ...props }) => (
+  ul: ({ children, ...props }: ChildrenProps) => (
     <ul className="mb-4 ml-6 list-disc space-y-2" {...props}>
       {children}
     </ul>
   ),
 
-  ol: ({ children, ...props }) => (
+  ol: ({ children, ...props }: ChildrenProps) => (
     <ol className="mb-4 ml-6 list-decimal space-y-2" {...props}>
       {children}
     </ol>
   ),
 
-  li: ({ children, ...props }) => (
+  li: ({ children, ...props }: ChildrenProps) => (
     <li className="text-muted-foreground leading-7" {...props}>
       {children}
     </li>
   ),
 
-  pre: ({ children, ...props }) => {
+  pre: ({ children, ...props }: ChildrenProps) => {
     return (
       <div className="group relative mb-4">
         <pre
@@ -220,7 +237,7 @@ export const ProjectComponents = {
     );
   },
 
-  code: ({ children, className, ...props }) => {
+  code: ({ children, className, ...props }: CodeProps) => {
     if (className?.includes("language-")) {
       return (
         <code className={className} {...props}>
@@ -236,7 +253,7 @@ export const ProjectComponents = {
     );
   },
 
-  blockquote: ({ children, ...props }) => (
+  blockquote: ({ children, ...props }: ChildrenProps) => (
     <blockquote
       className="border-primary text-muted-foreground mb-4 border-l-4 pl-4 italic"
       {...props}

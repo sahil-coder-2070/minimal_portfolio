@@ -1,6 +1,25 @@
+import { ReactNode } from "react";
+
+interface ImageProps {
+  src: string;
+  alt: string;
+  [key: string]: unknown;
+}
+
+interface ChildrenProps {
+  children: ReactNode;
+  [key: string]: unknown;
+}
+
+interface CodeProps {
+  children: ReactNode;
+  className?: string;
+  [key: string]: unknown;
+}
+
 export const BlogComponents = {
   // Image tag
-  img: ({ src, alt, ...props }) => (
+  img: ({ src, alt, ...props }: ImageProps) => (
     <img
       src={src}
       alt={alt}
@@ -10,7 +29,7 @@ export const BlogComponents = {
   ),
 
   // Headings with custom styles
-  h1: ({ children, ...props }) => (
+  h1: ({ children, ...props }: ChildrenProps) => (
     <h1
       style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}
       {...props}
@@ -18,7 +37,7 @@ export const BlogComponents = {
       {children}
     </h1>
   ),
-  h2: ({ children, ...props }) => (
+  h2: ({ children, ...props }: ChildrenProps) => (
     <h2
       style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "0.75rem" }}
       {...props}
@@ -26,7 +45,7 @@ export const BlogComponents = {
       {children}
     </h2>
   ),
-  h3: ({ children, ...props }) => (
+  h3: ({ children, ...props }: ChildrenProps) => (
     <h3
       style={{ fontSize: "1.5rem", fontWeight: "500", marginBottom: "0.5rem" }}
       {...props}
@@ -36,7 +55,7 @@ export const BlogComponents = {
   ),
 
   // Paragraph styling
-  p: ({ children, ...props }) => (
+  p: ({ children, ...props }: ChildrenProps) => (
     <p
       className="text-secondary"
       style={{ lineHeight: 1.6, marginBottom: "1.5rem" }}
@@ -47,7 +66,7 @@ export const BlogComponents = {
   ),
 
   // Lists styling
-  ul: ({ children, ...props }) => (
+  ul: ({ children, ...props }: ChildrenProps) => (
     <ul
       style={{
         paddingLeft: "1.5rem",
@@ -59,7 +78,7 @@ export const BlogComponents = {
       {children}
     </ul>
   ),
-  ol: ({ children, ...props }) => (
+  ol: ({ children, ...props }: ChildrenProps) => (
     <ol
       style={{
         paddingLeft: "1.9rem",
@@ -71,7 +90,7 @@ export const BlogComponents = {
       {children}
     </ol>
   ),
-  li: ({ children, ...props }) => (
+  li: ({ children, ...props }: ChildrenProps) => (
     <li
       className="text-muted-foreground ml-4"
       style={{ marginBottom: "0.5rem" }}
@@ -82,7 +101,7 @@ export const BlogComponents = {
   ),
 
   // Inline code block
-  code: ({ children, className, ...props }) => {
+  code: ({ children, className, ...props }: CodeProps) => {
     // agar syntax highlighting hai (language-xyz class)
     if (className && className.startsWith("language-")) {
       return (
@@ -106,13 +125,13 @@ export const BlogComponents = {
       </code>
     );
   },
-  em: ({ children, ...props }) => (
+  em: ({ children, ...props }: ChildrenProps) => (
     <em className="text-primary font-semibold text-sm" style={{ fontStyle: "normal" }} {...props}>
       `{children}`
     </em>
   ),
   // Blockquote
-  blockquote: ({ children, ...props }) => (
+  blockquote: ({ children, ...props }: ChildrenProps) => (
     <blockquote
       style={{
         borderLeft: "4px solid #555",
@@ -128,7 +147,7 @@ export const BlogComponents = {
   ),
 
   // Preformatted block (code block wrapper)
-  pre: ({ children, ...props }) => (
+  pre: ({ children, ...props }: ChildrenProps) => (
     <pre
       style={{
         backgroundColor: "#222",

@@ -1,7 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./components/landing/theme-provider";
 import Home from "./components/pages/Home";
-import { Navbar } from "./components/common/Navbar";
 import Blogs from "./components/pages/Blogs";
 import ProjectContent from "./app/projects/ProjectContent";
 import Work from "./components/pages/Work";
