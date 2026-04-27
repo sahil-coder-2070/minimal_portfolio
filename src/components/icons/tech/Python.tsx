@@ -1,4 +1,4 @@
-const Python = (props) => (
+const Python = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} fill="none" viewBox="16 16 32 32">
     <path
       fill="url(#python__a)"

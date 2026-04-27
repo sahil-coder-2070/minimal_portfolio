@@ -22,12 +22,6 @@ const navList = [
 export const Navbar = () => {
   const [commandOpen, setCommandOpen] = useState(false);
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
-      setScrolled(window.scrollY > 20);
-    });
-  }
-
   return (
     <>
       <Container className="bg-background sticky top-0 isolate z-50 pt-1">

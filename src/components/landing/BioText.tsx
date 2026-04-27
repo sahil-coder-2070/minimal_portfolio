@@ -75,6 +75,8 @@ const SkillTag = ({
 }: {
   skill?: { name: string; element: React.ReactNode; link: string };
 }) => {
+  if (!skill) return null;
+
   return (
     <span>
       <Tooltip>

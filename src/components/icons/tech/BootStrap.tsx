@@ -1,4 +1,4 @@
-const Bootstrap = (props) => (
+const Bootstrap = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 256 204" preserveAspectRatio="xMidYMid">
     <path
       fill="#7E13F8"

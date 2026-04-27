@@ -1,4 +1,4 @@
-const Convex = (props) => (
+const Convex = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="28 28 128 132" fill="none">
     <path
       fill="#F3B01C"

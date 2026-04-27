@@ -1,4 +1,4 @@
-const GitHubLogo = (props) => (
+const GitHubLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 1024 1024" fill="none">
     <path
       fillRule="evenodd"

@@ -1,4 +1,4 @@
-const Firecrawl = (props) => (
+const Firecrawl = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} height={16} fill="none" viewBox="0 0 50 72">
     <path
       fill="#fa5d19"
