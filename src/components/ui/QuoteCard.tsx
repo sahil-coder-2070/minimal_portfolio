@@ -1,11 +1,13 @@
-import * as React from "react"
-
 import { cn } from "@/lib/utils"
+
+interface QuotecardProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
 function Quotecard({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard"
@@ -20,7 +22,7 @@ function Quotecard({
 function QuotecardHeader({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard-header"
@@ -35,7 +37,7 @@ function QuotecardHeader({
 function QuotecardTitle({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard-title"
@@ -47,7 +49,7 @@ function QuotecardTitle({
 function QuotecardDescription({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard-description"
@@ -59,7 +61,7 @@ function QuotecardDescription({
 function QuotecardAction({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard-action"
@@ -74,14 +76,14 @@ function QuotecardAction({
 function QuotecardContent({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (<div data-slot="Quotecard-content" className={cn("px-6", className)} {...props} />);
 }
 
 function QuotecardFooter({
   className,
   ...props
-}) {
+}: QuotecardProps) {
   return (
     <div
       data-slot="Quotecard-footer"
