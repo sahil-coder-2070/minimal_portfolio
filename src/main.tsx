@@ -11,6 +11,10 @@ inject();
 
 const rootEl = document.getElementById("root");
 
+if (!rootEl) {
+  throw new Error("Root element not found");
+}
+
 document.documentElement.classList.add("theme-custom");
 
 function Root() {
@@ -24,13 +28,11 @@ function Root() {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
-        
+
         <App />
       </BrowserRouter>
     </HelmetProvider>
   );
 }
 
-if (rootEl) {
-  createRoot(rootEl).render(<Root />);
-}
+createRoot(rootEl).render(<Root />);
