@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
-/**
- * Enables Lenis smooth scrolling when `enabled` is true.
- * It sets up a single rAF loop and cleans up on unmount.
- */
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 export function useLenis(enabled = true) {
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -16,8 +18,7 @@ export function useLenis(enabled = true) {
     });
 
     lenisRef.current = lenis;
-    // Expose for utilities (e.g., ScrollToTop).
-    (window as any).__lenis = lenis;
+    window.__lenis = lenis;
 
     let rafId: number;
     const raf = (time: number) => {
@@ -31,7 +32,7 @@ export function useLenis(enabled = true) {
       cancelAnimationFrame(rafId);
       lenis.destroy();
       lenisRef.current = null;
-      delete (window as any).__lenis;
+      delete window.__lenis;
     };
   }, [enabled]);
 
