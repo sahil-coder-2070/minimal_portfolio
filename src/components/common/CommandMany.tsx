@@ -25,7 +25,6 @@ import {
   BookOpenIcon,
   CornerDownLeftIcon,
   Search,
-  LaptopIcon,
   RocketIcon,
 } from "lucide-react";
 import { useTheme } from "@/components/landing/theme-provider";
