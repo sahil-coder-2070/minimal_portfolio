@@ -1,5 +1,4 @@
 import Container from "@/components/layouts/Container";
-import SectionHeading from "@/components/common/SectionHeading";
 import { Link } from "react-router-dom";
 import {
   Tooltip,
