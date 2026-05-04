@@ -56,7 +56,7 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: z.infer<typeof contactFormSchema>) => {
     setIsSubmitting(true);
 
     try {
@@ -74,9 +74,7 @@ export default function Contact() {
 
       toast.success("Message sent successfully!");
       form.reset();
-      // console.log(res);
     } catch (error) {
-      console.error("Error submitting form:", error);
       toast.error("Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
