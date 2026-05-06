@@ -22,7 +22,6 @@ interface RepoResponse {
 
 export const fetchGitHubContributions = async (): Promise<number> => {
   if (!GITHUB_TOKEN) {
-    console.warn("GitHub token not configured");
     return 0;
   }
 
@@ -51,20 +50,17 @@ export const fetchGitHubContributions = async (): Promise<number> => {
     const data: GitHubResponse = await response.json();
 
     if (data.errors) {
-      console.error("GitHub API errors:", data.errors);
       return 0;
     }
 
     return data.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? 0;
   } catch (error) {
-    console.error("Error fetching GitHub contributions:", error);
     return 0;
   }
 };
 
 export const fetchRepoStars = async (): Promise<number> => {
   if (!GITHUB_TOKEN) {
-    console.warn("GitHub token not configured");
     return 0;
   }
 
@@ -80,14 +76,12 @@ export const fetchRepoStars = async (): Promise<number> => {
     );
 
     if (!response.ok) {
-      console.error("GitHub API error:", response.status);
       return 0;
     }
 
     const data: RepoResponse = await response.json();
     return data.stargazers_count ?? 0;
   } catch (error) {
-    console.error("Error fetching repo stars:", error);
     return 0;
   }
 };
