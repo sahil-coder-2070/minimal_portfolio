@@ -227,12 +227,13 @@ npm run preview
 
 ## 📦 Available Scripts
 
-| Command           | Description                            |
-| ----------------- | -------------------------------------- |
-| `npm run dev`     | Start Vite development server with HMR |
-| `npm run build`   | Create production-optimized build      |
-| `npm run preview` | Preview the production build locally   |
-| `npm run lint`    | Run ESLint for code quality            |
+| Command              | Description                            |
+| -------------------- | -------------------------------------- |
+| `npm run dev`        | Start Vite development server with HMR |
+| `npm run build`      | Create production-optimized build      |
+| `npm run preview`    | Preview the production build locally   |
+| `npm run lint`       | Run ESLint for code quality            |
+| `npm run type-check` | Run TypeScript type checking           |
 
 ---
 
