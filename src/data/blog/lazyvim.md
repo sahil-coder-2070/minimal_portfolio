@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Neovim and LazyVim: A Beginner's Guide"
 description: "Master Neovim and LazyVim with this comprehensive cheat sheet covering modes, navigation, shortcuts, and essential commands."
-image: ""
+image: "/blogimage/lazyvim.webp"
 tags: ["Neovim", "LazyVim", "IDE", "Developer Tools"]
 date: "2026-05-13"
 isPublished: true

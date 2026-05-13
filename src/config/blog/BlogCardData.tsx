@@ -4,7 +4,7 @@ export const BlogCardData = [
     slug: "lazyvim",
     description:
       "Learn the basics of Neovim and LazyVim with this comprehensive cheat sheet covering modes, navigation, shortcuts, and essential commands.",
-    image: "",
+    image: "/blogimage/lazyvim.webp",
     tags: ["Neovim", "LazyVim", "IDE", "Developer Tools"],
     date: "2026-05-13",
     formattedDate: "May 13, 2026",
