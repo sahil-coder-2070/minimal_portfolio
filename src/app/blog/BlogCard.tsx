@@ -12,12 +12,12 @@ import { ArrowRight, CalendarSearch } from "lucide-react";
 import { motion as Motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { BlogCardData } from "@/config/blog/BlogCardData";
-const BlogCard = () => {
+const BlogCard = ({ data = BlogCardData }) => {
   return (
     <Container
       className={`mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2`}
     >
-      {BlogCardData.map((items, index) => {
+      {data.map((items, index) => {
         return (
           <Motion.div
             key={index}

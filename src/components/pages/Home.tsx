@@ -39,7 +39,7 @@ const Home = () => {
       </section>
 
       <section id={sectionIds.blog}>
-        <Blog />
+        <Blog limit={2} />
       </section>
 
       <section id={sectionIds.cta}>

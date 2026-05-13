@@ -1,5 +1,15 @@
 export const BlogCardData = [
   {
+    title: "Getting Started with Neovim and LazyVim: A Beginner's Guide",
+    slug: "lazyvim",
+    description:
+      "Learn the basics of Neovim and LazyVim with this comprehensive cheat sheet covering modes, navigation, shortcuts, and essential commands.",
+    image: "",
+    tags: ["Neovim", "LazyVim", "IDE", "Developer Tools"],
+    date: "2026-05-13",
+    formattedDate: "May 13, 2026",
+  },
+  {
     title: "Animating Components in React with Framer Motion",
     slug: "motion",
     description:
