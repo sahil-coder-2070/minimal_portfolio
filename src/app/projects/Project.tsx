@@ -1,6 +1,5 @@
 import SectionHeading from "@/components/common/SectionHeading";
 import Container from "@/components/layouts/Container";
-import React from "react";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";

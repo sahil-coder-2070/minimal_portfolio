@@ -56,7 +56,8 @@ const ProjectContent = () => {
         setMeta(data);
         setContent(content);
       } catch (err) {
-        setError(err.message);
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -95,14 +96,14 @@ const ProjectContent = () => {
           {/* Project Status and Technologies */}
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant={meta.statusVariant} className="text-sm">
-              {meta.status.charAt(0).toUpperCase() + meta.status.slice(1)}
+              {meta.status ? meta.status.charAt(0).toUpperCase() + meta.status.slice(1) : 'Unknown'}
             </Badge>
-            {meta.technologies.slice(0, 3).map((tech) => (
+            {meta.technologies && meta.technologies.slice(0, 3).map((tech) => (
               <Badge key={tech} variant="outline" className="text-xs">
                 {tech}
               </Badge>
             ))}
-            {meta.technologies.length > 3 && (
+            {meta.technologies && meta.technologies.length > 3 && (
               <Badge variant="outline" className="text-xs">
                 +{meta.technologies.length - 3} more
               </Badge>
@@ -142,7 +143,7 @@ const ProjectContent = () => {
                 Status
               </h5>
               <Badge variant={meta.statusVariant} className="text-xs">
-                {meta.status.charAt(0).toUpperCase() + meta.status.slice(1)}
+                {meta.status ? meta.status.charAt(0).toUpperCase() + meta.status.slice(1) : 'Unknown'}
               </Badge>
             </div>
           </div>
@@ -180,7 +181,7 @@ const ProjectContent = () => {
         <div className="bg-muted/20 rounded-lg border p-4">
           <h3 className="mb-3 text-lg font-semibold">Technology Stack</h3>
           <div className="flex flex-wrap gap-2">
-            {meta.technologies.map((tech) => (
+            {meta.technologies && meta.technologies.map((tech) => (
               <div
                 key={tech}
                 className="bg-muted/50 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium"

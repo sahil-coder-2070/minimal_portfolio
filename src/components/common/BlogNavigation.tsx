@@ -6,8 +6,13 @@ import { useEffect, useState } from "react";
 import matter from "gray-matter";
 
 export function BlogNavigation({ slug }: { slug?: string }) {
-  const [previous, setPrevious] = useState(null);
-  const [next, setNext] = useState(null);
+  interface BlogItem {
+    slug: string;
+    title: string;
+  }
+
+  const [previous, setPrevious] = useState<BlogItem | null>(null);
+  const [next, setNext] = useState<BlogItem | null>(null);
   const blog = import.meta.glob("/src/data/blog/*.md", {
     query: "?raw",
     import: "default",
@@ -15,12 +20,12 @@ export function BlogNavigation({ slug }: { slug?: string }) {
 
   useEffect(() => {
     const loadNavigation = async () => {
-      const allblog = [];
+      const allblog: BlogItem[] = [];
       for (const path in blog) {
         const loader = blog[path];
         const text = (await loader()) as string;
         const { data } = matter(text);
-        const bloglug = path.split("/").pop().replace(".md", "");
+        const bloglug = path.split("/").pop()?.replace(".md", "") || "";
         allblog.push({ slug: bloglug, title: data.title });
       }
       // Sort by slug (assuming alphabetical order)

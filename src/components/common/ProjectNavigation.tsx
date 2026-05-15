@@ -6,8 +6,13 @@ import { useEffect, useState } from "react";
 import matter from "gray-matter";
 
 export function ProjectNavigation({ slug }: { slug?: string }) {
-  const [previous, setPrevious] = useState(null);
-  const [next, setNext] = useState(null);
+  interface ProjectItem {
+    slug: string;
+    title: string;
+  }
+
+  const [previous, setPrevious] = useState<ProjectItem | null>(null);
+  const [next, setNext] = useState<ProjectItem | null>(null);
   const projects = import.meta.glob("/src/data/projects/*.md", {
     query: "?raw",
     import: "default",
@@ -15,12 +20,12 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
 
   useEffect(() => {
     const loadNavigation = async () => {
-      const allProjects = [];
+      const allProjects: ProjectItem[] = [];
       for (const path in projects) {
         const loader = projects[path];
         const text = (await loader()) as string;
         const { data } = matter(text);
-        const projectSlug = path.split("/").pop().replace(".md", "");
+        const projectSlug = path.split("/").pop()?.replace(".md", "") || "";
         allProjects.push({ slug: projectSlug, title: data.title });
       }
       // Sort by slug (assuming alphabetical order)
