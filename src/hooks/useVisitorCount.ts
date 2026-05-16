@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const COUNT_API_KEY = "sahilcodex-portfolio-visitors-v1";
-const COUNT_API_BASE = "https://countapi.mileshilliard.com/api/v1";
+const NAMESPACE = 'sahilcodex';
+const KEY = 'portfolio-visitors';
+const BASE_VISITORS = 564;
 
 export const useVisitorCount = (): number | null => {
   const [count, setCount] = useState<number | null>(null);
@@ -9,12 +10,12 @@ export const useVisitorCount = (): number | null => {
   useEffect(() => {
     const hitCounter = async () => {
       try {
-        const res = await fetch(`${COUNT_API_BASE}/hit/${COUNT_API_KEY}`);
-        if (!res.ok) throw new Error("CountAPI request failed");
+        const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`);
+        if (!res.ok) throw new Error('CounterAPI request failed');
         const data = await res.json();
-        setCount(Number(data.value));
+        setCount(data.count + BASE_VISITORS);
       } catch {
-        setCount(null);
+        setCount(BASE_VISITORS);
       }
     };
 
