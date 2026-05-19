@@ -1,22 +1,22 @@
-import { useState } from "react";
-import ThemeToggel from "./ThemeToggel";
-import { Link } from "react-router-dom";
-import Container from "../layouts/Container";
-import { motion } from "motion/react";
-import { CommandMany } from "./CommandMany";
-import { Menu, Search } from "lucide-react";
+import { useState } from 'react';
+import ThemeToggel from './ThemeToggel';
+import { Link } from 'react-router-dom';
+import Container from '../layouts/Container';
+import { motion } from 'motion/react';
+import { CommandMany } from './CommandMany';
+import { Menu, Search } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 const navList = [
-  { name: "Work", href: "/work" },
-  { name: "Blogs", href: "/blogs" },
-  { name: "Projects", href: "/projects" },
+  { name: 'Work', href: '/work' },
+  { name: 'Blogs', href: '/blogs' },
+  { name: 'Projects', href: '/projects' },
 ];
 
 export const Navbar = () => {
@@ -41,8 +41,8 @@ export const Navbar = () => {
                       to={items.href}
                       className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
                     >
-                      {" "}
-                      {items.name}{" "}
+                      {' '}
+                      {items.name}{' '}
                     </Link>
                   );
                 })}
@@ -71,12 +71,7 @@ export const Navbar = () => {
               <Menu size={18} />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="end"
-            side="top"
-            sideOffset={16}
-            className="w-48"
-          >
+          <DropdownMenuContent align="end" side="top" sideOffset={16} className="w-48">
             <DropdownMenuItem>
               <Link to="/" className="w-full">
                 Home
@@ -93,11 +88,7 @@ export const Navbar = () => {
         </DropdownMenu>
       </div>
 
-      <CommandMany
-        open={commandOpen}
-        onOpenChange={setCommandOpen}
-        hideButton
-      />
+      <CommandMany open={commandOpen} onOpenChange={setCommandOpen} hideButton />
     </>
   );
 };

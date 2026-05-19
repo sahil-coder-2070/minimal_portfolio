@@ -31,7 +31,7 @@ function App() {
   }, [location.pathname]);
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="min-h-screen">
+      <div className="min-h-screen ">
         <Container>
           <Layout>
             <TopBanner />

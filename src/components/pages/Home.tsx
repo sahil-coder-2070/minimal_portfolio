@@ -1,25 +1,25 @@
-import Hero from "../layouts/Hero";
-import ExperienceCard from "@/components/Experience/ExperienceCard";
-import Project from "@/app/projects/Project";
-import AboutMe from "../landing/TechSkills";
-import Featured from "../landing/Featured";
-import Blog from "@/app/blog/Blog";
-import CTA from "../landing/CTA";
-import Setup from "../landing/Setup";
+import Hero from '../layouts/Hero';
+import ExperienceCard from '@/components/Experience/ExperienceCard';
+import Project from '@/app/projects/Project';
+import AboutMe from '../landing/TechSkills';
+import Featured from '../landing/Featured';
+import Blog from '@/app/blog/Blog';
+import CTA from '../landing/CTA';
+import Setup from '../landing/Setup';
 
 const sectionIds = {
-  experience: "experience",
-  projects: "featured-projects",
-  skills: "skills",
-  featured: "featured",
-  blog: "latest-blogs",
-  cta: "contact",
-  setup: "gear",
+  experience: 'experience',
+  projects: 'featured-projects',
+  skills: 'skills',
+  featured: 'featured',
+  blog: 'latest-blogs',
+  cta: 'contact',
+  setup: 'gear',
 };
 
 const Home = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-hidden">
       <Hero />
 
       <section id={sectionIds.experience}>

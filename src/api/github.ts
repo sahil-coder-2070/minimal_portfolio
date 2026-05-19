@@ -1,7 +1,7 @@
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-const GITHUB_USERNAME = "sahilcodexx";
-const REPO_OWNER = "sahilcodexx";
-const REPO_NAME = "minimal_portfolio";
+const GITHUB_USERNAME = 'sahilcodexx';
+const REPO_OWNER = 'sahilcodexx';
+const REPO_NAME = 'sahilcodex';
 
 interface GitHubResponse {
   data?: {
@@ -26,11 +26,11 @@ export const fetchGitHubContributions = async (): Promise<number> => {
   }
 
   try {
-    const response = await fetch("https://api.github.com/graphql", {
-      method: "POST",
+    const response = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         query: `
@@ -65,15 +65,12 @@ export const fetchRepoStars = async (): Promise<number> => {
   }
 
   try {
-    const response = await fetch(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`,
-      {
-        headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: "application/vnd.github.v3+json",
-        },
+    const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json',
       },
-    );
+    });
 
     if (!response.ok) {
       return 0;
