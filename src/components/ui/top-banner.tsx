@@ -5,28 +5,54 @@ const TopBanner = () => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [grabbing, setGrabbing] = useState(false);
 
+  // Keep references to in-flight spring animations so we can cancel them
+  const springs = useRef<{ stop: () => void }[]>([]);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
+  const cancelSprings = () => {
+    springs.current.forEach((a) => a.stop());
+    springs.current = [];
+  };
+
+  const springBack = () => {
+    cancelSprings();
+    const ax = animate(x, 0, { type: 'spring', stiffness: 80, damping: 8, mass: 1 });
+    const ay = animate(y, 0, { type: 'spring', stiffness: 80, damping: 8, mass: 1 });
+    springs.current = [ax, ay];
+  };
+
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    // e.buttons === 1 directly reads hardware left-button state — no stale closure
+    if (e.buttons !== 1) return;
+
+    cancelSprings(); // stop any spring mid-flight before overwriting position
+
     const bounds = wrapperRef.current?.getBoundingClientRect();
     if (!bounds) return;
 
     const xRatio = (e.clientX - bounds.left) / bounds.width - 0.5;
     const yRatio = (e.clientY - bounds.top) / bounds.height - 0.5;
-
     const maxMove = 36;
 
-    // Directly set — text follows cursor snappily, no lag
     x.set(xRatio * maxMove * 2);
     y.set(yRatio * maxMove * 2);
   };
 
   const handlePointerLeave = () => {
-    // Spring back to origin only on leave — bouncy return
-    animate(x, 0, { type: 'spring', stiffness: 80, damping: 8, mass: 1 });
-    animate(y, 0, { type: 'spring', stiffness: 80, damping: 8, mass: 1 });
     setGrabbing(false);
+    springBack();
+  };
+
+  const handlePointerDown = () => {
+    cancelSprings();
+    setGrabbing(true);
+  };
+
+  const handlePointerUp = () => {
+    setGrabbing(false);
+    springBack();
   };
 
   return (
@@ -36,8 +62,8 @@ const TopBanner = () => {
           ref={wrapperRef}
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
-          onPointerDown={() => setGrabbing(true)}
-          onPointerUp={() => setGrabbing(false)}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
           className={`px-10 py-6 ${grabbing ? 'cursor-grabbing' : 'cursor-grab'}`}
         >
           <motion.h3
