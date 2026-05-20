@@ -243,26 +243,33 @@
   background-size: 10px 10px;
 }
 
-/* Command list custom scrollbar */
-.cmd-scrollbar {
+/* Global scrollbar */
+html {
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #404040 transparent;
 }
 
-.cmd-scrollbar::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
 
-.cmd-scrollbar::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.cmd-scrollbar::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #404040; /* neutral-700 */
   border-radius: 9999px;
 }
 
-.cmd-scrollbar::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background-color: #525252; /* neutral-600 — subtle hover */
+}
+
+/* Command list custom scrollbar (inherits global, kept for specificity) */
+.cmd-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
 }
