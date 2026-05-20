@@ -44,18 +44,31 @@ function CommandDialog({
   children,
   className,
   showCloseButton = true,
+  onOpenChange,
   ...props
 }: CommandDialogProps) {
   return (
-    <Dialog {...props}>
-      <DialogHeader className="sr-only">
-        <DialogTitle>{title}</DialogTitle>
-        <DialogDescription>{description}</DialogDescription>
-      </DialogHeader>
+    <Dialog onOpenChange={onOpenChange} {...props}>
       <DialogContent
         className={cn("w-[600px] max-w-[90vw] overflow-hidden p-0", className)}
         showCloseButton={showCloseButton}
+        onKeyDown={(e) => {
+          // Close immediately on Escape — bypass cmdk's input-clearing first step
+          if (e.key === "Escape") {
+            e.stopPropagation();
+            onOpenChange?.(false);
+          }
+        }}
+        onPointerDownOutside={() => onOpenChange?.(false)}
+        onInteractOutside={() => onOpenChange?.(false)}
       >
+        {/* sr-only header must live inside DialogContent (inside the portal),
+            not outside — otherwise the invisible div sits in the real DOM and
+            absorbs the first outside-click before Radix can close the dialog */}
+        <DialogHeader className="sr-only">
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>{description}</DialogDescription>
+        </DialogHeader>
         <Command className="**:[[cmdk-group-heading]]:text-muted-foreground [&_**:[[cmdk-item]]:px-2 **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group]:not([hidden])_+[cmdk-group]]:pb-0 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group]]:px-2 **:[[cmdk-input]]:h-12 **:[[cmdk-item]]:py-1.5">
           {children}
         </Command>

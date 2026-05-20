@@ -4,7 +4,6 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -116,12 +115,11 @@ export function CommandMany({
         </Button>
       )}
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Command>
-          <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+        <CommandInput placeholder="Type a command or search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
 
-            <CommandGroup heading="Navigation">
+          <CommandGroup heading="Navigation">
               <CommandItem
                 onSelect={() => {
                   navigate("/");
@@ -247,7 +245,6 @@ export function CommandMany({
               </span>
             </div>
           </CommandDialogFooter>
-        </Command>
       </CommandDialog>
     </div>
   );
