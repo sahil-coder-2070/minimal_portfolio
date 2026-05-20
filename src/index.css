@@ -268,8 +268,39 @@ html {
   background-color: #525252; /* neutral-600 — subtle hover */
 }
 
-/* Command list custom scrollbar (inherits global, kept for specificity) */
+/* Command list custom scrollbar — light mode (neutral-200) */
 .cmd-scrollbar {
   scrollbar-width: thin;
+  scrollbar-color: #e5e5e5 transparent;
+}
+
+.cmd-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e5e5e5; /* neutral-200 */
+  border-radius: 9999px;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #d4d4d4; /* neutral-300 — subtle hover */
+}
+
+/* Command list custom scrollbar — dark mode (neutral-700) */
+.dark .cmd-scrollbar {
   scrollbar-color: #404040 transparent;
 }
+
+.dark .cmd-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #404040; /* neutral-700 */
+}
+
+.dark .cmd-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #525252; /* neutral-600 — subtle hover */
+}
+
