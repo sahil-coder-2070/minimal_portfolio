@@ -3,6 +3,7 @@ import Container from './Container';
 import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
 import SocialLinks from '../landing/SocialLinks';
+import Spotify from '../landing/Spotify';
 import { motion as Motion } from 'motion/react';
 import { fetchRepoStars } from '@/api/github';
 import { Button } from '@/components/ui/button';
@@ -91,6 +92,7 @@ const Hero = () => {
       <BioText />
       <ResumeButton />
       <SocialLinks />
+      <Spotify />
     </Container>
   );
 };
