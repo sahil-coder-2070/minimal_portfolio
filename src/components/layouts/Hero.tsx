@@ -12,6 +12,7 @@ import { Github } from '@/lib/techIcons';
 import { useVisitorCount } from '@/hooks/useVisitorCount';
 import { GitHubLogo } from '../icons/tech/GithubLogo';
 import { Separator } from '../ui/separator';
+import RepeatSeparator from '../ui/repeat-separator';
 
 const Hero = () => {
   const [stars, setStars] = useState(0);
@@ -85,7 +86,7 @@ const Hero = () => {
           </h2>
         </div>
       </div>
-
+      <RepeatSeparator />
       <Separator />
       <BioText />
       <ResumeButton />

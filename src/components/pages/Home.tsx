@@ -19,7 +19,7 @@ const sectionIds = {
 
 const Home = () => {
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main className="min-h-screen">
       <Hero />
 
       <section id={sectionIds.experience}>
