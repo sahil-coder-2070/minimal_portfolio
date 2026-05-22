@@ -4,15 +4,12 @@ import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
 import SocialLinks from '../landing/SocialLinks';
 import Spotify from '../landing/Spotify';
-import { motion as Motion } from 'motion/react';
 import { fetchRepoStars } from '@/api/github';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { Star, Eye } from 'lucide-react';
-import { Github } from '@/lib/techIcons';
+import { Eye } from 'lucide-react';
 import { useVisitorCount } from '@/hooks/useVisitorCount';
 import { GitHubLogo } from '../icons/tech/GithubLogo';
-import { Separator } from '../ui/separator';
 import RepeatSeparator from '../ui/repeat-separator';
 
 const Hero = () => {
@@ -32,19 +29,13 @@ const Hero = () => {
       <div className="flex h-full w-full">
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
-            <Motion.div
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              viewport={{ once: true }}
-              className="box-border h-30 w-30 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white"
-            >
-              <Motion.img
+            <div className="box-border h-30 w-30 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white">
+              <img
                 src="./myavart.png"
                 alt="Avatar"
                 className="box-border h-30 scale-105 object-cover"
               />
-            </Motion.div>
+            </div>
           </div>
         </div>
         <div className="flex flex-1 flex-col justify-center gap-1">
@@ -88,7 +79,7 @@ const Hero = () => {
         </div>
       </div>
       <RepeatSeparator />
-      <Separator />
+
       <BioText />
       <ResumeButton />
       <SocialLinks />

@@ -1,5 +1,4 @@
-import { motion as Motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface ContainerProps {
   children?: ReactNode;
@@ -8,18 +7,9 @@ interface ContainerProps {
 
 const Container = ({ children, className }: ContainerProps) => {
   return (
-    <Motion.div
-      initial={{ y: 20, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.5,
-        ease: "easeInOut",
-      }}
-      viewport={{ once: true }}
-      className={`container mx-auto max-w-[700px] px-2 md:px-0 font-sans ${className} `}
-    >
+    <section className={`container mx-auto max-w-[700px] px-2 font-sans md:px-0 ${className} `}>
       {children}
-    </Motion.div>
+    </section>
   );
 };
 
