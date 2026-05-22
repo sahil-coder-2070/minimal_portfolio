@@ -94,14 +94,32 @@ interface CommandListProps extends React.ComponentPropsWithoutRef<typeof Command
 }
 
 function CommandList({ className, ...props }: CommandListProps) {
+  const listRef = React.useRef<HTMLDivElement>(null);
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const el = listRef.current;
+    if (!el) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = el;
+    const atTop = scrollTop === 0 && e.deltaY < 0;
+    const atBottom = scrollTop + clientHeight >= scrollHeight && e.deltaY > 0;
+
+    // Only stop propagation if the list can actually scroll in the given direction
+    if (!atTop && !atBottom) {
+      e.stopPropagation();
+    }
+  };
+
   return (
     <div className="relative">
       <CommandPrimitive.List
+        ref={listRef}
         data-slot="command-list"
         className={cn(
-          "max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto",
+          "max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto cmd-scrollbar",
           className,
         )}
+        onWheel={handleWheel}
         {...props}
       />
       <div className="from-popover pointer-events-none absolute right-0 bottom-0 left-0 h-8 bg-gradient-to-t to-transparent" />

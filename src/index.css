@@ -242,3 +242,27 @@
   );
   background-size: 10px 10px;
 }
+
+/* Command list custom scrollbar */
+.cmd-scrollbar {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.cmd-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #404040; /* neutral-700 */
+  border-radius: 9999px;
+}
+
+.cmd-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #525252; /* neutral-600 — subtle hover */
+}
