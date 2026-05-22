@@ -81,9 +81,9 @@ const Hero = () => {
       <RepeatSeparator />
 
       <BioText />
+      <Spotify />
       <ResumeButton />
       <SocialLinks />
-      <Spotify />
     </Container>
   );
 };
