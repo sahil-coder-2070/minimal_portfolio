@@ -83,7 +83,7 @@ const Spotify = () => {
           /* Minimized Capsule View - positioned absolutely and centered using margin auto */
           <div className="group/spotify absolute right-0 bottom-3 left-0 mx-auto flex w-fit items-center">
             {/* Clickhere component placed relative to capsule, sticking out to the right */}
-            <div className="pointer-events-none absolute -top-[30px] left-[calc(100%-5px)] -z-10 scale-60 -rotate-45 opacity-60 transition-transform duration-100 group-hover/spotify:translate-x-1.5">
+            <div className="pointer-events-none absolute -top-[30px] left-[calc(100%-5px)] -z-10 scale-60 -rotate-45 opacity-30 transition-transform duration-100 group-hover/spotify:translate-x-1.5">
               <Clickhere />
             </div>
             <Motion.div

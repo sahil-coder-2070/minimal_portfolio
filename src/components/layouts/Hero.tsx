@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Container from './Container';
 import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
-import SocialLinks from '../landing/SocialLinks';
 import Spotify from '../landing/Spotify';
 import { fetchRepoStars } from '@/api/github';
 import { Button } from '@/components/ui/button';
@@ -71,7 +70,7 @@ const Hero = () => {
             Sahil Singh
           </h2>
           <span className="flex items-center gap-2 text-base font-medium text-neutral-500/70 dark:text-neutral-400">
-            Desgin Engineer.
+            Design Engineer.
           </span>
           <h2 className="text-xs font-medium text-neutral-500/70 dark:text-neutral-400">
             20, Gujarat IND
@@ -79,11 +78,9 @@ const Hero = () => {
         </div>
       </div>
       <RepeatSeparator />
-
       <BioText />
       <Spotify />
       <ResumeButton />
-      <SocialLinks />
     </Container>
   );
 };

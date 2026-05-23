@@ -48,8 +48,8 @@ const ResumeButton = () => {
     },
   ];
 
-  const borderClass =
-    "before:bg-border after:bg-border relative m-auto flex w-full max-w-screen items-center justify-between gap-2 overflow-visible py-1.5 transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black] select-none";
+ const borderClass =
+  "before:bg-neutral-200/50 after:bg-neutral-200/50 dark:before:bg-neutral-800 dark:after:bg-neutral-800 relative m-auto flex w-full max-w-screen items-center justify-between gap-2 overflow-visible py-1.5 transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black] select-none";
 
   const renderIcon = (item: (typeof topItems)[0]) => {
     if (typeof item.icon === 'string') {
@@ -111,7 +111,7 @@ const ResumeButton = () => {
               );
 
               const className =
-                'flex cursor-pointer items-center gap-4 p-4 pr-2 hover:bg-neutral-100 hover:dark:bg-neutral-900/30 group bg-background';
+                'flex cursor-pointer items-center gap-4 p-4 pr-2 hover:bg-neutral-50 hover:dark:bg-neutral-900/30 group bg-background';
 
               return item.isExternal ? (
                 <a
@@ -153,7 +153,7 @@ const ResumeButton = () => {
               );
 
               const className =
-                'flex cursor-pointer items-center gap-4 p-4 pr-2  hover:bg-neutral-100 hover:dark:bg-neutral-900/30 group bg-background';
+                'flex cursor-pointer items-center gap-4 p-4 pr-2  hover:bg-neutral-50  hover:dark:bg-neutral-900/30 group bg-background';
 
               return item.isExternal ? (
                 <a
