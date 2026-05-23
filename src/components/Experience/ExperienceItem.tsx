@@ -5,7 +5,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
     <div
       id={`experience-${experience.id}`}
-      className="screen-line-bottom scroll-mt-14 space-y-4 py-4"
+      className="scroll-mt-14 space-y-4 py-4"
     >
       <div className="flex items-center gap-3">
         {/* Company Logo Icon Container */}

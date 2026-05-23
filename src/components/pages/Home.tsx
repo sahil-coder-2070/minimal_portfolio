@@ -21,7 +21,6 @@ const Home = () => {
   return (
     <main className="min-h-screen">
       <Hero />
-
       <section id={sectionIds.experience}>
         <ExperienceCard />
       </section>
