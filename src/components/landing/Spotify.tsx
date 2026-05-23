@@ -46,7 +46,7 @@ const Spotify = () => {
   if (!discordId) {
     return (
       <div className="flex w-fit items-center gap-2 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2 text-xs text-yellow-600 select-none dark:text-yellow-400">
-        ⚠️ Add VITE_DISCORD_ID in your .env file to enable Spotify Now Playing!
+        Add VITE_DISCORD_ID in your .env file to enable Spotify Now Playing!
       </div>
     );
   }

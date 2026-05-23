@@ -24,9 +24,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <Container className="bg-background sticky top-0 isolate z-50 pt-1">
-        <div>
-          <motion.div
+      <div className="bg-background sticky top-0 isolate z-50 pt-1">
+        <Container>
+          <div>
+            <motion.div
             className={`before:bg-border after:bg-border relative m-auto mt-1 flex w-full max-w-screen items-center justify-between gap-2 overflow-visible py-1.5 transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]`}
           >
             <div>
@@ -51,9 +52,10 @@ export const Navbar = () => {
               <span className="bg-border h-4 w-px"></span>
               <ThemeToggel />
             </div>
-          </motion.div>
-        </div>
-      </Container>
+            </motion.div>
+          </div>
+        </Container>
+      </div>
 
       <div className="bg-background/95 fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden">
         <Button
