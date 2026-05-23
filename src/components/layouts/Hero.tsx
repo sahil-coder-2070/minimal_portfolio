@@ -24,7 +24,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <Container className={`flex flex-col items-start justify-center pb-18`}>
+    <Container className={`flex flex-col items-start justify-center `}>
       <div className="flex h-full w-full">
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">

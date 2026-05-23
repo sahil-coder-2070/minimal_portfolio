@@ -1,16 +1,8 @@
-import { motion as Motion } from "motion/react";
-const SectionHeading = ({ subHeading = "", heading = "" }) => {
+const SectionHeading = ({ heading = '' ,classname ="" }) => {
   return (
-    <Motion.div
-      initial={{ y: 40, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      viewport={{ once: true }}
-      className="mb-5"
-    >
-      <p className="text-muted-foreground text-sm">{subHeading}</p>
-      <h2 className="text-2xl font-bold">{heading}</h2>
-    </Motion.div>
+    <div className={`after:z relative w-full max-w-screen items-center justify-between gap-2 overflow-visible py-1 text-3xl font-normal transition-shadow duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-screen after:-translate-x-1/2 after:bg-neutral-200/60 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:after:bg-neutral-800/80 dark:data-[affix=true]:shadow-[0_0_16px_0_black] ${classname}`}>
+      <h2 className="">{heading}</h2>
+    </div>
   );
 };
 

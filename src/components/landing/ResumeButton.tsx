@@ -75,17 +75,9 @@ const ResumeButton = () => {
 
   return (
     <>
-      <div className="font-normal text-3xl py-0.5">
-        Connect
-      </div>
+      <div className="py-0.5 text-3xl font-normal">Connect</div>
       <div className="w-full">
-        <Motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="relative w-full"
-        >
+        <div className="relative w-full">
           {/* Absolute Vertical Dividers Overlay - spans the entire height of both rows combined! */}
           {/* These vertical lines run continuously across the 2px/8px gap, touching and connecting borders perfectly! */}
           <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] grid w-full grid-cols-3 gap-[6px]">
@@ -177,7 +169,7 @@ const ResumeButton = () => {
               })}
             </div>
           </div>
-        </Motion.div>
+        </div>
       </div>
     </>
   );
