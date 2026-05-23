@@ -23,6 +23,16 @@ const SoundBars = () => (
   </span>
 );
 
+const formatSongTitle = (title: string) => {
+  if (!title) return '';
+  const cleanTitle = title.split(' - ')[0].split(' (')[0];
+  const words = cleanTitle.split(/\s+/);
+  if (words.length > 2) {
+    return words.slice(0, 2).join(' ') + '...';
+  }
+  return cleanTitle;
+};
+
 const Spotify = () => {
   const { data, loading, error } = useSpotify();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -207,7 +217,7 @@ const Spotify = () => {
               )
             )}
           >
-            {displayData.title}
+            {formatSongTitle(displayData.title)}
           </Motion.span>
 
           {/* Artist Name */}
