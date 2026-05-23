@@ -3,10 +3,10 @@ import { useSpotify } from '@/hooks/useSpotify';
 import { motion as Motion, AnimatePresence } from 'motion/react';
 import SpotifyIcon from '@/components/icons/social/SpotifyIcon';
 import { X, Play } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import Clickhere from '../icons/common/clickhere';
 
 const SoundBars = () => (
-  <span className="flex h-3 items-end gap-[2px] mb-[2px]">
+  <span className="mb-[2px] flex h-3 items-end gap-[2px]">
     {[0, 1, 2].map((i) => (
       <Motion.span
         key={i}
@@ -22,16 +22,6 @@ const SoundBars = () => (
     ))}
   </span>
 );
-
-const formatSongTitle = (title: string) => {
-  if (!title) return '';
-  const cleanTitle = title.split(' - ')[0].split(' (')[0];
-  const words = cleanTitle.split(/\s+/);
-  if (words.length > 2) {
-    return words.slice(0, 2).join(' ') + '...';
-  }
-  return cleanTitle;
-};
 
 const Spotify = () => {
   const { data, loading, error } = useSpotify();
@@ -63,9 +53,9 @@ const Spotify = () => {
 
   if (loading) {
     return (
-      <div className="h-16 flex items-center justify-center w-full">
-        <div className="border-neutral-200 dark:border-neutral-800 text-neutral-500 dark:text-neutral-400 flex w-fit animate-pulse items-center gap-2 rounded-full border px-3 py-1.5 text-xs bg-neutral-50/50 dark:bg-neutral-900/50">
-          <span className="bg-[#1DB954] size-2 rounded-full animate-ping" />
+      <div className="flex h-16 w-full items-center justify-center">
+        <div className="flex w-fit animate-pulse items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50/50 px-3 py-1.5 text-xs text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900/50 dark:text-neutral-400">
+          <span className="size-2 animate-ping rounded-full bg-[#1DB954]" />
           Fetching Spotify activity…
         </div>
       </div>
@@ -87,208 +77,195 @@ const Spotify = () => {
 
   return (
     /* Stable Flow Parent: Always occupies exactly 64px (h-16) so page content below never shifts */
-    <div className="w-full h-16 relative z-40 select-none">
-      <Motion.div
-        ref={cardRef}
-        layout
-        onClick={() => !isExpanded && setIsExpanded(true)}
-        transition={{
-          type: 'spring',
-          stiffness: 350,
-          damping: 28,
-        }}
-        className={cn(
-          "absolute bottom-3 left-0 right-0 mx-auto select-none flex flex-row items-center border shadow-sm",
-          isExpanded ? (
-            "w-full max-w-[340px] rounded-2xl p-4 bg-white border-neutral-200 dark:bg-neutral-950 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 shadow-xl dark:shadow-2xl cursor-default z-50 gap-4"
-          ) : (
-            "w-fit rounded-full px-3 py-1.5 text-xs bg-neutral-50 border-neutral-200 hover:bg-neutral-100 hover:border-neutral-300/80 dark:bg-neutral-900/90 dark:border-neutral-800/80 dark:text-neutral-400 dark:hover:bg-neutral-800/80 dark:hover:text-neutral-200 text-neutral-500 hover:text-neutral-850 cursor-pointer z-40 gap-2.5 group"
-          )
-        )}
-      >
-        {/* Close button for expanded state */}
-        <AnimatePresence>
-          {isExpanded && (
-            <Motion.button
-              key="close-btn"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+    <div className="relative z-40 h-16 w-full select-none">
+      <AnimatePresence>
+        {!isExpanded ? (
+          /* Minimized Capsule View - positioned absolutely and centered using margin auto */
+          <div className="group/spotify absolute right-0 bottom-3 left-0 mx-auto flex w-fit items-center">
+            {/* Clickhere component placed relative to capsule, sticking out to the right */}
+            <div className="pointer-events-none absolute -top-[30px] left-[calc(100%-5px)] -z-10 scale-60 -rotate-45 opacity-60 transition-transform duration-100 group-hover/spotify:translate-x-1.5">
+              <Clickhere />
+            </div>
+            <Motion.div
+              key="capsule"
+              layoutId="spotify-container"
+              onClick={() => setIsExpanded(true)}
+              transition={{
+                type: 'spring',
+                stiffness: 350,
+                damping: 28,
+              }}
+              className="group hover:text-neutral-850 inset-shadow flex w-fit cursor-pointer items-center gap-2.5 rounded-full border border-transparent bg-neutral-100/70 py-1.5 pr-3 pl-2 text-xs text-neutral-500 shadow-sm ring-1 ring-neutral-300 inset-shadow-neutral-100 select-none hover:border-neutral-50 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-neutral-400 dark:ring-neutral-700/70 dark:inset-shadow-neutral-800/70 dark:hover:bg-neutral-800/80 dark:hover:text-neutral-200"
+            >
+              {/* Album Artwork or Fallback */}
+              {displayData.albumArt ? (
+                <Motion.img
+                  layoutId="spotify-album-art"
+                  src={displayData.albumArt}
+                  alt={displayData.title}
+                  className={`size-9 animate-[spin_13s_linear_infinite] rounded-full object-cover transition-all duration-300 ${displayData.isPlaying ? 'animate-[spin_8s_linear_infinite]' : ''}`}
+                />
+              ) : (
+                <Motion.div
+                  layoutId="spotify-album-art"
+                  className="flex size-7 shrink-0 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800"
+                >
+                  <SpotifyIcon className="size-4 text-[#1DB954]" />
+                </Motion.div>
+              )}
+
+              {/* Details Wrapper */}
+              <Motion.div
+                layoutId="spotify-details"
+                className="flex min-w-0 flex-col gap-0.5 leading-tight"
+              >
+                <Motion.span
+                  layoutId="spotify-title"
+                  className="max-w-[150px] truncate text-[11px] font-semibold text-neutral-800 transition-colors duration-200 group-hover:text-[#1DB954] dark:text-neutral-100"
+                >
+                  {displayData.title}
+                </Motion.span>
+                <Motion.span
+                  layoutId="spotify-artist"
+                  className="max-w-[150px] truncate text-[10px] text-neutral-500 dark:text-neutral-400"
+                >
+                  {displayData.artist}
+                </Motion.span>
+              </Motion.div>
+
+              {/* Status indicators */}
+              {displayData.isPlaying ? (
+                <Motion.div layoutId="spotify-status-area" className="shrink-0 pl-1">
+                  <SoundBars />
+                </Motion.div>
+              ) : (
+                !isOffline && (
+                  <Motion.span
+                    layoutId="spotify-status-area"
+                    className="rounded-full bg-neutral-100 px-1.5 py-0.5 text-[9px] font-medium whitespace-nowrap text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500"
+                  >
+                    last played
+                  </Motion.span>
+                )
+              )}
+            </Motion.div>
+          </div>
+        ) : (
+          /* Expanded Card View - expands upwards from the exact same bottom alignment, overlaying elements above */
+          <Motion.div
+            ref={cardRef}
+            key="card"
+            layoutId="spotify-container"
+            transition={{
+              type: 'spring',
+              stiffness: 350,
+              damping: 28,
+            }}
+            className="absolute right-0 bottom-3 left-0 z-50 mx-auto flex w-fit max-w-[340px] min-w-[260px] cursor-default flex-row items-center gap-4 rounded-2xl border border-neutral-300 bg-neutral-100 p-4 text-neutral-700 shadow-xl backdrop-blur-sm dark:border-neutral-700 dark:bg-neutral-900/40 dark:text-neutral-300 dark:shadow-2xl"
+          >
+            {/* Close button for expanded state */}
+            <button
               onClick={(e) => {
                 e.stopPropagation();
                 setIsExpanded(false);
               }}
-              className="absolute top-2 right-2 text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer z-50"
+              className="absolute top-2 right-2 cursor-pointer rounded-full p-1.5 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-900 dark:hover:text-neutral-300"
             >
               <X className="size-4" />
-            </Motion.button>
-          )}
-        </AnimatePresence>
+            </button>
 
-        {/* Album Artwork or Fallback Layout Wrapper */}
-        <Motion.div
-          layout
-          className={cn(
-            "relative shrink-0 flex items-center justify-center bg-neutral-100 dark:bg-neutral-800",
-            isExpanded ? (
-              "size-20 rounded-xl shadow-md border border-neutral-100 dark:border-neutral-850"
-            ) : (
-              "size-7 rounded-full"
-            )
-          )}
-        >
-          {/* Spin Wrapper that rotates using Framer Motion so it transitions smoothly to 0 degrees when expanded */}
-          <Motion.div
-            className="w-full h-full rounded-[inherit] overflow-hidden flex items-center justify-center"
-            animate={(!isExpanded && displayData.isPlaying) ? { rotate: 360 } : { rotate: 0 }}
-            transition={(!isExpanded && displayData.isPlaying) ? { repeat: Infinity, duration: 8, ease: "linear" } : { duration: 0.5, ease: "easeOut" }}
-          >
-            {displayData.albumArt ? (
-              <img
-                src={displayData.albumArt}
-                alt={displayData.title}
-                className="w-full h-full object-cover grayscale-50 group-hover:grayscale-0 transition-[filter] duration-300"
-              />
-            ) : (
-              <SpotifyIcon className={isExpanded ? "size-8 text-[#1DB954]" : "size-4 text-[#1DB954]"} />
-            )}
-          </Motion.div>
+            {/* Album Artwork or Fallback */}
+            <Motion.div
+              layoutId="spotify-album-art-wrapper"
+              className="relative flex shrink-0 items-center justify-center"
+            >
+              {displayData.albumArt ? (
+                <Motion.img
+                  layoutId="spotify-album-art"
+                  src={displayData.albumArt}
+                  alt={displayData.title}
+                  className="dark:border-neutral-850 size-20 rounded-xl border border-neutral-100 object-cover shadow-md"
+                />
+              ) : (
+                <Motion.div
+                  layoutId="spotify-album-art"
+                  className="flex size-20 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800"
+                >
+                  <SpotifyIcon className="size-8 text-[#1DB954]" />
+                </Motion.div>
+              )}
 
-          {/* Animating play badge in expanded state if active */}
-          <AnimatePresence>
-            {isExpanded && displayData.isPlaying && (
-              <Motion.span
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                className="absolute -bottom-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-[#1DB954] shadow-sm border border-white dark:border-neutral-950 z-10"
-              >
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1DB954] opacity-75"></span>
-                <Play className="size-2 text-neutral-950 fill-neutral-950 ml-[1px]" />
-              </Motion.span>
-            )}
-          </AnimatePresence>
-        </Motion.div>
+              {/* Animating play badge in expanded state if active */}
+              {displayData.isPlaying && (
+                <span className="absolute -right-1 -bottom-1 flex h-4.5 w-4.5 items-center justify-center rounded-full border border-white bg-[#1DB954] shadow-sm dark:border-neutral-950">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1DB954] opacity-75"></span>
+                  <Play className="ml-[1px] size-2 fill-neutral-950 text-neutral-950" />
+                </span>
+              )}
+            </Motion.div>
 
-        {/* Details Wrapper */}
-        <Motion.div
-          layout
-          className={cn(
-            "flex min-w-0 flex-col leading-tight gap-0.5",
-            isExpanded ? "justify-center flex-1" : ""
-          )}
-        >
-          {/* Expanded view Top Row: Status details */}
-          <AnimatePresence>
-            {isExpanded && (
+            {/* Details Wrapper */}
+            <Motion.div
+              layoutId="spotify-details"
+              className="flex min-w-0 flex-1 flex-col justify-center gap-0.5 leading-tight"
+            >
+              {/* Expanded view Top Row: Status details */}
               <Motion.div
-                key="top-row"
-                initial={{ opacity: 0, height: 0, marginBottom: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginBottom: 4 }}
-                exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-                className="flex items-center gap-1.5 text-[9px] uppercase font-extrabold tracking-wider overflow-hidden"
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="mb-1 flex items-center gap-1.5 text-[9px] font-extrabold tracking-wider uppercase"
               >
                 {displayData.isPlaying ? (
                   <>
-                    <span className="text-[#1DB954] flex items-center gap-1">
-                      Playing Now
-                    </span>
+                    <span className="flex items-center gap-1 text-[#1DB954]">Playing Now</span>
                     <SoundBars />
                   </>
                 ) : (
-                  <span className="text-neutral-400 dark:text-neutral-500">Offline / Last Played</span>
+                  <span className="text-neutral-400 dark:text-neutral-500">
+                    Offline / Last Played
+                  </span>
                 )}
               </Motion.div>
-            )}
-          </AnimatePresence>
 
-          {/* Song Title */}
-          <Motion.span
-            layout="position"
-            className={cn(
-              "text-neutral-800 dark:text-neutral-100 truncate transition-colors duration-200 block",
-              isExpanded ? (
-                "font-bold tracking-tight max-w-[190px] text-sm"
-              ) : (
-                "font-semibold text-[11px] max-w-[150px] group-hover:text-[#1DB954]"
-              )
-            )}
-          >
-            {formatSongTitle(displayData.title)}
-          </Motion.span>
+              {/* Song Title */}
+              <Motion.span
+                layoutId="spotify-title"
+                className="block max-w-[190px] truncate text-sm font-bold tracking-tight text-neutral-800 dark:text-neutral-100"
+              >
+                {displayData.title}
+              </Motion.span>
 
-          {/* Artist Name */}
-          <Motion.span
-            layout="position"
-            className={cn(
-              "text-neutral-500 dark:text-neutral-400 truncate block",
-              isExpanded ? (
-                "text-xs max-w-[190px]"
-              ) : (
-                "text-[10px] max-w-[150px]"
-              )
-            )}
-          >
-            {displayData.artist}
-          </Motion.span>
+              {/* Artist Name */}
+              <Motion.span
+                layoutId="spotify-artist"
+                className="block max-w-[190px] truncate text-xs text-neutral-500 dark:text-neutral-400"
+              >
+                {displayData.artist}
+              </Motion.span>
 
-          {/* Expanded view Action Button */}
-          <AnimatePresence>
-            {isExpanded && (
+              {/* Expanded view Action Button */}
               <Motion.div
-                key="action-button"
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 350,
-                  damping: 28,
-                }}
-                className="overflow-hidden"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="mt-2"
               >
                 <a
                   href={displayData.songUrl || 'https://open.spotify.com'}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1.5 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold rounded-full py-1.5 px-3.5 text-[10px] shadow-sm hover:shadow transition-all duration-200 cursor-pointer"
+                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[#1DB954] px-3.5 py-1.5 text-[10px] font-semibold text-black shadow-sm transition-all duration-200 hover:bg-[#1ed760] hover:shadow"
                 >
                   <SpotifyIcon className="size-3.5 text-black" />
                   Listen Song
                 </a>
               </Motion.div>
-            )}
-          </AnimatePresence>
-        </Motion.div>
-
-        {/* Status indicators (Only visible in capsule view) */}
-        <AnimatePresence>
-          {!isExpanded && (
-            <Motion.div
-              key="capsule-status"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              className="shrink-0 pl-1"
-            >
-              {displayData.isPlaying ? (
-                <SoundBars />
-              ) : (
-                !isOffline && (
-                  <span className="text-neutral-400 bg-neutral-100 dark:text-neutral-500 dark:bg-neutral-800 rounded-full px-1.5 py-0.5 text-[9px] font-medium whitespace-nowrap">
-                    last played
-                  </span>
-                )
-              )}
             </Motion.div>
-          )}
-        </AnimatePresence>
-      </Motion.div>
+          </Motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
