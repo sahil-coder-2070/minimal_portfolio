@@ -19,10 +19,10 @@ const ExperienceCardData: Experience[] = [
         title: "Frontend Developer Intern",
         employmentType: "Internship",
         employmentPeriod: {
-          start: "June 2023",
-          end: "July 2023",
+          start: "Jan 2025",
+          end: "July 2025",
         },
-        duration: "2m",
+        duration: "6m",
         location: "Ahmedabad, India (On-Site)",
         description: `Developed and maintained web applications using HTML, CSS, and JavaScript.
 Collaborated with cross-functional teams to deliver high-quality software on time.

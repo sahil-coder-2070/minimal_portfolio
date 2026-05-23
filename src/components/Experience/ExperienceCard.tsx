@@ -5,8 +5,8 @@ import ExperienceContent from "./ExperienceContent";
 
 const ExperienceCard = () => {
   return (
-    <Container className={'mt-10'}>
-      <SectionHeading subHeading="Featured" heading="Experience" />
+    <Container className={''}>
+     
       <ExperienceContent />
     </Container>
   );
