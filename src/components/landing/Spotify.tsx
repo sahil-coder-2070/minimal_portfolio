@@ -77,7 +77,7 @@ const Spotify = () => {
 
   return (
     /* Stable Flow Parent: Always occupies exactly 64px (h-16) so page content below never shifts */
-    <div className="relative z-40 h-16 w-full select-none">
+    <div className="relative z-40 h-16 w-full mb-3 select-none">
       <AnimatePresence>
         {!isExpanded ? (
           /* Minimized Capsule View - positioned absolutely and centered using margin auto */

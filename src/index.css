@@ -43,6 +43,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-info: var(--info);
   --font-sans: 'Geist', sans-serif;
   --main-font: 'Geist', sans-serif;
   --inset-shadow: inset 0 1px 2px #00000014, inset 0 1px 4px #0000000a;
@@ -84,6 +85,7 @@
   --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
   --sidebar-border: hsl(214.3 31.8% 91.4%);
   --sidebar-ring: hsl(222.2 84% 4.9%);
+  --info: hsl(199 89% 48%);
   --repeat-separator-color: #e5e5e5; /* neutral-200 */
 }
 
@@ -119,6 +121,7 @@
   --sidebar-accent-foreground: hsl(210 40% 98%);
   --sidebar-border: hsl(217.2 32.6% 17.5%);
   --sidebar-ring: hsl(212.7 26.8% 83.9%);
+  --info: hsl(199 89% 48%);
   --inset-shadow-dark: inset 0 1px 2px #ffffff0d, inset 0 2px 4px #ffffff08;
   --repeat-separator-color: #404040; /* neutral-700 */
 }

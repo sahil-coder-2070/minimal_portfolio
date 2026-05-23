@@ -4,50 +4,59 @@ import Html from "@/components/icons/tech/Html";
 import JavaScript from "@/components/icons/tech/JavaScript";
 import TailwindCss from "@/components/icons/tech/TailwindCss";
 
-const ExperienceCardData = [
+import type { Experience } from "@/components/Experience/types";
+
+const ExperienceCardData: Experience[] = [
   {
-    company: "Zero Dimensions",
-    position: "Frontend Developer Intern",
-    location: "Ahmedabad, India (On-Site)",
-    image:
-      "/company.webp",
-    description: [
-      "Developed and maintained web applications using HTML, CSS, and JavaScript.",
-      "Collaborated with cross-functional teams to deliver high-quality software on time.",
-      "Design & Developed multiple websites for clients.",
+    id: "zero-dimensions",
+    companyName: "Zero Dimensions",
+    companyLogo: "/company.webp",
+    companyWebsite: "https://zerodimensions.in", // Linked company website
+    isCurrentEmployer: false,
+    positions: [
+      {
+        id: "frontend-intern",
+        title: "Frontend Developer Intern",
+        employmentType: "Internship",
+        employmentPeriod: {
+          start: "June 2023",
+          end: "July 2023",
+        },
+        duration: "2m",
+        location: "Ahmedabad, India (On-Site)",
+        description: `Developed and maintained web applications using HTML, CSS, and JavaScript.
+Collaborated with cross-functional teams to deliver high-quality software on time.
+Design & Developed multiple websites for clients.`,
+        skills: [
+          {
+            name: "HTML",
+            href: "https://html.com/",
+            icon: <Html />,
+          },
+          {
+            name: "CSS",
+            href: "https://css.com/",
+            icon: <CSS />,
+          },
+          {
+            name: "JavaScript",
+            href: "https://javascript.com/",
+            icon: <JavaScript />,
+          },
+          {
+            name: "Figma",
+            href: "https://figma.com/",
+            icon: <Figma />,
+          },
+          {
+            name: "TailwindCss",
+            href: "https://getbootstrap.com/",
+            icon: <TailwindCss />,
+          },
+        ],
+        isExpanded: true, // 1st one is always open
+      },
     ],
-    startDate: "June 2023",
-    endDate: "July 2023",
-    website: "https://flameloop.com",
-    technologies: [
-      {
-        name: "HTML",
-        href: "https://html.com/",
-        icon: <Html />,
-      },
-      {
-        name: "CSS",
-        href: "https://css.com/",
-        icon: <CSS />,
-      },
-      {
-        name: "JavaScript",
-        href: "https://javascript.com/",
-        icon: <JavaScript />,
-      },
-      {
-        name: "Figma",
-        href: "https://figma.com/",
-        icon: <Figma />,
-      },
-      {
-        name: "TailwindCss",
-        href: "https://getbootstrap.com/",
-        icon: <TailwindCss />,
-      },
-    ],
-    x: "https://zerodimensions.in",
-    linkedin: "https://in.linkedin.com/company/zerodimensions",
   },
 ];
 

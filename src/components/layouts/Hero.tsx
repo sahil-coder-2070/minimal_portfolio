@@ -80,6 +80,7 @@ const Hero = () => {
       <RepeatSeparator />
       <BioText />
       <Spotify />
+      <RepeatSeparator />
       <ResumeButton />
     </Container>
   );
