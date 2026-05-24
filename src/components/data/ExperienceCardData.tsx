@@ -50,7 +50,7 @@ Design & Developed multiple websites for clients.`,
           },
           {
             name: "TailwindCss",
-            href: "https://getbootstrap.com/",
+            href: "https://tailwindcss.com/",
             icon: <TailwindCss />,
           },
         ],
