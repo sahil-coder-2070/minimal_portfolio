@@ -86,7 +86,7 @@
   --sidebar-border: hsl(214.3 31.8% 91.4%);
   --sidebar-ring: hsl(222.2 84% 4.9%);
   --info: hsl(199 89% 48%);
-  --repeat-separator-color: #e5e5e5; /* neutral-200 */
+  --repeat-separator-color: #d4d4d4; /* neutral-300 */
 }
 
 .dark {
@@ -159,7 +159,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --repeat-separator-color: #e5e5e5; /* neutral-200 */
+  --repeat-separator-color: #d4d4d4; /* neutral-300 */
 }
 
 .theme-custom.dark {
