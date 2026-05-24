@@ -305,3 +305,48 @@ html {
   background-color: #525252; /* neutral-600 — subtle hover */
 }
 
+/* Custom screen-line and border utilities for exact layout accuracy */
+.screen-line-top {
+  position: relative;
+}
+.screen-line-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 100vw;
+  background-color: var(--border);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.screen-line-bottom {
+  position: relative;
+}
+.screen-line-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 100vw;
+  background-color: var(--border);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.border-line {
+  border-color: var(--border);
+}
+
+.hover\:bg-accent-muted:hover {
+  background-color: hsla(210, 40%, 96.1%, 0.5);
+}
+.dark .hover\:bg-accent-muted:hover {
+  background-color: hsla(217.2, 32.6%, 17.5%, 0.5);
+}
+
+
