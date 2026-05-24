@@ -7,13 +7,12 @@
 ## ✨ Features
 
 - 🎨 **Theme Support** — Dark and light mode with system preference detection, persisted in local storage
-- ✨ **Smooth Animations** — Fluid transitions using Framer Motion for UI elements, GSAP for complex animations, and Lenis for smooth scrolling
+- ✨ **Smooth Animations** — Fluid transitions using Framer Motion for UI elements and GSAP for complex animations
 - 📱 **Responsive Design** — Mobile-first approach ensuring perfect display on all devices
 - 📝 **Blog System** — Technical articles rendered from markdown with syntax highlighting using react-markdown, remark-gfm, and rehype-highlight
 - 💼 **Project Showcase** — Detailed project pages with live demo links, GitHub repositories, technology stacks, and project timelines
 - 📧 **Contact Form** — Fully functional form with Zod validation, integrated with Appwrite backend for message storage
 - 🔍 **SEO Optimized** — Meta tags and Open Graph support using react-helmet-async for better search visibility
-- 🎯 **Smooth Scrolling** — Lenis integration provides a premium scroll experience
 - 🃏 **Toast Notifications** — User feedback with sonner for success/error messages
 
 ---
@@ -24,7 +23,7 @@
 | -------------- | --------------------------------------------------------- |
 | **Framework**  | React 18, Vite                                            |
 | **Styling**    | Tailwind CSS, @tailwindcss/vite                           |
-| **Animations** | Framer Motion, GSAP, Lenis                                |
+| **Animations** | Framer Motion, GSAP                                       |
 | **Routing**    | React Router DOM v6                                       |
 | **Forms**      | React Hook Form, Zod, @hookform/resolvers                 |
 | **Backend**    | Appwrite                                                  |
@@ -156,7 +155,6 @@ src/
 ├── lib/                      # Utility libraries
 │   ├── appwrite.js         # Appwrite client configuration
 │   ├── techIcons.js        # Tech icon exports
-│   ├── lenis.js            # Lenis smooth scroll setup
 │   └── utils.js            # Utility functions (cn helper)
 │
 ├── App.jsx                  # Main app with route definitions
@@ -330,7 +328,6 @@ npm run build
 
 - `framer-motion` — React animation library
 - `gsap` — Advanced animations
-- `@studio-freight/lenis` — Smooth scrolling
 
 ### Forms
 

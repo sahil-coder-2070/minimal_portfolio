@@ -6,7 +6,7 @@ This document tracks performance improvements made to the portfolio.
 
 - ✅ Removed unused dependencies and imports
 - ✅ Added proper TypeScript types throughout the codebase
-- ✅ Optimized Lenis smooth scroll configuration
+- ✅ Removed Lenis smooth scrolling to reduce bundle size and restore native browser scroll performance
 - ✅ Enhanced Content Security Policy headers
 - ✅ Removed console statements from production code
 - ✅ Added preconnect hints for external resources

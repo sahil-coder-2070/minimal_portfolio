@@ -25,7 +25,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'lenis', 'lenis/react'],
+    include: ['react', 'react-dom'],
   },
   build: {
     rollupOptions: {

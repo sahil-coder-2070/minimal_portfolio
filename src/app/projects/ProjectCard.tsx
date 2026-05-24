@@ -20,7 +20,7 @@ const ProjectCard = ({
   const N = displayedProjects.length;
 
   return (
-    <Container className="relative mt-8">
+    <Container className="relative ">
       {/* Single vertical line divider in the absolute center (visible sm-up) */}
       <div className="pointer-events-none absolute top-0 bottom-0 left-1/2 z-0 hidden w-px -translate-x-1/2 sm:block">
         <div
@@ -41,7 +41,7 @@ const ProjectCard = ({
             <div key={items.id} className="relative flex flex-col p-4">
               <div className="flex flex-1 flex-col">
                 {/* Card Container */}
-                <div className="group/card border-border bg-background/50 dark:hover:bg-accent/15 relative flex flex-1 flex-col gap-1 overflow-hidden rounded-xl border p-2 shadow-sm dark:bg-neutral-950/70 hover:bg-neutral-100/60 dark:border-neutral-800">
+                <div className="group/card border-border bg-background/50 dark:hover:bg-accent/15 relative flex flex-1 flex-col gap-1 overflow-hidden rounded-xl border p-2 shadow-sm hover:bg-neutral-100/60 dark:border-neutral-800 dark:bg-neutral-950/70">
                   <div className="relative flex flex-1 flex-col gap-1">
                     {/* Card Body wrapping screenshot and info (links to detailed slug) */}
                     <Link

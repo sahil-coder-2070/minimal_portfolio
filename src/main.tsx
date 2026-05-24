@@ -4,7 +4,6 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./components/common/ScrollToTop";
-import { useLenis } from "./hooks/useLenis";
 import { inject } from "@vercel/analytics";
 
 inject();
@@ -18,12 +17,6 @@ if (!rootEl) {
 document.documentElement.classList.add("theme-custom");
 
 function Root() {
-  const prefersReduced =
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-  useLenis(!prefersReduced);
-
   return (
     <HelmetProvider>
       <BrowserRouter>

@@ -25,7 +25,6 @@
     "cmdk": "^1.1.1",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
-    "lenis": "^1.3.19",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "radix-ui": "^1.4.3",
