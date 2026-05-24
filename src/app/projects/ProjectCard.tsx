@@ -79,34 +79,21 @@ const ProjectCard = ({
                 <div className="p-[4px] rounded-[10px] border border-border dark:border-neutral-800 bg-card shadow-xs transition-shadow duration-300 group-hover:shadow-md">
                   <div className="relative w-full bg-muted/30 rounded-[6px] border border-border dark:border-neutral-800 h-[210px] sm:h-[180px] md:h-[210px] overflow-hidden select-none">
                     
-                    {/* Hover Blurred Image Cover Backdrop */}
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-85 dark:group-hover:opacity-50 transition-opacity duration-300 pointer-events-none scale-105 group-hover:scale-100 filter blur-[3px]"
-                      style={{ backgroundImage: `url(${items.img.src})` }}
+                    {/* Normal Full Image with hover zoom */}
+                    <img 
+                      alt={items.img.alt} 
+                      loading="lazy" 
+                      width="600" 
+                      height="400" 
+                      decoding="async" 
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
+                      src={items.img.src} 
                     />
-                    
-                    {/* Dark/Light overlay on hover for better contrast */}
-                    <div className="absolute inset-0 bg-black/5 dark:bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                     {/* Floating Heading Top-Left */}
-                    <h4 className="absolute top-2 left-2 text-[10px] text-muted-foreground group-hover:text-foreground font-semibold tracking-wider transition-all duration-300 group-hover:left-1/2 group-hover:-translate-x-1/2 z-20 uppercase bg-background/80 dark:bg-neutral-900/90 backdrop-blur-xs px-2 py-0.5 rounded-md border border-border/50 dark:border-neutral-700/50 shadow-2xs">
+                    <h4 className="absolute top-2 left-2 text-[10px] text-muted-foreground group-hover:text-foreground font-semibold tracking-wider transition-all duration-300 z-20 uppercase bg-background/80 dark:bg-neutral-900/90 backdrop-blur-xs px-2 py-0.5 rounded-md border border-border/50 dark:border-neutral-700/50 shadow-2xs">
                       {items.title}
                     </h4>
-
-                    {/* Floating Bottom Screenshot Mockup Frame */}
-                    <div className="bg-background dark:bg-neutral-900 rounded-t-[6px] absolute bottom-0 left-1/2 -translate-x-1/2 w-[82%] h-[78%] group-hover:h-[83%] group-hover:w-[86%] transition-all duration-300 p-[3px] pb-0 shadow-lg border-t border-x border-border/50 dark:border-neutral-800/80 z-10">
-                      <div className="w-full h-full rounded-t-[4px] overflow-hidden bg-muted">
-                        <img 
-                          alt={items.img.alt} 
-                          loading="lazy" 
-                          width="600" 
-                          height="400" 
-                          decoding="async" 
-                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-103" 
-                          src={items.img.src} 
-                        />
-                      </div>
-                    </div>
 
                     {/* Floating Top-Right Quick Links */}
                     <div className="absolute top-2 right-2 flex gap-1 z-20">
