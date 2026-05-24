@@ -1,15 +1,12 @@
-import { ExperiencePositionItem } from "./ExperiencePositionItem";
-import type { Experience } from "./types";
+import { ExperiencePositionItem } from './ExperiencePositionItem';
+import type { Experience } from './types';
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
-    <div
-      id={`experience-${experience.id}`}
-      className="scroll-mt-14 space-y-4 py-4"
-    >
+    <div id={`experience-${experience.id}`} className="scroll-mt-14 space-y-4 p-4">
       <div className="flex items-center gap-3">
         {/* Company Logo Icon Container */}
-        <div className="flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-5">
+        <div className="[&_svg]:text-muted-foreground flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5">
           {experience.companyLogo ? (
             <img
               alt={`${experience.companyName} logo`}
@@ -19,7 +16,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
               height="24"
               decoding="async"
               className="rounded-full"
-              style={{ color: "transparent" }}
+              style={{ color: 'transparent' }}
               src={experience.companyLogo}
             />
           ) : (
@@ -30,12 +27,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         {/* Company Name */}
         <h3 className="text-lg leading-snug font-semibold">
           {experience.companyWebsite ? (
-            <a
-              className="link"
-              href={experience.companyWebsite}
-              target="_blank"
-              rel="noopener"
-            >
+            <a className="link" href={experience.companyWebsite} target="_blank" rel="noopener">
               {experience.companyName}
             </a>
           ) : (
@@ -45,18 +37,15 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
 
         {/* Pulsing Active Status */}
         {experience.isCurrentEmployer && (
-          <span
-            className="relative flex items-center justify-center"
-            aria-label="Current Employer"
-          >
-            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50"></span>
-            <span className="relative inline-flex size-2 rounded-full bg-info"></span>
+          <span className="relative flex items-center justify-center" aria-label="Current Employer">
+            <span className="bg-info absolute inline-flex size-3 animate-ping rounded-full opacity-50"></span>
+            <span className="bg-info relative inline-flex size-2 rounded-full"></span>
           </span>
         )}
       </div>
 
       {/* Timeline connector track containing positions */}
-      <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
+      <div className="before:bg-border relative space-y-4 before:absolute before:left-3 before:h-full before:w-px">
         {experience.positions.map((position) => (
           <ExperiencePositionItem key={position.id} position={position} />
         ))}

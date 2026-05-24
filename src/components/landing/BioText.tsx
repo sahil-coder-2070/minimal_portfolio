@@ -4,7 +4,7 @@ const BioText = () => {
   return (
     <>
       <SectionHeading heading="About" />
-      <div className="space-y-5 p-4">
+      <div className="space-y-5 p-8">
         <div className="flex flex-wrap items-center gap-x-1 gap-y-2 text-base whitespace-pre-wrap text-neutral-500/90 md:text-lg dark:text-neutral-500">
           <ul className="list-disc space-y-2">
             <li>

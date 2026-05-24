@@ -60,7 +60,7 @@ const Hero = () => {
                 <p>{stars} Stars on GitHub</p>
               </TooltipContent>
             </Tooltip>
-            <span className="flex items-center gap-1 text-sm text-neutral-400 select-none dark:text-neutral-400">
+            <span className="flex items-center gap-1 text-sm text-neutral-400 select-none dark:text-neutral-400 pr-5">
               <Eye className="h-5 w-5" />
               {visitorCount !== null ? `${visitorCount.toLocaleString()} visitors` : '—'}
             </span>
