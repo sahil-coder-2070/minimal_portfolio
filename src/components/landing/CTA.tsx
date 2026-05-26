@@ -1,18 +1,21 @@
-import { Link } from "react-router-dom";
-import { CardCta } from "../../components/ui/CardCta";
-import BorderContainer from "../common/BorderContainer";
+import { Link } from 'react-router-dom';
+import { CardCta } from '../../components/ui/CardCta';
+import RepeatSeparator from '../ui/repeat-separator';
+import SectionHeading from '../common/SectionHeading';
 
 const CTA = () => {
   return (
     <>
+      <RepeatSeparator />
+      <SectionHeading heading="Scrolled To Far" classname="mb-3" />
       <CardCta>
-        <div className="mt-6 w-full flex-col px-6 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
+        <div className="my-12 w-full flex-col px-6 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
           <p className="mb-4 text-center text-base opacity-70 sm:mb-3 md:text-xl">
             If you've read this far, you might be interested in what I do.
           </p>
           <div className="mt-4 flex w-full justify-center sm:mt-0 sm:w-auto sm:justify-end">
             <div className="inset-shadow group inline-flex cursor-pointer items-center self-end rounded-md border border-black/10 bg-black/3 px-2 py-1 text-sm text-black shadow-md transition-all dark:border-white/15 dark:bg-white/15 dark:text-white dark:shadow-[0_0_5px_rgba(255,255,255,0.1)]">
-              <Link to={"/contact"}>
+              <Link to={'/contact'}>
                 <div className="relative z-20 flex items-center gap-2 transition-all duration-300 group-hover:gap-8">
                   <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full">
                     <img
@@ -21,7 +24,7 @@ const CTA = () => {
                       height={20}
                       className="h-full w-full object-cover"
                       src="/Avatar.avif"
-                      style={{ color: "transparent" }}
+                      style={{ color: 'transparent' }}
                     />
                   </div>
                   <div className="absolute left-6 flex -translate-x-full transform items-center gap-0 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
