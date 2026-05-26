@@ -1,7 +1,5 @@
 import Container from '../layouts/Container';
 import SectionHeading from '../common/SectionHeading';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
-import { Link } from 'react-router-dom';
 import {
   ReactIcon,
   Bun,
@@ -9,11 +7,9 @@ import {
   JavaScript,
   MongoDB,
   ExpressJs,
-  Css,
   Figma,
   FramerMotion,
   Gsap,
-  Html,
   NextJS,
   PostgreSQL,
   Prisma,
@@ -42,14 +38,20 @@ const TechSkills = () => {
         <div className="mt-3 flex flex-wrap gap-2.5 gap-y-4 px-4">
           {SkillsList.map((items) => {
             return (
-              <Tooltip key={items.title}>
-                <TooltipTrigger>
-                  <Link to={items.href}>
-                    <div className="mr-2 size-8">{items.icon}</div>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>{items.title}</TooltipContent>
-              </Tooltip>
+              <a
+                key={items.title}
+                href={items.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex-1 min-w-fit flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-border bg-transparent text-muted-foreground px-3 py-1.5 transition-all duration-300 hover:text-foreground/65 hover:border-foreground/65 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/40 select-none"
+              >
+                <span className="size-4 shrink-0 transition-colors group-hover:text-foreground flex items-center justify-center">
+                  {items.icon}
+                </span>
+                <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground whitespace-nowrap">
+                  {items.title}
+                </span>
+              </a>
             );
           })}
         </div>
