@@ -1,7 +1,7 @@
-import Container from "../layouts/Container";
-import SectionHeading from "../common/SectionHeading";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { Link } from "react-router-dom";
+import Container from '../layouts/Container';
+import SectionHeading from '../common/SectionHeading';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { Link } from 'react-router-dom';
 import {
   ReactIcon,
   Bun,
@@ -30,28 +30,31 @@ import {
   ReactNavigation,
   Bootstrap,
   Python,
-} from "@/lib/techIcons";
+} from '@/lib/techIcons';
+import RepeatSeparator from '../ui/repeat-separator';
 
 const TechSkills = () => {
   return (
-    <Container className={`mt-30`}>
-      <SectionHeading subHeading={"Technologics"} heading={"Stack"} />
-
-      <div className="mt-3 flex flex-wrap gap-2.5 gap-y-4">
-        {SkillsList.map((items) => {
-          return (
-            <Tooltip key={items.title}>
-              <TooltipTrigger>
-                <Link to={items.href}>
-                  <div className="mr-2 size-8">{items.icon}</div>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>{items.title}</TooltipContent>
-            </Tooltip>
-          );
-        })}
-      </div>
-    </Container>
+    <>
+      <RepeatSeparator />
+      <Container>
+        <SectionHeading heading={'Stack'} />
+        <div className="mt-3 flex flex-wrap gap-2.5 gap-y-4 px-4">
+          {SkillsList.map((items) => {
+            return (
+              <Tooltip key={items.title}>
+                <TooltipTrigger>
+                  <Link to={items.href}>
+                    <div className="mr-2 size-8">{items.icon}</div>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>{items.title}</TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </div>
+      </Container>
+    </>
   );
 };
 
@@ -59,131 +62,132 @@ export default TechSkills;
 
 const SkillsList = [
   {
-    title: "TypeScript",
+    title: 'TypeScript',
     icon: <TypeScript />,
-    href: "https://www.typescriptlang.org/",
+    href: 'https://www.typescriptlang.org/',
   },
 
   {
-    title: "JavaScript",
+    title: 'JavaScript',
     icon: <JavaScript />,
-    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
   },
   {
-    title: "React",
+    title: 'React',
     icon: <ReactIcon />,
-    href: "https://reactjs.org/",
+    href: 'https://reactjs.org/',
   },
   {
-    title: "NextJS",
+    title: 'NextJS',
     icon: <NextJS />,
-    href: "https://nextjs.org/",
+    href: 'https://nextjs.org/',
   },
   {
-    title: "Bun",
+    title: 'Bun',
     icon: <Bun />,
-    href: "https://bun.sh/",
+    href: 'https://bun.sh/',
   },
   {
-    title: "Node Js",
+    title: 'Node Js',
     icon: <NodeJs />,
-    href: "https://nodejs.org/",
+    href: 'https://nodejs.org/',
   },
   {
-    title: "Express Js",
+    title: 'Express Js',
     icon: <ExpressJs />,
-    href: "https://expressjs.com/",
+    href: 'https://expressjs.com/',
   },
   {
-    title: "MongoDB",
+    title: 'MongoDB',
     icon: <MongoDB />,
-    href: "https://www.mongodb.com/",
+    href: 'https://www.mongodb.com/',
   },
 
   {
-    title: "Figma",
+    title: 'Figma',
     icon: <Figma />,
-    href: "https://www.figma.com/",
+    href: 'https://www.figma.com/',
   },
   {
-    title: "Framer Motion",
+    title: 'Framer Motion',
     icon: <FramerMotion />,
-    href: "https://www.framer.com/motion/",
+    href: 'https://www.framer.com/motion/',
   },
   {
-    title: "GSAP",
+    title: 'GSAP',
     icon: <Gsap />,
-    href: "https://greensock.com/gsap/",
+    href: 'https://greensock.com/gsap/',
   },
 
   {
-    title: "PostgreSQL",
+    title: 'PostgreSQL',
     icon: <PostgreSQL />,
-    href: "https://www.postgresql.org/",
+    href: 'https://www.postgresql.org/',
   },
   {
-    title: "Prisma",
+    title: 'Prisma',
     icon: <Prisma />,
-    href: "https://www.prisma.io/",
+    href: 'https://www.prisma.io/',
   },
   {
-    title: "Tailwind CSS",
+    title: 'Tailwind CSS',
     icon: <TailwindCss />,
-    href: "https://tailwindcss.com/",
+    href: 'https://tailwindcss.com/',
   },
 
   {
-    title: "Vite",
+    title: 'Vite',
     icon: <Vite />,
-    href: "https://vitejs.dev/",
+    href: 'https://vitejs.dev/',
   },
   {
-    title: "Shadcn",
+    title: 'Shadcn',
     icon: <Shadcn />,
-    href: "https://ui.shadcn.com/",
+    href: 'https://ui.shadcn.com/',
   },
   {
-    title: "LLM",
+    title: 'LLM',
     icon: <LLM />,
-    href: "https://en.wikipedia.org/wiki/Large_language_model",
+    href: 'https://en.wikipedia.org/wiki/Large_language_model',
   },
   {
-    title: "PHP",
+    title: 'PHP',
     icon: <Php />,
-    href: "https://www.php.net/",
+    href: 'https://www.php.net/',
   },
   {
-    title: "BaseUI",
+    title: 'BaseUI',
     icon: <Baseui />,
-    href: "https://baseweb.design/",
+    href: 'https://baseweb.design/',
   },
   {
-    title: "Photoshop",
+    title: 'Photoshop',
     icon: <Photoshop />,
-    href: "https://www.adobe.com/products/photoshop.html",
+    href: 'https://www.adobe.com/products/photoshop.html',
   },
   {
-    title: "Git",
+    title: 'Git',
     icon: <Git />,
-    href: "https://git-scm.com/",
+    href: 'https://git-scm.com/',
   },
   {
-    title: "Docker",
+    title: 'Docker',
     icon: <Docker />,
-    href: "https://www.docker.com/",
+    href: 'https://www.docker.com/',
   },
   {
-    title: "React Navigation",
+    title: 'React Navigation',
     icon: <ReactNavigation />,
-    href: "https://reactnavigation.org/",
+    href: 'https://reactnavigation.org/',
   },
   {
-    title: "Bootstrap",
-    icon: <Bootstrap/>,
-    href: "https://getbootstrap.com/"
-  },{
-    title: "Python",
-    icon: <Python/>,
-    href: "https://www.python.org/"
-  }
+    title: 'Bootstrap',
+    icon: <Bootstrap />,
+    href: 'https://getbootstrap.com/',
+  },
+  {
+    title: 'Python',
+    icon: <Python />,
+    href: 'https://www.python.org/',
+  },
 ];

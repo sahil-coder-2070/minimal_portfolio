@@ -22,7 +22,7 @@ const Featured = () => {
 
   return (
     <Container className={`mt-25`}>
-      <SectionHeading subHeading={"Featured"} heading={"GitHub Activity"} />
+      <SectionHeading heading={"GitHub Activity"} />
       <div className="space-y-6">
         <div className="flex w-full justify-between">
           <p className="text-primary mt-1 text-sm font-medium">
