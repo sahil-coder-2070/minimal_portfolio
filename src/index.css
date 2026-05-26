@@ -352,4 +352,57 @@ html {
   background-color: hsla(217.2, 32.6%, 17.5%, 0.5);
 }
 
+/* Unified Connect Grid Responsive Lines */
+.connect-grid li {
+  position: relative;
+}
 
+@media (max-width: 767px) {
+  .connect-grid li:nth-child(2n+1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .connect-grid li:nth-child(2n+1)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .connect-grid li:nth-child(3n+1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .connect-grid li:nth-child(3n+1)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}

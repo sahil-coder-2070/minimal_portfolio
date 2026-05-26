@@ -8,7 +8,6 @@ import {
   MongoDB,
   ExpressJs,
   Figma,
-  FramerMotion,
   Gsap,
   NextJS,
   PostgreSQL,
@@ -23,7 +22,6 @@ import {
   Photoshop,
   Git,
   Docker,
-  ReactNavigation,
   Bootstrap,
   Python,
 } from '@/lib/techIcons';
@@ -35,7 +33,7 @@ const TechSkills = () => {
       <RepeatSeparator />
       <Container>
         <SectionHeading heading={'Stack'} />
-        <div className="mt-3 flex flex-wrap gap-2.5 gap-y-4 px-4">
+        <div className="mt-3 flex flex-wrap gap-2 gap-y-2 px-4">
           {SkillsList.map((items) => {
             return (
               <a
@@ -43,12 +41,12 @@ const TechSkills = () => {
                 href={items.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex-1 min-w-fit flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[8px] border border-border bg-transparent text-muted-foreground px-3 py-1.5 transition-all duration-300 hover:text-foreground/65 hover:border-foreground/65 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/40 select-none"
+                className="group border text-muted-foreground hover:text-foreground/65 relative flex min-w-fit flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg  bg-transparent px-3 py-1.5 select-none hover:bg-neutral-200/50 dark:hover:bg-neutral-900 border-neutral-300/70 dark:border-neutral-700/60 shadow-xs hover:border-neutral-300 dark:hover:border-neutral-700"
               >
-                <span className="size-4 shrink-0 transition-colors group-hover:text-foreground flex items-center justify-center">
+                <span className="group-hover:text-foreground flex size-4 shrink-0 items-center justify-center">
                   {items.icon}
                 </span>
-                <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground whitespace-nowrap">
+                <span className="text-muted-foreground group-hover:text-foreground text-sm font-medium whitespace-nowrap">
                   {items.title}
                 </span>
               </a>
@@ -111,11 +109,6 @@ const SkillsList = [
     href: 'https://www.figma.com/',
   },
   {
-    title: 'Framer Motion',
-    icon: <FramerMotion />,
-    href: 'https://www.framer.com/motion/',
-  },
-  {
     title: 'GSAP',
     icon: <Gsap />,
     href: 'https://greensock.com/gsap/',
@@ -176,11 +169,6 @@ const SkillsList = [
     title: 'Docker',
     icon: <Docker />,
     href: 'https://www.docker.com/',
-  },
-  {
-    title: 'React Navigation',
-    icon: <ReactNavigation />,
-    href: 'https://reactnavigation.org/',
   },
   {
     title: 'Bootstrap',
