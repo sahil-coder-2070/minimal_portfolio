@@ -7,7 +7,7 @@ const CTA = () => {
     <>
       <RepeatSeparator />
       <SectionHeading heading="Scrolled To Far" classname="mb-3" />
-      <div className="my-12 w-full flex-col px-6 py-15 sm:flex sm:items-center sm:justify-between sm:px-12">
+      <div className="my-12 w-full flex-col px-6 py-10 sm:flex sm:items-center sm:justify-between sm:px-12">
         <p className="mb-4 text-center text-base opacity-70 sm:mb-3 md:text-xl">
           If you've read this far, you might be interested in what I do.
         </p>
