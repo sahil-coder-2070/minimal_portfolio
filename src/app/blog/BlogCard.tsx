@@ -39,7 +39,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                         width={1200}
                         height={630}
                         decoding="async"
-                        className="aspect-1200/630 rounded-[var(--image-radius)] object-cover"
+                        className="aspect-1200/630 rounded-[var(--image-radius)] object-fit"
                         style={{ color: 'transparent' }}
                         src={items.image}
                       />

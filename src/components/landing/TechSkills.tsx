@@ -31,8 +31,8 @@ const TechSkills = () => {
   return (
     <>
       <RepeatSeparator />
-      <Container>
-        <SectionHeading heading={'Stack'} />
+      <SectionHeading heading={'Stack'} />
+      <Container className='py-3'>
         <div className="mt-3 flex flex-wrap gap-2 gap-y-2 px-4">
           {SkillsList.map((items) => {
             return (
@@ -41,7 +41,7 @@ const TechSkills = () => {
                 href={items.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border text-muted-foreground hover:text-foreground/65 relative flex min-w-fit flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg  bg-transparent px-3 py-1.5 select-none hover:bg-neutral-200/50 dark:hover:bg-neutral-900 border-neutral-300/70 dark:border-neutral-700/60 shadow-xs hover:border-neutral-300 dark:hover:border-neutral-700"
+                className="group text-muted-foreground hover:text-foreground/65 relative flex min-w-fit flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border border-neutral-300/70 bg-transparent px-3 py-1.5 shadow-xs select-none hover:border-neutral-300 hover:bg-neutral-200/50 dark:border-neutral-700/60 dark:hover:border-neutral-700 dark:hover:bg-neutral-900"
               >
                 <span className="group-hover:text-foreground flex size-4 shrink-0 items-center justify-center">
                   {items.icon}
