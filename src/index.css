@@ -406,3 +406,75 @@ html {
     pointer-events: none;
   }
 }
+
+/* Blog Grid Separators */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.blog-grid li {
+  position: relative;
+}
+
+/* Mobile: Horizontal lines on every list item */
+@media (max-width: 639px) {
+  .blog-grid li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .blog-grid li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+/* Desktop: Horizontal lines on the start of each row (odd children) */
+@media (min-width: 640px) {
+  .blog-grid li:nth-child(2n+1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .blog-grid li:nth-child(2n+1)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    height: 1px;
+    width: 300vw;
+    background-color: var(--border);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
