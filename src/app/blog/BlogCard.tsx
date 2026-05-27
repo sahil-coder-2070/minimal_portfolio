@@ -30,7 +30,7 @@ const BlogCard = ({ data = BlogCardData }) => {
             return (
               <li key={index}>
                 <div className="h-full">
-                  <div className="hover:bg-accent-muted relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out">
+                  <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
                     {/* Image container */}
                     <div className="relative select-none [--image-radius:var(--radius-xl)]">
                       <img
@@ -39,7 +39,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                         width={1200}
                         height={630}
                         decoding="async"
-                        className="aspect-1200/630 rounded-[var(--image-radius)] object-fit"
+                        className="object-fit aspect-1200/630 rounded-[var(--image-radius)]"
                         style={{ color: 'transparent' }}
                         src={items.image}
                       />
@@ -91,10 +91,12 @@ const BlogCard = ({ data = BlogCardData }) => {
                               <time dateTime={items.date}>{items.formattedDate}</time>
                             </dd>
                           </dl>
-                          <div className="text-muted-foreground hover:text-primary flex items-center gap-1 text-xs font-medium transition-colors duration-200">
-                            <span>Read More</span>
-                            <ArrowRight className="size-3.5" />
-                          </div>
+                          <Link to={`/blogs/${items.slug}`}>
+                            <div className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors duration-200">
+                              <span>Read More</span>
+                              <ArrowRight className="size-3.5" />
+                            </div>
+                          </Link>
                         </div>
                       </div>
                     </div>
