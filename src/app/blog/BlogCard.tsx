@@ -1,9 +1,9 @@
-import Container from "@/components/layouts/Container";
-import { Link } from "react-router-dom";
-import { motion as Motion } from "motion/react";
-import { BlogCardData } from "@/config/blog/BlogCardData";
-import { ArrowRight, CalendarSearch } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import Container from '@/components/layouts/Container';
+import { Link } from 'react-router-dom';
+import { motion as Motion } from 'motion/react';
+import { BlogCardData } from '@/config/blog/BlogCardData';
+import { ArrowRight, CalendarSearch } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const isNew = (dateStr: string) => {
   const postDate = new Date(dateStr);
@@ -15,12 +15,12 @@ const isNew = (dateStr: string) => {
 
 const BlogCard = ({ data = BlogCardData }) => {
   return (
-    <Container className="mt-8">
+    <Container className="mt-">
       <div className="relative py-4">
         {/* Vertical separating lines */}
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-line"></div>
-          <div className="border-l border-line"></div>
+          <div className="border-line border-r"></div>
+          <div className="border-line border-l"></div>
         </div>
 
         {/* Blog list */}
@@ -29,18 +29,8 @@ const BlogCard = ({ data = BlogCardData }) => {
             const isItemNew = isNew(items.date);
             return (
               <li key={index}>
-                <Motion.div
-                  initial={{ y: 40, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut",
-                    delay: 0.1 * index,
-                  }}
-                  viewport={{ once: true }}
-                  className="h-full"
-                >
-                  <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted">
+                <div className="h-full">
+                  <div className="hover:bg-accent-muted relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out">
                     {/* Image container */}
                     <div className="relative select-none [--image-radius:var(--radius-xl)]">
                       <img
@@ -50,14 +40,14 @@ const BlogCard = ({ data = BlogCardData }) => {
                         height={630}
                         decoding="async"
                         className="aspect-1200/630 rounded-[var(--image-radius)] object-cover"
-                        style={{ color: "transparent" }}
+                        style={{ color: 'transparent' }}
                         src={items.image}
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-[var(--image-radius)] inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10"></div>
                     </div>
 
                     {/* Content */}
-                    <div className="flex flex-col gap-2 p-2 h-full justify-between">
+                    <div className="flex h-full flex-col justify-between gap-2 p-2">
                       <div className="space-y-2">
                         <h3 className="text-lg leading-snug font-medium text-balance">
                           <Link to={`/blogs/${items.slug}`}>
@@ -66,7 +56,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                           </Link>
                           {isItemNew && (
                             <span
-                              className="pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full bg-info"
+                              className="bg-info pointer-events-none ml-2 inline-block size-2 -translate-y-px rounded-full"
                               aria-label="New"
                             ></span>
                           )}
@@ -78,14 +68,14 @@ const BlogCard = ({ data = BlogCardData }) => {
                       </div>
 
                       {/* Footer Details: Tags, Date, & Arrow */}
-                      <div className="mt-2 space-y-3 z-10 relative">
+                      <div className="relative z-10 mt-2 space-y-3">
                         {/* Tags */}
                         <div className="flex flex-wrap gap-1.5">
                           {items.tags.slice(0, 3).map((tag, idx) => (
                             <Badge
                               key={idx}
                               variant="secondary"
-                              className="text-[10px] px-1.5 py-0.5"
+                              className="px-1.5 py-0.5 text-[10px]"
                             >
                               {tag}
                             </Badge>
@@ -93,24 +83,23 @@ const BlogCard = ({ data = BlogCardData }) => {
                         </div>
 
                         {/* Date & Read More link */}
-                        <div className="flex items-center justify-between gap-2 border-t border-border pt-2.5">
+                        <div className="border-border flex items-center justify-between gap-2 border-t pt-2.5">
                           <dl>
                             <dt className="sr-only">Published on</dt>
-                            <dd className="text-xs text-muted-foreground flex items-center gap-1.5">
+                            <dd className="text-muted-foreground flex items-center gap-1.5 text-xs">
                               <CalendarSearch className="size-3.5" />
                               <time dateTime={items.date}>{items.formattedDate}</time>
                             </dd>
                           </dl>
-                          <div className="text-xs font-medium text-muted-foreground flex items-center gap-1 hover:text-primary transition-colors duration-200">
+                          <div className="text-muted-foreground hover:text-primary flex items-center gap-1 text-xs font-medium transition-colors duration-200">
                             <span>Read More</span>
                             <ArrowRight className="size-3.5" />
                           </div>
                         </div>
                       </div>
-
                     </div>
                   </div>
-                </Motion.div>
+                </div>
               </li>
             );
           })}

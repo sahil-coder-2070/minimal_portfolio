@@ -20,7 +20,7 @@ const ProjectCard = ({
   const N = displayedProjects.length;
 
   return (
-    <Container className="relative ">
+    <Container className="relative">
       {/* Single vertical line divider in the absolute center (visible sm-up) */}
       <div className="pointer-events-none absolute top-0 bottom-0 left-1/2 z-0 hidden w-px -translate-x-1/2 sm:block">
         <div
@@ -51,6 +51,10 @@ const ProjectCard = ({
                       <img
                         alt={items.img.alt}
                         src={items.img.src}
+                        loading="lazy"
+                        width={1200}
+                        height={630}
+                        decoding="async"
                         className="h-52 w-full rounded-lg object-cover object-top"
                       />
 
