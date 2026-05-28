@@ -3,18 +3,10 @@ import Container from "../layouts/Container";
 import { Separator } from "../ui/separator";
 import BlogCard from "@/app/blog/BlogCard";
 import { BlogCardData } from "@/config/blog/BlogCardData";
-import { Helmet } from "react-helmet-async";
 
 const Blogs = () => {
   return (
     <Container className={"py-16"}>
-      <Helmet>
-        <title>Blog - Thoughts and Tutorial </title>
-        <meta
-          name="description"
-          content="Read articles on React, JavaScript, frontend development, best practices, performance optimization, and modern web technologies."
-        />
-      </Helmet>
 
       <div className="space-y-8">
         {/* Header */}

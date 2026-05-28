@@ -2,43 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from 'next/link';
-import { useEffect, useState } from "react";
-import matter from "gray-matter";
+import { BlogCardData } from "@/config/blog/BlogCardData";
 
 export function BlogNavigation({ slug }: { slug?: string }) {
-  interface BlogItem {
-    slug: string;
-    title: string;
-  }
+  // Use the statically declared BlogCardData list
+  const allBlogs = [...BlogCardData].sort((a, b) => a.date.localeCompare(b.date));
 
-  const [previous, setPrevious] = useState<BlogItem | null>(null);
-  const [next, setNext] = useState<BlogItem | null>(null);
-  const blog = import.meta.glob("/src/data/blog/*.md", {
-    query: "?raw",
-    import: "default",
-  });
-
-  useEffect(() => {
-    const loadNavigation = async () => {
-      const allblog: BlogItem[] = [];
-      for (const path in blog) {
-        const loader = blog[path];
-        const text = (await loader()) as string;
-        const { data } = matter(text);
-        const bloglug = path.split("/").pop()?.replace(".md", "") || "";
-        allblog.push({ slug: bloglug, title: data.title });
-      }
-      // Sort by slug (assuming alphabetical order)
-      allblog.sort((a, b) => a.slug.localeCompare(b.slug));
-      const currentIndex = allblog.findIndex((p) => p.slug === slug);
-      setPrevious(currentIndex > 0 ? allblog[currentIndex - 1] : null);
-      setNext(
-        currentIndex < allblog.length - 1 ? allblog[currentIndex + 1] : null,
-      );
-    };
-
-    loadNavigation();
-  }, [slug]);
+  const currentIndex = allBlogs.findIndex((b) => b.slug === slug);
+  const previous = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
+  const next = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
 
   if (!previous && !next) return null;
 

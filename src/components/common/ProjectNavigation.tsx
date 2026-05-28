@@ -2,45 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from 'next/link';
-import { useEffect, useState } from "react";
-import matter from "gray-matter";
+import { ProjectCardData } from "@/config/projects/ProjectCardData";
 
 export function ProjectNavigation({ slug }: { slug?: string }) {
-  interface ProjectItem {
-    slug: string;
-    title: string;
-  }
+  // Map projects to extract their slugs from details link
+  const allProjects = ProjectCardData.map((p) => ({
+    slug: p.links.details.split("/").pop() || "",
+    title: p.title,
+  }));
 
-  const [previous, setPrevious] = useState<ProjectItem | null>(null);
-  const [next, setNext] = useState<ProjectItem | null>(null);
-  const projects = import.meta.glob("/src/data/projects/*.md", {
-    query: "?raw",
-    import: "default",
-  });
-
-  useEffect(() => {
-    const loadNavigation = async () => {
-      const allProjects: ProjectItem[] = [];
-      for (const path in projects) {
-        const loader = projects[path];
-        const text = (await loader()) as string;
-        const { data } = matter(text);
-        const projectSlug = path.split("/").pop()?.replace(".md", "") || "";
-        allProjects.push({ slug: projectSlug, title: data.title });
-      }
-      // Sort by slug (assuming alphabetical order)
-      allProjects.sort((a, b) => a.slug.localeCompare(b.slug));
-      const currentIndex = allProjects.findIndex((p) => p.slug === slug);
-      setPrevious(currentIndex > 0 ? allProjects[currentIndex - 1] : null);
-      setNext(
-        currentIndex < allProjects.length - 1
-          ? allProjects[currentIndex + 1]
-          : null,
-      );
-    };
-
-    loadNavigation();
-  }, [slug]);
+  const currentIndex = allProjects.findIndex((p) => p.slug === slug);
+  const previous = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
+  const next = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
   if (!previous && !next) return null;
 
@@ -49,7 +22,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
       <Separator />
 
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Previous Project */}
+        {/* Previous project */}
         <div className={`${next ? "" : "md:col-span-2"}`}>
           {previous && (
             <Button
@@ -62,9 +35,11 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
                   <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
                   <div>
                     <div className="text-muted-foreground text-xs">
-                      Previous Project
+                      Previous project
                     </div>
-                    <div className="font-medium">{previous.title}</div>
+                    <div className="font-medium text-wrap">
+                      {previous.title}
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -72,7 +47,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
           )}
         </div>
 
-        {/* Next Project */}
+        {/* Next project */}
         <div className={`${previous ? "" : "md:col-span-2"}`}>
           {next && (
             <Button
@@ -84,7 +59,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
                 <div className="flex items-center gap-3">
                   <div>
                     <div className="text-muted-foreground text-xs">
-                      Next Project
+                      Next project
                     </div>
                     <div className="font-medium text-wrap">{next.title}</div>
                   </div>
