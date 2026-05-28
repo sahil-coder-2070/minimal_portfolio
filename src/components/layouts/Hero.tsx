@@ -1,12 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Container from './Container';
 import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
 import Spotify from '../landing/Spotify';
-import { fetchRepoStars } from '@/api/github';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Eye } from 'lucide-react';
@@ -14,17 +12,8 @@ import { useVisitorCount } from '@/hooks/useVisitorCount';
 import { GitHubLogo } from '../icons/tech/GithubLogo';
 import RepeatSeparator from '../ui/repeat-separator';
 
-const Hero = () => {
-  const [stars, setStars] = useState(0);
+const Hero = ({ stars = 0 }: { stars?: number }) => {
   const visitorCount = useVisitorCount();
-
-  useEffect(() => {
-    const loadStars = async () => {
-      const count = await fetchRepoStars();
-      setStars(count);
-    };
-    loadStars();
-  }, []);
 
   return (
     <Container className={`flex flex-col items-start justify-center `}>

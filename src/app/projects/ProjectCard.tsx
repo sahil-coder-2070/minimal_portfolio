@@ -46,7 +46,7 @@ const ProjectCard = ({
                   <div className="relative flex flex-1 flex-col gap-1">
                     {/* Card Body wrapping screenshot and info (links to detailed slug) */}
                     <Link
-                      href={items.projectDetailsPageSlug}
+                      href={items.projectDetailsPageSlug ?? items.links.details}
                       className="flex flex-1 flex-col gap-1 text-left hover:no-underline"
                     >
                       <Image

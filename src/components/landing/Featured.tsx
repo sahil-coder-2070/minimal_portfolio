@@ -1,24 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Container from '../layouts/Container';
 import SectionHeading from '../common/SectionHeading';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from './theme-provider';
-import { fetchGitHubContributions } from '@/api/github';
 import RepeatSeparator from '../ui/repeat-separator';
 
-const Featured = () => {
-  const [contributions, setContributions] = useState(0);
-
-  useEffect(() => {
-    const loadContributions = async () => {
-      const count = await fetchGitHubContributions();
-      setContributions(count);
-    };
-    loadContributions();
-  }, []);
-
+const Featured = ({ contributions = 0 }: { contributions?: number }) => {
   const { theme } = useTheme();
   const currentTheme = theme;
 

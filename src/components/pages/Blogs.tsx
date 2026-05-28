@@ -2,9 +2,17 @@ import React from "react";
 import Container from "../layouts/Container";
 import { Separator } from "../ui/separator";
 import BlogCard from "@/app/blog/BlogCard";
-import { BlogCardData } from "@/config/blog/BlogCardData";
+interface BlogItem {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  date: string;
+  formattedDate: string;
+}
 
-const Blogs = () => {
+const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
   return (
     <Container className={"py-16"}>
 
@@ -22,10 +30,10 @@ const Blogs = () => {
       <Separator />
       <div className="flex items-center gap-2">
         <h3 className="text-2xl font-bold">Latest Posts</h3>
-        <span className="text-sm">({BlogCardData.length} posts)</span>
+        <span className="text-sm">({posts.length} posts)</span>
       </div>
       <div>
-        <BlogCard />
+        <BlogCard data={posts} />
       </div>
     </Container>
   );

@@ -3,17 +3,36 @@
 import React, { useState } from "react";
 import Container from "../layouts/Container";
 import { Separator } from "../ui/separator";
-import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import ProjectCard from "@/app/projects/ProjectCard";
 import { Badge } from "../ui/badge";
 
-const Projects = () => {
-  const [isSelected, setIsSelected] = useState(null);
+interface ProjectItem {
+  id: string;
+  title: string;
+  description: string;
+  img: {
+    src: string;
+    alt: string;
+  };
+  links: {
+    website: string;
+    github: string;
+    details: string;
+  };
+  technologies: Array<{ name: string }>;
+  isWorking: boolean;
+  isBuilding: boolean;
+  isBulding?: boolean; // Support historical typo safely
+  details: boolean;
+}
+
+const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
+  const [isSelected, setIsSelected] = useState<boolean | null>(null);
 
   const filteredProjects =
     isSelected === null
-      ? ProjectCardData
-      : ProjectCardData.filter((item) => item.isWorking === isSelected);
+      ? projects
+      : projects.filter((item) => item.isWorking === isSelected);
 
   return (
     <Container className="py-16">
@@ -41,7 +60,7 @@ const Projects = () => {
               : "hover:bg-accent hover:text-accent-foreground shadow-accent inset-shadow dark:inset-shadow-neutral-700"
           }`}
         >
-          All ({ProjectCardData.length})
+          All ({projects.length})
         </Badge>
 
         <Badge
@@ -53,7 +72,7 @@ const Projects = () => {
               : "hover:bg-accent hover:text-accent-foreground shadow-accent inset-shadow dark:inset-shadow-neutral-700"
           }`}
         >
-          Working ({ProjectCardData.filter((item) => item.isWorking).length})
+          Working ({projects.filter((item) => item.isWorking).length})
         </Badge>
 
         <Badge
@@ -66,13 +85,13 @@ const Projects = () => {
           }`}
         >
           Building (
-          {ProjectCardData?.filter((item) => item.isBulding).length ?? 0})
+          {projects.filter((item) => item.isBuilding || item.isBulding).length})
         </Badge>
       </div>
 
       <div className="flex items-center gap-2">
         <h3 className="text-2xl font-bold">Latest Posts</h3>
-        <span className="text-sm">({ProjectCardData.length} posts)</span>
+        <span className="text-sm">({projects.length} posts)</span>
       </div>
 
       <ProjectCard completed={filteredProjects} />

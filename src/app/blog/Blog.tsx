@@ -3,12 +3,21 @@ import Container from '@/components/layouts/Container';
 import Link from 'next/link';
 import BlogCard from './BlogCard';
 import { Button } from '@/components/ui/button';
-import { BlogCardData } from '@/config/blog/BlogCardData';
 import RepeatSeparator from '@/components/ui/repeat-separator';
 import { MoveRight } from 'lucide-react';
 
-const Blog = ({ limit }: { limit?: number }) => {
-  const displayData = limit ? BlogCardData.slice(0, limit) : BlogCardData;
+interface BlogItem {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  date: string;
+  formattedDate: string;
+}
+
+const Blog = ({ blogs = [], limit }: { blogs?: BlogItem[]; limit?: number }) => {
+  const displayData = limit ? blogs.slice(0, limit) : blogs;
 
   return (
     <>

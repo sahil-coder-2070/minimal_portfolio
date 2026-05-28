@@ -6,6 +6,8 @@ import Featured from "@/components/landing/Featured";
 import Blog from "@/app/blog/Blog";
 import CTA from "@/components/landing/CTA";
 import Setup from "@/components/landing/Setup";
+import { getMarkdownSlugs, getMarkdownContent } from "@/lib/markdown";
+import { fetchRepoStars, fetchGitHubContributions } from "@/api/github";
 
 const sectionIds = {
   experience: 'experience',
@@ -17,16 +19,65 @@ const sectionIds = {
   setup: 'gear',
 };
 
-export default function Home() {
+export default async function Home() {
+  // 1. Fetch GitHub stats on the server
+  const stars = await fetchRepoStars();
+  const contributions = await fetchGitHubContributions();
+
+  // 2. Load Blogs dynamically on the server
+  const blogSlugs = await getMarkdownSlugs("blog");
+  const blogs = await Promise.all(
+    blogSlugs.map(async (slug) => {
+      const content = await getMarkdownContent("blog", slug);
+      return {
+        slug,
+        title: content?.meta.title || slug,
+        description: content?.meta.description || "",
+        image: content?.meta.image || "",
+        tags: content?.meta.tags || [],
+        date: content?.meta.date || "",
+        formattedDate: content?.meta.formattedDate || "",
+      };
+    })
+  );
+  blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // 3. Load Projects dynamically on the server
+  const projectSlugs = await getMarkdownSlugs("projects");
+  const projects = await Promise.all(
+    projectSlugs.map(async (slug) => {
+      const content = await getMarkdownContent("projects", slug);
+      return {
+        id: slug,
+        title: content?.meta.title || slug,
+        description: content?.meta.description || "",
+        img: {
+          src: content?.meta.image || "",
+          alt: content?.meta.title || slug,
+        },
+        links: {
+          website: content?.meta.live || "",
+          github: content?.meta.github || "",
+          details: `/projects/${slug}`,
+        },
+        technologies: (content?.meta.technologies || []).map((name: string) => ({ name })),
+        isWorking: content?.meta.status?.toLowerCase() === "completed",
+        isBuilding: content?.meta.status?.toLowerCase() === "in-progress" || content?.meta.status?.toLowerCase() === "building",
+        details: true,
+      };
+    })
+  );
+
   return (
     <main className="min-h-screen">
-      <Hero />
+      <Hero stars={stars} />
+      
       <section id={sectionIds.experience}>
         <ExperienceCard />
       </section>
 
       <section id={sectionIds.projects}>
-        <Project />
+        <Project projects={projects} />
       </section>
 
       <section id={sectionIds.skills}>
@@ -34,11 +85,11 @@ export default function Home() {
       </section>
 
       <section id={sectionIds.featured}>
-        <Featured />
+        <Featured contributions={contributions} />
       </section>
 
       <section id={sectionIds.blog}>
-        <Blog limit={2} />
+        <Blog blogs={blogs} limit={2} />
       </section>
 
       <section id={sectionIds.cta}>
