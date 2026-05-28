@@ -1,7 +1,7 @@
 import { Client, Databases, ID } from "appwrite";
 
-const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
-const ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT;
+const PROJECT_ID = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
+const ENDPOINT = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT;
 
 if (!PROJECT_ID || !ENDPOINT) {
   console.warn("Appwrite credentials not configured");

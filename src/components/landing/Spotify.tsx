@@ -27,7 +27,7 @@ const Spotify = () => {
   const { data, loading, error } = useSpotify();
   const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const discordId = import.meta.env.VITE_DISCORD_ID;
+  const discordId = process.env.NEXT_PUBLIC_DISCORD_ID;
 
   // Handle clicking outside the expanded card to close it
   useEffect(() => {

@@ -36,7 +36,7 @@ export function useSpotify(): UseSpotifyReturn {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const discordId = import.meta.env.VITE_DISCORD_ID;
+  const discordId = process.env.NEXT_PUBLIC_DISCORD_ID;
 
   const fetchLanyardData = useCallback(async () => {
     if (!discordId) {

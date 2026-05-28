@@ -61,8 +61,8 @@ export default function Contact() {
 
     try {
       await databases.createDocument(
-        import.meta.env.VITE_APPWRITE_DATABASE_ID,
-        import.meta.env.VITE_APPWRITE_TABLE_ID,
+        process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!,
+        process.env.NEXT_PUBLIC_APPWRITE_TABLE_ID!,
         ID.unique(),
         {
           name: data.name,
