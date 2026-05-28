@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import RepeatSeparator from '../ui/repeat-separator';
 import SectionHeading from '../common/SectionHeading';
 
@@ -13,7 +13,7 @@ const CTA = () => {
         </p>
         <div className="mt-4 flex w-full justify-center sm:mt-0 sm:w-auto sm:justify-end">
           <div className="inset-shadow group inline-flex cursor-pointer items-center self-end rounded-md border border-black/10 bg-black/3 px-2 py-1 text-sm text-black shadow-md transition-all dark:border-white/15 dark:bg-white/15 dark:text-white dark:shadow-[0_0_5px_rgba(255,255,255,0.1)]">
-            <Link to={'/contact'}>
+            <Link href={'/contact'}>
               <div className="relative z-20 flex items-center gap-2 transition-all duration-300 group-hover:gap-8">
                 <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full">
                   <img

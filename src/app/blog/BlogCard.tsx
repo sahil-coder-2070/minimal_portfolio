@@ -1,5 +1,5 @@
 import Container from '@/components/layouts/Container';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion as Motion } from 'motion/react';
 import { BlogCardData } from '@/config/blog/BlogCardData';
 import { ArrowRight, CalendarSearch } from 'lucide-react';
@@ -50,7 +50,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                     <div className="flex h-full flex-col justify-between gap-2 p-2">
                       <div className="space-y-2">
                         <h3 className="text-lg leading-snug font-medium text-balance">
-                          <Link to={`/blogs/${items.slug}`}>
+                          <Link href={`/blogs/${items.slug}`}>
                             <span className="absolute inset-0" aria-hidden="true"></span>
                             {items.title}
                           </Link>
@@ -91,7 +91,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                               <time dateTime={items.date}>{items.formattedDate}</time>
                             </dd>
                           </dl>
-                          <Link to={`/blogs/${items.slug}`}>
+                          <Link href={`/blogs/${items.slug}`}>
                             <div className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors duration-200">
                               <span>Read More</span>
                               <ArrowRight className="size-3.5" />

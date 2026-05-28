@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 import matter from "gray-matter";
 
@@ -57,7 +57,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
               asChild
               className="group h-auto w-full justify-start p-4 text-left"
             >
-              <Link to={`/projects/${previous.slug}`}>
+              <Link href={`/projects/${previous.slug}`}>
                 <div className="flex items-center gap-3">
                   <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
                   <div>
@@ -80,7 +80,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
               asChild
               className="group h-auto w-full justify-end p-4 text-right"
             >
-              <Link to={`/projects/${next.slug}`}>
+              <Link href={`/projects/${next.slug}`}>
                 <div className="flex items-center gap-3">
                   <div>
                     <div className="text-muted-foreground text-xs">

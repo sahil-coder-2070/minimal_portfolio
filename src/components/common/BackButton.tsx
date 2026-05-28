@@ -1,15 +1,17 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Undo2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 export function BackButton({ text = "Go Back" }) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="mt-20 mb-10 flex items-center">
       <Button
         variant="outline"
-        onClick={() => navigate(-1)}
+        onClick={() => router.back()}
         className="flex items-center gap-2"
       >
         <Undo2 className="size-4" />

@@ -3,7 +3,7 @@ import Container from "@/components/layouts/Container";
 import { Separator } from "@/components/ui/separator";
 import { devices, software, webExtensions } from "@/config/Gear";
 import { ArrowUpRight, Monitor, Puzzle } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 
 
 export default function GearsPage() {
@@ -56,7 +56,7 @@ export default function GearsPage() {
                     <span className="text-secondary text-sm">{index + 1}</span>
                   </div>
                   <h3 className="text-secondary ml-4 flex items-center gap-1 text-sm">
-                    <Link target="_blank" to={extension.href}>
+                    <Link target="_blank" href={extension.href}>
                       {extension.name}
                     </Link>
                     <ArrowUpRight className="size-4" />
@@ -84,7 +84,7 @@ export default function GearsPage() {
                     <span className="text-secondary text-sm">{index + 1}</span>
                   </div>
                   <h3 className="text-secondary ml-4 flex items-center gap-1 text-sm">
-                    <Link target="_blank" to={app.href}>
+                    <Link target="_blank" href={app.href}>
                       {app.name}
                     </Link>
                     <ArrowUpRight className="size-4" />

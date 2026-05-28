@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
@@ -44,7 +44,7 @@ export function CommandMany({
   const setOpen =
     externalOnOpenChange !== undefined ? externalOnOpenChange : setInternalOpen;
   const { setTheme } = useTheme();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -66,19 +66,19 @@ export function CommandMany({
       switch (e.key.toLowerCase()) {
         case "h":
           setOpen(false);
-          navigate("/");
+          router.push("/");
           break;
         case "w":
           setOpen(false);
-          navigate("/work");
+          router.push("/work");
           break;
         case "p":
           setOpen(false);
-          navigate("/projects");
+          router.push("/projects");
           break;
         case "b":
           setOpen(false);
-          navigate("/blogs");
+          router.push("/blogs");
           break;
         case "d":
           setTheme("dark");
@@ -94,7 +94,7 @@ export function CommandMany({
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [open, setTheme, navigate]);
+  }, [open, setTheme, router]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -122,7 +122,7 @@ export function CommandMany({
           <CommandGroup heading="Navigation">
               <CommandItem
                 onSelect={() => {
-                  navigate("/");
+                  router.push("/");
                   setOpen(false);
                 }}
               >
@@ -132,7 +132,7 @@ export function CommandMany({
               </CommandItem>
               <CommandItem
                 onSelect={() => {
-                  navigate("/work");
+                  router.push("/work");
                   setOpen(false);
                 }}
               >
@@ -142,7 +142,7 @@ export function CommandMany({
               </CommandItem>
               <CommandItem
                 onSelect={() => {
-                  navigate("/projects");
+                  router.push("/projects");
                   setOpen(false);
                 }}
               >
@@ -152,7 +152,7 @@ export function CommandMany({
               </CommandItem>
               <CommandItem
                 onSelect={() => {
-                  navigate("/blogs");
+                  router.push("/blogs");
                   setOpen(false);
                 }}
               >
@@ -168,7 +168,7 @@ export function CommandMany({
                 <CommandItem
                   key={project.id}
                   onSelect={() => {
-                    navigate(project.links.details);
+                    router.push(project.links.details);
                     setOpen(false);
                   }}
                 >
@@ -184,7 +184,7 @@ export function CommandMany({
                 <CommandItem
                   key={blog.slug}
                   onSelect={() => {
-                    navigate(`/blogs/${blog.slug}`);
+                    router.push(`/blogs/${blog.slug}`);
                     setOpen(false);
                   }}
                 >

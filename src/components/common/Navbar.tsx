@@ -1,6 +1,8 @@
+"use client";
+
 import { useState } from 'react';
 import ThemeToggel from './ThemeToggel';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Container from '../layouts/Container';
 import { motion } from 'motion/react';
 import { CommandMany } from './CommandMany';
@@ -39,7 +41,7 @@ export const Navbar = () => {
                     return (
                       <Link
                         key={items.name}
-                        to={items.href}
+                        href={items.href}
                         className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
                       >
                         {' '}
@@ -75,13 +77,13 @@ export const Navbar = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" side="top" sideOffset={16} className="w-48">
             <DropdownMenuItem>
-              <Link to="/" className="w-full">
+              <Link href="/" className="w-full">
                 Home
               </Link>
             </DropdownMenuItem>
             {navList.map((items) => (
               <DropdownMenuItem key={items.name}>
-                <Link to={items.href} className="w-full">
+                <Link href={items.href} className="w-full">
                   {items.name}
                 </Link>
               </DropdownMenuItem>

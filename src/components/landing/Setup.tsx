@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import SectionHeading from '../common/SectionHeading';
 import Container from '../layouts/Container';
 import { ArrowUpRight, Code } from 'lucide-react';
@@ -38,7 +38,7 @@ export default function Setup() {
                 {/* Content Container */}
                 <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
                   <h3 className="leading-snug font-medium text-balance">
-                    <Link to={item.href}>
+                    <Link href={item.href}>
                       <span className="absolute inset-0" aria-hidden="true"></span>
                       {item.name}
                     </Link>

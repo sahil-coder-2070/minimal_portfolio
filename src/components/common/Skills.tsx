@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 
 interface SkillProps {
   name?: string;
@@ -11,7 +11,7 @@ interface SkillProps {
 export default function Skill({ name, href, children, className }: SkillProps) {
   return (
     <Link
-      to={href ?? ""}
+      href={href ?? ""}
       target="_blank"
       className={`inline-flex items-center self-end rounded-md border border-black/10 bg-black/2 px-2 py-1 text-sm text-black dark:border-white/15 dark:bg-white/5 dark:text-white ${className}`}
     >

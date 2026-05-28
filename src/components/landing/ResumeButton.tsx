@@ -1,7 +1,7 @@
 import SendIcon from '@/components/icons/social/SendIcon';
 import Cv from '@/components/icons/social/Cv';
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 const ResumeButton = () => {
@@ -94,7 +94,7 @@ const ResumeButton = () => {
                           {item.name}
                         </a>
                       ) : (
-                        <Link to={item.href}>
+                        <Link href={item.href}>
                           <span className="absolute inset-0" aria-hidden="true" />
                           {item.name}
                         </Link>

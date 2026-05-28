@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import { motion as Motion } from "motion/react";
 
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 
 const SocialLinks = () => {
   return (
@@ -24,7 +24,7 @@ const SocialLinks = () => {
         <Tooltip key={link.name} delayDuration={0}>
           <TooltipTrigger asChild>
             <Link
-              to={link.href}
+              href={link.href}
               key={link.name}
               className="text-secondary flex items-center gap-2"
             >

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import Container from '@/components/layouts/Container';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ProjectCardData } from '@/config/projects/ProjectCardData';
 import { cn } from '@/lib/utils';
 import { Github } from '@/lib/techIcons';
@@ -45,7 +45,7 @@ const ProjectCard = ({
                   <div className="relative flex flex-1 flex-col gap-1">
                     {/* Card Body wrapping screenshot and info (links to detailed slug) */}
                     <Link
-                      to={items.projectDetailsPageSlug}
+                      href={items.projectDetailsPageSlug}
                       className="flex flex-1 flex-col gap-1 text-left hover:no-underline"
                     >
                       <img
