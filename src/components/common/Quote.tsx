@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { quotes } from "@/config/Quote";
 import { motion as Motion } from "motion/react";

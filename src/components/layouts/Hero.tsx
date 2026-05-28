@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import Container from './Container';
 import BioText from '../landing/BioText';

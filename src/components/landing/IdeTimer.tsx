@@ -1,10 +1,20 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const IdeTimer = () => {
-  const [timeSpent, setTimeSpent] = useState(
-    () => parseInt(localStorage.getItem("timeSpent")) || 0,
-  );
-  const [online, setOnline] = useState(navigator.onLine);
+  const [timeSpent, setTimeSpent] = useState(() => {
+    if (typeof window !== "undefined") {
+      return parseInt(localStorage.getItem("timeSpent")) || 0;
+    }
+    return 0;
+  });
+  const [online, setOnline] = useState(() => {
+    if (typeof window !== "undefined") {
+      return navigator.onLine;
+    }
+    return true;
+  });
 
   useEffect(() => {
     let timer;

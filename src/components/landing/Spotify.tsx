@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect } from 'react';
 import { useSpotify } from '@/hooks/useSpotify';
 import { motion as Motion, AnimatePresence } from 'motion/react';
