@@ -2,6 +2,7 @@ import SendIcon from '@/components/icons/social/SendIcon';
 import Cv from '@/components/icons/social/Cv';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 const ResumeButton = () => {
@@ -47,13 +48,12 @@ const ResumeButton = () => {
   const renderIcon = (item: (typeof items)[0]) => {
     if (typeof item.icon === 'string') {
       return (
-        <img
+        <Image
           src={item.icon}
           alt={item.name}
           className="size-8 rounded-lg object-cover select-none"
-          loading="lazy"
-          width="32"
-          height="32"
+          width={32}
+          height={32}
         />
       );
     }

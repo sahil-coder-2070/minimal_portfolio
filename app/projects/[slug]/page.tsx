@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getMarkdownContent, getMarkdownSlugs } from "@/lib/markdown";
 import Container from "@/components/layouts/Container";
 import { BackButton } from "@/components/common/BackButton";
@@ -85,10 +86,12 @@ export default async function ProjectPage({
       <header className="mb-8 space-y-6">
         {projectMeta.image && (
           <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">
-            <img
+            <Image
               src={projectMeta.image}
               alt={projectMeta.title}
-              className="object-cover w-full h-full"
+              fill
+              priority
+              className="object-cover"
             />
           </div>
         )}

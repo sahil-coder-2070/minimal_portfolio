@@ -25,6 +25,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="theme-custom" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var key = "vite-ui-theme";
+                  var theme = localStorage.getItem(key);
+                  if (theme === "dark" || (!theme && "dark" === "dark")) {
+                    document.documentElement.classList.add("dark");
+                  } else if (theme === "light") {
+                    document.documentElement.classList.add("light");
+                  } else if (theme === "system") {
+                    var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    document.documentElement.classList.add(dark ? "dark" : "light");
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} font-sans antialiased min-h-screen`}>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <div className="min-h-screen">

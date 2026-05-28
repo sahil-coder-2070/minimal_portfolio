@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface ImageProps {
   src: string;
@@ -20,10 +21,12 @@ interface CodeProps {
 export const BlogComponents = {
   // Image tag
   img: ({ src, alt, ...props }: ImageProps) => (
-    <img
+    <Image
       src={src}
       alt={alt}
-      style={{ maxWidth: "100%", borderRadius: "8px", margin: "1rem 0" }}
+      width={800}
+      height={450}
+      style={{ maxWidth: "100%", borderRadius: "8px", margin: "1rem 0", height: "auto" }}
       {...props}
     />
   ),

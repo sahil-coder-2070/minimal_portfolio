@@ -1,5 +1,6 @@
 import Container from '@/components/layouts/Container';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion as Motion } from 'motion/react';
 import { BlogCardData } from '@/config/blog/BlogCardData';
 import { ArrowRight, CalendarSearch } from 'lucide-react';
@@ -33,12 +34,10 @@ const BlogCard = ({ data = BlogCardData }) => {
                   <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
                     {/* Image container */}
                     <div className="relative select-none [--image-radius:var(--radius-xl)]">
-                      <img
+                      <Image
                         alt={items.title}
-                        loading="lazy"
                         width={1200}
                         height={630}
-                        decoding="async"
                         className="object-fit aspect-1200/630 rounded-[var(--image-radius)]"
                         style={{ color: 'transparent' }}
                         src={items.image}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Container from './Container';
 import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
@@ -31,9 +32,11 @@ const Hero = () => {
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
             <div className="box-border h-30 w-30 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white">
-              <img
-                src="./myavart.png"
+              <Image
+                src="/myavart.png"
                 alt="Avatar"
+                width={120}
+                height={120}
                 className="box-border h-30 scale-105 object-cover"
               />
             </div>

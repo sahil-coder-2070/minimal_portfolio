@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import Container from '@/components/layouts/Container';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ProjectCardData } from '@/config/projects/ProjectCardData';
 import { cn } from '@/lib/utils';
 import { Github } from '@/lib/techIcons';
@@ -48,13 +49,11 @@ const ProjectCard = ({
                       href={items.projectDetailsPageSlug}
                       className="flex flex-1 flex-col gap-1 text-left hover:no-underline"
                     >
-                      <img
+                      <Image
                         alt={items.img.alt}
                         src={items.img.src}
-                        loading="lazy"
                         width={1200}
                         height={630}
-                        decoding="async"
                         className="h-52 w-full rounded-lg object-cover object-top"
                       />
 

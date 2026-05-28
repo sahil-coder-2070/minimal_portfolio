@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import RepeatSeparator from '../ui/repeat-separator';
 import SectionHeading from '../common/SectionHeading';
 
@@ -16,7 +17,7 @@ const CTA = () => {
             <Link href={'/contact'}>
               <div className="relative z-20 flex items-center gap-2 transition-all duration-300 group-hover:gap-8">
                 <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     alt="dsf"
                     width={20}
                     height={20}

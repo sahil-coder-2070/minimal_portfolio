@@ -1,5 +1,6 @@
 import { ExperiencePositionItem } from './ExperiencePositionItem';
 import type { Experience } from './types';
+import Image from 'next/image';
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
@@ -8,13 +9,11 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         {/* Company Logo Icon Container */}
         <div className="[&_svg]:text-muted-foreground flex size-6 shrink-0 items-center justify-center select-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5">
           {experience.companyLogo ? (
-            <img
+            <Image
               alt={`${experience.companyName} logo`}
               aria-hidden="true"
-              loading="lazy"
-              width="24"
-              height="24"
-              decoding="async"
+              width={24}
+              height={24}
               className="rounded-full"
               style={{ color: 'transparent' }}
               src={experience.companyLogo}

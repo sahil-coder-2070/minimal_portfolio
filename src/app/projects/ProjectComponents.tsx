@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 import Bun from "@/components/icons/tech/Bun";
 import JavaScript from "@/components/icons/tech/JavaScript";
 import MongoDB from "@/components/icons/tech/MongoDB";
@@ -172,7 +173,7 @@ interface CodeProps {
 
 export const ProjectComponents = {
   img: ({ src, alt, ...props }: ImageProps) => (
-    <img
+    <Image
       src={src}
       alt={alt}
       width={800}
