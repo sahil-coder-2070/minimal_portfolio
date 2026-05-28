@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import Contact from "@/components/pages/Contact";
+
+export const metadata: Metadata = {
+  title: "Contact - Get in Touch",
+  description: "Reach out to me for project discussions, collaborations, or inquiries.",
+};
+
+export default function ContactPage() {
+  return <Contact />;
+}
