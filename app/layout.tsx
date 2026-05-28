@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="theme-custom" suppressHydrationWarning>
       <body className={`${geistSans.variable} font-sans antialiased min-h-screen`}>
-        <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <div className="min-h-screen">
             <Container>
               <Layout>
