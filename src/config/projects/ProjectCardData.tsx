@@ -271,4 +271,85 @@ export const ProjectCardData = [
     details: true,
     projectDetailsPageSlug: "/projects/tcxcommit",
   },
+  {
+    id: 7,
+    title: "Mechanical Keyboard",
+    img: {
+      src: "/projects/comingsoon.avif",
+      alt: "Mechanical Keyboard project image",
+      width: 1920,
+      height: 1080,
+    },
+    description:
+      "An interactive 2D/3D mechanical keyboard simulator package and landing page for React. Experience high-fidelity clicky switch sounds, multi-casing themes (Dolch, Sand, Scarlet, etc.), mobile/web haptics, and custom volume levels.",
+    links: {
+      website: "https://mechanical-keyboard-simulator.vercel.app/",
+      github: "https://github.com/sahilcodexx/MechanicalKeyboard",
+      details: "/projects/mechanicalkeyboard",
+    },
+    technologies: [
+      {
+        name: "React",
+        icon: <ReactJs />,
+        href: "https://reactjs.org/",
+      },
+      {
+        name: "TypeScript",
+        icon: <TypeScript />,
+        href: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "TailwindCSS",
+        icon: <TailwindCss />,
+        href: "https://tailwindcss.com/",
+      },
+      {
+        name: "Vite",
+        icon: <Vite />,
+        href: "https://vitejs.dev/",
+      },
+    ],
+    isWorking: true,
+    isBulding: false,
+    details: true,
+    projectDetailsPageSlug: "/projects/mechanicalkeyboard",
+  },
+  {
+    id: 8,
+    title: "Bookmrk",
+    img: {
+      src: "/projects/comingsoon.avif",
+      alt: "Bookmrk project image",
+      width: 1920,
+      height: 1080,
+    },
+    description:
+      "A modern, privacy-first local bookmark and tab manager Chrome extension and web dashboard. Keep your links organized in boards, utilize search command palettes, assign custom keyboard shortcuts, and export bookmarks cleanly.",
+    links: {
+      website: "https://bookmrk.vercel.app/",
+      github: "https://github.com/sahilcodexx/Bookmrk",
+      details: "/projects/bookmrk",
+    },
+    technologies: [
+      {
+        name: "Next.js",
+        icon: <NextJs />,
+        href: "https://nextjs.org/",
+      },
+      {
+        name: "TypeScript",
+        icon: <TypeScript />,
+        href: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "TailwindCSS",
+        icon: <TailwindCss />,
+        href: "https://tailwindcss.com/",
+      },
+    ],
+    isWorking: false,
+    isBulding: true,
+    details: true,
+    projectDetailsPageSlug: "/projects/bookmrk",
+  },
 ];

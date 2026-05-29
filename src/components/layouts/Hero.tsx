@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Image from 'next/image';
 import Container from './Container';
@@ -16,7 +16,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
   const visitorCount = useVisitorCount();
 
   return (
-    <Container className={`flex flex-col items-start justify-center `}>
+    <Container className={`flex flex-col items-start justify-center`}>
       <div className="flex h-full w-full">
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
@@ -54,7 +54,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
                 <p>{stars} Stars on GitHub</p>
               </TooltipContent>
             </Tooltip>
-            <span className="flex items-center gap-1 text-sm text-neutral-400 select-none dark:text-neutral-400 pr-5">
+            <span className="flex items-center gap-1 pr-5 text-sm text-neutral-400 select-none dark:text-neutral-400">
               <Eye className="h-5 w-5" />
               {visitorCount !== null ? `${visitorCount.toLocaleString()} visitors` : '—'}
             </span>

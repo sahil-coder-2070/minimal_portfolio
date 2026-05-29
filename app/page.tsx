@@ -95,7 +95,7 @@ export default async function Home() {
       </section>
 
       <section id={sectionIds.blog}>
-        <Blog blogs={blogs} limit={2} />
+        <Blog blogs={blogs} limit={4} />
       </section>
 
       <section id={sectionIds.cta}>
