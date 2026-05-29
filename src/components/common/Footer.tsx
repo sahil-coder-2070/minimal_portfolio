@@ -1,13 +1,13 @@
 import { footerConfig } from '@/config/Footer';
 import Container from '../layouts/Container';
 import RepeatSeparator from '../ui/repeat-separator';
-import TopBanner from '../ui/top-banner';
+import BottomBanner from '../ui/bottom-banner';
 
 const Footer = () => {
   return (
     <>
       <RepeatSeparator />
-      <Container className="py-16">
+      <Container className="py-8">
         <div className="flex flex-col items-center justify-center">
           <p className="text-secondary text-center text-sm">
             {footerConfig.text} <b>{footerConfig.developer}</b> <br /> &copy;{' '}
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
       </Container>
       <RepeatSeparator />
-      <TopBanner />
+      <BottomBanner />
     </>
   );
 };

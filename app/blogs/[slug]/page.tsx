@@ -65,7 +65,7 @@ export default async function BlogPostPage({
   return (
     <Container>
       <BackButton text="Back to Blog" />
-      <article className="mx-auto max-w-4xl">
+      <article className="mx-auto max-w-4xl px-5">
         <header className="mb-8 space-y-6">
           {meta.image && (
             <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">

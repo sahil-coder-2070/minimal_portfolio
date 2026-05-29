@@ -8,6 +8,7 @@ import CTA from '@/components/landing/CTA';
 import Setup from '@/components/landing/Setup';
 import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';
 import { fetchRepoStars, fetchGitHubContributions } from '@/api/github';
+import TopBanner from '@/components/ui/top-banner';
 
 const sectionIds = {
   experience: 'experience',
@@ -72,6 +73,8 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
+      <TopBanner />
+
       <Hero stars={stars} />
 
       <section id={sectionIds.experience}>

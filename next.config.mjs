@@ -11,6 +11,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cms.ramx.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ramx.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+      },
     ],
   },
 };

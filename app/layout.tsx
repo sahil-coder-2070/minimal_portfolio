@@ -4,7 +4,6 @@ import "@/index.css";
 import { ThemeProvider } from "@/components/landing/theme-provider";
 import Container from "@/components/layouts/Container";
 import Layout from "@/components/common/Layout";
-import TopBanner from "@/components/ui/top-banner";
 import { Quote } from "@/components/common/Quote";
 import Footer from "@/components/common/Footer";
 
@@ -52,7 +51,6 @@ export default function RootLayout({
           <div className="min-h-screen">
             <Container>
               <Layout>
-                <TopBanner />
                 {children}
                 <Quote />
                 <Footer />

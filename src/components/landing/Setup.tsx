@@ -26,28 +26,28 @@ export default function Setup() {
       <RepeatSeparator />
       <Container>
         <SectionHeading heading="Setup" />
-        <div className=" flex flex-col">
+        <div className="flex flex-col">
           {setupItems.map((item) => (
-            <div key={item.name} className="border-y border-line">
-              <div className="relative flex items-center pr-2 hover:bg-accent-muted group transition-colors duration-250">
+            <div key={item.name} className="border-line border-y">
+              <div className=" hover:bg-neutral-100 dark:hover:bg-neutral-900/40 group relative flex items-center pr-2 transition-colors duration-250">
                 {/* Icon Container */}
-                <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg select-none border border-muted-foreground/15 ring-1 ring-line ring-offset-1 ring-offset-background bg-muted text-muted-foreground [&_svg]:size-4">
+                <div className="border-muted-foreground/15 ring-line ring-offset-background bg-muted text-muted-foreground mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border ring-1 ring-offset-1 select-none [&_svg]:size-4">
                   {item.icon}
                 </div>
 
                 {/* Content Container */}
-                <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+                <div className="border-line flex-1 space-y-1 border-l border-dashed p-4 pr-2">
                   <h3 className="leading-snug font-medium text-balance">
                     <Link href={item.href}>
                       <span className="absolute inset-0" aria-hidden="true"></span>
                       {item.name}
                     </Link>
                   </h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
                 </div>
 
                 {/* Arrow Icon */}
-                <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
+                <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           ))}
