@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import ThemeToggel from './ThemeToggel';
@@ -16,7 +16,6 @@ import {
 import { Button } from '@/components/ui/button';
 
 const navList = [
-  { name: 'Work', href: '/work' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'Projects', href: '/projects' },
 ];
@@ -33,7 +32,9 @@ export const Navbar = () => {
               className={`before:bg-border after:bg-border relative m-auto mt-1 flex w-full max-w-screen items-center justify-between gap-2 overflow-visible px-4 py-1.5 transition-shadow duration-300 before:absolute before:top-0 before:left-1/2 before:z-[1] before:h-px before:w-screen before:-translate-x-1/2 before:content-[''] after:absolute after:bottom-0 after:left-1/2 after:z-[1] after:h-px after:w-screen after:-translate-x-1/2 after:content-[''] data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]`}
             >
               <div>
-                <h2>SS</h2>
+                <Link href="/"> 
+                  <h2>Sahil</h2>
+                </Link>
               </div>
               <div className="flex items-center gap-4">
                 <div className="hidden items-center gap-3 md:flex">

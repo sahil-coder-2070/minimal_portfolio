@@ -1,7 +1,7 @@
 ---
 title: "Routing in Next.js (App Router) - A Complete Guide (2025)"
 description: "A guide to routing in Next.js (App Router) covering Catch-All Segments, Dynamic Routes, Nested Routes, and more."
-image: "https://ramx.in/_next/image?url=https%3A%2F%2Fcms.ramx.in%2Fuploads%2Flarge_routing_in_nextjs_6a10b19a9c.png&w=1920&q=75"
+image: "/blogimage/approuter.png"
 tags: ["frontend", "development", "nextjs"]
 date: "2025-03-12"
 isPublished: true

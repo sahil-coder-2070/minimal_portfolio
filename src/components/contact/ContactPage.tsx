@@ -1,18 +1,12 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import * as z from "zod";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import * as z from 'zod';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -20,29 +14,30 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import Chat from "@/components/icons/social/Chat";
-import { Textarea } from "@/components/ui/textarea";
-import Container from "@/components/layouts/Container";
-import { Separator } from "@/components/ui/separator";
-import { databases, ID } from "@/lib/appwrite";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import Chat from '@/components/icons/social/Chat';
+import { Textarea } from '@/components/ui/textarea';
+import Container from '@/components/layouts/Container';
+import { Separator } from '@/components/ui/separator';
+import { databases, ID } from '@/lib/appwrite';
+import SectionHeading from '../common/SectionHeading';
 
 // Zod validation schema
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
   phone: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 characters." })
+    .min(10, { message: 'Phone number must be at least 10 characters.' })
     .regex(/^[+]?[1-9][\d]{0,15}$/, {
-      message: "Please enter a valid phone number.",
+      message: 'Please enter a valid phone number.',
     }),
   message: z
     .string()
-    .min(10, { message: "Message must be at least 10 characters." })
-    .max(1000, { message: "Message must not exceed 1000 characters." }),
+    .min(10, { message: 'Message must be at least 10 characters.' })
+    .max(1000, { message: 'Message must not exceed 1000 characters.' }),
 });
 
 export default function Contact() {
@@ -51,10 +46,10 @@ export default function Contact() {
   const form = useForm({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
     },
   });
 
@@ -71,39 +66,37 @@ export default function Contact() {
           email: data.email,
           phone: data.phone,
           message: data.message,
-        },
+        }
       );
 
-      toast.success("Message sent successfully!");
+      toast.success('Message sent successfully!');
       form.reset();
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+      toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <Container className="py-16">
-      <div className="space-y-8">
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Contact
-          </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Get in touch with me. I will get back to you as soon as possible.
-          </p>
+    <Container className="mt-5">
+      <div>
+        <div>
+          <SectionHeading
+            classname=" text-neutral-400 dark:text-neutral-500 font-medium "
+            heading="Contact"
+          />
+          <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
+            Let’s talk about your next project
+          </h2>
         </div>
       </div>
 
-      <Separator />
-
-      <Card className="border-none bg-transparent shadow-none">
+      <Card className="border-none bg-transparent shadow-none my-40">
         <CardHeader>
           <CardTitle>Send me a message</CardTitle>
           <CardDescription>
-            Fill out the form below and I will get back to you as soon as
-            possible.
+            Fill out the form below and I will get back to you as soon as possible.
           </CardDescription>
         </CardHeader>
 
@@ -147,11 +140,7 @@ export default function Contact() {
                   <FormItem>
                     <FormLabel>Email *</FormLabel>
                     <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="your.email@example.com"
-                        {...field}
-                      />
+                      <Input type="email" placeholder="your.email@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
