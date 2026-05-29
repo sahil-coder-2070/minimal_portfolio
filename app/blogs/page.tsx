@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Blogs from "@/components/pages/Blogs";
+import Blogs from "@/components/blog/BlogList";
 import { getMarkdownSlugs, getMarkdownContent } from "@/lib/markdown";
 
 export const metadata: Metadata = {

@@ -4,7 +4,7 @@ import Html from "@/components/icons/tech/Html";
 import JavaScript from "@/components/icons/tech/JavaScript";
 import TailwindCss from "@/components/icons/tech/TailwindCss";
 
-import type { Experience } from "@/components/Experience/types";
+import type { Experience } from "./types";
 
 const ExperienceCardData: Experience[] = [
   {

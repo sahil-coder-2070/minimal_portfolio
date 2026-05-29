@@ -12,7 +12,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -20,13 +20,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import Chat from "@/components/icons/social/Chat";
-import { Textarea } from "../ui/textarea";
-import Container from "../layouts/Container";
-import { Separator } from "../ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import Container from "@/components/layouts/Container";
+import { Separator } from "@/components/ui/separator";
 import { databases, ID } from "@/lib/appwrite";
 
 // Zod validation schema

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/layouts/Container";
 import { Separator } from "@/components/ui/separator";
-import ExperienceContent from "@/components/Experience/ExperienceContent";
+import ExperienceContent from "@/components/experience/ExperienceContent";
 
 export const metadata: Metadata = {
   title: "Work Experience - Professional Journey",

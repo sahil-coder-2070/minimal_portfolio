@@ -1,5 +1,5 @@
 import Container from "@/components/layouts/Container";
-import ExperienceCardData from "@/components/data/ExperienceCardData";
+import ExperienceCardData from "./ExperienceCardData";
 import { ExperienceItem } from "./ExperienceItem";
 
 const ExperienceContent = () => {

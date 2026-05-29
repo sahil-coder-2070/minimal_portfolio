@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Container from "../layouts/Container";
-import { Separator } from "../ui/separator";
+import Container from "@/components/layouts/Container";
+import { Separator } from "@/components/ui/separator";
 import ProjectCard from "@/components/projects/ProjectCard";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectItem {
   id: string;

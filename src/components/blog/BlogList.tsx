@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../layouts/Container";
-import { Separator } from "../ui/separator";
+import Container from "@/components/layouts/Container";
+import { Separator } from "@/components/ui/separator";
 import BlogCard from "@/components/blog/BlogCard";
 interface BlogItem {
   slug: string;

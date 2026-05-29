@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Projects from "@/components/pages/Projects";
+import Projects from "@/components/projects/ProjectList";
 import { getMarkdownSlugs, getMarkdownContent } from "@/lib/markdown";
 
 export const metadata: Metadata = {

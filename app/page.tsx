@@ -1,5 +1,5 @@
 import Hero from '@/components/layouts/Hero';
-import ExperienceCard from '@/components/Experience/ExperienceCard';
+import ExperienceCard from '@/components/experience/ExperienceCard';
 import Project from '@/components/projects/Project';
 import AboutMe from '@/components/landing/TechSkills';
 import Featured from '@/components/landing/Featured';
