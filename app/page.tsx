@@ -72,6 +72,14 @@ export default async function Home() {
     })
   );
 
+  // Sort projects ascendingly by their ID in ProjectCardData so that reverse() in ProjectCard renders newest first
+  const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
+  projects.sort((a, b) => {
+    const aData = ProjectCardData.find((p) => p.projectDetailsPageSlug?.endsWith(a.id) || p.links?.details?.endsWith(a.id));
+    const bData = ProjectCardData.find((p) => p.projectDetailsPageSlug?.endsWith(b.id) || p.links?.details?.endsWith(b.id));
+    return (aData?.id ?? 0) - (bData?.id ?? 0);
+  });
+
   return (
     <main className="min-h-screen">
       <TopBanner />

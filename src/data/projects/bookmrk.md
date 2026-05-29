@@ -32,7 +32,7 @@ A modern, keyboard-first, local-first bookmark manager and tab organizer. Built 
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 *   **Keyboard-First Navigation:** Open boards, switch tabs, search bookmarks, and edit links strictly using shortcuts and CMD+K command palette.
 *   **Visual Board Workspaces:** Group your bookmarks in clean visual cards and cards grids, creating workspaces for different projects, clients, or topics.
@@ -42,7 +42,7 @@ A modern, keyboard-first, local-first bookmark manager and tab organizer. Built 
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 *   **Frontend:** Next.js / React, TypeScript, Tailwind CSS.
 *   **Storage:** LocalStorage / IndexedDB.

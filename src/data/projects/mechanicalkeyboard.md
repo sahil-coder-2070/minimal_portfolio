@@ -33,7 +33,7 @@ An interactive, high-fidelity mechanical keyboard simulator developed with React
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 *   **Interactive Virtual Layout:** A fully interactive, responsive QWERTY layout matching standard 60%/65% mechanical keyboards.
 *   **Realistic Audio Engine:** Leveraging the **HTML5 Audio Context** to pre-decode and stream high-quality switch clacks, minimizing trigger latency.
@@ -43,7 +43,7 @@ An interactive, high-fidelity mechanical keyboard simulator developed with React
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 *   **Core:** React 19, TypeScript, Vite.
 *   **Audio Engine:** HTML5 AudioContext, Web Audio API buffers.
