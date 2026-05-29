@@ -81,9 +81,9 @@ export default async function ProjectPage({
   const projectMeta = meta as ProjectMeta;
 
   return (
-    <Container>
+    <Container className="px-5">
       <BackButton text="Back to Projects" />
-      <header className="mb-8 space-y-6">
+      <header className="mb-8 space-y-6 px-5">
         {projectMeta.image && (
           <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">
             <Image
@@ -96,7 +96,7 @@ export default async function ProjectPage({
           </div>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant={projectMeta.statusVariant} className="text-sm">
               {projectMeta.status
@@ -121,10 +121,10 @@ export default async function ProjectPage({
             {projectMeta.title}
           </h1>
 
-          <p className="text-muted-foreground text-xl">{projectMeta.description}</p>
+          <p className="text-muted-foreground text-xl ">{projectMeta.description}</p>
 
           {/* Project Meta Information Grid */}
-          <div className="bg-muted/20 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="bg-muted/20 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4 " >
             <div>
               <h5 className="text-muted-foreground text-sm font-semibold">
                 Timeline
@@ -159,7 +159,7 @@ export default async function ProjectPage({
           </div>
 
           {/* Links and Action Buttons */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 ">
             {projectMeta.live && (
               <a
                 href={projectMeta.live}
@@ -188,7 +188,7 @@ export default async function ProjectPage({
         <Separator />
       </header>
 
-      <div className="mb-8">
+      <div className="mb-8 px-5">
         <div className="bg-muted/20 rounded-lg border p-4">
           <h3 className="mb-3 text-lg font-semibold">Technology Stack</h3>
           <div className="flex flex-wrap gap-2">
@@ -207,7 +207,7 @@ export default async function ProjectPage({
 
       {/* Challenges & Learnings */}
       {(projectMeta.challenges?.length || projectMeta.learnings?.length) && (
-        <div className="mb-8 grid gap-6 md:grid-cols-2">
+        <div className="mb-8 grid gap-6 md:grid-cols-2 px-5">
           {projectMeta.challenges && projectMeta.challenges.length > 0 && (
             <div className="rounded-lg border border-yellow-200 bg-yellow-50/20 p-4 dark:border-yellow-800/40 dark:bg-yellow-950/10">
               <h3 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
@@ -249,7 +249,7 @@ export default async function ProjectPage({
       )}
 
       {/* Markdown Body Content */}
-      <div className="prose dark:prose-invert max-w-none">
+      <div className="prose dark:prose-invert max-w-none px-5">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}

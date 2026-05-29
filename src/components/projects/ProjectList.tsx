@@ -38,7 +38,10 @@ const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
       <Container className="mt-6">
         <div className="space-y-8">
           <div>
-            <SectionHeading classname=" text-neutral-400 dark:text-neutral-500 font-medium " heading="Projects" />
+            <SectionHeading
+              classname=" text-neutral-400 dark:text-neutral-500 font-medium "
+              heading="Projects"
+            />
             <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
               Showcase of my work
             </h2>

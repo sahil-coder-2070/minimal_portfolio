@@ -8,7 +8,7 @@ export function BackButton({ text = "Go Back" }) {
   const router = useRouter();
 
   return (
-    <div className="mt-20 mb-10 flex items-center">
+    <div className="mt-20 mb-10 flex items-center px-5">
       <Button
         variant="outline"
         onClick={() => router.back()}

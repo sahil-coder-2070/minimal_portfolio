@@ -1,7 +1,8 @@
-import React from "react";
-import Container from "@/components/layouts/Container";
-import { Separator } from "@/components/ui/separator";
-import BlogCard from "@/components/blog/BlogCard";
+import React from 'react';
+import Container from '@/components/layouts/Container';
+import { Separator } from '@/components/ui/separator';
+import BlogCard from '@/components/blog/BlogCard';
+import SectionHeading from '../common/SectionHeading';
 interface BlogItem {
   slug: string;
   title: string;
@@ -14,23 +15,17 @@ interface BlogItem {
 
 const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
   return (
-    <Container className={"py-16"}>
-
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Blogs
-          </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Thoughts, tutorials, and insights on engineering, and programming.
-          </p>
+    <Container className="mt-5">
+      <div>
+        <div>
+          <SectionHeading
+            classname=" text-neutral-400 dark:text-neutral-500 font-medium "
+            heading="blog"
+          />
+          <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
+            Showcase of Blogs
+          </h2>
         </div>
-      </div>
-      <Separator />
-      <div className="flex items-center gap-2">
-        <h3 className="text-2xl font-bold">Latest Posts</h3>
-        <span className="text-sm">({posts.length} posts)</span>
       </div>
       <div>
         <BlogCard data={posts} />

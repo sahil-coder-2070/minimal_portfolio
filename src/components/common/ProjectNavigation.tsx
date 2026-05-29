@@ -18,7 +18,7 @@ export function ProjectNavigation({ slug }: { slug?: string }) {
   if (!previous && !next) return null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-5 pb-4">
       <Separator />
 
       <div className="grid gap-4 md:grid-cols-2">
