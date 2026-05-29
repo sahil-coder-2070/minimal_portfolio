@@ -54,7 +54,7 @@ export const fetchGitHubContributions = async (): Promise<number> => {
     }
 
     return data.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? 0;
-  } catch (error) {
+  } catch {
     return 0;
   }
 };
@@ -78,7 +78,7 @@ export const fetchRepoStars = async (): Promise<number> => {
 
     const data: RepoResponse = await response.json();
     return data.stargazers_count ?? 0;
-  } catch (error) {
+  } catch {
     return 0;
   }
 };

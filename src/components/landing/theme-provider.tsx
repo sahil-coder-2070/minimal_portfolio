@@ -19,6 +19,11 @@ export function ThemeProvider({
   defaultTheme = "system" as Theme,
   storageKey = "vite-ui-theme",
   ...props
+}: {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+  [key: string]: any;
 }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
@@ -64,7 +69,6 @@ export function ThemeProvider({
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 

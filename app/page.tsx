@@ -9,6 +9,7 @@ import Setup from '@/components/landing/Setup';
 import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';
 import { fetchRepoStars, fetchGitHubContributions } from '@/api/github';
 import TopBanner from '@/components/ui/top-banner';
+import { formatDate } from '@/lib/utils';
 
 const sectionIds = {
   experience: 'experience',
@@ -37,7 +38,7 @@ export default async function Home() {
         image: content?.meta.image || '',
         tags: content?.meta.tags || [],
         date: content?.meta.date || '',
-        formattedDate: content?.meta.formattedDate || '',
+        formattedDate: content?.meta.formattedDate || (content?.meta.date ? formatDate(content.meta.date) : ''),
       };
     })
   );

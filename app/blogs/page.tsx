@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Blogs from "@/components/blog/BlogList";
 import { getMarkdownSlugs, getMarkdownContent } from "@/lib/markdown";
+import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Blog - Thoughts and Tutorials",
@@ -19,7 +20,7 @@ export default async function BlogsPage() {
         image: content?.meta.image || "",
         tags: content?.meta.tags || [],
         date: content?.meta.date || "",
-        formattedDate: content?.meta.formattedDate || "",
+        formattedDate: content?.meta.formattedDate || (content?.meta.date ? formatDate(content.meta.date) : ""),
       };
     })
   );

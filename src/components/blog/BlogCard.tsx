@@ -5,6 +5,7 @@ import { motion as Motion } from 'motion/react';
 import { BlogCardData } from '@/config/blog/BlogCardData';
 import { ArrowRight, CalendarSearch } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { formatDate } from '@/lib/utils';
 
 const isNew = (dateStr: string) => {
   const postDate = new Date(dateStr);
@@ -87,7 +88,9 @@ const BlogCard = ({ data = BlogCardData }) => {
                             <dt className="sr-only">Published on</dt>
                             <dd className="text-muted-foreground flex items-center gap-1.5 text-xs">
                               <CalendarSearch className="size-3.5" />
-                              <time dateTime={items.date}>{items.formattedDate}</time>
+                              <time dateTime={items.date}>
+                                {items.formattedDate || (items.date ? formatDate(items.date) : '')}
+                              </time>
                             </dd>
                           </dl>
                           <Link href={`/blogs/${items.slug}`}>

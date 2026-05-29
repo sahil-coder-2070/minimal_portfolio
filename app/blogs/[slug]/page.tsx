@@ -13,6 +13,7 @@ import { BlogComponents } from "@/components/blog/BlogComponent";
 import { BlogNavigation } from "@/components/common/BlogNavigation";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css";
+import { formatDate } from "@/lib/utils";
 
 // 1. Generate metadata for search engine optimization dynamically
 export async function generateMetadata({
@@ -71,7 +72,7 @@ export default async function BlogPostPage({
             <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">
               <Image
                 src={meta.image}
-                alt={meta.title}
+                alt={meta.title || slug}
                 fill
                 priority
                 className="object-cover"
@@ -96,7 +97,9 @@ export default async function BlogPostPage({
 
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <CalendarRange className="size-6" />
-              <time dateTime={meta.date}>{meta.date}</time>
+              <time dateTime={meta.date}>
+                {meta.formattedDate || (meta.date ? formatDate(meta.date) : "")}
+              </time>
             </div>
           </div>
 
@@ -107,7 +110,7 @@ export default async function BlogPostPage({
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight]}
-            components={BlogComponents}
+            components={BlogComponents as any}
           >
             {content}
           </ReactMarkdown>

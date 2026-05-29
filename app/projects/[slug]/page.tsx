@@ -88,7 +88,7 @@ export default async function ProjectPage({
           <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">
             <Image
               src={projectMeta.image}
-              alt={projectMeta.title}
+              alt={projectMeta.title || slug}
               fill
               priority
               className="object-cover"
@@ -253,7 +253,7 @@ export default async function ProjectPage({
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeHighlight]}
-          components={ProjectComponents}
+          components={ProjectComponents as any}
         >
           {content}
         </ReactMarkdown>

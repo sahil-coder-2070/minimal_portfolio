@@ -10,7 +10,7 @@ const ProjectCard = ({
   completed = ProjectCardData,
   limit,
 }: {
-  completed?: typeof ProjectCardData;
+  completed?: any[];
   limit?: number;
 }) => {
   const displayedProjects = useMemo(() => {
@@ -82,9 +82,8 @@ const ProjectCard = ({
                         {items.description}
                       </p>
 
-                      {/* Technologies list */}
                       <div className="flex flex-wrap gap-2 px-1">
-                        {items.technologies.slice(0, 4).map((tech, techIdx) => (
+                        {items.technologies.slice(0, 4).map((tech: any, techIdx: number) => (
                           <span
                             key={techIdx}
                             className="bg-background text-muted-foreground rounded-sm border px-1.5 py-0.5 text-xs shadow-xs select-none hover:shadow-none"

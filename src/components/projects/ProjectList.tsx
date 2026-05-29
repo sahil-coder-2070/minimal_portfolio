@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Container from '@/components/layouts/Container';
 import { Separator } from '@/components/ui/separator';
 import ProjectCard from '@/components/projects/ProjectCard';
@@ -28,10 +28,7 @@ interface ProjectItem {
 }
 
 const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
-  const [isSelected, setIsSelected] = useState<boolean | null>(null);
-
-  const filteredProjects =
-    isSelected === null ? projects : projects.filter((item) => item.isWorking === isSelected);
+  const filteredProjects = projects;
 
   return (
     <>

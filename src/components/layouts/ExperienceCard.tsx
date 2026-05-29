@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 const ExperienceCard = () => {
   return (
     <Container>
-      <SectionHeading subHeading="Featured" heading="Experience" />
+      <SectionHeading heading="Experience" />
     </Container>
   );
 };

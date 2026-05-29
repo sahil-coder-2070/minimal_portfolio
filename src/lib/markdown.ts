@@ -24,7 +24,7 @@ export async function getMarkdownContent(folder: string, slug: string): Promise<
       meta: data,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -36,7 +36,7 @@ export async function getMarkdownSlugs(folder: string): Promise<string[]> {
     return files
       .filter((file) => file.endsWith(".md"))
       .map((file) => file.replace(/\.md$/, ""));
-  } catch (error) {
+  } catch {
     return [];
   }
 }

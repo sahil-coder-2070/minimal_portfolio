@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 export default function Github({ className }: { className?: string }): React.JSX.Element {
   return (
     <svg
@@ -5,7 +7,7 @@ export default function Github({ className }: { className?: string }): React.JSX
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 496 512"
-      className="size-3.5"
+      className={cn("size-3.5", className)}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"

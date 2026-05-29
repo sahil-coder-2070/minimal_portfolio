@@ -84,7 +84,7 @@ export function useSpotify(): UseSpotifyReturn {
         }
         setError(null);
       }
-    } catch (e) {
+    } catch {
       // On API error, try to show last saved song at least
       const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (savedData) {

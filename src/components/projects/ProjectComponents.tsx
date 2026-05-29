@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Image from "next/image";
 import Bun from "@/components/icons/tech/Bun";
 import JavaScript from "@/components/icons/tech/JavaScript";
@@ -12,7 +12,7 @@ import TypeScript from "@/components/icons/tech/TypeScript";
 import { Badge } from "@/components/ui/badge";
 
 // Technology mapping
-const TechnologyComponents: Record<string, () => JSX.Element> = {
+const TechnologyComponents: Record<string, () => React.ReactNode> = {
   "Next.js": NextJS,
   nextjs: NextJS,
   React: ReactIcon,

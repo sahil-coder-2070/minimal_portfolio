@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const IdeTimer = () => {
-  const [timeSpent, setTimeSpent] = useState(() => {
+  const [timeSpent, setTimeSpent] = useState<number>(() => {
     if (typeof window !== "undefined") {
-      return parseInt(localStorage.getItem("timeSpent")) || 0;
+      return parseInt(localStorage.getItem("timeSpent") || "0", 10) || 0;
     }
     return 0;
   });
@@ -17,7 +17,7 @@ const IdeTimer = () => {
   });
 
   useEffect(() => {
-    let timer;
+    let timer: ReturnType<typeof setInterval> | undefined;
 
     const startTimer = () => {
       timer = setInterval(() => {
@@ -31,7 +31,7 @@ const IdeTimer = () => {
     };
 
     const stopTimer = () => {
-      clearInterval(timer);
+      if (timer) clearInterval(timer);
       setOnline(false);
     };
 
@@ -66,7 +66,7 @@ const IdeTimer = () => {
     };
   }, []);
 
-  const formatTime = (ms) => {
+  const formatTime = (ms: number) => {
     let totalSeconds = Math.floor(ms / 1000);
     const h = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;

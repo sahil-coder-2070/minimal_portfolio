@@ -9,7 +9,7 @@ import Footer from "@/components/common/Footer";
 
 const geistSans = Geist({
   variable: "--font-sans",
-  subsets: ["sans"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {

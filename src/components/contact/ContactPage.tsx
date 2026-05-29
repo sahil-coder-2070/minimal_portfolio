@@ -43,7 +43,7 @@ const contactFormSchema = z.object({
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: '',
@@ -71,7 +71,7 @@ export default function Contact() {
 
       toast.success('Message sent successfully!');
       form.reset();
-    } catch (error) {
+    } catch {
       toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -107,7 +107,7 @@ export default function Contact() {
                 <FormField
                   control={form.control}
                   name="name"
-                  render={({ field }) => (
+                  render={({ field }: { field: any }) => (
                     <FormItem>
                       <FormLabel>Name *</FormLabel>
                       <FormControl>
@@ -121,7 +121,7 @@ export default function Contact() {
                 <FormField
                   control={form.control}
                   name="phone"
-                  render={({ field }) => (
+                  render={({ field }: { field: any }) => (
                     <FormItem>
                       <FormLabel>Phone *</FormLabel>
                       <FormControl>
@@ -136,7 +136,7 @@ export default function Contact() {
               <FormField
                 control={form.control}
                 name="email"
-                render={({ field }) => (
+                render={({ field }: { field: any }) => (
                   <FormItem>
                     <FormLabel>Email *</FormLabel>
                     <FormControl>
@@ -150,7 +150,7 @@ export default function Contact() {
               <FormField
                 control={form.control}
                 name="message"
-                render={({ field }) => (
+                render={({ field }: { field: any }) => (
                   <FormItem>
                     <FormLabel>Message *</FormLabel>
                     <FormControl>
