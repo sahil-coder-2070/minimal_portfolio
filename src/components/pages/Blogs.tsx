@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../layouts/Container";
 import { Separator } from "../ui/separator";
-import BlogCard from "@/app/blog/BlogCard";
+import BlogCard from "@/components/blog/BlogCard";
 interface BlogItem {
   slug: string;
   title: string;

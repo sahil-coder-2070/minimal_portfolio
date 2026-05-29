@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import { ProjectComponents } from "@/app/projects/ProjectComponents";
+import { ProjectComponents } from "@/components/projects/ProjectComponents";
 import { ProjectNavigation } from "@/components/common/ProjectNavigation";
 import { notFound } from "next/navigation";
 import Website from "@/components/icons/social/Website";

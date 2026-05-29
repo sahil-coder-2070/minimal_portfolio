@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GearsPage from "@/app/gear/Gear";
+import GearsPage from "@/components/gear/Gear";
 
 export const metadata: Metadata = {
   title: "Gears & Software Setup",

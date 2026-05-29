@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Container from "../layouts/Container";
 import { Separator } from "../ui/separator";
-import ProjectCard from "@/app/projects/ProjectCard";
+import ProjectCard from "@/components/projects/ProjectCard";
 import { Badge } from "../ui/badge";
 
 interface ProjectItem {

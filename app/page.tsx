@@ -1,9 +1,9 @@
 import Hero from '@/components/layouts/Hero';
 import ExperienceCard from '@/components/Experience/ExperienceCard';
-import Project from '@/app/projects/Project';
+import Project from '@/components/projects/Project';
 import AboutMe from '@/components/landing/TechSkills';
 import Featured from '@/components/landing/Featured';
-import Blog from '@/app/blog/Blog';
+import Blog from '@/components/blog/Blog';
 import CTA from '@/components/landing/CTA';
 import Setup from '@/components/landing/Setup';
 import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';

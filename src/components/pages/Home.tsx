@@ -1,9 +1,9 @@
 import Hero from '../layouts/Hero';
 import ExperienceCard from '@/components/Experience/ExperienceCard';
-import Project from '@/app/projects/Project';
+import Project from '@/components/projects/Project';
 import AboutMe from '../landing/TechSkills';
 import Featured from '../landing/Featured';
-import Blog from '@/app/blog/Blog';
+import Blog from '@/components/blog/Blog';
 import CTA from '../landing/CTA';
 import Setup from '../landing/Setup';
 

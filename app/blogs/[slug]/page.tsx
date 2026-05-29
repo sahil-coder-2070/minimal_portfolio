@@ -9,7 +9,7 @@ import { CalendarRange } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import { BlogComponents } from "@/app/blog/BlogComponent";
+import { BlogComponents } from "@/components/blog/BlogComponent";
 import { BlogNavigation } from "@/components/common/BlogNavigation";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css";
