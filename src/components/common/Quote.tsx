@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { quotes } from "@/config/Quote";
 import { motion as Motion } from "motion/react";
 import Container from "../layouts/Container";
 
 export const Quote = () => {
-  const [currentQuote] = useState(() => {
-    return quotes[Math.floor(Math.random() * quotes.length)];
-  });
+  const [currentQuote, setCurrentQuote] = useState(quotes[0] || null);
+
+  useEffect(() => {
+    if (quotes.length > 1) {
+      setCurrentQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    }
+  }, []);
 
   if (!currentQuote) return null;
 
