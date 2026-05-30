@@ -24,6 +24,11 @@ import {
   Docker,
   Bootstrap,
   Python,
+  Css,
+  FramerMotion,
+  Html,
+  ReactNavigation,
+  Npm,
 } from '@/lib/techIcons';
 import RepeatSeparator from '../ui/repeat-separator';
 
@@ -73,9 +78,24 @@ const SkillsList = [
     href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
   },
   {
+    title: 'HTML',
+    icon: <Html />,
+    href: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+  },
+  {
+    title: 'CSS',
+    icon: <Css />,
+    href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+  },
+  {
     title: 'React',
     icon: <ReactIcon />,
     href: 'https://reactjs.org/',
+  },
+  {
+    title: 'React Navigation',
+    icon: <ReactNavigation />,
+    href: 'https://reactnavigation.org/',
   },
   {
     title: 'NextJS',
@@ -86,6 +106,11 @@ const SkillsList = [
     title: 'Bun',
     icon: <Bun />,
     href: 'https://bun.sh/',
+  },
+  {
+    title: 'NPM',
+    icon: <Npm />,
+    href: 'https://www.npmjs.com/',
   },
   {
     title: 'Node Js',
@@ -112,6 +137,11 @@ const SkillsList = [
     title: 'GSAP',
     icon: <Gsap />,
     href: 'https://greensock.com/gsap/',
+  },
+  {
+    title: 'Framer Motion',
+    icon: <FramerMotion />,
+    href: 'https://motion.dev/',
   },
 
   {
