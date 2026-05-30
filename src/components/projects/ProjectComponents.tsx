@@ -40,9 +40,13 @@ const Technology = ({ name = "" }: { name?: string }) => {
     TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
 
   return (
-    <div className="bg-muted/50 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium">
-      {TechComponent && <TechComponent />}
-      <span>{name}</span>
+    <div className="flex items-center gap-1.5 rounded-full bg-zinc-50 dark:bg-zinc-900/60 px-2 py-0.5 text-xs font-normal tracking-wide text-foreground border border-neutral-300/40 dark:border-neutral-800/80 shadow-xs select-none [&_svg]:size-3.5 size-fit">
+      {TechComponent && (
+        <span className="flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-3.5">
+          <TechComponent />
+        </span>
+      )}
+      <span className="text-foreground text-xs font-normal tracking-wide whitespace-nowrap">{name}</span>
     </div>
   );
 };

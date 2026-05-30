@@ -33,7 +33,7 @@ const TechSkills = () => {
       <RepeatSeparator />
       <SectionHeading heading={'Stack'} />
       <Container className='py-3'>
-        <div className="mt-3 flex flex-wrap gap-2 gap-y-2 px-4">
+        <div className="mt-3 flex flex-wrap gap-2 gap-y-2.5 px-4 justify-center sm:justify-start">
           {SkillsList.map((items) => {
             return (
               <a
@@ -41,12 +41,12 @@ const TechSkills = () => {
                 href={items.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group text-muted-foreground hover:text-foreground/65 relative flex min-w-fit flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border border-neutral-300/70 bg-transparent px-3 py-1.5 shadow-xs select-none hover:border-neutral-300 hover:bg-neutral-200/50 dark:border-neutral-700/60 dark:hover:border-neutral-700 dark:hover:bg-neutral-900"
+                className="group flex items-center gap-1.5 rounded-full bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-900/60 dark:hover:bg-zinc-800/80 px-2 py-0.5 text-xs font-normal tracking-wide text-foreground border border-neutral-300/40 dark:border-neutral-800/80 shadow-xs transition-all duration-300 select-none cursor-pointer"
               >
-                <span className="group-hover:text-foreground flex size-4 shrink-0 items-center justify-center">
+                <span className="flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-3.5">
                   {items.icon}
                 </span>
-                <span className="text-muted-foreground group-hover:text-foreground text-sm font-medium whitespace-nowrap">
+                <span className="text-foreground text-xs font-normal tracking-wide whitespace-nowrap">
                   {items.title}
                 </span>
               </a>
