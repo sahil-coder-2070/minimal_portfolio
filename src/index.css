@@ -205,6 +205,9 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
+    max-width: 100%;
+    padding-right: 0px !important;
+    margin-right: 0px !important;
   }
 }
 
@@ -249,6 +252,8 @@
 
 /* Global scrollbar */
 html {
+  overflow-x: hidden;
+  max-width: 100%;
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #404040 transparent;
@@ -476,5 +481,15 @@ html {
     z-index: 1;
     pointer-events: none;
   }
+}
+
+/* Prevent layout shifting / squeezing when opening modals, dialogs, or dropdowns on mobile */
+html[style*="overflow: hidden"],
+body[style*="overflow: hidden"],
+[data-radix-scroll-locked],
+html[data-radix-scroll-locked],
+body[data-radix-scroll-locked] {
+  margin-right: 0px !important;
+  padding-right: 0px !important;
 }
 

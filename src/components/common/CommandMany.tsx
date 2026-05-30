@@ -105,7 +105,7 @@ export function CommandMany({
           variant="outline"
           className="w-fit rounded-2xl"
         >
-          <Search size={8} />
+          <Search size={14} />
           <p className="bg-secondary/30 rounded-sm p-0.5 px-1 text-xs inset-shadow-sm">
             Ctrl
           </p>
@@ -128,7 +128,7 @@ export function CommandMany({
               >
                 <HouseIcon />
                 <span>Home</span>
-                <CommandShortcut>H</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">H</CommandShortcut>
               </CommandItem>
               <CommandItem
                 onSelect={() => {
@@ -138,7 +138,7 @@ export function CommandMany({
               >
                 <UserIcon />
                 <span>Work</span>
-                <CommandShortcut>W</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">W</CommandShortcut>
               </CommandItem>
               <CommandItem
                 onSelect={() => {
@@ -148,7 +148,7 @@ export function CommandMany({
               >
                 <LayersIcon />
                 <span>Projects</span>
-                <CommandShortcut>P</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">P</CommandShortcut>
               </CommandItem>
               <CommandItem
                 onSelect={() => {
@@ -158,7 +158,7 @@ export function CommandMany({
               >
                 <BookOpenIcon />
                 <span>Blog</span>
-                <CommandShortcut>B</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">B</CommandShortcut>
               </CommandItem>
             </CommandGroup>
 
@@ -204,7 +204,7 @@ export function CommandMany({
               >
                 <SunIcon />
                 <span>Light</span>
-                <CommandShortcut>L</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">L</CommandShortcut>
               </CommandItem>
               <CommandItem
                 onSelect={() => {
@@ -214,7 +214,7 @@ export function CommandMany({
               >
                 <MoonIcon />
                 <span>Dark</span>
-                <CommandShortcut>D</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">D</CommandShortcut>
               </CommandItem>
               <CommandItem
                 onSelect={() => {
@@ -224,13 +224,13 @@ export function CommandMany({
               >
                 <MonitorIcon />
                 <span>Auto</span>
-                <CommandShortcut>A</CommandShortcut>
+                <CommandShortcut className="hidden sm:inline-flex">A</CommandShortcut>
               </CommandItem>
             </CommandGroup>
           </CommandList>
           <CommandDialogFooter>
             <h2 className="text-secondary">Sahilcodex</h2>
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <span className="flex items-center gap-1 text-xs">
                 Go to page
                 <span className="bg-secondary/20 text-secondary rounded-[3px] px-1.5 py-1 text-xs inset-shadow-sm">

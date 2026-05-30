@@ -50,7 +50,7 @@ function CommandDialog({
   return (
     <Dialog onOpenChange={onOpenChange} {...props}>
       <DialogContent
-        className={cn("w-[600px] max-w-[90vw] overflow-hidden p-0", className)}
+        className={cn("w-[calc(100%-2rem)] sm:w-[600px] max-w-[90vw] sm:max-w-[600px] overflow-hidden p-0 inset-x-0 mx-auto", className)}
         showCloseButton={showCloseButton}
         onKeyDown={(e: React.KeyboardEvent) => {
           // Close immediately on Escape — bypass cmdk's input-clearing first step
@@ -129,7 +129,7 @@ function CommandList({ className, ...props }: CommandListProps) {
         ref={listRef}
         data-slot="command-list"
         className={cn(
-          "max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto cmd-scrollbar",
+          "max-h-[200px] sm:max-h-[295px] scroll-py-1 overflow-x-hidden overflow-y-auto cmd-scrollbar",
           className,
         )}
         onWheel={handleWheel}
