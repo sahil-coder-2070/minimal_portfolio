@@ -8,7 +8,7 @@ technologies:
   - Next.js
   - SupaBase
 github: "https://github.com/sahilcodexx/price-tracker"
-live: "https://github.com/sahilcodexx/price-tracker"
+live: "https://trackhatke.vercel.app/"
 timeline: "2 months"
 role: "Full-Stack Developer"
 team: "Solo Project"

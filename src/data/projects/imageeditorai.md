@@ -8,7 +8,7 @@ technologies:
   - React
   - TailwindCSS
 github: "https://github.com/sahilcodexx/Image-Editor-AI"
-live: "#"
+live: "https://repimly.vercel.app/"
 timeline: "Ongoing"
 role: "Full-Stack Developer"
 team: "Solo"

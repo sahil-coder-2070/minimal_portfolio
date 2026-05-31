@@ -10,7 +10,7 @@ technologies:
   - LocalStorage / IndexedDB
   - CMD K Command Palette
 github: "https://github.com/sahilcodexx/Bookmrk"
-live: "https://bookmrk.vercel.app/"
+live: "https://bookmrkit.vercel.app/"
 timeline: "Active Development"
 role: "Lead Developer"
 team: "Solo"

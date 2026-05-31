@@ -11,7 +11,7 @@ technologies:
   - Web Haptics API
   - HTML5 Audio Context
 github: "https://github.com/sahilcodexx/MechanicalKeyboard"
-live: "https://mechanical-keyboard-simulator.vercel.app/"
+live: "https://keyui.vercel.app/"
 timeline: "2 Weeks"
 role: "Frontend & Audio Engineer"
 team: "Solo"

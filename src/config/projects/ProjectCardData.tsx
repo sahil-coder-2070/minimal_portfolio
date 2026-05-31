@@ -158,7 +158,7 @@ export const ProjectCardData = [
     description:
       "Image Editor AI is an open-source AI-powered image editing tool built with Next.js. It provides an interface to apply intelligent edits using modern AI models and image processing features, allowing users to manipulate and transform images efficiently.",
     links: {
-      website: "https://github.com/sahilcodexx/Image-Editor-AI",
+      website: "https://repimly.vercel.app/",
       github: "https://github.com/sahilcodexx/Image-Editor-AI",
       details: "/projects/imageeditorai",
     },
@@ -184,8 +184,8 @@ export const ProjectCardData = [
         href: "https://tailwindcss.com/",
       },
     ],
-    isWorking: false,
-    isBulding: true,
+    isWorking: true,
+    isBulding: false,
     details: true,
     projectDetailsPageSlug: "/projects/imageeditorai",
   },
@@ -201,7 +201,7 @@ export const ProjectCardData = [
     description:
       "Price Tracker is an open-source web application that allows users to monitor product prices from e-commerce platforms. It enables users to track price changes over time, receive updates, and make smarter purchasing decisions through automated tracking and data visualization features.",
     links: {
-      website: "https://github.com/sahilcodexx/price-tracker",
+      website: "https://trackhatke.vercel.app/",
       github: "https://github.com/sahilcodexx/price-tracker",
       details: "/projects/pricetracker",
     },
@@ -227,8 +227,8 @@ export const ProjectCardData = [
         href: "https://supabase.com/",
       },
     ],
-    isWorking: false,
-    isBulding: true,
+    isWorking: true,
+    isBulding: false,
     details: true,
     projectDetailsPageSlug: "/projects/pricetracker",
   },
@@ -266,7 +266,7 @@ export const ProjectCardData = [
         href: "https://www.npmjs.com/",
       },
     ],
-    isWorking: false,
+    isWorking: true,
     isBulding: false,
     details: true,
     projectDetailsPageSlug: "/projects/tcxcommit",
@@ -283,7 +283,7 @@ export const ProjectCardData = [
     description:
       "An interactive 2D/3D mechanical keyboard simulator package and landing page for React. Experience high-fidelity clicky switch sounds, multi-casing themes (Dolch, Sand, Scarlet, etc.), mobile/web haptics, and custom volume levels.",
     links: {
-      website: "https://mechanical-keyboard-simulator.vercel.app/",
+      website: "https://keyui.vercel.app/",
       github: "https://github.com/sahilcodexx/MechanicalKeyboard",
       details: "/projects/mechanicalkeyboard",
     },
@@ -326,7 +326,7 @@ export const ProjectCardData = [
     description:
       "A modern, privacy-first local bookmark and tab manager Chrome extension and web dashboard. Keep your links organized in boards, utilize search command palettes, assign custom keyboard shortcuts, and export bookmarks cleanly.",
     links: {
-      website: "https://bookmrk.vercel.app/",
+      website: "https://bookmrkit.vercel.app/",
       github: "https://github.com/sahilcodexx/Bookmrk",
       details: "/projects/bookmrk",
     },
@@ -347,8 +347,8 @@ export const ProjectCardData = [
         href: "https://tailwindcss.com/",
       },
     ],
-    isWorking: false,
-    isBulding: true,
+    isWorking: true,
+    isBulding: false,
     details: true,
     projectDetailsPageSlug: "/projects/bookmrk",
   },
