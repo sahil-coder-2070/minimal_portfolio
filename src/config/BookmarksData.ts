@@ -2,275 +2,214 @@ export interface BookmarkItem {
   name: string;
   url: string;
   category: string;
-  addDate?: string;
 }
 
 export const bookmarksData: BookmarkItem[] = [
-  // Bookmarks
+  // Design Resources
   {
     name: "UI Colors",
     url: "https://www.iamsajid.com/ui-colors/",
-    category: "Bookmarks"
+    category: "Design Resources"
   },
   {
-    name: "Find Startup Jobs Near You and Remote Jobs | Wellfound",
-    url: "https://wellfound.com/jobs",
-    category: "Bookmarks"
-  },
-  {
-    name: "Over 8,00,000 Job Vacancies in India September 2025 | Monster",
-    url: "https://www.foundit.in/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Aditya Sharma - Full-Stack Developer",
-    url: "https://adityacodes.com/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Headroom — Custom Software, Built for Your Business",
-    url: "https://headroom.com/?ref=landingfolio",
-    category: "Bookmarks"
-  },
-  {
-    name: "Cobalt | Unleash the power of intuitive finance",
-    url: "https://joincobalt.com/?ref=landingfolio",
-    category: "Bookmarks"
-  },
-  {
-    name: "Stage",
-    url: "https://www.stagee.art/landing",
-    category: "Bookmarks"
-  },
-  {
-    name: "AI / LLM Model Icon Set · LobeHub",
-    url: "https://lobehub.com/icons",
-    category: "Bookmarks"
-  },
-  {
-    name: "Extended Components & Blocks for shadcn/ui.",
-    url: "https://www.hextaui.com/?preview=billing",
-    category: "Bookmarks"
-  },
-  {
-    name: "Get Waves – Create SVG waves for your next design",
-    url: "https://getwaves.io/",
-    category: "Bookmarks"
-  },
-  {
-    name: "ML Systems Textbook",
-    url: "https://mlsysbook.ai/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Saad",
-    url: "https://www.saad.works/",
-    category: "Bookmarks"
-  },
-  {
-    name: "youtube backend — Eraser",
-    url: "https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj",
-    category: "Bookmarks"
-  },
-  {
-    name: "Dark-mode-toggle",
-    url: "https://vantoraui.vercel.app/components/dark-mode-toggle",
-    category: "Bookmarks"
-  },
-  {
-    name: "TheWide - The social network built for Tech Enthusiasts.",
-    url: "https://app.thewide.com/",
-    category: "Bookmarks"
-  },
-  {
-    name: "FinalLayer - AI LinkedIn Post Writing and Video Search & Clipping Platform",
-    url: "https://finallayer.com/",
-    category: "Bookmarks"
-  },
-  {
-    name: "ossium - Find Best GitHub Projects Fast",
-    url: "https://ossium.live/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Shots",
+    name: "Shots.so",
     url: "https://shots.so/",
-    category: "Bookmarks"
+    category: "Design Resources"
   },
   {
-    name: "areyougoingexponential.rhys.dev",
-    url: "https://areyougoingexponential.rhys.dev/",
-    category: "Bookmarks"
+    name: "MockupViews",
+    url: "https://mockupviews.web.app/",
+    category: "Design Resources"
   },
   {
-    name: "Naruto Shippuden | Watch cartoons online",
-    url: "https://m.wcostream.tv/anime/naruto-shippuden",
-    category: "Bookmarks"
+    name: "Get Waves",
+    url: "https://getwaves.io/",
+    category: "Design Resources"
   },
   {
-    name: "Naruto: Shippuuden (Dub) Episode 1 English Subbed - 9anime",
-    url: "https://9anime.org.lv/naruto-shippuuden-dub-episode-1/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Resource for vpn and free cricket to watch. : r/iitkgp",
-    url: "https://www.reddit.com/r/iitkgp/comments/1j9cw8x/resource_for_vpn_and_free_cricket_to_watch/",
-    category: "Bookmarks"
-  },
-  {
-    name: "CricHD Live Cricket Streaming - Watch Live Cricket",
-    url: "https://m.crichd.vip/web007",
-    category: "Bookmarks"
-  },
-  {
-    name: "watch India vs West Indies Live Stream",
-    url: "https://m.crichd.vip/watch-india-vs-west-indies-live-stream",
-    category: "Bookmarks"
-  },
-  {
-    name: "WigggleUI",
-    url: "https://wigggle-ui.vercel.app/",
-    category: "Bookmarks"
-  },
-  {
-    name: "Card Validator | Twitter Developers",
-    url: "https://cards-dev.x.com/validator",
-    category: "Bookmarks"
-  },
-  {
-    name: "Archway",
-    url: "https://archway.devsethi.site/",
-    category: "Bookmarks"
-  },
-
-  // portfolios
-  {
-    name: "Vedant Lavale | Software Developer",
-    url: "https://www.vedant.works/",
-    category: "Portfolios"
-  },
-  {
-    name: "Gradient Easy - Advanced CSS Gradient Generator",
-    url: "https://gradienteasy.com/?id=67478ca3-2c89-4336-a65b-adb4c4d3944b",
-    category: "Portfolios"
+    name: "Gradient Easy",
+    url: "https://gradienteasy.com/",
+    category: "Design Resources"
   },
   {
     name: "Curations Supply",
     url: "https://curations.supply/",
-    category: "Portfolios"
+    category: "Design Resources"
   },
   {
-    name: "Hey!!!! (Jay)",
-    url: "https://www.itsjay.us/",
-    category: "Portfolios"
+    name: "Curated Design (Web Design)",
+    url: "http://curated.design",
+    category: "Design Resources"
   },
   {
-    name: "Keyb",
-    url: "https://keyb.vercel.app/",
-    category: "Portfolios"
+    name: "Landing Love (Landing Pages)",
+    url: "http://landing.love",
+    category: "Design Resources"
   },
   {
-    name: "Mintplex-Labs/anything-llm",
-    url: "https://github.com/Mintplex-Labs/anything-llm",
-    category: "Portfolios"
+    name: "Saaspo (SaaS Websites)",
+    url: "http://saaspo.com",
+    category: "Design Resources"
   },
   {
-    name: "ossium - T",
-    url: "https://ossium.live/home",
-    category: "Portfolios"
+    name: "Navbar Gallery",
+    url: "http://navbar.gallery",
+    category: "Design Resources"
   },
   {
-    name: "React Bits - Scroll Reveal",
+    name: "CTA Gallery (CTA Sections)",
+    url: "http://cta.gallery",
+    category: "Design Resources"
+  },
+  {
+    name: "App Motion Design (Animation)",
+    url: "http://appmotion.design",
+    category: "Design Resources"
+  },
+  {
+    name: "Mobbin (Mobile Apps)",
+    url: "http://mobbin.com/?via=abraham",
+    category: "Design Resources"
+  },
+  {
+    name: "Rebrand Gallery (Brands)",
+    url: "http://rebrand.gallery",
+    category: "Design Resources"
+  },
+  {
+    name: "Hugeicons (Icons)",
+    url: "http://hugeicons.com/?via=Abraham",
+    category: "Design Resources"
+  },
+  {
+    name: "Component Gallery (Design Systems)",
+    url: "http://component.gallery",
+    category: "Design Resources"
+  },
+
+  // Developer Tools & Libraries
+  {
+    name: "Screenshot Studio",
+    url: "https://www.screenshot-studio.com/",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "React Bits",
     url: "https://www.reactbits.dev/text-animations/scroll-reveal",
-    category: "Portfolios"
+    category: "Developer Tools & Libraries"
   },
   {
-    name: "Coqui TTS - Generate",
-    url: "https://coquitts.com/generate",
-    category: "Portfolios"
+    name: "Hexta UI",
+    url: "https://www.hextaui.com/",
+    category: "Developer Tools & Libraries"
   },
   {
-    name: "wraith2009 (Rahul Bhardwaj)",
-    url: "https://github.com/wraith2009",
-    category: "Portfolios"
+    name: "WigggleUI",
+    url: "https://wigggle-ui.vercel.app/",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "Dark Mode Toggle",
+    url: "https://vantoraui.vercel.app/components/dark-mode-toggle",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "LobeHub Icons",
+    url: "https://lobehub.com/icons",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "Anything LLM",
+    url: "https://github.com/Mintplex-Labs/anything-llm",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "Ossium",
+    url: "https://ossium.live/",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "Headroom",
+    url: "https://headroom.com/?ref=landingfolio",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "Cobalt Finance",
+    url: "https://joincobalt.com/?ref=landingfolio",
+    category: "Developer Tools & Libraries"
+  },
+  {
+    name: "FinalLayer AI",
+    url: "https://finallayer.com/",
+    category: "Developer Tools & Libraries"
   },
   {
     name: "Recordly",
     url: "https://recordly.dev/",
-    category: "Portfolios"
+    category: "Developer Tools & Libraries"
   },
   {
-    name: "Screenshot Studio - Free Screenshot Editor & Mockup Maker",
-    url: "https://www.screenshot-studio.com/",
-    category: "Portfolios"
-  },
-  {
-    name: "ZUI.C // SYS.PORTFOLIO",
-    url: "https://www.zui.ooo/?ref=designerdailyreport.com#home",
-    category: "Portfolios"
-  },
-  {
-    name: "TMovie - Watch Movies & TV Shows",
-    url: "https://www.tmovie.in/",
-    category: "Portfolios"
+    name: "Coqui TTS",
+    url: "https://coquitts.com/generate",
+    category: "Developer Tools & Libraries"
   },
 
-  // design site
+  // Portfolios & Creative Labs
+  {
+    name: "ZUI.C",
+    url: "https://www.zui.ooo/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "Vedant Lavale",
+    url: "https://www.vedant.works/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "Aditya Sharma",
+    url: "https://adityacodes.com/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "Saad Works",
+    url: "https://www.saad.works/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "itsjay.us",
+    url: "https://www.itsjay.us/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "Keyb",
+    url: "https://keyb.vercel.app/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "Archway",
+    url: "https://archway.devsethi.site/",
+    category: "Portfolios & Creative Labs"
+  },
+  {
+    name: "areyougoingexponential.rhys.dev",
+    url: "https://areyougoingexponential.rhys.dev/",
+    category: "Portfolios & Creative Labs"
+  },
+
+  // Learning & Utilities
+  {
+    name: "ML Systems Textbook",
+    url: "https://mlsysbook.ai/",
+    category: "Learning & Utilities"
+  },
   {
     name: "DigitalArc NextJS Template",
     url: "https://digital-arc.vercel.app/",
-    category: "Design Sites"
-  },
-
-  // Other bookmarks
-  {
-    name: "Stunning 4K Desktop Wallpapers - Free & HD",
-    url: "https://whitepapers-clan.com/desktop-wallpapers/",
-    category: "Other Bookmarks"
+    category: "Learning & Utilities"
   },
   {
-    name: "MockupViews – Shots.so Alternative",
-    url: "https://mockupviews.web.app/",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "PNGAnime - Transparent Images",
-    url: "https://pnganime.com/",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Download Dhurandhar The Revenge 2026",
-    url: "https://mp4loop.xyz/16801-dhurandhar-the-revenge-2026-hq-hdtc-720p-480p-1080p.html",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Movies / TV / Anime • freemediaheckyeah",
-    url: "https://fmhy.net/video#live-sports",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "IPL live streams sites list - Delhicapitals Reddit",
-    url: "https://www.reddit.com/r/delhicapitals/comments/1s9dqs4/okay_so_here_are_the_sites_where_you_can_stream/",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Watch Bayern Munich vs Real Madrid Stream - Streamed",
-    url: "https://streamed.pk/watch/bayern-munich-vs-real-madrid-2452577/echo/3",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Rive | Watch | Suits | S1-E1",
-    url: "https://rivestream.org/watch?type=tv&id=37680&season=1&episode=1",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Cineby - Watch Free Movies & TV Shows",
-    url: "https://cineby.cc/",
-    category: "Other Bookmarks"
-  },
-  {
-    name: "Rive | Detail | Suits",
-    url: "https://rivestream.org/detail?type=tv&id=37680",
-    category: "Other Bookmarks"
+    name: "Twitter Card Validator",
+    url: "https://cards-dev.x.com/validator",
+    category: "Learning & Utilities"
   }
 ];

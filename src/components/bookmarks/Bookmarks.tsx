@@ -27,7 +27,7 @@ export default function BookmarksPage() {
             heading="Bookmarks"
           />
           <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
-            Curated list of interesting websites, design tools, and portfolios.
+            A collection of my favorite links.
           </h2>
         </div>
       </Container>
