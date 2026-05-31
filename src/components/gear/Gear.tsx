@@ -1,9 +1,9 @@
-
 import Container from "@/components/layouts/Container";
-import { Separator } from "@/components/ui/separator";
 import { devices, software, webExtensions } from "@/config/Gear";
-import { ArrowUpRight, Monitor, Puzzle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from 'next/link';
+import SectionHeading from "@/components/common/SectionHeading";
+import RepeatSeparator from "@/components/ui/repeat-separator";
 
 const getDomain = (url: string) => {
   try {
@@ -15,24 +15,26 @@ const getDomain = (url: string) => {
 
 export default function GearsPage() {
   return (
-    <Container className="py-16">
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Gears
-          </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+    <>
+      {/* Page Header */}
+      <Container className="mt-6">
+        <div>
+          <SectionHeading
+            classname="text-neutral-400 dark:text-neutral-500 font-medium"
+            heading="Gears"
+          />
+          <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
             My gears and tools i use to get my work done.
-          </p>
+          </h2>
         </div>
+      </Container>
 
-        <Separator />
-
-        {/* Devices Section */}
+      {/* Devices Section */}
+      <RepeatSeparator />
+      <Container>
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold">Devices</h2>
-          <ul className="divide-y divide-line border-y border-line mt-6">
+          <SectionHeading heading="Devices" />
+          <ul className="divide-y divide-line border-y border-line">
             {devices.map((device) => (
               <li key={device.name} className="list-none">
                 <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
@@ -51,17 +53,14 @@ export default function GearsPage() {
             ))}
           </ul>
         </div>
+      </Container>
 
-        {/* Web Extensions Section */}
-        <div className="space-y-4 pt-10">
-          <div className="flex items-center gap-4">
-            <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
-              <Puzzle className="size-4" />
-            </div>
-            <h2 className="text-2xl font-semibold">Web Extensions</h2>
-          </div>
-
-          <ul className="divide-y divide-line border-y border-line mt-6">
+      {/* Web Extensions Section */}
+      <RepeatSeparator />
+      <Container>
+        <div className="space-y-4">
+          <SectionHeading heading="Web Extensions" />
+          <ul className="divide-y divide-line border-y border-line">
             {webExtensions.map((extension, index) => (
               <li key={extension.name} className="list-none">
                 <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
@@ -91,17 +90,14 @@ export default function GearsPage() {
             ))}
           </ul>
         </div>
+      </Container>
 
-        {/* Software Section */}
-        <div className="space-y-4 pt-10">
-          <div className="flex items-center gap-4">
-            <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
-              <Monitor className="size-4" />
-            </div>
-            <h2 className="text-2xl font-semibold">Software</h2>
-          </div>
-
-          <ul className="divide-y divide-line border-y border-line mt-6">
+      {/* Software Section */}
+      <RepeatSeparator />
+      <Container>
+        <div className="space-y-4">
+          <SectionHeading heading="Software" />
+          <ul className="divide-y divide-line border-y border-line">
             {software.map((app, index) => (
               <li key={app.name} className="list-none">
                 <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
@@ -131,7 +127,7 @@ export default function GearsPage() {
             ))}
           </ul>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
