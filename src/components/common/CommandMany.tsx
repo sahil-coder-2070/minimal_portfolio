@@ -25,6 +25,7 @@ import {
   CornerDownLeftIcon,
   Search,
   RocketIcon,
+  Bookmark,
 } from "lucide-react";
 import { useTheme } from "@/components/landing/theme-provider";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
@@ -79,6 +80,10 @@ export function CommandMany({
         case "b":
           setOpen(false);
           router.push("/blogs");
+          break;
+        case "m":
+          setOpen(false);
+          router.push("/bookmarks");
           break;
         case "d":
           setTheme("dark");
@@ -159,6 +164,16 @@ export function CommandMany({
                 <BookOpenIcon />
                 <span>Blog</span>
                 <CommandShortcut className="hidden sm:inline-flex">B</CommandShortcut>
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  router.push("/bookmarks");
+                  setOpen(false);
+                }}
+              >
+                <Bookmark />
+                <span>Bookmarks</span>
+                <CommandShortcut className="hidden sm:inline-flex">M</CommandShortcut>
               </CommandItem>
             </CommandGroup>
 

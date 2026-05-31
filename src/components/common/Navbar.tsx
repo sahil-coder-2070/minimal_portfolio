@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 const navList = [
   { name: 'Blogs', href: '/blogs' },
   { name: 'Projects', href: '/projects' },
+  { name: 'Bookmarks', href: '/bookmarks' },
 ];
 
 export const Navbar = () => {

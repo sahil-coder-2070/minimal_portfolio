@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import SectionHeading from '../common/SectionHeading';
 import Container from '../layouts/Container';
-import { ArrowUpRight, Code } from 'lucide-react';
+import { ArrowUpRight, Bookmark } from 'lucide-react';
 import Gear from '@/components/icons/social/GearIcon';
 import RepeatSeparator from '../ui/repeat-separator';
 
@@ -12,12 +12,12 @@ const setupItems = [
     icon: <Gear className="size-4" />,
     href: '/gear',
   },
-  // {
-  //   name: "VS Code / Cursor Setup",
-  //   description: "VS Code / Cursor Setup i use daily.",
-  //   icon: <Code className="size-4" />,
-  //   href: "/setup",
-  // },
+  {
+    name: 'Bookmarks',
+    description: 'Curated list of interesting websites, tools, and portfolios.',
+    icon: <Bookmark className="size-4" />,
+    href: '/bookmarks',
+  },
 ];
 
 export default function Setup() {
@@ -28,7 +28,7 @@ export default function Setup() {
         <SectionHeading heading="Setup" />
         <div className="flex flex-col">
           {setupItems.map((item) => (
-            <div key={item.name} className="border-line border-y">
+            <div key={item.name} className="border-line border-y border-t-0 first:border-t">
               <div className=" hover:bg-neutral-100 dark:hover:bg-neutral-900/40 group relative flex items-center pr-2 transition-colors duration-250">
                 {/* Icon Container */}
                 <div className="border-muted-foreground/15 ring-line ring-offset-background bg-muted text-muted-foreground mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border ring-1 ring-offset-1 select-none [&_svg]:size-4">
