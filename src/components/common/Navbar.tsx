@@ -53,7 +53,7 @@ export const Navbar = () => {
                   })}
                   <CommandMany />
                 </div>
-                <span className="bg-border h-4 w-px hidden md:block"></span>
+                <span className="bg-border hidden h-4 w-px md:block"></span>
                 <ThemeToggel />
               </div>
             </motion.div>
@@ -61,7 +61,7 @@ export const Navbar = () => {
         </Container>
       </div>
 
-      <div className="bg-background/95 fixed bottom-6 inset-x-0 mx-auto z-50 flex items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden max-w-[calc(100%-2rem)] w-fit">
+      <div className="bg-background/95 fixed inset-x-0 bottom-6 z-50 mx-auto flex w-fit max-w-[calc(100%-2rem)] items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden">
         <Button
           onClick={() => setCommandOpen(true)}
           size="sm"
@@ -73,12 +73,7 @@ export const Navbar = () => {
         </Button>
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon-sm"
-              className="rounded-full"
-              aria-label="Menu"
-            >
+            <Button variant="outline" size="icon-sm" className="rounded-full" aria-label="Menu">
               <Menu size={18} />
             </Button>
           </DropdownMenuTrigger>

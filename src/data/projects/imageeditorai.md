@@ -1,7 +1,7 @@
 ---
 title: "Image Editor AI"
 description: "Image Editor AI is an open-source AI-powered image editing tool built with Next.js. It provides an interface to apply intelligent edits using modern AI models and image processing features, allowing users to manipulate and transform images efficiently."
-image: "/projects/comingsoon.avif"
+image: "/projects/project4.avif"
 technologies:
   - TypeScript
   - Next.js

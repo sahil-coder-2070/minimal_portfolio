@@ -1,7 +1,7 @@
 ---
 title: "Bookmrk | Privacy-First Bookmark Manager"
 description: "A lightweight, local-first Chrome extension and bookmark manager dashboard built with Next.js, React, TypeScript, and Tailwind CSS. Features keyboard-first navigation and visual workspace boards."
-image: "/projects/comingsoon.avif"
+image: "/projects/bookmrkit.png"
 technologies:
   - React / Next.js
   - TypeScript
