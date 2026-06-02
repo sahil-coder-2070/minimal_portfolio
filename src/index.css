@@ -204,7 +204,7 @@
   }
 
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground overflow-x-clip;
     max-width: 100%;
     padding-right: 0px !important;
     margin-right: 0px !important;
@@ -252,7 +252,7 @@
 
 /* Global scrollbar */
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   /* Firefox */
   scrollbar-width: thin;
