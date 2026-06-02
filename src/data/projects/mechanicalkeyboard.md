@@ -1,7 +1,7 @@
 ---
 title: "Mechanical Keyboard | Interactive Simulator"
 description: "An interactive, highly realistic mechanical keyboard simulator built with React, TypeScript, and Tailwind CSS. Features realistic audio feedback, multiple keycap themes, and web haptics."
-image: "/projects/comingsoon.avif"
+image: "/projects/keyui.avif"
 technologies:
   - React
   - TypeScript

@@ -1,7 +1,7 @@
 ---
 title: "tcxcommit - AI Git Commit Message Generator"
 description: "AI-powered git commit message generator CLI tool. Generate conventional commit messages using OpenRouter AI. Supports npm installation."
-image: "/projects/comingsoon.avif"
+image: "/projects/tccommit.avif"
 technologies:
   - Node.js
   - TypeScript

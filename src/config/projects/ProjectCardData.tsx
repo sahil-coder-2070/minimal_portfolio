@@ -150,7 +150,7 @@ export const ProjectCardData = [
     id: 4,
     title: 'Image Editor AI',
     img: {
-      src: '/projects/project4.avif',
+      src: '/projects/repimly.avif',
       alt: 'Image Editor AI project image',
       width: 1920,
       height: 1080,
@@ -193,7 +193,7 @@ export const ProjectCardData = [
     id: 5,
     title: 'Price Tracker',
     img: {
-      src: '/projects/comingsoon.avif',
+      src: '/projects/trackhatke.avif',
       alt: 'Price Tracker project image',
       width: 1920,
       height: 1080,
@@ -236,7 +236,7 @@ export const ProjectCardData = [
     id: 6,
     title: 'tcxcommit',
     img: {
-      src: '/projects/comingsoon.avif',
+      src: '/projects/tccommit.avif',
       alt: 'tcxcommit project image',
       width: 1920,
       height: 1080,
@@ -275,7 +275,7 @@ export const ProjectCardData = [
     id: 7,
     title: 'Mechanical Keyboard',
     img: {
-      src: '/projects/comingsoon.avif',
+      src: '/projects/keyui.avif',
       alt: 'Mechanical Keyboard project image',
       width: 1920,
       height: 1080,
@@ -318,7 +318,7 @@ export const ProjectCardData = [
     id: 8,
     title: 'Bookmrk',
     img: {
-      src: '/projects/bookmrkit.png',
+      src: '/projects/bookmrkit.avif',
       alt: 'Bookmrk project image',
       width: 1920,
       height: 1080,

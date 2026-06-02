@@ -22,7 +22,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
             <div className="box-border h-30 w-30 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white">
               <Image
-                src="/avatar.png"
+                src="/avatar.avif"
                 alt="Avatar"
                 width={120}
                 height={120}
