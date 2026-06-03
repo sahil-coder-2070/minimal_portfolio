@@ -47,6 +47,7 @@
   --font-sans: 'Geist', sans-serif;
   --main-font: 'Geist', sans-serif;
   --font-pixelify: var(--font-pixelify);
+  --font-geist-pixel-circle: var(--font-geist-pixel-circle);
   --inset-shadow: inset 0 1px 2px #00000014, inset 0 1px 4px #0000000a;
 }
 
@@ -333,6 +334,8 @@ html {
 
 .screen-line-bottom {
   position: relative;
+  font-family: var(--font-geist-pixel-circle), sans-serif;
+  font-weight: 500 !important;
 }
 .screen-line-bottom::after {
   content: '';
