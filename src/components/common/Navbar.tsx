@@ -34,7 +34,7 @@ export const Navbar = () => {
             >
               <div>
                 <Link href="/">
-                  <h2>Sahil</h2>
+                  <h2 className="font-pixelify text-2xl font-bold tracking-wider uppercase">SAHIL</h2>
                 </Link>
               </div>
               <div className="flex items-center gap-4">

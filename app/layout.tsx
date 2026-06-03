@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Pixelify_Sans } from "next/font/google";
 import "@/index.css";
 import { ThemeProvider } from "@/components/landing/theme-provider";
 import Container from "@/components/layouts/Container";
@@ -10,6 +10,12 @@ import Footer from "@/components/common/Footer";
 const geistSans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
+});
+
+const pixelifySans = Pixelify_Sans({
+  variable: "--font-pixelify",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -46,7 +52,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} font-sans antialiased min-h-screen`}>
+      <body className={`${geistSans.variable} ${pixelifySans.variable} font-sans antialiased min-h-screen`}>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <div className="min-h-screen">
             <Container>
