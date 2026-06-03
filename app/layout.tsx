@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Pixelify_Sans } from "next/font/google";
-import { GeistPixelCircle } from "geist/font/pixel";
 import "@/index.css";
 import { ThemeProvider } from "@/components/landing/theme-provider";
 import Container from "@/components/layouts/Container";
@@ -53,7 +52,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${pixelifySans.variable} ${GeistPixelCircle.variable} font-sans antialiased min-h-screen`}>
+      <body className={`${geistSans.variable} ${pixelifySans.variable} font-sans antialiased min-h-screen`}>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <div className="min-h-screen">
             <Container>
