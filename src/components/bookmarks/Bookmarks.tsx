@@ -32,7 +32,7 @@ export default function BookmarksPage() {
         </div>
       </Container>
 
-      {categories.map((category, catIndex) => {
+      {categories.map((category) => {
         const items = bookmarksData.filter(b => b.category === category);
         return (
           <div key={category} className="space-y-4">
