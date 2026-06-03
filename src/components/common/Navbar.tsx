@@ -7,6 +7,7 @@ import Container from '../layouts/Container';
 import { motion } from 'motion/react';
 import { CommandMany } from './CommandMany';
 import { Menu, Search } from 'lucide-react';
+import { Pixelify_Sans } from 'next/font/google';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +15,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+
+const pixelify = Pixelify_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const navList = [
   { name: 'Blogs', href: '/blogs' },
@@ -34,7 +40,7 @@ export const Navbar = () => {
             >
               <div>
                 <Link href="/">
-                  <h2 className="font-pixelify text-2xl font-bold tracking-wider uppercase">SAHIL</h2>
+                  <h2 className={`${pixelify.className} text-2xl font-bold tracking-wider uppercase`}>SAHIL</h2>
                 </Link>
               </div>
               <div className="flex items-center gap-4">
