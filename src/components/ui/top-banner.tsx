@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useRef, useState } from 'react';
 import { animate, motion, useMotionValue } from 'motion/react';
@@ -70,7 +70,7 @@ const TopBanner = () => {
         >
           <motion.h3
             style={{ x, y }}
-            className="text-xl font-medium opacity-50 will-change-transform select-none"
+            className="text-xl font-normal tracking-tight leading-4.5 opacity-50 will-change-transform select-none"
           >
             Open for full-time <br /> &amp; freelance work
           </motion.h3>

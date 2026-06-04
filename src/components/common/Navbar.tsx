@@ -40,7 +40,11 @@ export const Navbar = () => {
             >
               <div>
                 <Link href="/">
-                  <h2 className={`${pixelify.className} text-2xl font-bold tracking-wider uppercase`}>SAHIL</h2>
+                  <h2
+                    className={`${pixelify.className} text-2xl  uppercase`}
+                  >
+                    SAHIL
+                  </h2>
                 </Link>
               </div>
               <div className="flex items-center gap-4">
@@ -52,8 +56,7 @@ export const Navbar = () => {
                         href={items.href}
                         className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
                       >
-                        {' '}
-                        {items.name}{' '}
+                        {items.name}
                       </Link>
                     );
                   })}
