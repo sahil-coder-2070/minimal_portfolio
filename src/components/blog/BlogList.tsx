@@ -3,6 +3,7 @@ import Container from '@/components/layouts/Container';
 import { Separator } from '@/components/ui/separator';
 import BlogCard from '@/components/blog/BlogCard';
 import SectionHeading from '../common/SectionHeading';
+import RepeatSeparator from '../ui/repeat-separator';
 interface BlogItem {
   slug: string;
   title: string;
@@ -15,7 +16,9 @@ interface BlogItem {
 
 const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
   return (
-    <Container className="mt-5">
+    <Container>
+      <RepeatSeparator cn="dark:opacity-40" />
+
       <div>
         <div>
           <SectionHeading
@@ -27,6 +30,7 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
           </h2>
         </div>
       </div>
+      <RepeatSeparator cn="dark:opacity-40" />
       <div>
         <BlogCard data={posts} />
       </div>

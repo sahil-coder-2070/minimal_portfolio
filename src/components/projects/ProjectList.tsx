@@ -46,7 +46,7 @@ const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
             </h2>
           </div>
         </div>
-        <RepeatSeparator />
+        <RepeatSeparator cn='dark:opacity-40'/>
         <ProjectCard completed={filteredProjects} />
       </Container>
     </>
