@@ -38,8 +38,8 @@ const ProjectCard = ({
         {displayedProjects.map((items, index) => {
           // Desktop (2-col): show separator after every right-column card (odd index), not after last row
           const showDesktopSep = index % 2 === 1 && index < N - 1;
-          // Mobile (1-col): show separator after every left-column card except the last card
-          const showMobileSep = index % 2 === 0 && index < N - 1;
+          // Mobile (1-col): show separator after every card except the last card
+          const showMobileSep = index < N - 1;
 
           return (
             <React.Fragment key={items.id}>
@@ -162,7 +162,7 @@ const ProjectCard = ({
 
               {/* Full-screen-width separator on mobile */}
               {showMobileSep && (
-                <div className="col-span-2 block sm:hidden" style={{ height: '12px', position: 'relative' }}>
+                <div className="block sm:hidden" style={{ height: '12px', position: 'relative' }}>
                   <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
                 </div>

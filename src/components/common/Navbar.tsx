@@ -59,43 +59,48 @@ export const Navbar = () => {
                 </div>
                 <span className="bg-border hidden h-4 w-px md:block"></span>
                 <ThemeToggel />
+
+                {/* Mobile Navigation Dropdown */}
+                <div className="md:hidden">
+                  <DropdownMenu modal={false}>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="rounded-full cursor-pointer" aria-label="Menu">
+                        <Menu size={18} />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" side="bottom" sideOffset={8} className="w-48">
+                      <DropdownMenuItem asChild>
+                        <Link href="/" className="w-full cursor-pointer">
+                          Home
+                        </Link>
+                      </DropdownMenuItem>
+                      {navList.map((items) => (
+                        <DropdownMenuItem key={items.name} asChild>
+                          <Link href={items.href} className="w-full cursor-pointer">
+                            {items.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
             </motion.div>
           </div>
         </Container>
       </div>
 
-      <div className="bg-background/95 fixed inset-x-0 bottom-6 z-50 mx-auto flex w-fit max-w-[calc(100%-2rem)] items-center gap-3 rounded-full border px-4 py-2 shadow-lg backdrop-blur-md md:hidden">
+      {/* Floating Bottom Search Button for Mobile */}
+      <div className="fixed inset-x-0 bottom-6 z-50 mx-auto w-fit md:hidden">
         <Button
           onClick={() => setCommandOpen(true)}
-          size="sm"
+          size="default"
           variant="outline"
-          className="w-fit gap-2 rounded-full"
+          className="bg-background/95 gap-2 rounded-full border shadow-lg backdrop-blur-md px-5 transition-transform active:scale-95"
         >
           <Search size={16} />
           <span>Search</span>
         </Button>
-        <DropdownMenu modal={false}>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="icon-sm" className="rounded-full" aria-label="Menu">
-              <Menu size={18} />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" side="top" sideOffset={16} className="w-48">
-            <DropdownMenuItem>
-              <Link href="/" className="w-full">
-                Home
-              </Link>
-            </DropdownMenuItem>
-            {navList.map((items) => (
-              <DropdownMenuItem key={items.name}>
-                <Link href={items.href} className="w-full">
-                  {items.name}
-                </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
 
       <CommandMany open={commandOpen} onOpenChange={setCommandOpen} hideButton />
