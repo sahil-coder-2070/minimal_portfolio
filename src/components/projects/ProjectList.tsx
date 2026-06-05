@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import ProjectCard from '@/components/projects/ProjectCard';
 import { Badge } from '@/components/ui/badge';
 import SectionHeading from '../common/SectionHeading';
+import RepeatSeparator from '../ui/repeat-separator';
 
 interface ProjectItem {
   id: string;
@@ -32,7 +33,8 @@ const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
 
   return (
     <>
-      <Container className="mt-6">
+      <RepeatSeparator />
+      <Container className="mt-2">
         <div className="space-y-8">
           <div>
             <SectionHeading
@@ -44,7 +46,7 @@ const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
             </h2>
           </div>
         </div>
-
+        <RepeatSeparator />
         <ProjectCard completed={filteredProjects} />
       </Container>
     </>
