@@ -24,7 +24,6 @@ const pixelify = Pixelify_Sans({
 const navList = [
   { name: 'Blogs', href: '/blogs' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Bookmarks', href: '/bookmarks' },
 ];
 
 export const Navbar = () => {
@@ -40,11 +39,7 @@ export const Navbar = () => {
             >
               <div>
                 <Link href="/">
-                  <h2
-                    className={`${pixelify.className} text-2xl  uppercase`}
-                  >
-                    SAHIL
-                  </h2>
+                  <h2 className={`${pixelify.className} text-2xl uppercase`}>SAHIL</h2>
                 </Link>
               </div>
               <div className="flex items-center gap-4">

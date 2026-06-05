@@ -32,7 +32,7 @@ const BlogCard = ({ data = BlogCardData }) => {
             return (
               <li key={index}>
                 <div className="h-full">
-                  <div className="relative flex h-full flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
+                  <div className="relative flex h-full flex-col gap-2 p-2 py-5 md:py-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
                     {/* Image container */}
                     <div className="relative select-none [--image-radius:var(--radius-xl)]">
                       <Image

@@ -50,7 +50,7 @@ function CommandDialog({
   return (
     <Dialog onOpenChange={onOpenChange} {...props}>
       <DialogContent
-        className={cn("w-[calc(100%-2rem)] sm:w-[600px] max-w-[90vw] sm:max-w-[600px] overflow-hidden p-0", className)}
+        className={cn("w-[calc(100%-2rem)] sm:w-[600px] max-w-[90vw] sm:max-w-md overflow-hidden p-0", className)}
         showCloseButton={showCloseButton}
         onKeyDown={(e: React.KeyboardEvent) => {
           // Close immediately on Escape — bypass cmdk's input-clearing first step
