@@ -38,7 +38,8 @@ export default async function Home() {
         image: content?.meta.image || '',
         tags: content?.meta.tags || [],
         date: content?.meta.date || '',
-        formattedDate: content?.meta.formattedDate || (content?.meta.date ? formatDate(content.meta.date) : ''),
+        formattedDate:
+          content?.meta.formattedDate || (content?.meta.date ? formatDate(content.meta.date) : ''),
       };
     })
   );
@@ -75,8 +76,12 @@ export default async function Home() {
   // Sort projects ascendingly by their ID in ProjectCardData so that reverse() in ProjectCard renders newest first
   const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
   projects.sort((a, b) => {
-    const aData = ProjectCardData.find((p) => p.projectDetailsPageSlug?.endsWith(a.id) || p.links?.details?.endsWith(a.id));
-    const bData = ProjectCardData.find((p) => p.projectDetailsPageSlug?.endsWith(b.id) || p.links?.details?.endsWith(b.id));
+    const aData = ProjectCardData.find(
+      (p) => p.projectDetailsPageSlug?.endsWith(a.id) || p.links?.details?.endsWith(a.id)
+    );
+    const bData = ProjectCardData.find(
+      (p) => p.projectDetailsPageSlug?.endsWith(b.id) || p.links?.details?.endsWith(b.id)
+    );
     return (aData?.id ?? 0) - (bData?.id ?? 0);
   });
 

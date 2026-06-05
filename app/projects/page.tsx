@@ -48,7 +48,7 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <Projects projects={projects} />;
+      <Projects projects={projects} />
     </>
   );
 }
