@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <Container>
-      <BackButton text="Back to Blog" />
+      <BackButton text="Back to Blogs" href="/blogs" />
       <article className="mx-auto max-w-4xl px-5">
         <header className="mb-8 space-y-6">
           {meta.image && (

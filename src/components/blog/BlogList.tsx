@@ -1,10 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Container from '@/components/layouts/Container';
 import { Separator } from '@/components/ui/separator';
 import BlogCard from '@/components/blog/BlogCard';
 import SectionHeading from '../common/SectionHeading';
 import RepeatSeparator from '../ui/repeat-separator';
+
 interface BlogItem {
   slug: string;
   title: string;
@@ -16,6 +19,18 @@ interface BlogItem {
 }
 
 const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Filter posts based on title, description, or tags
+  const filteredPosts = posts.filter((post) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      post.title.toLowerCase().includes(query) ||
+      post.description.toLowerCase().includes(query) ||
+      post.tags.some((tag) => tag.toLowerCase().includes(query))
+    );
+  });
+
   return (
     <Container>
       <RepeatSeparator cn="dark:opacity-40" />
@@ -36,7 +51,7 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
             data-variant="link"
             data-size="sm"
             className="group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 decoration-1 underline-offset-3 active:scale-none rounded-[min(var(--radius-lg),10px)] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground hover:no-underline"
-            href="/blog"
+            href="/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +69,7 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
               <path d="m12 19-7-7 7-7" />
               <path d="M19 12H5" />
             </svg>
-            Blog
+            Home
           </Link>
           <div
             data-slot="input-group"
@@ -65,7 +80,8 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
               data-slot="input-group-control"
               className="h-9 w-full min-w-0 border-input px-2.5 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 flex-1 rounded-none border-0 bg-transparent shadow-none ring-0 focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent"
               placeholder="Search Blog…"
-              defaultValue=""
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <div
               role="group"
@@ -86,8 +102,8 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
               role="group"
               data-slot="input-group-addon"
               data-align="inline-end"
-              className="flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 order-last has-[>button]:-mr-1 has-[>kbd]:mr-[-0.15rem] pr-2.25 data-[disabled=true]:hidden"
-              data-disabled="true"
+              className={`flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 order-last has-[>button]:-mr-1 has-[>kbd]:mr-[-0.15rem] pr-2.25 ${searchQuery === '' ? 'hidden' : ''}`}
+              data-disabled={searchQuery === ''}
             >
               <button
                 data-slot="button"
@@ -97,6 +113,7 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
                 type="button"
                 title="Clear"
                 aria-label="Clear"
+                onClick={() => setSearchQuery('')}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +138,7 @@ const Blogs = ({ posts = [] }: { posts?: BlogItem[] }) => {
       </div>
       <RepeatSeparator cn="dark:opacity-40" />
       <div>
-        <BlogCard data={posts} />
+        <BlogCard data={filteredPosts} />
       </div>
     </Container>
   );
