@@ -82,7 +82,7 @@ export default async function ProjectPage({
 
   return (
     <Container className="px-5">
-      <BackButton text="Back to Projects" />
+      <BackButton text="Back to Projects" href="/projects" />
       <header className="mb-8 space-y-6 px-5">
         {projectMeta.image && (
           <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-muted">
