@@ -24,6 +24,9 @@ import { Separator } from '@/components/ui/separator';
 import { databases, ID } from '@/lib/appwrite';
 import SectionHeading from '../common/SectionHeading';
 
+import Link from 'next/link';
+import RepeatSeparator from '../ui/repeat-separator';
+
 // Zod validation schema
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -79,7 +82,9 @@ export default function Contact() {
   };
 
   return (
-    <Container className="mt-5">
+    <Container>
+      <RepeatSeparator cn="dark:opacity-40" />
+
       <div>
         <div>
           <SectionHeading
@@ -90,7 +95,38 @@ export default function Contact() {
             Let’s talk about your next project
           </h2>
         </div>
+        <div className="flex items-center justify-between screen-line-top screen-line-bottom p-2">
+          <Link
+            data-slot="button"
+            data-variant="link"
+            data-size="sm"
+            className="group/button inline-flex shrink-0 items-center justify-center border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 decoration-1 underline-offset-3 active:scale-none rounded-[min(var(--radius-lg),10px)] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 h-7 gap-2 border-none px-0 text-muted-foreground hover:text-foreground hover:no-underline"
+            href="/"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-arrow-left"
+              aria-hidden="true"
+            >
+              <path d="m12 19-7-7 7-7" />
+              <path d="M19 12H5" />
+            </svg>
+            Home
+          </Link>
+          <span className="text-xs sm:text-sm text-muted-foreground font-medium border border-line px-3 py-1 rounded-full bg-muted/30">
+            Available for freelance
+          </span>
+        </div>
       </div>
+      <RepeatSeparator cn="dark:opacity-40" />
 
       <Card className="border-none bg-transparent shadow-none my-40">
         <CardHeader>
