@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Container from './Container';
 import BioText from '../landing/BioText';
 import ResumeButton from '../landing/ResumeButton';
@@ -17,12 +16,10 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
             <div className="box-border h-30 w-30 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none dark:bg-white">
-              <Image
+              <img
                 src="/avatar.avif"
                 alt="Avatar"
-                width={120}
-                height={120}
-                className="box-border h-30 scale-120 object-cover"
+                className="box-border h-full w-full scale-120 object-cover"
               />
             </div>
           </div>
