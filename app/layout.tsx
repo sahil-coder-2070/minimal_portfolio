@@ -64,6 +64,9 @@ export const metadata: Metadata = {
   },
 
   manifest: '/site.webmanifest',
+  alternates: {
+    canonical: '/',
+  },
   robots: {
     index: true,
     follow: true,
