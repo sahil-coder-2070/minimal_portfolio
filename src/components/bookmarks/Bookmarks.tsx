@@ -43,9 +43,9 @@ export default function BookmarksPage() {
             classname="text-neutral-400 dark:text-neutral-500 font-medium"
             heading="Bookmarks"
           />
-          <h2 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
+          <h1 className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
             A collection of my favorite links.
-          </h2>
+          </h1>
         </div>
         <div className="flex items-center justify-between screen-line-top screen-line-bottom p-2">
           <Link

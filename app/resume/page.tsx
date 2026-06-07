@@ -6,6 +6,14 @@ import { resumeConfig } from "@/config/resume";
 export const metadata: Metadata = {
   title: "Resume - Professional Profile",
   description: "View my professional resume and qualifications.",
+  alternates: {
+    canonical: "/resume",
+  },
+  openGraph: {
+    title: "Resume - Professional Profile",
+    description: "View my professional resume and qualifications.",
+    url: "/resume",
+  },
 };
 
 export default function ResumePage() {

@@ -6,6 +6,7 @@ import Container from '@/components/layouts/Container';
 import Layout from '@/components/common/Layout';
 import { Quote } from '@/components/common/Quote';
 import Footer from '@/components/common/Footer';
+import PageTracker from '@/components/common/PageTracker';
 
 const geistSans = Geist({
   variable: '--font-sans',
@@ -113,6 +114,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${pixelifySans.variable} min-h-screen font-sans antialiased`}
       >
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <PageTracker />
           <div className="min-h-screen">
             <Container>
               <Layout>

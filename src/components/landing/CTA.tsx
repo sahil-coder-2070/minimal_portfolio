@@ -18,11 +18,11 @@ const CTA = () => {
               <div className="relative z-20 flex items-center gap-2 transition-all duration-300 group-hover:gap-8">
                 <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full">
                   <Image
-                    alt="dsf"
+                    alt="Sahil's avatar"
                     width={20}
                     height={20}
                     className="h-full w-full object-cover"
-                    src="/Avatar.avif"
+                    src="/avatar.avif"
                     style={{ color: 'transparent' }}
                   />
                 </div>

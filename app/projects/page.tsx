@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: 'Projects | My Work',
   description:
     'Explore my React and frontend development projects featuring clean UI, performance-focused design, and real-world use cases.',
+  alternates: {
+    canonical: '/projects',
+  },
+  openGraph: {
+    title: 'Projects | My Work',
+    description:
+      'Explore my React and frontend development projects featuring clean UI, performance-focused design, and real-world use cases.',
+    url: '/projects',
+  },
 };
 
 export default async function ProjectsPage() {

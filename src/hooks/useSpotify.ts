@@ -60,6 +60,7 @@ export function useSpotify(): UseSpotifyReturn {
             artist: spotify.artist,
             albumArt: spotify.album_art_url,
             songUrl: `https://open.spotify.com/track/${spotify.track_id}`,
+            lastPlayedAt: new Date().toISOString(),
           };
 
           // Save to local storage for offline / stopped playback
@@ -71,10 +72,18 @@ export function useSpotify(): UseSpotifyReturn {
           if (savedData) {
             try {
               const parsed: SpotifyTrack = JSON.parse(savedData);
-              setData({
-                ...parsed,
-                isPlaying: false,
-              });
+              const lastPlayed = parsed.lastPlayedAt ? new Date(parsed.lastPlayedAt).getTime() : 0;
+              const oneWeek = 7 * 24 * 60 * 60 * 1000;
+
+              // Show last played if it's within 1 week, or has no timestamp (legacy fallback)
+              if (!parsed.lastPlayedAt || Date.now() - lastPlayed < oneWeek) {
+                setData({
+                  ...parsed,
+                  isPlaying: false,
+                });
+              } else {
+                setData(null); // Offline since it exceeded 1 week
+              }
             } catch {
               setData(null);
             }
@@ -85,15 +94,22 @@ export function useSpotify(): UseSpotifyReturn {
         setError(null);
       }
     } catch {
-      // On API error, try to show last saved song at least
+      // On API error, try to show last saved song at least if within 1 week
       const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (savedData) {
         try {
           const parsed: SpotifyTrack = JSON.parse(savedData);
-          setData({
-            ...parsed,
-            isPlaying: false,
-          });
+          const lastPlayed = parsed.lastPlayedAt ? new Date(parsed.lastPlayedAt).getTime() : 0;
+          const oneWeek = 7 * 24 * 60 * 60 * 1000;
+
+          if (!parsed.lastPlayedAt || Date.now() - lastPlayed < oneWeek) {
+            setData({
+              ...parsed,
+              isPlaying: false,
+            });
+          } else {
+            setData(null);
+          }
         } catch {
           setData(null);
         }

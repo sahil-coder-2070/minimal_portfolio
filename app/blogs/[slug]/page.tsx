@@ -32,10 +32,14 @@ export async function generateMetadata({
   return {
     title: `${post.meta.title} | Blog`,
     description: post.meta.description,
+    alternates: {
+      canonical: `/blogs/${slug}`,
+    },
     openGraph: {
       title: post.meta.title,
       description: post.meta.description,
       images: post.meta.image ? [post.meta.image] : [],
+      url: `/blogs/${slug}`,
     },
   };
 }

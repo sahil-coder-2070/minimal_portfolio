@@ -55,10 +55,24 @@ const Spotify = () => {
 
   if (loading) {
     return (
-      <div className="flex h-16 w-full items-center justify-center">
-        <div className="flex w-fit animate-pulse items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50/50 px-3 py-1.5 text-xs text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900/50 dark:text-neutral-400">
-          <span className="size-2 animate-ping rounded-full bg-[#1DB954]" />
-          Fetching Spotify activity…
+      <div className="relative z-40 h-16 w-full mb-3 select-none">
+        <div className="absolute right-0 bottom-3 left-0 mx-auto flex w-fit items-center">
+          <div className="flex w-fit items-center gap-2.5 rounded-full border border-neutral-200 bg-neutral-100/40 py-1.5 pr-4 pl-2 text-xs shadow-sm ring-1 ring-neutral-300/50 dark:border-neutral-800/80 dark:bg-neutral-900/40 dark:ring-neutral-700/50">
+            {/* Album Art Placeholder */}
+            <div className="flex size-9 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800 animate-pulse">
+              <SpotifyIcon className="size-4 text-neutral-300 dark:text-neutral-600 animate-pulse" />
+            </div>
+
+            {/* Skeleton Details */}
+            <div className="flex flex-col gap-0.5 leading-tight">
+              <span className="max-w-[150px] truncate text-[11px] font-semibold text-neutral-500 dark:text-neutral-400">
+                Spotify
+              </span>
+              <span className="max-w-[150px] truncate text-[10px] text-neutral-400/80 dark:text-neutral-500/80 animate-pulse">
+                Fetching Spotify activity…
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     );

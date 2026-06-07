@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Container from './Container';
 import BioText from '../landing/BioText';
@@ -7,13 +5,11 @@ import ResumeButton from '../landing/ResumeButton';
 import Spotify from '../landing/Spotify';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { Eye } from 'lucide-react';
-import { useVisitorCount } from '@/hooks/useVisitorCount';
 import { GitHubLogo } from '../icons/tech/GithubLogo';
 import RepeatSeparator from '../ui/repeat-separator';
+import VisitorCounter from '../landing/VisitorCounter';
 
 const Hero = ({ stars = 0 }: { stars?: number }) => {
-  const visitorCount = useVisitorCount();
 
   return (
     <Container className={`flex flex-col items-start justify-center`}>
@@ -54,15 +50,12 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
                 <p>{stars} Stars on GitHub</p>
               </TooltipContent>
             </Tooltip>
-            <span className="flex items-center gap-1 pr-5 text-sm text-neutral-400 select-none dark:text-neutral-400">
-              <Eye className="h-5 w-5" />
-              {visitorCount !== null ? `${visitorCount.toLocaleString()} visitors` : '—'}
-            </span>
+            <VisitorCounter />
           </div>
 
-          <h2 className="flex w-full flex-col pb-0.5 text-3xl font-medium text-neutral-700 dark:text-neutral-50">
+          <h1 className="flex w-full flex-col pb-0.5 text-3xl font-medium text-neutral-700 dark:text-neutral-50">
             Sahil Singh
-          </h2>
+          </h1>
           <span className="flex items-center gap-2 text-base font-medium text-neutral-500/70 dark:text-neutral-400">
             Design Engineer.
           </span>

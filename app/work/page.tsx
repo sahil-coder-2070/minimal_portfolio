@@ -6,6 +6,14 @@ import ExperienceContent from "@/components/experience/ExperienceContent";
 export const metadata: Metadata = {
   title: "Work Experience - Professional Journey",
   description: "A detailed overview of my professional journey, work experience, and contributions to real-world projects using React and modern frontend technologies.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Work Experience - Professional Journey",
+    description: "A detailed overview of my professional journey, work experience, and contributions to real-world projects using React and modern frontend technologies.",
+    url: "/work",
+  },
 };
 
 export default function WorkPage() {

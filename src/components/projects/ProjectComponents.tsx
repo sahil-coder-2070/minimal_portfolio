@@ -188,9 +188,9 @@ export const ProjectComponents = {
   ),
 
   h1: ({ children, ...props }: ChildrenProps) => (
-    <h1 className="mb-6 text-4xl font-bold" {...props}>
+    <h2 className="mb-6 text-4xl font-bold" {...props}>
       {children}
-    </h1>
+    </h2>
   ),
 
   h2: ({ children, ...props }: ChildrenProps) => (

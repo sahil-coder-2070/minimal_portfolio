@@ -33,9 +33,9 @@ export const BlogComponents = {
 
   // Headings with custom styles
   h1: ({ children, ...props }: ChildrenProps) => (
-    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }} {...props}>
+    <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }} {...props}>
       {children}
-    </h1>
+    </h2>
   ),
   h2: ({ children, ...props }: ChildrenProps) => (
     <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem' }} {...props}>
