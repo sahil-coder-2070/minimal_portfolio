@@ -18,9 +18,63 @@ const pixelifySans = Pixelify_Sans({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Sahil | Portfolio',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Sahil | Portfolio',
+    template: '%s | Sahil',
+  },
   description: 'Web developer portfolio, showing blogs, experience, and custom tools',
+  keywords: [
+    'Sahil',
+    'Developer Portfolio',
+    'React Developer',
+    'Next.js Developer',
+    'Frontend Developer',
+    'Full Stack Engineer',
+    'JavaScript',
+    'TypeScript',
+  ],
+  authors: [{ name: 'Sahil', url: 'https://github.com/sahilcodexx' }],
+  creator: 'Sahil',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    title: 'Sahil | Portfolio',
+    description: 'Web developer portfolio, showing blogs, experience, and custom tools',
+    siteName: 'Sahil Portfolio',
+    images: [
+      {
+        url: '/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Sahil | Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sahil | Portfolio',
+    description: 'Web developer portfolio, showing blogs, experience, and custom tools',
+    images: ['/og-image.webp'],
+    creator: '@sahilcodex',
+  },
+
+  manifest: '/site.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

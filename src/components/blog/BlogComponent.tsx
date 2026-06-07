@@ -91,7 +91,7 @@ export const BlogComponents = {
     // agar syntax highlighting hai (language-xyz class)
     if (className && className.startsWith('language-')) {
       return (
-        <code className={`$className`} {...props}>
+        <code className={className} {...props}>
           {children}
         </code>
       );

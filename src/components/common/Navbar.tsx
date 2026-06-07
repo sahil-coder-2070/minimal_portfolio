@@ -61,10 +61,15 @@ export const Navbar = () => {
                 <ThemeToggel />
 
                 {/* Mobile Navigation Dropdown */}
-                <div className="md:hidden">
+                <div className="md:hidden border-l">
                   <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className="rounded-full cursor-pointer" aria-label="Menu">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="cursor-pointer rounded-full"
+                        aria-label="Menu"
+                      >
                         <Menu size={18} />
                       </Button>
                     </DropdownMenuTrigger>
@@ -96,7 +101,7 @@ export const Navbar = () => {
           onClick={() => setCommandOpen(true)}
           size="default"
           variant="outline"
-          className="bg-background/95 gap-2 rounded-full border shadow-lg backdrop-blur-md px-5 transition-transform active:scale-95"
+          className="bg-background/95 gap-2 rounded-full border px-5 shadow-lg backdrop-blur-md transition-transform active:scale-95"
         >
           <Search size={16} />
           <span>Search</span>
