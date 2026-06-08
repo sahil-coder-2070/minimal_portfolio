@@ -15,6 +15,7 @@ export const ProjectCardData = [
   {
     id: 1,
     title: 'Movie Finder',
+    subheading: 'React Movie App',
     img: {
       src: '/projects/project2.avif',
       alt: 'Movie Finder project image',
@@ -63,6 +64,7 @@ export const ProjectCardData = [
   {
     id: 2,
     title: 'Nova Gaming',
+    subheading: 'Interactive Web Experience',
     img: {
       src: '/projects/project3.avif',
       alt: 'Nova Gaming GSAP animated project image',
@@ -106,6 +108,7 @@ export const ProjectCardData = [
   {
     id: 3,
     title: 'ChefyAI',
+    subheading: 'AI-Powered Recipe Generator',
     img: {
       src: '/projects/project1.avif',
       alt: 'ChefyAI project image',
@@ -149,6 +152,7 @@ export const ProjectCardData = [
   {
     id: 4,
     title: 'Image Editor AI',
+    subheading: 'AI-Powered Image Editor',
     img: {
       src: '/projects/repimly.avif',
       alt: 'Image Editor AI project image',
@@ -192,6 +196,7 @@ export const ProjectCardData = [
   {
     id: 5,
     title: 'Price Tracker',
+    subheading: 'Automated Price Monitor',
     img: {
       src: '/projects/trackhatke.avif',
       alt: 'Price Tracker project image',
@@ -235,6 +240,7 @@ export const ProjectCardData = [
   {
     id: 6,
     title: 'tcxcommit',
+    subheading: 'AI Git Commit Generator',
     img: {
       src: '/projects/tccommit.avif',
       alt: 'tcxcommit project image',
@@ -274,6 +280,7 @@ export const ProjectCardData = [
   {
     id: 7,
     title: 'Mechanical Keyboard',
+    subheading: 'Interactive Keyboard Simulator',
     img: {
       src: '/projects/keyui.avif',
       alt: 'Mechanical Keyboard project image',
@@ -317,6 +324,7 @@ export const ProjectCardData = [
   {
     id: 8,
     title: 'Bookmrk',
+    subheading: 'Privacy-First Bookmark Manager',
     img: {
       src: '/projects/bookmrkit.avif',
       alt: 'Bookmrk project image',

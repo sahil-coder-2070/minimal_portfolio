@@ -46,13 +46,19 @@ export default async function Home() {
   blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   // 3. Load Projects dynamically on the server
+  const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
   const projectSlugs = await getMarkdownSlugs('projects');
   const projects = await Promise.all(
     projectSlugs.map(async (slug) => {
       const content = await getMarkdownContent('projects', slug);
+      const staticData = ProjectCardData.find(
+        (p) => p.projectDetailsPageSlug?.endsWith(slug) || p.links?.details?.endsWith(slug)
+      );
+
       return {
         id: slug,
-        title: content?.meta.title || slug,
+        title: staticData?.title || content?.meta.title || slug,
+        subheading: staticData?.subheading || null,
         description: content?.meta.description || '',
         img: {
           src: content?.meta.image || '',
@@ -74,7 +80,6 @@ export default async function Home() {
   );
 
   // Sort projects ascendingly by their ID in ProjectCardData so that reverse() in ProjectCard renders newest first
-  const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
   projects.sort((a, b) => {
     const aData = ProjectCardData.find(
       (p) => p.projectDetailsPageSlug?.endsWith(a.id) || p.links?.details?.endsWith(a.id)

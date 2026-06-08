@@ -62,8 +62,8 @@ const ProjectCard = ({
                         />
 
                         {/* Header with Title and Pulsing Status */}
-                        <div className="mt-1 flex items-center justify-between px-1">
-                          <h2 className="group-hover/card:text-primary text-base leading-snug font-semibold capitalize">
+                        <div className="mt-2.5 pt-0.5 flex items-center justify-between px-1">
+                          <h2 className="group-hover/card:text-primary text-lg leading-snug font-bold capitalize">
                             {items.title}
                           </h2>
 
@@ -80,6 +80,13 @@ const ProjectCard = ({
                             </span>
                           </div>
                         </div>
+
+                        {/* Subheading */}
+                        {items.subheading && (
+                          <p className="text-neutral-500 dark:text-neutral-400 px-1 text-[11px] font-medium -mt-1 mb-1.5">
+                            {items.subheading}
+                          </p>
+                        )}
 
                         {/* Description */}
                         <p className="text-muted-foreground line-clamp-2 min-h-[38px] px-1 text-sm">

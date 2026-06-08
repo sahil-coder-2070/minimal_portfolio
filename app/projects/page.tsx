@@ -18,13 +18,19 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
+  const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
   const slugs = await getMarkdownSlugs('projects');
   const projects = await Promise.all(
     slugs.map(async (slug) => {
       const content = await getMarkdownContent('projects', slug);
+      const staticData = ProjectCardData.find(
+        (p) => p.projectDetailsPageSlug?.endsWith(slug) || p.links?.details?.endsWith(slug)
+      );
+
       return {
         id: slug,
-        title: content?.meta.title || slug,
+        title: staticData?.title || content?.meta.title || slug,
+        subheading: staticData?.subheading || null,
         description: content?.meta.description || '',
         img: {
           src: content?.meta.image || '',
@@ -44,7 +50,6 @@ export default async function ProjectsPage() {
   );
 
   // Sort projects ascendingly by their ID in ProjectCardData so that reverse() in ProjectCard renders newest first
-  const { ProjectCardData } = await import('@/config/projects/ProjectCardData');
   projects.sort((a, b) => {
     const aData = ProjectCardData.find(
       (p) => p.projectDetailsPageSlug?.endsWith(a.id) || p.links?.details?.endsWith(a.id)

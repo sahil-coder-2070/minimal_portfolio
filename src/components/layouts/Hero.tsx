@@ -15,14 +15,14 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
       <div className="flex h-full w-full">
         <div className="p-5">
           <div className="w-fit rounded-[9px] border p-[3.8px] dark:border-neutral-700">
-            <div className="box-border h-25 w-25 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 duration-200 select-none md:h-30 md:w-30 dark:bg-white">
+            <div className="box-border h-25 w-25 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 select-none md:h-30 md:w-30 dark:bg-white">
               <Image
                 src="/avatar.avif"
                 alt="Avatar"
                 height={120}
                 width={120}
                 priority
-                className="box-border h-full w-full scale-120 object-cover"
+                className="box-border h-full w-full scale-120 object-cover transition-none"
               />
             </div>
           </div>
