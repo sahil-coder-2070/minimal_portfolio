@@ -8,7 +8,7 @@ import { ArrowUpRight } from 'lucide-react';
 const ResumeButton = () => {
   const items = [
     {
-      name: 'Resume / CV',
+      name: 'Resume',
       href: '/resume',
       isExternal: false,
       icon: <Cv />,
@@ -70,24 +70,24 @@ const ResumeButton = () => {
     <>
       <div className="px-5 py-0.5 text-3xl font-normal">Connect</div>
       <div className="w-full">
-        <div className="relative w-full mt-2">
+        <div className="relative mt-2 w-full">
           {/* Absolute Vertical Dividers Overlay */}
           <div className="pointer-events-none absolute inset-0 z-[2] grid grid-cols-2 gap-2 md:grid-cols-3">
-            <div className="border-r border-line"></div>
-            <div className="border-l border-line md:border-x"></div>
-            <div className="border-l border-line max-md:hidden"></div>
+            <div className="border-line border-r"></div>
+            <div className="border-line border-l md:border-x"></div>
+            <div className="border-line border-l max-md:hidden"></div>
           </div>
 
           <ul className="connect-grid grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">
             {items.map((item) => {
               return (
                 <li key={item.name}>
-                  <div className="relative flex cursor-pointer items-center gap-4 p-4 pr-2 hover:bg-neutral-50 hover:dark:bg-neutral-900/30 group transition-colors duration-200">
+                  <div className="group relative flex cursor-pointer items-center gap-4 p-4 pr-2 transition-colors duration-200 hover:bg-neutral-50 hover:dark:bg-neutral-900/30">
                     <div className="relative size-8 shrink-0">
                       {renderIcon(item)}
                       <div className="pointer-events-none absolute inset-0 rounded-lg inset-ring-1 inset-ring-black/10 dark:inset-ring-white/15"></div>
                     </div>
-                    <h3 className="ml-3 flex-1 truncate text-sm font-medium text-neutral-700 transition-colors duration-200 group-hover:text-neutral-900 dark:text-neutral-300 dark:group-hover:text-neutral-100">
+                    <h3 className="ml-0 md:ml-3 flex-1 truncate text-sm font-medium text-neutral-700 transition-colors duration-200 group-hover:text-neutral-900 dark:text-neutral-300 dark:group-hover:text-neutral-100">
                       {item.isExternal ? (
                         <a href={item.href} target="_blank" rel="noopener">
                           <span className="absolute inset-0" aria-hidden="true" />

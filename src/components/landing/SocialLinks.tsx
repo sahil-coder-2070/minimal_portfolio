@@ -1,13 +1,9 @@
-import Github from "@/components/icons/social/Github";
-import LinkedIn from "@/components/icons/social/LinkedIn";
-import Mail from "@/components/icons/social/Mail";
-import X from "@/components/icons/social/X.jsx";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { motion as Motion } from "motion/react";
+import Github from '@/components/icons/social/Github';
+import LinkedIn from '@/components/icons/social/LinkedIn';
+import Mail from '@/components/icons/social/Mail';
+import X from '@/components/icons/social/X.jsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { motion as Motion } from 'motion/react';
 
 import Link from 'next/link';
 
@@ -16,9 +12,9 @@ const SocialLinks = () => {
     <Motion.div
       initial={{ y: 40, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
       viewport={{ once: true }}
-      className="mt-8 flex  gap-2"
+      className="mt-8 flex gap-2"
     >
       {socialLinks.map((link) => (
         <Tooltip key={link.name} delayDuration={0}>
@@ -44,23 +40,23 @@ export default SocialLinks;
 
 const socialLinks = [
   {
-    name: "X",
-    href: "https://x.com/sahilcodex",
+    name: 'X',
+    href: 'https://x.com/sahilcodex',
     icon: <X />,
   },
   {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/sahil-singh-tech/",
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/sahil-singh-tech/',
     icon: <LinkedIn />,
   },
   {
-    name: "Github",
-    href: "https://github.com/sahilcodexx",
+    name: 'Github',
+    href: 'https://github.com/sahilcodexx',
     icon: <Github />,
   },
   {
-    name: "Email",
-    href: "mailto:sahil207003@gmail.com",
+    name: 'Email',
+    href: 'mailto:sahil207003@gmail.com',
     icon: <Mail />,
   },
 ];

@@ -37,8 +37,8 @@ const TechSkills = () => {
     <>
       <RepeatSeparator />
       <SectionHeading heading={'Stack'} />
-      <Container className='py-3'>
-        <div className="mt-3 flex flex-wrap gap-2 gap-y-2.5 px-4 justify-center sm:justify-start">
+      <Container className="py-3">
+        <div className="mt-3 flex flex-wrap justify-start gap-2 gap-y-2.5 px-4">
           {SkillsList.map((items) => {
             return (
               <a
@@ -46,7 +46,7 @@ const TechSkills = () => {
                 href={items.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-1.5 rounded-full bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-900/60 dark:hover:bg-zinc-800/80 px-2 py-0.5 text-xs font-normal tracking-wide text-foreground border border-neutral-300/40 dark:border-neutral-800/80 shadow-xs transition-all duration-300 select-none cursor-pointer"
+                className="group text-foreground flex cursor-pointer items-center gap-1.5 rounded-full border border-neutral-300/40 bg-zinc-50 px-2 py-0.5 text-xs font-normal tracking-wide shadow-xs transition-all duration-300 select-none hover:bg-zinc-100 dark:border-neutral-800/80 dark:bg-zinc-900/60 dark:hover:bg-zinc-800/80"
               >
                 <span className="flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-3.5">
                   {items.icon}
@@ -92,11 +92,7 @@ const SkillsList = [
     icon: <ReactIcon />,
     href: 'https://reactjs.org/',
   },
-  {
-    title: 'React Navigation',
-    icon: <ReactNavigation />,
-    href: 'https://reactnavigation.org/',
-  },
+
   {
     title: 'NextJS',
     icon: <NextJS />,

@@ -53,7 +53,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
             <VisitorCounter />
           </div>
 
-          <h1 className="flex w-full flex-col md:pb-0.5 text-2xl font-medium text-neutral-700 md:text-3xl dark:text-neutral-50">
+          <h1 className="flex w-full flex-col text-2xl font-medium text-neutral-700 md:pb-0.5 md:text-3xl dark:text-neutral-50">
             Sahil Singh
           </h1>
           <span className="flex items-center gap-2 text-sm font-medium text-neutral-500/70 md:text-base dark:text-neutral-400">
