@@ -3,10 +3,8 @@ export default function LLM() {
     <svg
       fill="currentColor"
       fillRule="evenodd"
-      height=""
       className="flex-none"
       viewBox="0 0 24 24"
-      width=""
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>Ollama</title>

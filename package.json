@@ -52,6 +52,7 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "globals": "^16.5.0",
+    "node-appwrite": "^26.1.0",
     "postcss": "^8.5.15",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
