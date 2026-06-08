@@ -9,13 +9,9 @@ export default function VisitorCounter() {
   const visitorCount = useVisitorCount();
 
   return (
-    <span className="flex items-center gap-1 pr-5 text-sm text-neutral-400 select-none dark:text-neutral-400">
-      <Eye className="h-5 w-5" />
-      <NumberFlow
-        plugins={[continuous]}
-        value={visitorCount ?? 0}
-      /> visitors
+    <span className="flex items-center gap-1 pr-5 text-sm text-neutral-500 select-none dark:text-neutral-300/70">
+      <Eye className="h-4 w-3.5" />
+      <NumberFlow plugins={[continuous]} value={visitorCount ?? 0} /> 
     </span>
   );
 }
-
