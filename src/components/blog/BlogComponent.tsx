@@ -115,4 +115,8 @@ export const BlogComponents = {
       {children}
     </pre>
   ),
+
+  hr: ({ ...props }) => (
+    <hr className="my-12 border-t border-neutral-300/40 dark:border-neutral-800/80" {...props} />
+  ),
 };

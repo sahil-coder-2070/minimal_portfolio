@@ -101,10 +101,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <RepeatSeparator cn="h-8 opacity-50" />
       <div data-doc-cols-ready="">
         {/* 1. Document Header Container */}
-        <div
-          data-slot="doc-container"
-          className="mx-auto w-full md:max-w-3xl"
-        >
+        <div data-slot="doc-container" className="mx-auto w-full md:max-w-3xl">
           <div className="screen-line-bottom h-px" />
 
           <div className="flex items-center justify-between p-2 pl-4">
@@ -126,7 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="screen-line-top screen-line-bottom py-px">
             <div className="mx-auto h-4 md:max-w-3xl" />
           </div>
-          <div className="screen-line-bottom">
+          <div className="screen-line-bottom pb-4">
             <h1
               data-slot="doc-title"
               className="px-4 text-3xl font-semibold tracking-tight text-balance md:max-w-md"
@@ -143,11 +140,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         >
           <aside data-slot="doc-left-col" className="max-lg:hidden" />
 
-          <div
-            data-slot="doc-content-col"
-            className="mx-auto w-full md:max-w-3xl"
-          >
-            <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-8">
+          <div data-slot="doc-content-col" className="mx-auto w-full md:max-w-3xl">
+            <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-12">
               {/* Project description (subheading) */}
               <p className="text-muted-foreground mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
                 {projectMeta.description}
@@ -155,11 +149,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
               {/* Featured Image */}
               {projectMeta.image && (
-                <ZoomableImage
-                  src={projectMeta.image}
-                  alt={projectMeta.title || slug}
-                  priority
-                />
+                <ZoomableImage src={projectMeta.image} alt={projectMeta.title || slug} priority />
               )}
 
               {/* Project Meta Information Grid */}

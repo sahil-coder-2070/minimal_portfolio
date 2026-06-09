@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Clean content by removing the first H1 heading and first paragraph to avoid duplication
   let cleanContent = content;
   const lines = content.split('\n');
-  const headingIndex = lines.findIndex(line => line.trim().startsWith('# '));
+  const headingIndex = lines.findIndex((line) => line.trim().startsWith('# '));
   if (headingIndex !== -1) {
     // Remove the heading
     lines.splice(headingIndex, 1);
@@ -99,10 +99,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <RepeatSeparator cn="h-8 opacity-50" />
       <div data-doc-cols-ready="">
         {/* 1. Document Header Container */}
-        <div
-          data-slot="doc-container"
-          className="mx-auto w-full md:max-w-3xl"
-        >
+        <div data-slot="doc-container" className="mx-auto w-full md:max-w-3xl">
           <div className="screen-line-bottom h-px" />
 
           <div className="flex items-center justify-between p-2 pl-4">
@@ -142,24 +139,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         >
           <aside data-slot="doc-left-col" className="max-lg:hidden" />
 
-          <div
-            data-slot="doc-content-col"
-            className="mx-auto w-full md:max-w-3xl"
-          >
-            <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-8">
+          <div data-slot="doc-content-col" className="mx-auto w-full md:max-w-3xl">
+            <div data-slot="prose" className="prose dark:prose-invert w-full px-5 pt-6">
               {/* Description */}
-              <p className="text-muted-foreground mt-6 mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
+              <p className="text-muted-foreground  mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
                 {meta.description}
               </p>
 
               {/* Featured Image */}
-              {meta.image && (
-                <ZoomableImage
-                  src={meta.image}
-                  alt={meta.title || slug}
-                  priority
-                />
-              )}
+              {meta.image && <ZoomableImage src={meta.image} alt={meta.title || slug} priority />}
 
               {/* Meta tags and date */}
               <div className="mb-6 flex flex-wrap items-center gap-4 text-sm">
