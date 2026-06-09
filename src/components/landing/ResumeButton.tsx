@@ -73,9 +73,9 @@ const ResumeButton = () => {
         <div className="relative mt-2 w-full">
           {/* Absolute Vertical Dividers Overlay */}
           <div className="pointer-events-none absolute inset-0 z-[2] grid grid-cols-2 gap-2 md:grid-cols-3">
-            <div className="border-line border-r"></div>
-            <div className="border-line border-l md:border-x"></div>
-            <div className="border-line border-l max-md:hidden"></div>
+            <div className="border-border border-r dark:opacity-60"></div>
+            <div className="border-border border-l md:border-x dark:opacity-60"></div>
+            <div className="border-border border-l max-md:hidden dark:opacity-60"></div>
           </div>
 
           <ul className="connect-grid grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3">

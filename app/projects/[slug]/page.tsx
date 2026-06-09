@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { ProjectComponents } from '@/components/projects/ProjectComponents';
+import { ZoomableImage } from '@/components/projects/ZoomableImage';
 import { ProjectNavigation } from '@/components/common/ProjectNavigation';
 import { notFound } from 'next/navigation';
 import Website from '@/components/icons/social/Website';
@@ -95,12 +96,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
   return (
-    <div className="bg-background w-full">
-      {/* <div className="border-line mx-auto h-12 border-x md:max-w-3xl" /> */}
+    <div className="w-full border-none">
+      {/* <div className="border-border mx-auto h-12 border-x md:max-w-3xl" /> */}
       <RepeatSeparator cn="h-8 opacity-50" />
       <div data-doc-cols-ready="">
         {/* 1. Document Header Container */}
-        <div data-slot="doc-container" className="border-line mx-auto w-full border-x md:max-w-3xl">
+        <div
+          data-slot="doc-container"
+          className="mx-auto w-full md:max-w-3xl"
+        >
           <div className="screen-line-bottom h-px" />
 
           <div className="flex items-center justify-between p-2 pl-4">
@@ -119,13 +123,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <RepeatSeparator cn="h-8" />
-          <div className="screen-line- screen-line-bottom py-px">
-            <div className="border-line mx-auto h-4 border-x md:max-w-3xl" />
+          <div className="screen-line-top screen-line-bottom py-px">
+            <div className="mx-auto h-4 md:max-w-3xl" />
           </div>
           <div className="screen-line-bottom">
             <h1
               data-slot="doc-title"
-              className="px-4  text-3xl font-semibold tracking-tight text-balance md:max-w-md"
+              className="px-4 text-3xl font-semibold tracking-tight text-balance md:max-w-md"
             >
               {projectMeta.title}
             </h1>
@@ -141,7 +145,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
           <div
             data-slot="doc-content-col"
-            className="border-line mx-auto w-full border-x md:max-w-3xl"
+            className="mx-auto w-full md:max-w-3xl"
           >
             <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-8">
               {/* Project description (subheading) */}
@@ -151,15 +155,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
               {/* Featured Image */}
               {projectMeta.image && (
-                <figure className="border-line bg-muted relative mb-8 aspect-video overflow-hidden rounded-xl border shadow-sm transition-all duration-300">
-                  <Image
-                    src={projectMeta.image}
-                    alt={projectMeta.title || slug}
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                </figure>
+                <ZoomableImage
+                  src={projectMeta.image}
+                  alt={projectMeta.title || slug}
+                  priority
+                />
               )}
 
               {/* Project Meta Information Grid */}
@@ -222,7 +222,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       projectMeta.technologies.map((tech) => (
                         <div
                           key={tech}
-                          className="bg-muted/50 border-line inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium"
+                          className="bg-muted/50 border-border inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium"
                         >
                           <span>{tech}</span>
                         </div>

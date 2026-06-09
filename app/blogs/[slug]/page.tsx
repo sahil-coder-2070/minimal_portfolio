@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article className="mx-auto max-w-4xl px-5">
         <header className="mb-8 space-y-6">
           {meta.image && (
-            <div className="border-line bg-muted relative aspect-video overflow-hidden rounded-lg border">
+            <div className="border-border bg-muted relative aspect-video overflow-hidden rounded-lg border">
               <Image
                 src={meta.image}
                 alt={meta.title || slug}

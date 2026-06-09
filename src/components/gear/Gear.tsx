@@ -146,14 +146,14 @@ export default function GearsPage() {
           {filteredDevices.length > 0 && (
             <div className="space-y-4 my-8">
               <SectionHeading heading="Devices" />
-              <ul className="divide-y divide-line border-y border-line">
+              <ul className="divide-y divide-border border-y border-border">
                 {filteredDevices.map((device) => (
                   <li key={device.name} className="list-none">
                     <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
                       <div className="mx-4 bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10 [&_svg]:size-4">
                         {device.icon}
                       </div>
-                      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+                      <div className="flex-1 space-y-1 border-l border-dashed border-border p-4 pr-2">
                         <h3 className="leading-snug font-medium text-balance text-secondary">
                           {device.name}
                         </h3>
@@ -169,14 +169,14 @@ export default function GearsPage() {
           {filteredExtensions.length > 0 && (
             <div className="space-y-4 my-8">
               <SectionHeading heading="Web Extensions" />
-              <ul className="divide-y divide-line border-y border-line">
+              <ul className="divide-y divide-border border-y border-border">
                 {filteredExtensions.map((extension, index) => (
                   <li key={extension.name} className="list-none">
                     <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
                       <div className="mx-4 bg-muted flex items-center justify-center rounded-md border border-black/10 px-2 py-1 text-[#736F70] dark:border-white/10 select-none">
                         <span className="text-secondary text-sm font-semibold">{index + 1}</span>
                       </div>
-                      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+                      <div className="flex-1 space-y-1 border-l border-dashed border-border p-4 pr-2">
                         <h3 className="leading-snug font-medium text-balance">
                           <Link href={extension.href} target="_blank" rel="noopener">
                             <span className="absolute inset-0" aria-hidden="true"></span>
@@ -202,14 +202,14 @@ export default function GearsPage() {
           {filteredSoftware.length > 0 && (
             <div className="space-y-4 my-8">
               <SectionHeading heading="Software" />
-              <ul className="divide-y divide-line border-y border-line">
+              <ul className="divide-y divide-border border-y border-border">
                 {filteredSoftware.map((app, index) => (
                   <li key={app.name} className="list-none">
                     <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
                       <div className="mx-4 bg-muted flex items-center justify-center rounded-md border border-black/10 px-2 py-1 text-[#736F70] dark:border-white/10 select-none">
                         <span className="text-secondary text-sm font-semibold">{index + 1}</span>
                       </div>
-                      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+                      <div className="flex-1 space-y-1 border-l border-dashed border-border p-4 pr-2">
                         <h3 className="leading-snug font-medium text-balance">
                           <Link href={app.href} target="_blank" rel="noopener">
                             <span className="absolute inset-0" aria-hidden="true"></span>

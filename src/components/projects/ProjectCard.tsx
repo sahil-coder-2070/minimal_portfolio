@@ -161,18 +161,12 @@ const ProjectCard = ({
 
               {/* Full-screen-width separator on desktop */}
               {showDesktopSep && (
-                <div className="col-span-2 hidden sm:block" style={{ height: '12px', position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
-                  <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
-                </div>
+                <div className="col-span-2 screen-line-top screen-line-bottom hidden h-3 sm:block" />
               )}
 
               {/* Full-screen-width separator on mobile */}
               {showMobileSep && (
-                <div className="block sm:hidden" style={{ height: '12px', position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
-                  <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100vw', height: '1px', backgroundColor: 'var(--border)' }} />
-                </div>
+                <div className="screen-line-top screen-line-bottom block h-3 sm:hidden" />
               )}
             </React.Fragment>
           );

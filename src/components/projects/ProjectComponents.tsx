@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import Bun from '@/components/icons/tech/Bun';
+import { ZoomableImage } from '@/components/projects/ZoomableImage';
 import JavaScript from '@/components/icons/tech/JavaScript';
 import MongoDB from '@/components/icons/tech/MongoDB';
 import NextJS from '@/components/icons/tech/NextJS';
@@ -170,7 +171,7 @@ interface CodeProps {
 
 export const ProjectComponents = {
   img: ({ src, alt, ...props }: ImageProps) => (
-    <Image src={src} alt={alt} width={800} height={400} className="rounded-lg" {...props} />
+    <ZoomableImage src={src} alt={alt} width={800} height={400} {...props} />
   ),
 
   h1: ({ children, ...props }: ChildrenProps) => (
@@ -218,7 +219,7 @@ export const ProjectComponents = {
   pre: ({ children, ...props }: ChildrenProps) => {
     return (
       <div className="group relative mb-4">
-        <pre className="code-block overflow-x-auto rounded-lg text-sm" {...props}>
+        <pre className="bg-secondary dark:bg-neutral-800/60 overflow-x-auto rounded-lg p-4 text-sm" {...props}>
           {children}
         </pre>
       </div>

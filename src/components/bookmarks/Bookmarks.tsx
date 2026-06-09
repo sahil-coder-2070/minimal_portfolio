@@ -151,7 +151,7 @@ export default function BookmarksPage() {
             <div key={category} className="space-y-4 my-8">
               <div className="space-y-4">
                 <SectionHeading heading={category} />
-                <ul className="divide-y divide-line border-y border-line">
+                <ul className="divide-y divide-border border-y border-border">
                   {items.map((item, index) => (
                     <li key={item.name + item.url} className="list-none">
                       <div className="relative flex items-center pr-2 hover:bg-neutral-100 dark:hover:bg-neutral-900/40 transition-colors duration-250 group">
@@ -160,7 +160,7 @@ export default function BookmarksPage() {
                           <span className="text-secondary text-sm font-semibold">{index + 1}</span>
                         </div>
                         {/* Content Container */}
-                        <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+                        <div className="flex-1 space-y-1 border-l border-dashed border-border p-4 pr-2">
                           <h3 className="leading-snug font-medium text-balance">
                             <Link href={item.url} target="_blank" rel="noopener">
                               <span className="absolute inset-0" aria-hidden="true"></span>

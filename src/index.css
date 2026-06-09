@@ -212,45 +212,6 @@
   }
 }
 
-@keyframes fadeInBlur {
-  0% {
-    opacity: 0.2;
-    filter: blur(5px);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0px);
-  }
-}
-
-.animate-fade-in-blur {
-  animation: fadeInBlur 0.5s ease-out forwards;
-  animation-delay: 0.3s;
-  opacity: 0.4;
-  filter: blur(3px);
-}
-
-/* Code block styling */
-.code-block {
-  background-color: hsl(210 40% 96.1%);
-}
-.dark .code-block {
-  background-color: oklch(55% 0 0);
-}
-
-.bg-repeat-pattern {
-  background-image: repeating-linear-gradient(
-    315deg,
-    transparent 0,
-    var(--repeat-separator-color) 0,
-    var(--repeat-separator-color) 1px,
-    transparent 1px,
-    transparent 50%
-  );
-  background-size: 10px 10px;
-}
-
 /* Global scrollbar */
 html {
   overflow-x: clip;
@@ -331,6 +292,10 @@ html {
   pointer-events: none;
 }
 
+.dark .screen-line-top::before {
+  opacity: 0.6;
+}
+
 .screen-line-bottom {
   position: relative;
 }
@@ -347,15 +312,8 @@ html {
   pointer-events: none;
 }
 
-.border-line {
-  border-color: var(--border);
-}
-
-.hover\:bg-accent-muted:hover {
-  background-color: hsla(210, 40%, 96.1%, 0.5);
-}
-.dark .hover\:bg-accent-muted:hover {
-  background-color: hsla(217.2, 32.6%, 17.5%, 0.5);
+.dark .screen-line-bottom::after {
+  opacity: 0.6;
 }
 
 /* Unified Connect Grid Responsive Lines */
@@ -414,17 +372,6 @@ html {
 }
 
 /* Blog Grid Separators */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .blog-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 
 .blog-grid li {
   position: relative;

@@ -15,23 +15,13 @@ const Timer = () => {
   }, []);
 
   return (
-    <div style={styles.card}>
+    <div className="w-[300px] rounded-xl bg-neutral-900 p-5 text-white">
       <h2>📊 Coding Activity</h2>
       <p><strong>Today:</strong> {time}</p>
       <p><strong>Top Language:</strong> {language}</p>
-      <p style={{ color: "green" }}>🔥 Currently coding</p>
+      <p className="text-green-500">🔥 Currently coding</p>
     </div>
   );
-};
-
-const styles = {
-  card: {
-    background: "#111",
-    color: "#fff",
-    padding: "20px",
-    borderRadius: "10px",
-    width: "300px",
-  },
 };
 
 export default Timer;

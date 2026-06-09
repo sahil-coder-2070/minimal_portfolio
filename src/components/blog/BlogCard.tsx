@@ -21,12 +21,12 @@ const BlogCard = ({ data = BlogCardData }) => {
       <div className="relative py-4">
         {/* Vertical separating lines */}
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-line border-r"></div>
-          <div className="border-line border-l"></div>
+          <div className="border-border border-r"></div>
+          <div className="border-border border-l"></div>
         </div>
 
         {/* Blog list */}
-        <ul className="blog-grid">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {data.map((items, index) => {
             const isItemNew = isNew(items.date);
             return (

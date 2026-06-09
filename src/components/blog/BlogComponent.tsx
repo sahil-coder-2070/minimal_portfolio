@@ -26,62 +26,48 @@ export const BlogComponents = {
       alt={alt}
       width={800}
       height={450}
-      style={{ maxWidth: '100%', borderRadius: '8px', margin: '1rem 0', height: 'auto' }}
+      className="my-4 h-auto w-full max-w-full rounded-lg"
       {...props}
     />
   ),
 
   // Headings with custom styles
   h1: ({ children, ...props }: ChildrenProps) => (
-    <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }} {...props}>
+    <h2 className="mb-4 text-4xl font-bold" {...props}>
       {children}
     </h2>
   ),
   h2: ({ children, ...props }: ChildrenProps) => (
-    <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.75rem' }} {...props}>
+    <h2 className="mb-3 text-2xl font-semibold" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: ChildrenProps) => (
-    <h3 style={{ fontSize: '1.5rem', fontWeight: '500', marginBottom: '0.5rem' }} {...props}>
+    <h3 className="mb-2 text-xl font-medium" {...props}>
       {children}
     </h3>
   ),
 
   // Paragraph styling
   p: ({ children, ...props }: ChildrenProps) => (
-    <p className="text-secondary" style={{ lineHeight: 1.6, marginBottom: '1.5rem' }} {...props}>
+    <p className="text-secondary mb-6 leading-relaxed" {...props}>
       {children}
     </p>
   ),
 
   // Lists styling
   ul: ({ children, ...props }: ChildrenProps) => (
-    <ul
-      style={{
-        paddingLeft: '1.5rem',
-        marginBottom: '1rem',
-        listStyleType: 'disc',
-      }}
-      {...props}
-    >
+    <ul className="mb-4 list-disc pl-6" {...props}>
       {children}
     </ul>
   ),
   ol: ({ children, ...props }: ChildrenProps) => (
-    <ol
-      style={{
-        paddingLeft: '1.9rem',
-        marginBottom: '1rem',
-        listStyleType: 'decimal',
-      }}
-      {...props}
-    >
+    <ol className="mb-4 list-decimal pl-8" {...props}>
       {children}
     </ol>
   ),
   li: ({ children, ...props }: ChildrenProps) => (
-    <li className="text-muted-foreground ml-4" style={{ marginBottom: '0.5rem' }} {...props}>
+    <li className="text-muted-foreground mb-2 ml-4" {...props}>
       {children}
     </li>
   ),
@@ -99,12 +85,7 @@ export const BlogComponents = {
     // simple inline code
     return (
       <code
-        style={{
-          padding: '2px 5px',
-          borderRadius: '4px',
-          fontFamily: 'monospace',
-          fontSize: '1.2em',
-        }}
+        className="rounded px-1.5 py-0.5 font-mono text-[1.1em] bg-muted"
         {...props}
       >
         {children}
@@ -112,37 +93,23 @@ export const BlogComponents = {
     );
   },
   em: ({ children, ...props }: ChildrenProps) => (
-    <em className="text-primary text-sm font-semibold" style={{ fontStyle: 'normal' }} {...props}>
+    <em className="text-primary not-italic text-sm font-semibold" {...props}>
       `{children}`
     </em>
   ),
   // Blockquote
   blockquote: ({ children, ...props }: ChildrenProps) => (
     <blockquote
-      style={{
-        borderLeft: '4px solid #555',
-        margin: '1rem 0',
-        paddingLeft: '1rem',
-        fontStyle: 'italic',
-        color: '#aaa',
-      }}
+      className="my-4 border-l-4 border-neutral-500 pl-4 italic text-muted-foreground"
       {...props}
     >
       {children}
     </blockquote>
   ),
 
-  // Preformatted block (code block wrapper)
   pre: ({ children, ...props }: ChildrenProps) => (
     <pre
-    className='dark:bg-neutral-800/60 bg-neutral-900 border  border-transparent ring ring-neutral-700'
-      style={{
-        color: '#eee',
-        padding: '1.5rem',
-        borderRadius: '8px',
-        overflowX: 'auto',
-        marginBottom: '1.5rem',
-      }}
+      className="dark:bg-neutral-800/60 bg-neutral-900 border border-transparent ring ring-neutral-700 mb-6 overflow-x-auto rounded-lg p-6 text-neutral-200"
       {...props}
     >
       {children}

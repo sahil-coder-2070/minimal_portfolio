@@ -121,7 +121,7 @@ export default function Contact() {
             </svg>
             Home
           </Link>
-          <span className="text-xs sm:text-sm text-muted-foreground font-medium border border-line px-3 py-1 rounded-full bg-muted/30">
+          <span className="text-xs sm:text-sm text-muted-foreground font-medium border border-border px-3 py-1 rounded-full bg-muted/30">
             Available for freelance
           </span>
         </div>

@@ -28,7 +28,7 @@ export default function Setup() {
         <SectionHeading heading="Setup" />
         <div className="flex flex-col">
           {setupItems.map((item) => (
-            <div key={item.name} className="border-line border-y border-t-0 first:border-t">
+            <div key={item.name} className="border-border border-y border-t-0 first:border-t">
               <div className=" hover:bg-neutral-100 dark:hover:bg-neutral-900/40 group relative flex items-center pr-2 transition-colors duration-250">
                 {/* Icon Container */}
                 <div className="border-muted-foreground/15 ring-line ring-offset-background bg-muted text-muted-foreground mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border ring-1 ring-offset-1 select-none [&_svg]:size-4">
@@ -36,7 +36,7 @@ export default function Setup() {
                 </div>
 
                 {/* Content Container */}
-                <div className="border-line flex-1 space-y-1 border-l border-dashed p-4 pr-2">
+                <div className="border-border flex-1 space-y-1 border-l border-dashed p-4 pr-2">
                   <h3 className="leading-snug font-medium text-balance">
                     <Link href={item.href}>
                       <span className="absolute inset-0" aria-hidden="true"></span>
