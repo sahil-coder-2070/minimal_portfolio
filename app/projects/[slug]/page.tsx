@@ -17,6 +17,7 @@ import Github from "@/components/icons/social/Github";
 import "highlight.js/styles/github-dark.css";
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 import { ProjectHeaderActions } from "@/components/projects/ProjectHeaderActions";
+import RepeatSeparator from "@/components/ui/repeat-separator";
 
 interface ProjectMeta {
   title?: string;
@@ -123,32 +124,11 @@ export default async function ProjectPage({
           </div>
 
         <div className="screen-line-top screen-line-bottom py-px">
-          <div className="h-4" />
+          <RepeatSeparator />
         </div>
 
-        <div className="space-y-4 px-4 py-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant={projectMeta.statusVariant} className="text-sm">
-              {projectMeta.status
-                ? projectMeta.status.charAt(0).toUpperCase() +
-                  projectMeta.status.slice(1)
-                : "Unknown"}
-            </Badge>
-            {projectMeta.technologies &&
-              projectMeta.technologies.slice(0, 3).map((tech) => (
-                <Badge key={tech} variant="outline" className="text-xs">
-                  {tech}
-                </Badge>
-              ))}
-            {projectMeta.technologies && projectMeta.technologies.length > 3 && (
-              <Badge variant="outline" className="text-xs">
-                +{projectMeta.technologies.length - 3} more
-              </Badge>
-            )}
-          </div>
-        </div>
 
-        <h1 data-slot="doc-title" className="screen-line-bottom px-4 pb-4 text-3xl font-semibold tracking-tight text-balance leading-tight lg:text-4xl">
+        <h1 data-slot="doc-title" className="screen-line-bottom px-4 text-3xl font-semibold tracking-tight text-balance">
           {projectMeta.title}
         </h1>
       </div>

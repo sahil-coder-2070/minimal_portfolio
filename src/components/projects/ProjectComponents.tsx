@@ -1,19 +1,19 @@
-import React, { ReactNode } from "react";
-import Image from "next/image";
-import Bun from "@/components/icons/tech/Bun";
-import JavaScript from "@/components/icons/tech/JavaScript";
-import MongoDB from "@/components/icons/tech/MongoDB";
-import NextJS from "@/components/icons/tech/NextJS";
-import NodeJS from "@/components/icons/tech/NodeJS";
-import PostgreSQL from "@/components/icons/tech/PostgreSQL";
-import Prisma from "@/components/icons/tech/Prisma";
-import ReactIcon from "@/components/icons/tech/ReactIcon";
-import TypeScript from "@/components/icons/tech/TypeScript";
-import { Badge } from "@/components/ui/badge";
+import React, { ReactNode } from 'react';
+import Image from 'next/image';
+import Bun from '@/components/icons/tech/Bun';
+import JavaScript from '@/components/icons/tech/JavaScript';
+import MongoDB from '@/components/icons/tech/MongoDB';
+import NextJS from '@/components/icons/tech/NextJS';
+import NodeJS from '@/components/icons/tech/NodeJS';
+import PostgreSQL from '@/components/icons/tech/PostgreSQL';
+import Prisma from '@/components/icons/tech/Prisma';
+import ReactIcon from '@/components/icons/tech/ReactIcon';
+import TypeScript from '@/components/icons/tech/TypeScript';
+import { Badge } from '@/components/ui/badge';
 
 // Technology mapping
 const TechnologyComponents: Record<string, () => React.ReactNode> = {
-  "Next.js": NextJS,
+  'Next.js': NextJS,
   nextjs: NextJS,
   React: ReactIcon,
   react: ReactIcon,
@@ -21,7 +21,7 @@ const TechnologyComponents: Record<string, () => React.ReactNode> = {
   typescript: TypeScript,
   JavaScript: JavaScript,
   javascript: JavaScript,
-  "Node.js": NodeJS,
+  'Node.js': NodeJS,
   nodejs: NodeJS,
   node: NodeJS,
   MongoDB: MongoDB,
@@ -35,18 +35,19 @@ const TechnologyComponents: Record<string, () => React.ReactNode> = {
 };
 
 // Technology badge
-const Technology = ({ name = "" }: { name?: string }) => {
-  const TechComponent =
-    TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
+const Technology = ({ name = '' }: { name?: string }) => {
+  const TechComponent = TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
 
   return (
-    <div className="flex items-center gap-1.5 rounded-full bg-zinc-50 dark:bg-zinc-900/60 px-2 py-0.5 text-xs font-normal tracking-wide text-foreground border border-neutral-300/40 dark:border-neutral-800/80 shadow-xs select-none [&_svg]:size-3.5 size-fit">
+    <div className="text-foreground flex size-fit items-center gap-1.5 rounded-full border border-neutral-300/40 bg-zinc-50 px-2 py-0.5 text-xs font-normal tracking-wide shadow-xs select-none dark:border-neutral-800/80 dark:bg-zinc-900/60 [&_svg]:size-3.5">
       {TechComponent && (
         <span className="flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-3.5">
           <TechComponent />
         </span>
       )}
-      <span className="text-foreground text-xs font-normal tracking-wide whitespace-nowrap">{name}</span>
+      <span className="text-foreground text-xs font-normal tracking-wide whitespace-nowrap">
+        {name}
+      </span>
     </div>
   );
 };
@@ -78,9 +79,7 @@ const ProjectMeta = ({
   <div className="bg-muted/20 my-6 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
     {timeline && (
       <div>
-        <h5 className="text-muted-foreground text-sm font-semibold">
-          Timeline
-        </h5>
+        <h5 className="text-muted-foreground text-sm font-semibold">Timeline</h5>
         <p className="text-sm">{timeline}</p>
       </div>
     )}
@@ -104,11 +103,7 @@ const ProjectMeta = ({
         <h5 className="text-muted-foreground text-sm font-semibold">Status</h5>
         <Badge
           variant={
-            status === "completed"
-              ? "default"
-              : status === "in-progress"
-                ? "secondary"
-                : "outline"
+            status === 'completed' ? 'default' : status === 'in-progress' ? 'secondary' : 'outline'
           }
         >
           {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -141,9 +136,7 @@ const Challenges = ({ challenges = [] }: { challenges?: string[] }) => (
 // Learnings
 const Learnings = ({ learnings = [] }: { learnings?: string[] }) => (
   <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
-    <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">
-      Key Learnings
-    </h4>
+    <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">Key Learnings</h4>
     <ul className="space-y-2">
       {learnings.map((learning, index) => (
         <li
@@ -177,14 +170,7 @@ interface CodeProps {
 
 export const ProjectComponents = {
   img: ({ src, alt, ...props }: ImageProps) => (
-    <Image
-      src={src}
-      alt={alt}
-      width={800}
-      height={400}
-      className="rounded-lg"
-      {...props}
-    />
+    <Image src={src} alt={alt} width={800} height={400} className="rounded-lg" {...props} />
   ),
 
   h1: ({ children, ...props }: ChildrenProps) => (
@@ -206,7 +192,7 @@ export const ProjectComponents = {
   ),
 
   p: ({ children, ...props }: ChildrenProps) => (
-    <p className="text-muted-foreground mb-4 leading-7" {...props}>
+    <p className="mb-4 leading-7" {...props}>
       {children}
     </p>
   ),
@@ -224,7 +210,7 @@ export const ProjectComponents = {
   ),
 
   li: ({ children, ...props }: ChildrenProps) => (
-    <li className="text-muted-foreground leading-7" {...props}>
+    <li className="leading-7" {...props}>
       {children}
     </li>
   ),
@@ -232,10 +218,7 @@ export const ProjectComponents = {
   pre: ({ children, ...props }: ChildrenProps) => {
     return (
       <div className="group relative mb-4">
-        <pre
-          className="code-block overflow-x-auto rounded-lg text-sm"
-          {...props}
-        >
+        <pre className="code-block overflow-x-auto rounded-lg text-sm" {...props}>
           {children}
         </pre>
       </div>
@@ -243,7 +226,7 @@ export const ProjectComponents = {
   },
 
   code: ({ children, className, ...props }: CodeProps) => {
-    if (className?.includes("language-")) {
+    if (className?.includes('language-')) {
       return (
         <code className={className} {...props}>
           {children}
