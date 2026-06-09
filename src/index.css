@@ -364,7 +364,7 @@ html {
 }
 
 @media (max-width: 767px) {
-  .connect-grid li:nth-child(2n+1)::before {
+  .connect-grid li:nth-child(2n + 1)::before {
     content: '';
     position: absolute;
     top: 0;
@@ -375,7 +375,7 @@ html {
     z-index: 1;
     pointer-events: none;
   }
-  .connect-grid li:nth-child(2n+1)::after {
+  .connect-grid li:nth-child(2n + 1)::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -389,7 +389,7 @@ html {
 }
 
 @media (min-width: 768px) {
-  .connect-grid li:nth-child(3n+1)::before {
+  .connect-grid li:nth-child(3n + 1)::before {
     content: '';
     position: absolute;
     top: 0;
@@ -400,7 +400,7 @@ html {
     z-index: 1;
     pointer-events: none;
   }
-  .connect-grid li:nth-child(3n+1)::after {
+  .connect-grid li:nth-child(3n + 1)::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -443,7 +443,7 @@ html {
     z-index: 1;
     pointer-events: none;
   }
-  
+
   .blog-grid li::after {
     content: '';
     position: absolute;
@@ -459,7 +459,7 @@ html {
 
 /* Desktop: Horizontal lines on the start of each row (odd children) */
 @media (min-width: 640px) {
-  .blog-grid li:nth-child(2n+1)::before {
+  .blog-grid li:nth-child(2n + 1)::before {
     content: '';
     position: absolute;
     top: 0;
@@ -470,8 +470,8 @@ html {
     z-index: 1;
     pointer-events: none;
   }
-  
-  .blog-grid li:nth-child(2n+1)::after {
+
+  .blog-grid li:nth-child(2n + 1)::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -485,12 +485,11 @@ html {
 }
 
 /* Prevent layout shifting / squeezing when opening modals, dialogs, or dropdowns on mobile */
-html[style*="overflow: hidden"],
-body[style*="overflow: hidden"],
+html[style*='overflow: hidden'],
+body[style*='overflow: hidden'],
 [data-radix-scroll-locked],
 html[data-radix-scroll-locked],
 body[data-radix-scroll-locked] {
   margin-right: 0px !important;
   padding-right: 0px !important;
 }
-
