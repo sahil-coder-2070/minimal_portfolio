@@ -73,11 +73,11 @@ export function ZoomableImage({
 
   return (
     <>
-      <div
+      <span
         onClick={() => setIsOpen(true)}
         className={cn(
           "group border-border bg-muted/40 relative overflow-hidden rounded-xl border shadow-sm transition-all duration-300 cursor-zoom-in hover:border-neutral-400 dark:hover:border-neutral-700",
-          isFill ? "aspect-video w-full mb-8" : "inline-block my-4",
+          isFill ? "block aspect-video w-full mb-8" : "inline-block my-4",
           className
         )}
       >
@@ -101,13 +101,13 @@ export function ZoomableImage({
         )}
         
         {/* Overlay hover effect */}
-        <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/15 flex items-center justify-center">
-          <div className="bg-background/80 border-border text-foreground opacity-0 scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xs shadow-sm">
+        <span className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/15 flex items-center justify-center">
+          <span className="bg-background/80 border-border text-foreground opacity-0 scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xs shadow-sm">
             <Maximize2 className="size-3.5" />
             <span>Click to zoom</span>
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
 
       <AnimatePresence>
         {isOpen && (
@@ -117,7 +117,7 @@ export function ZoomableImage({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.08 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 md:p-8 backdrop-blur-xs cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-50/90 dark:bg-neutral-950/90 p-4 md:p-8 backdrop-blur-md cursor-zoom-out"
           >
             {/* Enlarged Image Container */}
             <Motion.div
@@ -125,15 +125,12 @@ export function ZoomableImage({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.08, ease: 'easeOut' }}
-              className="relative w-full h-full max-w-5xl max-h-[75vh] overflow-hidden rounded-xl border border-white/10 bg-neutral-950/40 shadow-2xl cursor-zoom-out"
+              className="relative max-w-5xl max-h-[75vh] overflow-hidden rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 bg-white/50 dark:bg-neutral-900/50 shadow-2xl cursor-zoom-out flex items-center justify-center"
             >
-              <Image
+              <img
                 src={src}
                 alt={alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                priority
+                className="max-w-full max-h-[75vh] w-auto h-auto object-contain select-none"
               />
             </Motion.div>
           </Motion.div>

@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { getMarkdownContent, getMarkdownSlugs } from '@/lib/markdown';
-import Container from '@/components/layouts/Container';
-import { BackButton } from '@/components/common/BackButton';
+import Link from 'next/link';
+import { ArrowLeft, CalendarRange } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { CalendarRange } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -14,6 +11,10 @@ import { BlogNavigation } from '@/components/common/BlogNavigation';
 import { notFound } from 'next/navigation';
 import 'highlight.js/styles/github-dark.css';
 import { formatDate } from '@/lib/utils';
+import { BlogCardData } from '@/config/blog/BlogCardData';
+import { ProjectHeaderActions } from '@/components/projects/ProjectHeaderActions';
+import RepeatSeparator from '@/components/ui/repeat-separator';
+import { ZoomableImage } from '@/components/projects/ZoomableImage';
 
 // 1. Generate metadata for search engine optimization dynamically
 export async function generateMetadata({
@@ -63,58 +64,138 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const { meta, content } = post;
 
+  // Clean content by removing the first H1 heading and first paragraph to avoid duplication
+  let cleanContent = content;
+  const lines = content.split('\n');
+  const headingIndex = lines.findIndex(line => line.trim().startsWith('# '));
+  if (headingIndex !== -1) {
+    // Remove the heading
+    lines.splice(headingIndex, 1);
+    // Remove trailing empty lines and the first paragraph
+    while (headingIndex < lines.length) {
+      if (lines[headingIndex].trim() === '') {
+        lines.splice(headingIndex, 1);
+      } else {
+        lines.splice(headingIndex, 1); // remove the paragraph
+        break;
+      }
+    }
+  }
+
+  // Also remove any leading dividers (---) and empty lines at the start of the remaining content
+  while (lines.length > 0 && (lines[0].trim() === '---' || lines[0].trim() === '')) {
+    lines.shift();
+  }
+  cleanContent = lines.join('\n').trim();
+
+  // Map blogs to extract their slugs, sorted just like in BlogNavigation (date descending)
+  const allBlogs = [...BlogCardData].sort((a, b) => b.date.localeCompare(a.date));
+  const currentIndex = allBlogs.findIndex((b) => b.slug === slug);
+  const previousBlog = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
+  const nextBlog = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
+
   return (
-    <Container>
-      <BackButton text="Back to Blogs" href="/blogs" />
-      <article className="mx-auto max-w-4xl px-5">
-        <header className="mb-8 space-y-6">
-          {meta.image && (
-            <div className="border-border bg-muted relative aspect-video overflow-hidden rounded-lg border">
-              <Image
-                src={meta.image}
-                alt={meta.title || slug}
-                fill
-                priority
-                className="object-fill"
-              />
-            </div>
-          )}
+    <div className="w-full border-none">
+      <RepeatSeparator cn="h-8 opacity-50" />
+      <div data-doc-cols-ready="">
+        {/* 1. Document Header Container */}
+        <div
+          data-slot="doc-container"
+          className="mx-auto w-full md:max-w-3xl"
+        >
+          <div className="screen-line-bottom h-px" />
 
-          <div className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {meta.tags?.map((tag: string) => (
-                <Badge key={tag} variant="default">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-
-            <h1 className="text-4xl leading-tight font-bold lg:text-5xl">{meta.title}</h1>
-
-            <p className="text-muted-foreground text-xl">{meta.description}</p>
-
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <CalendarRange className="size-6" />
-              <time dateTime={meta.date}>
-                {meta.formattedDate || (meta.date ? formatDate(meta.date) : '')}
-              </time>
-            </div>
+          <div className="flex items-center justify-between p-2 pl-4">
+            <Link
+              href="/blogs"
+              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap transition-all outline-none select-none hover:no-underline"
+            >
+              <ArrowLeft className="size-4 transition-transform duration-200 group-hover/button:-translate-x-1" />
+              Blogs
+            </Link>
+            <ProjectHeaderActions
+              previousSlug={previousBlog?.slug || null}
+              nextSlug={nextBlog?.slug || null}
+              projectTitle={meta.title || 'Check out this blog post'}
+              basePath="blogs"
+            />
           </div>
 
-          <Separator />
-        </header>
-
-        <div className="prose dark:prose-invert max-w-none">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeHighlight]}
-            components={BlogComponents as any}
-          >
-            {content}
-          </ReactMarkdown>
+          <RepeatSeparator cn="h-8" />
+          <div className="screen-line-top screen-line-bottom py-px">
+            <div className="mx-auto h-4 md:max-w-3xl" />
+          </div>
+          <div className="screen-line-bottom">
+            <h1
+              data-slot="doc-title"
+              className="px-4 text-3xl font-semibold tracking-tight text-balance md:max-w-md"
+            >
+              {meta.title}
+            </h1>
+          </div>
         </div>
-      </article>
-      <BlogNavigation slug={slug} />
-    </Container>
+
+        {/* 2. Document Grid with Columns */}
+        <div
+          data-slot="doc-grid"
+          className="mx-auto grid w-full grid-cols-1 lg:grid-cols-[1fr_var(--container-3xl)_1fr]"
+        >
+          <aside data-slot="doc-left-col" className="max-lg:hidden" />
+
+          <div
+            data-slot="doc-content-col"
+            className="mx-auto w-full md:max-w-3xl"
+          >
+            <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-8">
+              {/* Description */}
+              <p className="text-muted-foreground mt-6 mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
+                {meta.description}
+              </p>
+
+              {/* Featured Image */}
+              {meta.image && (
+                <ZoomableImage
+                  src={meta.image}
+                  alt={meta.title || slug}
+                  priority
+                />
+              )}
+
+              {/* Meta tags and date */}
+              <div className="mb-6 flex flex-wrap items-center gap-4 text-sm">
+                <div className="flex flex-wrap gap-1.5">
+                  {meta.tags?.map((tag: string) => (
+                    <Badge key={tag} variant="secondary">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="text-muted-foreground flex items-center gap-1.5">
+                  <CalendarRange className="size-4" />
+                  <time dateTime={meta.date}>
+                    {meta.formattedDate || (meta.date ? formatDate(meta.date) : '')}
+                  </time>
+                </div>
+              </div>
+
+              {/* Markdown Content */}
+              <div className="mt-8">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeHighlight]}
+                  components={BlogComponents as any}
+                >
+                  {cleanContent}
+                </ReactMarkdown>
+              </div>
+
+              <div className="not-prose mt-8 mb-4">
+                <BlogNavigation slug={slug} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

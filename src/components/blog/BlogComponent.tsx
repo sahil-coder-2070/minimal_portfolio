@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
+import { ZoomableImage } from '@/components/projects/ZoomableImage';
 
 interface ImageProps {
   src: string;
@@ -21,12 +22,11 @@ interface CodeProps {
 export const BlogComponents = {
   // Image tag
   img: ({ src, alt, ...props }: ImageProps) => (
-    <Image
+    <ZoomableImage
       src={src}
       alt={alt}
       width={800}
       height={450}
-      className="my-4 h-auto w-full max-w-full rounded-lg"
       {...props}
     />
   ),
@@ -85,7 +85,7 @@ export const BlogComponents = {
     // simple inline code
     return (
       <code
-        className="rounded px-1.5 py-0.5 font-mono text-[1.1em] bg-muted"
+        className="rounded px-1.5 py-0.5 font-mono text-[1.1em]"
         {...props}
       >
         {children}

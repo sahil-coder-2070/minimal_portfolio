@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { ProjectCardData } from "@/config/projects/ProjectCardData";
 
 export function ProjectNavigation({ slug }: { slug?: string }) {
-  // Map projects to extract their slugs from details link
-  const allProjects = ProjectCardData.map((p) => ({
-    slug: p.links.details.split("/").pop() || "",
-    title: p.title,
-  }));
+  // Map projects to extract their slugs from details link, sorted by id descending (newest first)
+  const allProjects = [...ProjectCardData]
+    .sort((a, b) => b.id - a.id)
+    .map((p) => ({
+      slug: p.projectDetailsPageSlug?.split('/').pop() || p.links.details.split("/").pop() || "",
+      title: p.title,
+    }));
 
   const currentIndex = allProjects.findIndex((p) => p.slug === slug);
   const previous = currentIndex > 0 ? allProjects[currentIndex - 1] : null;

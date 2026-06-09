@@ -6,7 +6,7 @@ import { BlogCardData } from '@/config/blog/BlogCardData';
 
 export function BlogNavigation({ slug }: { slug?: string }) {
   // Use the statically declared BlogCardData list
-  const allBlogs = [...BlogCardData].sort((a, b) => a.date.localeCompare(b.date));
+  const allBlogs = [...BlogCardData].sort((a, b) => b.date.localeCompare(a.date));
 
   const currentIndex = allBlogs.findIndex((b) => b.slug === slug);
   const previous = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;

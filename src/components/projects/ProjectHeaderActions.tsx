@@ -16,12 +16,14 @@ interface ProjectHeaderActionsProps {
   previousSlug?: string | null;
   nextSlug?: string | null;
   projectTitle?: string;
+  basePath?: string;
 }
 
 export function ProjectHeaderActions({
   previousSlug,
   nextSlug,
   projectTitle = 'Check out this project',
+  basePath = 'projects',
 }: ProjectHeaderActionsProps) {
   const getShareUrl = () => {
     if (typeof window !== 'undefined') {
@@ -130,31 +132,31 @@ export function ProjectHeaderActions({
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Previous Project button using Shadcn Button */}
+      {/* Previous Project/Post button using Shadcn Button */}
       {previousSlug && (
         <Button
           asChild
           variant="secondary"
           size="icon-sm"
           className={buttonClass}
-          title="Previous Project"
+          title={`Previous ${basePath === 'projects' ? 'Project' : 'Post'}`}
         >
-          <Link href={`/projects/${previousSlug}`}>
+          <Link href={`/${basePath}/${previousSlug}`}>
             <ArrowLeft className="size-4 dark:stroke-white/80" />
           </Link>
         </Button>
       )}
 
-      {/* Next Project button using Shadcn Button */}
+      {/* Next Project/Post button using Shadcn Button */}
       {nextSlug && (
         <Button
           asChild
           variant="secondary"
           size="icon-sm"
           className={buttonClass}
-          title="Next Project"
+          title={`Next ${basePath === 'projects' ? 'Project' : 'Post'}`}
         >
-          <Link href={`/projects/${nextSlug}`}>
+          <Link href={`/${basePath}/${nextSlug}`}>
             <ArrowRight className="size-4 dark:stroke-white/80" />
           </Link>
         </Button>
