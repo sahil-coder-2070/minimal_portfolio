@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import { ZoomableImage } from '@/components/projects/ZoomableImage';
+import CopyButton from '@/components/ui/copy-button';
 
 interface ImageProps {
   src: string;
@@ -107,14 +108,34 @@ export const BlogComponents = {
     </blockquote>
   ),
 
-  pre: ({ children, ...props }: ChildrenProps) => (
-    <pre
-      className="dark:bg-neutral-800/60 bg-neutral-900 border border-transparent ring ring-neutral-700 mb-6 overflow-x-auto rounded-lg p-6 text-neutral-200"
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  pre: ({ children, ...props }: ChildrenProps) => {
+    const getRawText = (node: React.ReactNode): string => {
+      if (!node) return '';
+      if (typeof node === 'string' || typeof node === 'number') {
+        return node.toString();
+      }
+      if (Array.isArray(node)) {
+        return node.map(getRawText).join('');
+      }
+      if (React.isValidElement(node)) {
+        return getRawText(node.props.children);
+      }
+      return '';
+    };
+    const codeText = getRawText(children);
+
+    return (
+      <div className="group relative my-6 w-full">
+        <CopyButton text={codeText} />
+        <pre
+          className="dark:bg-neutral-800/60 bg-neutral-900 border border-transparent ring ring-neutral-700 overflow-x-auto rounded-lg p-6 text-neutral-200 text-sm"
+          {...props}
+        >
+          {children}
+        </pre>
+      </div>
+    );
+  },
 
   hr: ({ ...props }) => (
     <hr className="my-12 border-t border-neutral-300/40 dark:border-neutral-800/80" {...props} />

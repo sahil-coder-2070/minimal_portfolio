@@ -1,9 +1,9 @@
 ---
-title: "Getting Started with Neovim and LazyVim: A Beginner's Guide"
+title: 'Getting Started with Neovim and LazyVim'
 description: "A comprehensive developer's guide to transitioning from modern IDEs to Neovim using the LazyVim framework, covering configuration, modal editing, and essential keyboard workflows."
-image: "/blogimage/lazyvim.webp"
-tags: ["Neovim", "LazyVim", "IDE", "Developer Tools"]
-date: "2026-05-13"
+image: '/blogimage/lazyvim.webp'
+tags: ['Neovim', 'LazyVim', 'IDE', 'Developer Tools']
+date: '2026-05-13'
 isPublished: true
 ---
 
@@ -34,12 +34,12 @@ LazyVim is not just another pre-configured set of plugins; it is a structured fr
 
 Unlike conventional editors where keypresses immediately type characters, Neovim operates on a modal design pattern. Understanding when and why to transition between modes is the foundation of terminal editing efficiency.
 
-| Mode | Entry Key | Description & Layout |
-| :--- | :--- | :--- |
-| **Normal** | `Esc` or `Ctrl + [` | The default state. Used for code navigation, copy/paste operations, refactoring, and triggering commands. |
-| **Insert** | `i` (before cursor), `a` (after cursor) | Standard text input mode. |
-| **Visual** | `v` (character), `V` (line block) | Highlight and select text blocks for formatting, indentation, or deletions. |
-| **Command** | `:` | Opens the command line prompt to run system operations, save files, or quit the editor. |
+| Mode        | Entry Key                               | Description & Layout                                                                                      |
+| :---------- | :-------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| **Normal**  | `Esc` or `Ctrl + [`                     | The default state. Used for code navigation, copy/paste operations, refactoring, and triggering commands. |
+| **Insert**  | `i` (before cursor), `a` (after cursor) | Standard text input mode.                                                                                 |
+| **Visual**  | `v` (character), `V` (line block)       | Highlight and select text blocks for formatting, indentation, or deletions.                               |
+| **Command** | `:`                                     | Opens the command line prompt to run system operations, save files, or quit the editor.                   |
 
 ---
 
@@ -48,12 +48,14 @@ Unlike conventional editors where keypresses immediately type characters, Neovim
 motions allow you to navigate files without using a mouse or arrow keys. In Normal Mode, your fingers rest on the home row (`h, j, k, l`):
 
 ### Basic Cursor Positioning
+
 - `h` – Move cursor one character left
 - `j` – Move cursor one line down
 - `k` – Move cursor one line up
 - `l` – Move cursor one character right
 
 ### Semantic Navigation
+
 - `w` – Jump forward to the start of the next word.
 - `b` – Jump backward to the start of the previous word.
 - `e` – Jump forward to the end of the current or next word.
@@ -63,7 +65,9 @@ motions allow you to navigate files without using a mouse or arrow keys. In Norm
 - `G` – Navigate to the last line of the file.
 
 ### Vim Command Grammar (Action + Motion)
+
 Vim commands are constructed like sentences: **[Operator] + [Count] + [Motion]**.
+
 - `d` (Delete) + `w` (Word) = `dw` (Delete from cursor to the start of the next word).
 - `c` (Change) + `i` (Inside) + `w` (Word) = `ciw` (Delete current word and enter Insert Mode immediately).
 - `y` (Yank/Copy) + `y` = `yy` (Copy the current line).
@@ -91,6 +95,7 @@ LazyVim structures its configuration files inside `~/.config/nvim/`. The layout 
 ```
 
 ### Adding New Plugins
+
 To add a new plugin (e.g., a color theme or utility), simply create a file under `lua/plugins/` returning a Lua table defining the repository:
 
 ```lua
@@ -111,18 +116,21 @@ return {
 LazyVim configures the `Space` key as your **Leader Key**. Pressing `Space` inside normal mode displays a search panel listing all available options, grouped by feature.
 
 ### Telescope Search & Navigation
+
 - `Space + ff` – Search for files in the current repository by name.
 - `Space + fg` – Search across the full text of all files using live grep.
 - `Space + fr` – Open recently accessed files.
 - `Space + Space` – Find open buffers.
 
 ### Workspace & Window Splits
+
 - `Space + e` – Toggle Neo-tree (Sidebar file explorer).
 - `Space + |` – Split the current window vertically.
 - `Space + -` – Split the current window horizontally.
 - `Ctrl + h/j/k/l` – Navigate focus between split windows.
 
 ### Buffer Management
+
 - `Shift + h` – Navigate to the previous open buffer tab.
 - `Shift + l` – Navigate to the next open buffer tab.
 - `Space + bd` – Close the current buffer safely without breaking splits.
@@ -145,9 +153,10 @@ LazyVim includes out-of-the-box LSP diagnostics and autocomplete powered by `bli
 
 ## Conclusion and Practice Routine
 
-Developing muscle memory in Neovim takes time. Do not try to switch all your daily engineering work to Neovim at once. 
+Developing muscle memory in Neovim takes time. Do not try to switch all your daily engineering work to Neovim at once.
 
 Instead, adopt a phased transition:
+
 1. **Week 1:** Edit git commits, config files, and do minor script editing in Neovim. Keep arrow keys disabled to force home row movement (`h, j, k, l`).
 2. **Week 2:** Master fuzzy file finding (`Space + ff`) and splitting windows (`Space + |`). Start doing standalone component editing.
 3. **Week 3:** Configure Mason (`:Mason`) for your language syntax, enable format-on-save, and build full backend features in the terminal.
