@@ -7,6 +7,8 @@ import Layout from '@/components/common/Layout';
 import { Quote } from '@/components/common/Quote';
 import Footer from '@/components/common/Footer';
 import PageTracker from '@/components/common/PageTracker';
+import { Analytics } from '@vercel/analytics/react';
+
 
 const geistSans = Geist({
   variable: '--font-sans',
@@ -116,6 +118,7 @@ export default function RootLayout({
       >
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <PageTracker />
+          <Analytics />
           <div className="min-h-screen">
             <Container>
               <Layout>
