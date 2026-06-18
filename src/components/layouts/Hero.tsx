@@ -1,6 +1,6 @@
 import Container from './Container';
 import BioText from '../landing/BioText';
-import ResumeButton from '../landing/ResumeButton';
+import SocialLinks from '../landing/SocialLinks';
 import Spotify from '../landing/Spotify';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -68,7 +68,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
       <BioText />
       <Spotify />
       <RepeatSeparator />
-      <ResumeButton />
+      <SocialLinks />
     </Container>
   );
 };
