@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-export const SpotifyIcon = (props: SVGProps<SVGSVGElement>) => (
+const SpotifyIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"

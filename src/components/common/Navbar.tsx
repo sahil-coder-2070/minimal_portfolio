@@ -26,7 +26,7 @@ const navList = [
   { name: 'Projects', href: '/projects' },
 ];
 
-export const Navbar = () => {
+const Navbar = () => {
   const [commandOpen, setCommandOpen] = useState(false);
 
   return (
