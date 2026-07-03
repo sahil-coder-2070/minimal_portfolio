@@ -19,10 +19,10 @@ export default function NotFound() {
           particleDensity={4}
           dispersionStrength={20}
           returnSpeed={0.06}
-          className="h-28 min-h-28 sm:h-36 sm:min-h-36"
+          className="h-48 min-h-48 sm:h-56 sm:min-h-56"
         />
       </div>
-      <div className="mt-6 flex flex-col items-center gap-3">
+      <div className="-mt-4 flex flex-col items-center gap-3 sm:-mt-6">
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Page not found</h1>
         <p className="text-muted-foreground max-w-md text-sm">
           This page doesn&apos;t exist or has been moved.
