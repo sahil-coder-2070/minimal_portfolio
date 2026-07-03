@@ -1,9 +1,19 @@
 import Link from 'next/link';
+import { CursorDrivenParticleTypography } from '@/components/ui/cursor-driven-particle-typography';
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
-      <h1 className="text-6xl font-bold">404</h1>
+    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
+      <div className="w-full max-w-2xl">
+        <CursorDrivenParticleTypography
+          text="404"
+          fontSize={160}
+          particleDensity={4}
+          dispersionStrength={20}
+          returnSpeed={0.06}
+          className="min-h-[300px]"
+        />
+      </div>
       <p className="text-muted-foreground max-w-md">
         This page doesn&apos;t exist or has been moved.
       </p>
