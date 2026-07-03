@@ -20,7 +20,7 @@ export const Quote = () => {
   const { quote, author } = currentQuote;
 
   return (
-    <>
+    <div data-site-quote>
       <RepeatSeparator />
       <Container >
         <div>
@@ -59,6 +59,6 @@ export const Quote = () => {
           </div>
         </div>
       </Container>
-    </>
+    </div>
   );
 };

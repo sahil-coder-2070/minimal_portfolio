@@ -16,7 +16,9 @@ const Footer = () => {
         </div>
       </Container>
       <RepeatSeparator />
-      <BottomBanner />
+      <div data-footer-bottom-banner>
+        <BottomBanner />
+      </div>
     </>
   );
 };

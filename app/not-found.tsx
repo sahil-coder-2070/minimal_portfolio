@@ -3,7 +3,15 @@ import { CursorDrivenParticleTypography } from '@/components/ui/cursor-driven-pa
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
+    <div className="not-found-page flex min-h-[calc(100vh-13.5rem)] flex-col items-center justify-center px-4 text-center">
+      <style>
+        {`
+          .not-found-page ~ [data-site-quote],
+          .not-found-page ~ [data-footer-bottom-banner] {
+            display: none;
+          }
+        `}
+      </style>
       <div className="w-full max-w-2xl">
         <CursorDrivenParticleTypography
           text="404"
@@ -11,18 +19,21 @@ export default function NotFound() {
           particleDensity={4}
           dispersionStrength={20}
           returnSpeed={0.06}
-          className="min-h-[300px]"
+          className="h-28 min-h-28 sm:h-36 sm:min-h-36"
         />
       </div>
-      <p className="text-muted-foreground max-w-md">
-        This page doesn&apos;t exist or has been moved.
-      </p>
-      <Link
-        href="/"
-        className="bg-primary text-primary-foreground rounded-full px-6 py-2 text-sm font-medium transition-opacity hover:opacity-90"
-      >
-        Go home
-      </Link>
+      <div className="mt-6 flex flex-col items-center gap-3">
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Page not found</h1>
+        <p className="text-muted-foreground max-w-md text-sm">
+          This page doesn&apos;t exist or has been moved.
+        </p>
+        <Link
+          href="/"
+          className="bg-primary text-primary-foreground mt-3 rounded-full px-6 py-2 text-sm font-medium transition-opacity hover:opacity-90"
+        >
+          Go home
+        </Link>
+      </div>
     </div>
   );
 }
