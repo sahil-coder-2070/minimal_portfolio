@@ -25,7 +25,7 @@ const nextConfig = {
     ],
   },
   turbopack: {
-    root: '/home/sahilcodex/Documents/portfolio/sahilcodex',
+    root: import.meta.dirname,
   },
 };
 
