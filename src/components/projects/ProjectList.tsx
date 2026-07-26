@@ -55,7 +55,7 @@ const Projects = ({ projects = [] }: { projects?: ProjectItem[] }) => {
             Showcase of my work
           </h1>
         </div>
-        <div className="screen-line-top screen-line-bottom flex items-center justify-between p-2">
+        <div className="screen-line-top screen-line-bottom flex items-center justify-between px-4 py-2">
           <Link
             data-slot="button"
             data-variant="link"

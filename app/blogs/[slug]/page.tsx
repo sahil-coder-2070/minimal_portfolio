@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div data-slot="doc-container" className="mx-auto w-full md:max-w-3xl">
           <div className="screen-line-bottom h-px" />
 
-          <div className="flex items-center justify-between p-2 pl-4">
+          <div className="flex items-center justify-between px-4 py-2">
             <Link
               href="/blogs"
               className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap transition-all outline-none select-none hover:no-underline"
@@ -135,11 +135,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* 2. Document Grid with Columns */}
         <div
           data-slot="doc-grid"
-          className="mx-auto grid w-full grid-cols-1 lg:grid-cols-[1fr_var(--container-3xl)_1fr]"
+          className="mx-auto grid w-full grid-cols-1"
         >
-          <aside data-slot="doc-left-col" className="max-lg:hidden" />
+          <aside data-slot="doc-left-col" className="hidden" />
 
-          <div data-slot="doc-content-col" className="mx-auto w-full md:max-w-3xl">
+          <div data-slot="doc-content-col" className="mx-auto w-full min-w-0 md:max-w-3xl">
             <div data-slot="prose" className="prose dark:prose-invert w-full px-5 pt-6">
               {/* Description */}
               <p className="text-muted-foreground  mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
