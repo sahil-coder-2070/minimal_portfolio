@@ -220,22 +220,22 @@ export function useSpotify(): UseSpotifyReturn {
         return;
       }
 
-      let appwriteTrack: SpotifyTrack | null = null;
-      if (databaseId) {
-        try {
-          const doc = await databases.getDocument(databaseId, spotifyCollectionId, 'last_played') as any;
-          appwriteTrack = {
-            isPlaying: false,
-            title: doc.title,
-            artist: doc.artist,
-            albumArt: doc.albumArt,
-            songUrl: doc.songUrl,
-            lastPlayedAt: doc.lastPlayedAt,
-          };
-        } catch (err) {
-          console.error('Failed to fetch Spotify status from Appwrite on error fallback:', err);
-        }
-      }
+      // let appwriteTrack: SpotifyTrack | null = null;
+      // if (databaseId) {
+      //   try {
+      //     const doc = await databases.getDocument(databaseId, spotifyCollectionId, 'last_played') as any;
+      //     appwriteTrack = {
+      //       isPlaying: false,
+      //       title: doc.title,
+      //       artist: doc.artist,
+      //       albumArt: doc.albumArt,
+      //       songUrl: doc.songUrl,
+      //       lastPlayedAt: doc.lastPlayedAt,
+      //     };
+      //   } catch (err) {
+      //     console.error('Failed to fetch Spotify status from Appwrite on error fallback:', err);
+      //   }
+      // }
 
       if (appwriteTrack) {
         const lastPlayed = appwriteTrack.lastPlayedAt ? new Date(appwriteTrack.lastPlayedAt).getTime() : 0;
