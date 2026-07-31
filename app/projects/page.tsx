@@ -2,18 +2,37 @@ import type { Metadata } from 'next';
 import Projects from '@/components/projects/ProjectList';
 import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Projects | My Work',
+  title: 'Projects — Frontend Apps & Open Source Engineering',
   description:
-    'Explore my React and frontend development projects featuring clean UI, performance-focused design, and real-world use cases.',
+    'Explore web applications, React & Next.js projects, open source tools, and interactive designs built by Sahil Singh.',
   alternates: {
-    canonical: '/projects',
+    canonical: `${siteUrl}/projects`,
   },
   openGraph: {
-    title: 'Projects | My Work',
+    title: 'Projects — Frontend Apps & Open Source Engineering',
     description:
-      'Explore my React and frontend development projects featuring clean UI, performance-focused design, and real-world use cases.',
-    url: '/projects',
+      'Explore web applications, React & Next.js projects, open source tools, and interactive designs built by Sahil Singh.',
+    url: `${siteUrl}/projects`,
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/og-image.webp`,
+        width: 1200,
+        height: 630,
+        alt: 'Sahil Singh | Web Development Projects',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects — Frontend Apps & Open Source Engineering',
+    description:
+      'Explore web applications, React & Next.js projects, open source tools, and interactive designs built by Sahil Singh.',
+    images: [`${siteUrl}/og-image.webp`],
+    creator: '@sahilcodex',
   },
 };
 

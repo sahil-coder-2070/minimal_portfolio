@@ -18,7 +18,7 @@ const Hero = ({ stars = 0 }: { stars?: number }) => {
             <div className="box-border h-25 w-25 overflow-hidden rounded-[8px] border bg-neutral-200 object-cover p-1 select-none md:h-30 md:w-30 dark:bg-white">
               <Image
                 src="/avatar.avif"
-                alt="Avatar"
+                alt="Sahil Singh - Frontend Developer & Design Engineer"
                 height={120}
                 width={120}
                 priority

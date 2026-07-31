@@ -3,18 +3,37 @@ import Blogs from '@/components/blog/BlogList';
 import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';
 import { formatDate } from '@/lib/utils';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Blog - Thoughts and Tutorials',
+  title: 'Blog — Web Development, React & Next.js Tutorials',
   description:
-    'Read articles on React, JavaScript, frontend development, best practices, performance optimization, and modern web technologies.',
+    'Technical articles, tutorials, and insights on React, Next.js, JavaScript, performance optimization, and frontend architecture by Sahil Singh.',
   alternates: {
-    canonical: '/blogs',
+    canonical: `${siteUrl}/blogs`,
   },
   openGraph: {
-    title: 'Blog - Thoughts and Tutorials',
+    title: 'Blog — Web Development, React & Next.js Tutorials',
     description:
-      'Read articles on React, JavaScript, frontend development, best practices, performance optimization, and modern web technologies.',
-    url: '/blogs',
+      'Technical articles, tutorials, and insights on React, Next.js, JavaScript, performance optimization, and frontend architecture by Sahil Singh.',
+    url: `${siteUrl}/blogs`,
+    type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/og-image.webp`,
+        width: 1200,
+        height: 630,
+        alt: 'Sahil Singh | Technical Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog — Web Development, React & Next.js Tutorials',
+    description:
+      'Technical articles, tutorials, and insights on React, Next.js, JavaScript, performance optimization, and frontend architecture by Sahil Singh.',
+    images: [`${siteUrl}/og-image.webp`],
+    creator: '@sahilcodex',
   },
 };
 

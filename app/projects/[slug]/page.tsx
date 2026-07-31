@@ -36,6 +36,8 @@ interface ProjectMeta {
   learnings?: string[];
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 // 1. Generate Metadata dynamically for SEO on the server
 export async function generateMetadata({
   params,
@@ -50,17 +52,39 @@ export async function generateMetadata({
     };
   }
 
+  const title = `${project.meta.title} | Projects`;
+  const description = project.meta.description;
+  const canonicalUrl = `${siteUrl}/projects/${slug}`;
+  const imageUrl = project.meta.image
+    ? project.meta.image.startsWith('http')
+      ? project.meta.image
+      : `${siteUrl}${project.meta.image.startsWith('/') ? '' : '/'}${project.meta.image}`
+    : `${siteUrl}/og-image.webp`;
+
   return {
-    title: `${project.meta.title} | Projects`,
-    description: project.meta.description,
+    title,
+    description,
     alternates: {
-      canonical: `/projects/${slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: project.meta.title,
-      description: project.meta.description,
-      images: project.meta.image ? [project.meta.image] : [],
-      url: `/projects/${slug}`,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          alt: project.meta.title,
+        },
+      ],
+      url: canonicalUrl,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.meta.title,
+      description,
+      images: [imageUrl],
+      creator: '@sahilcodex',
     },
   };
 }
@@ -95,13 +119,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const previousProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
   const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
+  const projectJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: projectMeta.title,
+    description: projectMeta.description,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    image: projectMeta.image
+      ? projectMeta.image.startsWith('http')
+        ? projectMeta.image
+        : `${siteUrl}${projectMeta.image.startsWith('/') ? '' : '/'}${projectMeta.image}`
+      : `${siteUrl}/og-image.webp`,
+    author: {
+      '@type': 'Person',
+      name: 'Sahil Singh',
+      url: siteUrl,
+    },
+    url: projectMeta.live || `${siteUrl}/projects/${slug}`,
+  };
+
   return (
     <div className="w-full border-none">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       {/* <div className="border-border mx-auto h-12 border-x md:max-w-3xl" /> */}
       <RepeatSeparator cn="h-8 opacity-50" />
       <div data-doc-cols-ready="">
         {/* 1. Document Header Container */}
-        <div data-slot="doc-container" className="mx-auto w-full md:max-w-3xl">
+        <div data-slot="doc-container" className="mx-auto w-full">
           <div className="screen-line-bottom h-px" />
 
           <div className="flex items-center justify-between p-2 pl-4">
@@ -121,7 +169,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
           <RepeatSeparator cn="h-8" />
           <div className="screen-line-top screen-line-bottom py-px">
-            <div className="mx-auto h-4 md:max-w-3xl" />
+            <div className="mx-auto h-4 w-full" />
           </div>
           <div className="screen-line-bottom pb-4">
             <h1
@@ -136,11 +184,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {/* 2. Document Grid with Columns */}
         <div
           data-slot="doc-grid"
-          className="mx-auto grid w-full grid-cols-1 lg:grid-cols-[1fr_var(--container-3xl)_1fr]"
+          className="mx-auto w-full"
         >
-          <aside data-slot="doc-left-col" className="max-lg:hidden" />
-
-          <div data-slot="doc-content-col" className="mx-auto w-full md:max-w-3xl">
+          <div data-slot="doc-content-col" className="mx-auto w-full">
             <div data-slot="prose" className="prose dark:prose-invert w-full px-4 pt-12">
               {/* Project description (subheading) */}
               <p className="text-muted-foreground mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">

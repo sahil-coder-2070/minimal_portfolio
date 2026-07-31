@@ -3,16 +3,34 @@ import Container from "@/components/layouts/Container";
 import { Separator } from "@/components/ui/separator";
 import ExperienceContent from "@/components/experience/ExperienceContent";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sahilcodex.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Work Experience - Professional Journey",
-  description: "A detailed overview of my professional journey, work experience, and contributions to real-world projects using React and modern frontend technologies.",
+  title: "Work Experience — Professional Engineering Journey",
+  description: "A detailed overview of professional work experience, roles, and engineering contributions by Sahil Singh.",
   alternates: {
-    canonical: "/work",
+    canonical: `${siteUrl}/work`,
   },
   openGraph: {
-    title: "Work Experience - Professional Journey",
-    description: "A detailed overview of my professional journey, work experience, and contributions to real-world projects using React and modern frontend technologies.",
-    url: "/work",
+    title: "Work Experience — Sahil Singh",
+    description: "A detailed overview of professional work experience, roles, and engineering contributions by Sahil Singh.",
+    url: `${siteUrl}/work`,
+    type: "website",
+    images: [
+      {
+        url: `${siteUrl}/og-image.webp`,
+        width: 1200,
+        height: 630,
+        alt: "Sahil Singh | Work Experience",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Work Experience — Sahil Singh",
+    description: "A detailed overview of professional work experience, roles, and engineering contributions by Sahil Singh.",
+    images: [`${siteUrl}/og-image.webp`],
+    creator: "@sahilcodex",
   },
 };
 

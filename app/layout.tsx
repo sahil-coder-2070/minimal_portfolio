@@ -23,52 +23,92 @@ const pixelifySans = Pixelify_Sans({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
 
+const jsonLdSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'Sahil Singh',
+      jobTitle: 'Frontend Developer & Design Engineer',
+      url: siteUrl,
+      sameAs: [
+        'https://github.com/sahilcodexx',
+        'https://twitter.com/sahilcodex',
+      ],
+      knowsAbout: [
+        'React',
+        'Next.js',
+        'TypeScript',
+        'JavaScript',
+        'Frontend Development',
+        'Design Engineering',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Sahil Singh Portfolio',
+      description: 'Personal portfolio, technical blogs, projects, and work experience of Sahil Singh.',
+      publisher: {
+        '@id': `${siteUrl}/#person`,
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Sahil | Portfolio',
-    template: '%s | Sahil',
+    default: 'Sahil Singh | Frontend Developer & Design Engineer',
+    template: '%s | Sahil Singh',
   },
-  description: 'Web developer portfolio, showing blogs, experience, and custom tools',
+  description:
+    'Portfolio of Sahil Singh — Frontend Developer & Design Engineer specializing in React, Next.js, TypeScript, performance, and modern web development.',
   keywords: [
+    'Sahil Singh',
     'Sahil',
-    'Developer Portfolio',
+    'Frontend Developer',
+    'Design Engineer',
     'React Developer',
     'Next.js Developer',
-    'Frontend Developer',
     'Full Stack Engineer',
     'JavaScript',
     'TypeScript',
+    'Web Developer Portfolio',
   ],
-  authors: [{ name: 'Sahil', url: 'https://github.com/sahilcodexx' }],
-  creator: 'Sahil',
+  authors: [{ name: 'Sahil Singh', url: 'https://github.com/sahilcodexx' }],
+  creator: 'Sahil Singh',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    title: 'Sahil | Portfolio',
-    description: 'Web developer portfolio, showing blogs, experience, and custom tools',
-    siteName: 'Sahil Portfolio',
+    title: 'Sahil Singh | Frontend Developer & Design Engineer',
+    description:
+      'Portfolio of Sahil Singh — Frontend Developer & Design Engineer specializing in React, Next.js, TypeScript, performance, and modern web development.',
+    siteName: 'Sahil Singh Portfolio',
     images: [
       {
-        url: '/og-image.webp',
+        url: `${siteUrl}/og-image.webp`,
         width: 1200,
         height: 630,
-        alt: 'Sahil | Portfolio',
+        alt: 'Sahil Singh | Frontend Developer Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sahil | Portfolio',
-    description: 'Web developer portfolio, showing blogs, experience, and custom tools',
-    images: ['/og-image.webp'],
+    title: 'Sahil Singh | Frontend Developer & Design Engineer',
+    description:
+      'Portfolio of Sahil Singh — Frontend Developer & Design Engineer specializing in React, Next.js, TypeScript, performance, and modern web development.',
+    images: [`${siteUrl}/og-image.webp`],
     creator: '@sahilcodex',
   },
 
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
   robots: {
     index: true,
@@ -111,6 +151,10 @@ export default function RootLayout({
               })()
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
       <body

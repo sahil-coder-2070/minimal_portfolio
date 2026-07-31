@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getMarkdownSlugs } from '@/lib/markdown';
+import { getMarkdownSlugs, getMarkdownContent } from '@/lib/markdown';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
@@ -17,12 +17,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogUrls: MetadataRoute.Sitemap = [];
   try {
     const blogSlugs = await getMarkdownSlugs('blog');
-    blogUrls = blogSlugs.map((slug) => ({
-      url: `${siteUrl}/blogs/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    }));
+    blogUrls = await Promise.all(
+      blogSlugs.map(async (slug) => {
+        const content = await getMarkdownContent('blog', slug);
+        const dateStr = content?.meta.date;
+        const lastModified = dateStr ? new Date(dateStr) : new Date();
+        return {
+          url: `${siteUrl}/blogs/${slug}`,
+          lastModified: isNaN(lastModified.getTime()) ? new Date() : lastModified,
+          changeFrequency: 'weekly' as const,
+          priority: 0.6,
+        };
+      })
+    );
   } catch (error) {
     console.error('Error fetching blog slugs for sitemap:', error);
   }
@@ -31,12 +38,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let projectUrls: MetadataRoute.Sitemap = [];
   try {
     const projectSlugs = await getMarkdownSlugs('projects');
-    projectUrls = projectSlugs.map((slug) => ({
-      url: `${siteUrl}/projects/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    }));
+    projectUrls = await Promise.all(
+      projectSlugs.map(async (slug) => {
+        const content = await getMarkdownContent('projects', slug);
+        const dateStr = content?.meta.date || content?.meta.timeline;
+        const lastModified = dateStr ? new Date(dateStr) : new Date();
+        return {
+          url: `${siteUrl}/projects/${slug}`,
+          lastModified: isNaN(lastModified.getTime()) ? new Date() : lastModified,
+          changeFrequency: 'weekly' as const,
+          priority: 0.7,
+        };
+      })
+    );
   } catch (error) {
     console.error('Error fetching project slugs for sitemap:', error);
   }

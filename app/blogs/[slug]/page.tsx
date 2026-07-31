@@ -16,6 +16,8 @@ import { ProjectHeaderActions } from '@/components/projects/ProjectHeaderActions
 import RepeatSeparator from '@/components/ui/repeat-separator';
 import { ZoomableImage } from '@/components/projects/ZoomableImage';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 // 1. Generate metadata for search engine optimization dynamically
 export async function generateMetadata({
   params,
@@ -30,17 +32,41 @@ export async function generateMetadata({
     };
   }
 
+  const title = `${post.meta.title} | Blog`;
+  const description = post.meta.description;
+  const canonicalUrl = `${siteUrl}/blogs/${slug}`;
+  const imageUrl = post.meta.image
+    ? post.meta.image.startsWith('http')
+      ? post.meta.image
+      : `${siteUrl}${post.meta.image.startsWith('/') ? '' : '/'}${post.meta.image}`
+    : `${siteUrl}/og-image.webp`;
+
   return {
-    title: `${post.meta.title} | Blog`,
-    description: post.meta.description,
+    title,
+    description,
     alternates: {
-      canonical: `/blogs/${slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: post.meta.title,
-      description: post.meta.description,
-      images: post.meta.image ? [post.meta.image] : [],
-      url: `/blogs/${slug}`,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          alt: post.meta.title,
+        },
+      ],
+      url: canonicalUrl,
+      type: 'article',
+      publishedTime: post.meta.date,
+      authors: ['Sahil Singh'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description,
+      images: [imageUrl],
+      creator: '@sahilcodex',
     },
   };
 }
@@ -94,12 +120,44 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const previousBlog = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
   const nextBlog = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
 
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: meta.title,
+    description: meta.description,
+    image: meta.image
+      ? meta.image.startsWith('http')
+        ? meta.image
+        : `${siteUrl}${meta.image.startsWith('/') ? '' : '/'}${meta.image}`
+      : `${siteUrl}/og-image.webp`,
+    datePublished: meta.date,
+    dateModified: meta.date,
+    author: {
+      '@type': 'Person',
+      name: 'Sahil Singh',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Sahil Singh',
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/blogs/${slug}`,
+    },
+  };
+
   return (
     <div className="w-full border-none">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <RepeatSeparator cn="h-8 opacity-50" />
       <div data-doc-cols-ready="">
         {/* 1. Document Header Container */}
-        <div data-slot="doc-container" className="mx-auto w-full md:max-w-3xl">
+        <div data-slot="doc-container" className="mx-auto w-full">
           <div className="screen-line-bottom h-px" />
 
           <div className="flex items-center justify-between p-2 pl-4">
@@ -120,7 +178,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <RepeatSeparator cn="h-8" />
           <div className="screen-line-top screen-line-bottom py-px">
-            <div className="mx-auto h-4 md:max-w-3xl" />
+            <div className="mx-auto h-4 w-full" />
           </div>
           <div className="screen-line-bottom">
             <h1
@@ -135,11 +193,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* 2. Document Grid with Columns */}
         <div
           data-slot="doc-grid"
-          className="mx-auto grid w-full grid-cols-1 lg:grid-cols-[1fr_var(--container-3xl)_1fr]"
+          className="mx-auto w-full"
         >
-          <aside data-slot="doc-left-col" className="max-lg:hidden" />
-
-          <div data-slot="doc-content-col" className="mx-auto w-full md:max-w-3xl">
+          <div data-slot="doc-content-col" className="mx-auto w-full">
             <div data-slot="prose" className="prose dark:prose-invert w-full px-5 pt-6">
               {/* Description */}
               <p className="text-muted-foreground  mb-6 text-base leading-relaxed font-normal text-wrap sm:text-base">
@@ -149,8 +205,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {/* Featured Image */}
               {meta.image && <ZoomableImage src={meta.image} alt={meta.title || slug} priority />}
 
-              {/* Meta tags and date */}
-              <div className="mb-6 flex flex-wrap items-center gap-4 text-sm">
+              {/* Meta tags, author, and date */}
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-4 text-sm">
                 <div className="flex flex-wrap gap-1.5">
                   {meta.tags?.map((tag: string) => (
                     <Badge key={tag} variant="secondary">
@@ -158,11 +214,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </Badge>
                   ))}
                 </div>
-                <div className="text-muted-foreground flex items-center gap-1.5">
-                  <CalendarRange className="size-4" />
-                  <time dateTime={meta.date}>
-                    {meta.formattedDate || (meta.date ? formatDate(meta.date) : '')}
-                  </time>
+                <div className="flex items-center gap-4 text-muted-foreground">
+                  <span className="font-medium text-foreground">By Sahil Singh</span>
+                  <div className="flex items-center gap-1.5">
+                    <CalendarRange className="size-4" />
+                    <time dateTime={meta.date}>
+                      {meta.formattedDate || (meta.date ? formatDate(meta.date) : '')}
+                    </time>
+                  </div>
                 </div>
               </div>
 
