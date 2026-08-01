@@ -5,22 +5,120 @@ import { useSpotify } from '@/hooks/useSpotify';
 import { motion as Motion, AnimatePresence } from 'motion/react';
 import SpotifyIcon from '@/components/icons/social/SpotifyIcon';
 
-const SoundBars = () => (
-  <span className="flex h-3.5 items-end gap-[3px]">
-    {[0, 1, 2, 3].map((i) => (
-      <Motion.span
-        key={i}
-        className="inline-block w-[3px] rounded-full bg-[#1DB954]"
-        animate={{ height: ['4px', '14px', '4px'] }}
-        transition={{
-          duration: 0.7,
-          repeat: Infinity,
-          delay: i * 0.12,
-          ease: 'easeInOut',
+const DISC_SIZE = 260;
+const DISC_COLLAPSED = 100;
+const DISC_SCALE_COLLAPSED = DISC_COLLAPSED / DISC_SIZE;
+
+const CARD = {
+  collapsed: { w: 270, h: 88, r: 22 },
+  expanded: { w: 250, h: 284, r: 28 },
+} as const;
+
+/** Content starts below the disc bowl — disc bottom sits at ~y130 */
+const EXPANDED_TEXT_TOP = 152;
+
+/** Shared spring — every layer uses the same curve so nothing drifts apart */
+const SPRING = {
+  type: 'spring' as const,
+  stiffness: 380,
+  damping: 46,
+  mass: 0.9,
+};
+
+const FADE = {
+  duration: 0.2,
+  ease: [0.25, 1, 0.5, 1] as [number, number, number, number],
+};
+
+const SoundBars = ({ compact = false }: { compact?: boolean }) => {
+  const bars = compact
+    ? [
+        { max: 8, delay: 0 },
+        { max: 12, delay: 0.15 },
+        { max: 7, delay: 0.08 },
+        { max: 11, delay: 0.22 },
+      ]
+    : [
+        { max: 10, delay: 0 },
+        { max: 14, delay: 0.12 },
+        { max: 8, delay: 0.06 },
+        { max: 12, delay: 0.18 },
+      ];
+
+  return (
+    <span className={`flex items-end gap-[2.5px] ${compact ? 'h-3' : 'h-3.5'}`}>
+      {bars.map((bar, i) => (
+        <Motion.span
+          key={i}
+          className="inline-block w-[2.5px] rounded-full bg-[#1DB954]"
+          animate={{ height: [3, bar.max, 3] }}
+          transition={{
+            duration: 0.65 + i * 0.05,
+            repeat: Infinity,
+            delay: bar.delay,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </span>
+  );
+};
+
+const CdDisc = ({
+  albumArt,
+  title,
+  isPlaying,
+  isOffline,
+}: {
+  albumArt: string | null;
+  title: string;
+  isPlaying: boolean;
+  isOffline: boolean;
+}) => (
+  <div className="relative size-full overflow-hidden rounded-full border border-black/10 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.35),0_2px_6px_rgba(0,0,0,0.12)] dark:border-white/10">
+    {albumArt ? (
+      <img
+        src={albumArt}
+        alt={title}
+        className={`size-full rounded-full object-cover ${
+          isPlaying
+            ? 'animate-[spin_8s_linear_infinite]'
+            : 'animate-[spin_18s_linear_infinite]'
+        }`}
+        style={{
+          filter: isOffline ? 'saturate(65%) brightness(0.9)' : undefined,
         }}
       />
-    ))}
-  </span>
+    ) : (
+      <div className="flex size-full items-center justify-center bg-neutral-800">
+        <SpotifyIcon className="size-1/3 text-[#1DB954]" />
+      </div>
+    )}
+
+    <div
+      className="pointer-events-none absolute inset-0 rounded-full"
+      style={{
+        background: `
+          radial-gradient(circle at center, transparent 28%, rgba(0,0,0,0.06) 29%, transparent 30%),
+          radial-gradient(circle at center, transparent 42%, rgba(0,0,0,0.05) 43%, transparent 44%),
+          radial-gradient(circle at center, transparent 56%, rgba(0,0,0,0.04) 57%, transparent 58%),
+          radial-gradient(circle at center, transparent 70%, rgba(0,0,0,0.04) 71%, transparent 72%)
+        `,
+      }}
+    />
+
+    <div
+      className="pointer-events-none absolute inset-0 rounded-full"
+      style={{
+        boxShadow:
+          'inset 0 0 0 1px rgba(255,255,255,0.18), inset 0 0 12px rgba(0,0,0,0.15)',
+      }}
+    />
+
+    <div className="pointer-events-none absolute inset-0 m-auto flex size-[22%] items-center justify-center rounded-full border-2 border-[#A8ACBA] bg-gradient-to-b from-[#E8EBF5] via-[#9EA2B4] to-[#6B6F82] shadow-md">
+      <div className="size-[42%] rounded-full border-[1.5px] border-[#3a3a3a] bg-[#111111] shadow-inner" />
+    </div>
+  </div>
 );
 
 const Spotify = () => {
@@ -29,7 +127,6 @@ const Spotify = () => {
   const cardRef = useRef<HTMLDivElement>(null);
   const discordId = process.env.NEXT_PUBLIC_DISCORD_ID;
 
-  // Handle clicking outside the expanded card to close it
   useEffect(() => {
     if (!isExpanded) return;
 
@@ -47,20 +144,15 @@ const Spotify = () => {
 
   if (loading) {
     return (
-      <div className="relative z-40 mb-3 h-16 w-full select-none">
-        <div className="absolute right-0 bottom-3 left-0 mx-auto flex w-fit items-center">
-          <div className="flex w-fit items-center gap-2.5 rounded-full border border-neutral-300/80 bg-neutral-100/60 py-1.5 pr-4 pl-2 text-xs shadow-sm ring-1 ring-black/5 dark:border-neutral-700/80 dark:bg-neutral-900/60 dark:ring-white/10">
-            <div className="flex size-8 animate-pulse items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
-              <SpotifyIcon className="size-4 text-neutral-400 dark:text-neutral-600" />
+      <div className="relative z-40 my-6 h-14 w-full select-none">
+        <div className="absolute right-0 bottom-0 left-0 mx-auto flex w-fit items-center justify-center">
+          <div className="flex h-[88px] w-[270px] items-center gap-3 overflow-hidden rounded-[22px] border border-neutral-200/80 bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-6px_rgba(0,0,0,0.08)] dark:border-neutral-700/60 dark:bg-[#1A1715]">
+            <div className="flex min-w-0 flex-1 flex-col gap-2.5 pl-1">
+              <div className="h-2.5 w-20 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700/50" />
+              <div className="h-2.5 w-16 animate-pulse rounded-full bg-neutral-100 dark:bg-neutral-700/30" />
+              <div className="h-3.5 w-28 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700/50" />
             </div>
-            <div className="flex flex-col gap-0.5 leading-tight">
-              <span className="max-w-[140px] truncate text-[11px] font-semibold text-neutral-500 dark:text-neutral-400">
-                Spotify
-              </span>
-              <span className="max-w-[140px] truncate text-[10px] text-neutral-400 dark:text-neutral-500">
-                Loading activity...
-              </span>
-            </div>
+            <div className="size-[72px] shrink-0 animate-pulse rounded-full bg-neutral-100 dark:bg-neutral-800" />
           </div>
         </div>
       </div>
@@ -76,141 +168,153 @@ const Spotify = () => {
     songUrl: 'https://open.spotify.com',
   };
 
+  const statusLabel = displayData.isPlaying
+    ? 'Now Playing'
+    : isOffline
+      ? 'Offline'
+      : 'Last Played';
+
   return (
-    <div className="relative z-40 mb-3 h-16 w-full select-none">
-      <div className="absolute right-0 bottom-3 left-0 mx-auto flex w-fit items-center justify-center">
-        {/* Outer Card Container */}
+    /* Fixed slot — expanded card overflows upward, page never shifts */
+    <div className="relative z-40 my-6 h-14 w-full select-none">
+      <div className="absolute right-0 bottom-0 left-0 mx-auto flex w-fit items-end justify-center">
         <Motion.div
           ref={cardRef}
-          layout
-          onClick={() => setIsExpanded(!isExpanded)}
-          transition={{
-            type: 'spring',
-            stiffness: 350,
-            damping: 28,
+          onClick={() => setIsExpanded((v) => !v)}
+          initial={false}
+          whileTap={{ scale: 0.985 }}
+          transition={SPRING}
+          animate={{
+            width: isExpanded ? CARD.expanded.w : CARD.collapsed.w,
+            height: isExpanded ? CARD.expanded.h : CARD.collapsed.h,
+            borderRadius: isExpanded ? CARD.expanded.r : CARD.collapsed.r,
           }}
-          className={`relative z-50 overflow-hidden border border-neutral-300/80 bg-[#EDEDED] text-neutral-800 shadow-2xl ring-1 ring-black/5 backdrop-blur-md dark:border-neutral-700/80 dark:bg-[#1A1A1A] dark:text-neutral-100 dark:ring-white/10 ${
-            isExpanded
-              ? 'flex w-[260px] cursor-pointer flex-col items-center rounded-[32px] pb-5 pt-0'
-              : 'group flex w-fit cursor-pointer items-center gap-2.5 rounded-full py-1.5 pr-3.5 pl-2 text-xs hover:bg-neutral-200/60 dark:hover:bg-neutral-800/80'
-          }`}
+          style={{ transformOrigin: 'bottom center' }}
+          className="group relative z-50 cursor-pointer overflow-hidden border border-neutral-200/90 bg-white text-neutral-800 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-6px_rgba(0,0,0,0.1)] dark:border-[#38332F] dark:bg-[#1A1715] dark:text-white dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_8px_24px_-6px_rgba(0,0,0,0.4)]"
         >
-          {/* Top Vinyl Album Disc Container */}
+          {/*
+            Disc stays at full 260 px — only scale + translate animate (GPU path).
+            Collapsed center ≈ (248, 44), expanded center ≈ (125, 0).
+          */}
           <Motion.div
-            layout
-            className={
+            initial={false}
+            style={{ width: DISC_SIZE, height: DISC_SIZE }}
+            animate={
               isExpanded
-                ? '-mt-24 mb-3 relative flex size-[240px] shrink-0 items-center justify-center overflow-hidden rounded-full'
-                : 'relative size-8 shrink-0 overflow-hidden rounded-full'
+                ? { scale: 1, x: -5, y: -130 }
+                : { scale: DISC_SCALE_COLLAPSED, x: 118, y: -86 }
             }
+            transition={SPRING}
+            className="pointer-events-none absolute top-0 left-0 z-20"
           >
-            {displayData.albumArt ? (
-              <div className="relative size-full overflow-hidden rounded-full">
-                {/* Rotating Perfect Circle Image */}
-                <img
-                  src={displayData.albumArt}
-                  alt={displayData.title}
-                  className={`size-full rounded-full object-cover ${displayData.isPlaying ? 'animate-[spin_15s_linear_infinite]' : ''}`}
-                />
-
-                {isExpanded && (
-                  <>
-                    {/* Metallic Spindle Overlay */}
-                    <div className="pointer-events-none absolute inset-0 m-auto flex size-12 items-center justify-center rounded-full border-[3px] border-[#A0A4B8] bg-gradient-to-b from-[#D2D5E5] via-[#9DA1B6] to-[#717588] shadow-md dark:border-neutral-600 dark:from-neutral-700 dark:to-neutral-900">
-                      <div className="size-4.5 rounded-full border border-neutral-400 bg-[#EDEDED] shadow-inner dark:border-neutral-700 dark:bg-[#1A1A1A]" />
-                    </div>
-                  </>
-                )}
-              </div>
-            ) : (
-              <div className="flex size-full items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
-                <SpotifyIcon className={isExpanded ? 'size-12 text-[#1DB954]' : 'size-4 text-[#1DB954]'} />
-              </div>
-            )}
+            <CdDisc
+              albumArt={displayData.albumArt}
+              title={displayData.title}
+              isPlaying={displayData.isPlaying}
+              isOffline={isOffline}
+            />
           </Motion.div>
 
-          {/* Equalizer Sound Bars */}
-          {isExpanded && (
-            <Motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="mb-1.5 flex items-center justify-center"
-            >
-              <SoundBars />
-            </Motion.div>
-          )}
-
-          {/* Track Details */}
+          {/* Edge soften — always mounted; delayed fade-in on collapse to avoid white flash */}
           <Motion.div
-            layout
-            className={
-              isExpanded
-                ? 'flex flex-col items-center text-center'
-                : 'flex min-w-0 flex-col gap-0.5 leading-tight'
-            }
-          >
-            {/* Title */}
-            <Motion.span
-              layout
-              className={
-                isExpanded
-                  ? 'max-w-[210px] truncate px-3 text-base font-bold tracking-tight text-neutral-900 dark:text-neutral-50'
-                  : 'max-w-[140px] truncate text-[11px] font-semibold text-neutral-800 transition-colors group-hover:text-[#1DB954] dark:text-neutral-100'
-              }
-            >
-              {displayData.title}
-            </Motion.span>
+            initial={false}
+            animate={{ opacity: isExpanded ? 0 : 1 }}
+            transition={{
+              duration: 0.18,
+              delay: isExpanded ? 0 : 0.32,
+              ease: FADE.ease,
+            }}
+            className="pointer-events-none absolute inset-y-0 right-[68px] z-30 w-8 bg-gradient-to-r from-white to-transparent dark:from-[#1A1715]"
+          />
 
-            {/* Artist */}
-            <Motion.span
-              layout
-              className={
-                isExpanded
-                  ? 'order-first max-w-[210px] truncate px-3 text-xs font-medium tracking-wide text-neutral-400 dark:text-neutral-400'
-                  : 'max-w-[140px] truncate text-[10px] text-neutral-500 dark:text-neutral-400'
-              }
-            >
-              {displayData.artist}
-            </Motion.span>
-          </Motion.div>
-
-          {/* Status Indicator (Capsule view only) */}
-          {!isExpanded && (
-            <Motion.div layout className="shrink-0 pl-1">
-              {displayData.isPlaying ? (
-                <SoundBars />
-              ) : (
-                !isOffline && (
-                  <span className="rounded-full bg-neutral-200/60 px-1.5 py-0.5 text-[9px] font-medium text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500">
-                    last played
-                  </span>
-                )
-              )}
-            </Motion.div>
-          )}
-
-          {/* Expanded view Accent line & "Open Song" Link */}
           <AnimatePresence>
-            {isExpanded && (
+            {displayData.isPlaying && !isExpanded && (
               <Motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 5 }}
+                key="glow"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.4 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="pointer-events-none absolute -right-4 top-1/2 size-28 -translate-y-1/2 rounded-full blur-2xl"
+                style={{
+                  background:
+                    'radial-gradient(circle, rgba(29,185,84,0.45) 0%, transparent 70%)',
+                }}
+              />
+            )}
+          </AnimatePresence>
+
+          {/* Collapsed content view */}
+          <AnimatePresence mode="wait">
+            {!isExpanded ? (
+              <Motion.div
+                key="collapsed-content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="flex flex-col items-center"
+                className="absolute inset-y-0 left-0 z-10 flex w-[calc(100%-100px)] flex-col justify-center gap-1.5 pl-4 pr-2"
               >
-                <div className="my-2.5 h-[2px] w-7 rounded-full bg-neutral-400/40 dark:bg-neutral-600/40" />
-                <a
-                  href={displayData.songUrl || 'https://open.spotify.com'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="group/link flex cursor-pointer items-center gap-1.5 text-xs font-bold text-[#1DB954] transition-colors hover:text-[#1ed760]"
-                >
-                  <span>Open Song</span>
-                  <SpotifyIcon className="size-3.5 text-[#1DB954] transition-transform group-hover/link:scale-110" />
-                </a>
+                <div className="flex items-center gap-1.5">
+                  <SpotifyIcon className="size-3 shrink-0 text-[#1DB954]" />
+                  <span className="text-[11px] font-medium tracking-wide text-neutral-400 dark:text-neutral-500">
+                    {statusLabel}
+                  </span>
+                  {displayData.isPlaying && <SoundBars compact />}
+                </div>
+
+                <div className="flex min-w-0 flex-col gap-0.5">
+                  <span className="truncate text-xs font-semibold leading-snug tracking-tight text-neutral-900 dark:text-white">
+                    {displayData.title}
+                  </span>
+                  <span className="truncate text-[11px] font-medium leading-snug text-neutral-500 dark:text-neutral-400">
+                    {displayData.artist}
+                  </span>
+                </div>
+              </Motion.div>
+            ) : (
+              <Motion.div
+                key="expanded-content"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute left-0 top-[152px] z-10 flex h-[calc(100%-152px)] w-full flex-col items-center px-5 pb-8 pt-1 text-center"
+              >
+                {displayData.isPlaying && (
+                  <div className="mb-4 flex items-center justify-center">
+                    <SoundBars />
+                  </div>
+                )}
+
+                <div className="flex w-full flex-col items-center gap-1 text-center">
+                  <span
+                    className="block w-full truncate text-sm font-semibold leading-snug tracking-tight text-neutral-900 dark:text-white"
+                    style={{ maxWidth: 210 }}
+                  >
+                    {displayData.title}
+                  </span>
+                  <span
+                    className="block w-full truncate text-xs font-medium leading-snug text-neutral-500 dark:text-neutral-400"
+                    style={{ maxWidth: 210 }}
+                  >
+                    {displayData.artist}
+                  </span>
+                </div>
+
+                <div className="mt-auto flex w-full flex-col items-center pt-4">
+                  <div className="mb-4 h-[2px] w-6 rounded-full bg-neutral-400/40 dark:bg-neutral-600/40" />
+                  <a
+                    href={displayData.songUrl || 'https://open.spotify.com'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="group/link flex cursor-pointer items-center gap-1.5 pb-0.5 text-xs font-bold text-[#1DB954] transition-colors hover:text-[#1ed760]"
+                  >
+                    <span>Open Song</span>
+                    <SpotifyIcon className="size-3.5 text-[#1DB954] transition-transform duration-150 group-hover/link:scale-110" />
+                  </a>
+                </div>
               </Motion.div>
             )}
           </AnimatePresence>
