@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Image from 'next/image';
 import { ZoomableImage } from '@/components/projects/ZoomableImage';
 import CopyButton from '@/components/ui/copy-button';
 
@@ -32,50 +31,54 @@ export const BlogComponents = {
     />
   ),
 
-  // Headings with custom styles
+  // Headings with clean Shadcn typography tokens
   h1: ({ children, ...props }: ChildrenProps) => (
-    <h2 className="mb-4 text-4xl font-bold" {...props}>
+    <h1 className="mb-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground" {...props}>
       {children}
-    </h2>
+    </h1>
   ),
   h2: ({ children, ...props }: ChildrenProps) => (
-    <h2 className="mb-3 text-2xl font-semibold" {...props}>
+    <h2 className="mb-3 mt-8 text-2xl font-semibold tracking-tight text-foreground" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: ChildrenProps) => (
-    <h3 className="mb-2 text-xl font-medium" {...props}>
+    <h3 className="mb-2 mt-6 text-xl font-medium tracking-tight text-foreground" {...props}>
       {children}
     </h3>
   ),
 
-  // Paragraph styling
+  // Paragraph styling - text-foreground ensures crisp contrast in light & dark mode
   p: ({ children, ...props }: ChildrenProps) => (
-    <p className="text-secondary mb-6 leading-relaxed" {...props}>
+    <p className="mb-6 leading-relaxed text-foreground/90 font-normal text-base" {...props}>
       {children}
     </p>
   ),
 
   // Lists styling
   ul: ({ children, ...props }: ChildrenProps) => (
-    <ul className="mb-4 list-disc pl-6" {...props}>
+    <ul className="mb-4 list-disc pl-6 text-foreground/90" {...props}>
       {children}
     </ul>
   ),
   ol: ({ children, ...props }: ChildrenProps) => (
-    <ol className="mb-4 list-decimal pl-8" {...props}>
+    <ol className="mb-4 list-decimal pl-6 text-foreground/90" {...props}>
       {children}
     </ol>
   ),
   li: ({ children, ...props }: ChildrenProps) => (
-    <li className="text-muted-foreground mb-2 ml-4" {...props}>
+    <li className="mb-2 ml-2 leading-relaxed text-foreground/90" {...props}>
       {children}
     </li>
   ),
+  strong: ({ children, ...props }: ChildrenProps) => (
+    <strong className="font-semibold text-foreground" {...props}>
+      {children}
+    </strong>
+  ),
 
-  // Inline code block
+  // Inline code block with proper background pill style
   code: ({ children, className, ...props }: CodeProps) => {
-    // agar syntax highlighting hai (language-xyz class)
     if (className && className.startsWith('language-')) {
       return (
         <code className={className} {...props}>
@@ -83,10 +86,9 @@ export const BlogComponents = {
         </code>
       );
     }
-    // simple inline code
     return (
       <code
-        className="rounded px-1.5 py-0.5 font-mono text-[1.1em]"
+        className="rounded-md bg-muted px-1.5 py-0.5 font-mono text-xs font-semibold text-foreground border border-border/60"
         {...props}
       >
         {children}
@@ -94,14 +96,14 @@ export const BlogComponents = {
     );
   },
   em: ({ children, ...props }: ChildrenProps) => (
-    <em className="text-primary not-italic text-sm font-semibold" {...props}>
-      `{children}`
+    <em className="font-semibold not-italic text-foreground/90" {...props}>
+      {children}
     </em>
   ),
   // Blockquote
   blockquote: ({ children, ...props }: ChildrenProps) => (
     <blockquote
-      className="my-4 border-l-4 border-neutral-500 pl-4 italic text-muted-foreground"
+      className="my-6 border-l-4 border-primary/60 pl-4 italic text-muted-foreground"
       {...props}
     >
       {children}
@@ -128,7 +130,7 @@ export const BlogComponents = {
       <div className="group relative my-6 w-full">
         <CopyButton text={codeText} />
         <pre
-          className="dark:bg-neutral-800/60 bg-neutral-900 border border-transparent ring ring-neutral-700 overflow-x-auto rounded-lg p-6 text-neutral-200 text-sm"
+          className="bg-neutral-950 dark:bg-neutral-900/95 border border-border overflow-x-auto rounded-xl p-4 sm:p-6 text-neutral-100 text-xs sm:text-sm font-mono leading-relaxed"
           {...props}
         >
           {children}
@@ -138,6 +140,6 @@ export const BlogComponents = {
   },
 
   hr: ({ ...props }) => (
-    <hr className="my-12 border-t border-neutral-300/40 dark:border-neutral-800/80" {...props} />
+    <hr className="my-12 border-t border-border" {...props} />
   ),
 };

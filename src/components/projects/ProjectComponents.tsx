@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Image from 'next/image';
 import CopyButton from '@/components/ui/copy-button';
 import Bun from '@/components/icons/tech/Bun';
 import { ZoomableImage } from '@/components/projects/ZoomableImage';
@@ -41,13 +40,13 @@ const Technology = ({ name = '' }: { name?: string }) => {
   const TechComponent = TechnologyComponents[name] || TechnologyComponents[name?.toLowerCase()];
 
   return (
-    <div className="text-foreground flex size-fit items-center gap-1.5 rounded-full border border-neutral-300/40 bg-zinc-50 px-2 py-0.5 text-xs font-normal tracking-wide shadow-xs select-none dark:border-neutral-800/80 dark:bg-zinc-900/60 [&_svg]:size-3.5">
+    <div className="text-foreground flex size-fit items-center gap-1.5 rounded-full border border-border bg-muted/50 px-2.5 py-1 text-xs font-normal tracking-wide shadow-xs select-none [&_svg]:size-3.5">
       {TechComponent && (
         <span className="flex size-3.5 shrink-0 items-center justify-center [&_svg]:size-3.5">
           <TechComponent />
         </span>
       )}
-      <span className="text-foreground text-xs font-normal tracking-wide whitespace-nowrap">
+      <span className="text-foreground text-xs font-medium tracking-wide whitespace-nowrap">
         {name}
       </span>
     </div>
@@ -56,8 +55,8 @@ const Technology = ({ name = '' }: { name?: string }) => {
 
 // Tech stack
 const TechStack = ({ technologies = [] }: { technologies?: string[] }) => (
-  <div className="bg-muted/20 my-6 rounded-lg border p-4">
-    <h4 className="mb-3 text-lg font-semibold">Technology Stack</h4>
+  <div className="bg-card/60 border-border my-6 rounded-xl border p-4 sm:p-6">
+    <h4 className="mb-3 text-lg font-semibold text-foreground">Technology Stack</h4>
     <div className="flex flex-wrap gap-2">
       {technologies.map((tech) => (
         <Technology key={tech} name={tech} />
@@ -78,38 +77,40 @@ const ProjectMeta = ({
   team?: string;
   status?: string;
 }) => (
-  <div className="bg-muted/20 my-6 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div className="bg-card/60 border-border my-6 grid gap-4 rounded-xl border p-4 sm:grid-cols-2 lg:grid-cols-4">
     {timeline && (
       <div>
-        <h5 className="text-muted-foreground text-sm font-semibold">Timeline</h5>
-        <p className="text-sm">{timeline}</p>
+        <h5 className="text-muted-foreground text-xs font-medium uppercase tracking-wider">Timeline</h5>
+        <p className="text-sm font-semibold text-foreground mt-1">{timeline}</p>
       </div>
     )}
 
     {role && (
       <div>
-        <h5 className="text-muted-foreground text-sm font-semibold">Role</h5>
-        <p className="text-sm">{role}</p>
+        <h5 className="text-muted-foreground text-xs font-medium uppercase tracking-wider">Role</h5>
+        <p className="text-sm font-semibold text-foreground mt-1">{role}</p>
       </div>
     )}
 
     {team && (
       <div>
-        <h5 className="text-muted-foreground text-sm font-semibold">Team</h5>
-        <p className="text-sm">{team}</p>
+        <h5 className="text-muted-foreground text-xs font-medium uppercase tracking-wider">Team</h5>
+        <p className="text-sm font-semibold text-foreground mt-1">{team}</p>
       </div>
     )}
 
     {status && (
       <div>
-        <h5 className="text-muted-foreground text-sm font-semibold">Status</h5>
-        <Badge
-          variant={
-            status === 'completed' ? 'default' : status === 'in-progress' ? 'secondary' : 'outline'
-          }
-        >
-          {status.charAt(0).toUpperCase() + status.slice(1)}
-        </Badge>
+        <h5 className="text-muted-foreground text-xs font-medium uppercase tracking-wider">Status</h5>
+        <div className="mt-1">
+          <Badge
+            variant={
+              status === 'completed' ? 'default' : status === 'in-progress' ? 'secondary' : 'outline'
+            }
+          >
+            {status.charAt(0).toUpperCase() + status.slice(1)}
+          </Badge>
+        </div>
       </div>
     )}
   </div>
@@ -117,18 +118,18 @@ const ProjectMeta = ({
 
 // Challenges
 const Challenges = ({ challenges = [] }: { challenges?: string[] }) => (
-  <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
-    <h4 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
+  <div className="my-6 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 sm:p-6">
+    <h4 className="mb-3 text-lg font-semibold text-amber-600 dark:text-amber-400">
       Key Challenges
     </h4>
-    <ul className="space-y-2">
+    <ul className="space-y-2.5">
       {challenges.map((challenge, index) => (
         <li
           key={index}
-          className="flex items-start gap-2 text-sm text-yellow-700 dark:text-yellow-300"
+          className="flex items-start gap-2.5 text-sm text-foreground/90 leading-relaxed"
         >
-          <span className="mt-1 block size-1.5 rounded-full bg-yellow-500 dark:bg-yellow-400" />
-          {challenge}
+          <span className="mt-1.5 block size-1.5 shrink-0 rounded-full bg-amber-500" />
+          <span>{challenge}</span>
         </li>
       ))}
     </ul>
@@ -137,16 +138,16 @@ const Challenges = ({ challenges = [] }: { challenges?: string[] }) => (
 
 // Learnings
 const Learnings = ({ learnings = [] }: { learnings?: string[] }) => (
-  <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
-    <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">Key Learnings</h4>
-    <ul className="space-y-2">
+  <div className="my-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 sm:p-6">
+    <h4 className="mb-3 text-lg font-semibold text-emerald-600 dark:text-emerald-400">Key Learnings</h4>
+    <ul className="space-y-2.5">
       {learnings.map((learning, index) => (
         <li
           key={index}
-          className="flex items-start gap-2 text-sm text-green-700 dark:text-green-300"
+          className="flex items-start gap-2.5 text-sm text-foreground/90 leading-relaxed"
         >
-          <span className="mt-1 block size-1.5 rounded-full bg-green-500 dark:bg-green-400" />
-          {learning}
+          <span className="mt-1.5 block size-1.5 shrink-0 rounded-full bg-emerald-500" />
+          <span>{learning}</span>
         </li>
       ))}
     </ul>
@@ -184,48 +185,52 @@ export const ProjectComponents = {
 
   // Headings with custom styles
   h1: ({ children, ...props }: ChildrenProps) => (
-    <h2 className="mb-4 text-4xl font-bold" {...props}>
+    <h1 className="mb-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground" {...props}>
       {children}
-    </h2>
+    </h1>
   ),
   h2: ({ children, ...props }: ChildrenProps) => (
-    <h2 className="mb-3 text-2xl font-semibold" {...props}>
+    <h2 className="mb-3 mt-8 text-2xl font-semibold tracking-tight text-foreground" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: ChildrenProps) => (
-    <h3 className="mb-2 text-xl font-medium" {...props}>
+    <h3 className="mb-2 mt-6 text-xl font-medium tracking-tight text-foreground" {...props}>
       {children}
     </h3>
   ),
 
   // Paragraph styling
   p: ({ children, ...props }: ChildrenProps) => (
-    <p className="text-secondary mb-6 leading-relaxed" {...props}>
+    <p className="mb-6 leading-relaxed text-foreground/90 font-normal text-base" {...props}>
       {children}
     </p>
   ),
 
   // Lists styling
   ul: ({ children, ...props }: ChildrenProps) => (
-    <ul className="mb-4 list-disc pl-6" {...props}>
+    <ul className="mb-4 list-disc pl-6 text-foreground/90" {...props}>
       {children}
     </ul>
   ),
   ol: ({ children, ...props }: ChildrenProps) => (
-    <ol className="mb-4 list-decimal pl-8" {...props}>
+    <ol className="mb-4 list-decimal pl-6 text-foreground/90" {...props}>
       {children}
     </ol>
   ),
   li: ({ children, ...props }: ChildrenProps) => (
-    <li className="text-muted-foreground mb-2 ml-4" {...props}>
+    <li className="mb-2 ml-2 leading-relaxed text-foreground/90" {...props}>
       {children}
     </li>
+  ),
+  strong: ({ children, ...props }: ChildrenProps) => (
+    <strong className="font-semibold text-foreground" {...props}>
+      {children}
+    </strong>
   ),
 
   // Inline code block
   code: ({ children, className, ...props }: CodeProps) => {
-    // agar syntax highlighting hai (language-xyz class)
     if (className && className.startsWith('language-')) {
       return (
         <code className={className} {...props}>
@@ -233,10 +238,9 @@ export const ProjectComponents = {
         </code>
       );
     }
-    // simple inline code
     return (
       <code
-        className="rounded px-1.5 py-0.5 font-mono text-[1.1em]"
+        className="rounded-md bg-muted px-1.5 py-0.5 font-mono text-xs font-semibold text-foreground border border-border/60"
         {...props}
       >
         {children}
@@ -244,14 +248,14 @@ export const ProjectComponents = {
     );
   },
   em: ({ children, ...props }: ChildrenProps) => (
-    <em className="text-primary not-italic text-sm font-semibold" {...props}>
-      `{children}`
+    <em className="font-semibold not-italic text-foreground/90" {...props}>
+      {children}
     </em>
   ),
   // Blockquote
   blockquote: ({ children, ...props }: ChildrenProps) => (
     <blockquote
-      className="my-4 border-l-4 border-neutral-500 pl-4 italic text-muted-foreground"
+      className="my-6 border-l-4 border-primary/60 pl-4 italic text-muted-foreground"
       {...props}
     >
       {children}
@@ -278,7 +282,7 @@ export const ProjectComponents = {
       <div className="group relative my-6 w-full">
         <CopyButton text={codeText} />
         <pre
-          className="dark:bg-neutral-800/60 bg-neutral-900 border border-transparent ring ring-neutral-700 overflow-x-auto rounded-lg p-6 text-neutral-200 text-sm"
+          className="bg-neutral-950 dark:bg-neutral-900/95 border border-border overflow-x-auto rounded-xl p-4 sm:p-6 text-neutral-100 text-xs sm:text-sm font-mono leading-relaxed"
           {...props}
         >
           {children}
@@ -288,7 +292,7 @@ export const ProjectComponents = {
   },
 
   hr: ({ ...props }) => (
-    <hr className="my-12 border-t border-neutral-300/40 dark:border-neutral-800/80" {...props} />
+    <hr className="my-12 border-t border-border" {...props} />
   ),
 
   Technology,

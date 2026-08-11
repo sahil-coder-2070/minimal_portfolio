@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Pixelify_Sans } from 'next/font/google';
+import Script from 'next/script';
 import '@/index.css';
 import { ThemeProvider } from '@/components/landing/theme-provider';
 import Container from '@/components/layouts/Container';
@@ -8,7 +9,6 @@ import { Quote } from '@/components/common/Quote';
 import Footer from '@/components/common/Footer';
 import PageTracker from '@/components/common/PageTracker';
 import { Analytics } from '@vercel/analytics/react';
-
 
 const geistSans = Geist({
   variable: '--font-sans',
@@ -129,10 +129,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="theme-custom" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <Script
           id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -152,8 +153,10 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
+        <Script
+          id="json-ld"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
@@ -163,8 +166,8 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <PageTracker />
           <Analytics />
-          <div className="min-h-screen">
-            <Container>
+          <div className="min-h-screen dark:bg-black/50">
+          <Container>
               <Layout>
                 {children}
                 <Quote />
