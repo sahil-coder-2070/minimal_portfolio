@@ -1,6 +1,18 @@
 {
-  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "$schema": "https://unpkg.com/knip@5/schemas/config.json",
   "entry": [
-    "scripts/setup-appwrite.js!"
+    "app/**/{page,layout,template,loading,error,not-found,route}.{ts,tsx}",
+    "src/index.css"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx,js,jsx}",
+    "app/**/*.{ts,tsx,js,jsx}"
+  ],
+  "paths": {
+    "@/*": ["./src/*"]
+  },
+  "ignore": [
+    "src/components/ui/**",
+    "src/data/source-codes.ts"
   ]
 }

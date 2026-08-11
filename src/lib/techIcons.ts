@@ -16,10 +16,6 @@ import TailwindCss from "@/components/icons/tech/TailwindCss";
 import TypeScript from "@/components/icons/tech/TypeScript";
 import Vite from "@/components/icons/tech/Vite";
 import Github from "@/components/icons/social/Github";
-import LinkedIn from "@/components/icons/social/LinkedIn";
-import Mail from "@/components/icons/social/Mail";
-import Website from "@/components/icons/social/Website";
-import X from "@/components/icons/social/X";
 import Shadcn from "@/components/icons/tech/Shadcn";
 import LLM from "@/components/icons/tech/LLM";
 import Php from "@/components/icons/tech/Php";
@@ -27,10 +23,10 @@ import Photoshop from "@/components/icons/tech/Photoshop";
 import Baseui from "@/components/icons/tech/Baseui";
 import Git from "@/components/icons/tech/Git";
 import Docker from "@/components/icons/tech/Docker";
-import ReactNavigation from "@/components/icons/tech/ReactNavigation";
 import { Bootstrap } from "@/components/icons/tech/BootStrap";
 import { Python } from "@/components/icons/tech/Python";
 import Npm from "@/components/icons/tech/Npm";
+
 export {
   ReactIcon,
   Bun,
@@ -50,10 +46,6 @@ export {
   TypeScript,
   Vite,
   Github,
-  LinkedIn,
-  Mail,
-  Website,
-  X,
   Shadcn,
   LLM,
   Php,
@@ -61,7 +53,6 @@ export {
   Photoshop,
   Git,
   Docker,
-  ReactNavigation,
   Bootstrap,
   Python,
   Npm,
