@@ -1,6 +1,7 @@
 import Hero from '@/components/layouts/Hero';
 import ExperienceCard from '@/components/experience/ExperienceCard';
 import Project from '@/components/projects/Project';
+import ComponentsSection from '@/components/landing/ComponentsSection';
 import AboutMe from '@/components/landing/TechSkills';
 import Featured from '@/components/landing/Featured';
 import Blog from '@/components/blog/Blog';
@@ -14,6 +15,7 @@ import { formatDate } from '@/lib/utils';
 const sectionIds = {
   experience: 'experience',
   projects: 'featured-projects',
+  components: 'components',
   skills: 'skills',
   featured: 'featured',
   blog: 'latest-blogs',
@@ -102,6 +104,10 @@ export default async function Home() {
 
       <section id={sectionIds.projects}>
         <Project projects={projects} />
+      </section>
+
+      <section id={sectionIds.components}>
+        <ComponentsSection />
       </section>
 
       <section id={sectionIds.skills}>
