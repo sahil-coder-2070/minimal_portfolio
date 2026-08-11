@@ -8,7 +8,7 @@ import { ArrowUpRight } from 'lucide-react';
 const SocialLinks = () => {
   const items = [
     {
-      name: 'Social Links',
+      name: 'Resume',
       href: '/resume',
       isExternal: false,
       icon: <Cv />,

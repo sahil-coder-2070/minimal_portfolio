@@ -14,9 +14,6 @@ const CARD = {
   expanded: { w: 250, h: 284, r: 28 },
 } as const;
 
-/** Content starts below the disc bowl — disc bottom sits at ~y130 */
-const EXPANDED_TEXT_TOP = 152;
-
 /** Shared spring — every layer uses the same curve so nothing drifts apart */
 const SPRING = {
   type: 'spring' as const,
@@ -144,8 +141,8 @@ const Spotify = () => {
 
   if (loading) {
     return (
-      <div className="relative z-40 my-6 h-14 w-full select-none">
-        <div className="absolute right-0 bottom-0 left-0 mx-auto flex w-fit items-center justify-center">
+      <div className="relative z-40 flex w-full items-center justify-center py-2 select-none">
+        <div className="flex w-fit items-center justify-center">
           <div className="flex h-[88px] w-[270px] items-center gap-3 overflow-hidden rounded-[22px] border border-neutral-200/80 bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-6px_rgba(0,0,0,0.08)] dark:border-neutral-700/60 dark:bg-[#1A1715]">
             <div className="flex min-w-0 flex-1 flex-col gap-2.5 pl-1">
               <div className="h-2.5 w-20 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700/50" />
@@ -175,9 +172,8 @@ const Spotify = () => {
       : 'Last Played';
 
   return (
-    /* Fixed slot — expanded card overflows upward, page never shifts */
-    <div className="relative z-40 my-6 h-14 w-full select-none">
-      <div className="absolute right-0 bottom-0 left-0 mx-auto flex w-fit items-end justify-center">
+    <div className="relative z-40 flex w-full items-center justify-center py-2 select-none">
+      <div className="flex w-fit items-center justify-center">
         <Motion.div
           ref={cardRef}
           onClick={() => setIsExpanded((v) => !v)}
@@ -189,13 +185,9 @@ const Spotify = () => {
             height: isExpanded ? CARD.expanded.h : CARD.collapsed.h,
             borderRadius: isExpanded ? CARD.expanded.r : CARD.collapsed.r,
           }}
-          style={{ transformOrigin: 'bottom center' }}
+          style={{ transformOrigin: 'center center' }}
           className="group relative z-50 cursor-pointer overflow-hidden border border-neutral-200/90 bg-white text-neutral-800 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-6px_rgba(0,0,0,0.1)] dark:border-[#38332F] dark:bg-[#1A1715] dark:text-white dark:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_8px_24px_-6px_rgba(0,0,0,0.4)]"
         >
-          {/*
-            Disc stays at full 260 px — only scale + translate animate (GPU path).
-            Collapsed center ≈ (248, 44), expanded center ≈ (125, 0).
-          */}
           <Motion.div
             initial={false}
             style={{ width: DISC_SIZE, height: DISC_SIZE }}
@@ -215,7 +207,6 @@ const Spotify = () => {
             />
           </Motion.div>
 
-          {/* Edge soften — always mounted; delayed fade-in on collapse to avoid white flash */}
           <Motion.div
             initial={false}
             animate={{ opacity: isExpanded ? 0 : 1 }}

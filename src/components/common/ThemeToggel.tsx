@@ -12,7 +12,7 @@ const ThemeToggle = () => {
 
   const playSound = () => {
     if (!audioRef.current) return;
-    audioRef.current.currentTime = 0.02;
+    audioRef.current.currentTime = 0;
     audioRef.current.play().catch(() => {});
   };
 
@@ -40,7 +40,7 @@ const ThemeToggle = () => {
 
   return (
     <>
-      <audio ref={audioRef} src="/sound.wav" preload="auto" />
+      <audio ref={audioRef} src="/newsound.wav" preload="auto" />
       <Tooltip>
         <TooltipTrigger asChild>
           <Button

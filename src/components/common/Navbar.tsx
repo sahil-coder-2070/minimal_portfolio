@@ -22,6 +22,7 @@ const pixelify = Pixelify_Sans({
 });
 
 const navList = [
+  { name: 'Components', href: '/components' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'Projects', href: '/projects' },
 ];
@@ -31,7 +32,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-background sticky top-0 isolate z-50 pt-1">
+      <div className="bg-background dark:bg-[#050505] sticky top-0 isolate z-50 pt-1">
         <Container>
           <div>
             <motion.div
