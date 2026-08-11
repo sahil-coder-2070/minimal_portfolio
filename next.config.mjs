@@ -9,6 +9,22 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // RAM & Memory Optimization: Automatically disposes inactive pages from memory
+  onDemandEntries: {
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 2,
+  },
+  experimental: {
+    // Tree-shake large packages during compilation to save Node.js RAM
+    optimizePackageImports: [
+      'lucide-react',
+      '@tabler/icons-react',
+      'motion',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-tooltip',
+    ],
+  },
   images: {
     remotePatterns: [
       {
