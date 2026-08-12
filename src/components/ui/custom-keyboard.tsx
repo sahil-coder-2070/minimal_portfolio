@@ -898,7 +898,7 @@ const Key = ({
         {hasLed && (
           <div
             className={cn(
-              "absolute left-[2px] top-[2px] h-[2.5px] w-[2.5px] rounded-full z-10 pointer-events-none transition-colors",
+              "absolute left-[2px] top-[2px] h-[2.5px] w-[2.5px] rounded-full z-10 pointer-events-none",
               isCapsActive ? "bg-emerald-400 shadow-[0_0_3px_#10b981]" : (isDarkTheme ? "bg-white/20" : "bg-neutral-900/20 dark:bg-white/20")
             )}
           />

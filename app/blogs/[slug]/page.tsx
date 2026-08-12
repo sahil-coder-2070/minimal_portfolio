@@ -163,7 +163,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="flex items-center justify-between p-2 pl-4">
             <Link
               href="/blogs"
-              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap transition-all outline-none select-none hover:no-underline"
+              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap outline-none select-none hover:no-underline"
             >
               <ArrowLeft className="size-4 transition-transform duration-200 group-hover/button:-translate-x-1" />
               Blogs

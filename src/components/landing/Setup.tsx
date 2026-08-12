@@ -29,7 +29,7 @@ export default function Setup() {
         <div className="flex flex-col">
           {setupItems.map((item) => (
             <div key={item.name} className="border-border border-y border-t-0 first:border-t">
-              <div className=" hover:bg-neutral-100 dark:hover:bg-neutral-900/40 group relative flex items-center pr-2 transition-colors duration-250">
+              <div className="hover:bg-neutral-100 dark:hover:bg-neutral-900/40 group relative flex items-center pr-2">
                 {/* Icon Container */}
                 <div className="border-muted-foreground/15 ring-line ring-offset-background bg-muted text-muted-foreground mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border ring-1 ring-offset-1 select-none [&_svg]:size-4">
                   {item.icon}
@@ -47,7 +47,7 @@ export default function Setup() {
                 </div>
 
                 {/* Arrow Icon */}
-                <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           ))}

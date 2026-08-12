@@ -69,7 +69,7 @@ const TechSkills = () => {
                       className="group flex cursor-pointer items-center gap-2 rounded-full border border-neutral-200/90 bg-neutral-50/90 px-3 py-1.5 font-mono text-xs text-neutral-700 shadow-2xs  select-none hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/80"
                     >
                       {/* Monochrome icon with color on hover */}
-                      <span className="flex size-4 shrink-0 items-center justify-center opacity-70 grayscale transition-all duration-200 group-hover:opacity-100 group-hover:grayscale-0 [&_svg]:size-3.5">
+                      <span className="flex size-4 shrink-0 items-center justify-center opacity-70 grayscale transition-[opacity,filter] duration-200 group-hover:opacity-100 group-hover:grayscale-0 [&_svg]:size-3.5">
                         {skill.icon}
                       </span>
                       <span className="font-medium tracking-tight whitespace-nowrap">

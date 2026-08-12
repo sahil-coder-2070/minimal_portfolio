@@ -141,7 +141,7 @@ const Spotify = () => {
 
   if (loading) {
     return (
-      <div className="relative z-40 my-4 h-[88px] w-full select-none flex justify-center">
+      <div className="relative z-40 my-4 h-[88px]  w-full select-none flex justify-center">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex w-fit items-center justify-center">
           <div className="flex h-[88px] w-[270px] items-center gap-3 overflow-hidden rounded-[22px] border border-neutral-200/80 bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-6px_rgba(0,0,0,0.08)] dark:border-neutral-700/60 dark:bg-[#1A1715]">
             <div className="flex min-w-0 flex-1 flex-col gap-2.5 pl-1">
@@ -301,7 +301,7 @@ const Spotify = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="group/link flex cursor-pointer items-center gap-1.5 pb-0.5 text-xs font-bold text-[#1DB954] transition-colors hover:text-[#1ed760]"
+                    className="group/link flex cursor-pointer items-center gap-1.5 pb-0.5 text-xs font-bold text-[#1DB954] hover:text-[#1ed760]"
                   >
                     <span>Open Song</span>
                     <SpotifyIcon className="size-3.5 text-[#1DB954] transition-transform duration-150 group-hover/link:scale-110" />

@@ -134,7 +134,7 @@ const ProjectCard = ({
                             href={items.links.github || items.links.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-foreground flex w-full items-center justify-center gap-2 text-sm transition-colors"
+                            className="text-muted-foreground hover:text-foreground flex w-full items-center justify-center gap-2 text-sm"
                           >
                             {items.links.github ? 'GitHub' : 'Live link'}
                             {items.links.github && (

@@ -508,7 +508,7 @@ const Key = ({ className, children, keyCode, themeColor = "default" }: { classNa
       onMouseDown={() => keyCode && triggerKey(keyCode)}
       onMouseUp={() => keyCode && isPressed && releaseKey(keyCode)}
       className={cn(
-        "h-8 min-w-8 flex items-center justify-center rounded-md text-xs font-semibold shadow-md transition-all active:scale-95",
+        "h-8 min-w-8 flex items-center justify-center rounded-md text-xs font-semibold shadow-md transition-transform active:scale-95",
         themeColor === "accent" ? "bg-orange-500 text-white" : "bg-neutral-800 text-neutral-200 hover:bg-neutral-700",
         isPressed && "scale-95 bg-neutral-900",
         className

@@ -32,7 +32,7 @@ const BlogCard = ({ data = BlogCardData }) => {
             return (
               <li key={index}>
                 <div className="h-full">
-                  <div className="relative flex h-full flex-col gap-2 p-2 py-5 md:py-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
+                  <div className="relative flex h-full flex-col gap-2 p-2 py-5 hover:bg-neutral-100/60 md:py-2 dark:hover:bg-neutral-900/40">
                     {/* Image container */}
                     <div className="relative select-none [--image-radius:var(--radius-xl)]">
                       <Image
@@ -75,7 +75,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                             <Badge
                               key={idx}
                               variant="secondary"
-                              className="px-1.5 py-0.5 text-[10px]"
+                              className="px-2.5 py-0.5 text-[11px]"
                             >
                               {tag}
                             </Badge>
@@ -94,7 +94,7 @@ const BlogCard = ({ data = BlogCardData }) => {
                             </dd>
                           </dl>
                           <Link href={`/blogs/${items.slug}`}>
-                            <div className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors duration-200">
+                            <div className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 text-xs font-medium">
                               <span>Read More</span>
                               <ArrowRight className="size-3.5" />
                             </div>

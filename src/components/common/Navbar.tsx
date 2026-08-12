@@ -50,7 +50,7 @@ const Navbar = () => {
                       <Link
                         key={items.name}
                         href={items.href}
-                        className="text-md font-light text-pretty underline-offset-5 duration-500 hover:underline"
+                        className="text-md font-light text-pretty underline-offset-5 hover:underline"
                       >
                         {items.name}
                       </Link>

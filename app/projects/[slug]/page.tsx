@@ -155,7 +155,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="flex items-center justify-between p-2 pl-4">
             <Link
               href="/projects"
-              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap transition-all outline-none select-none hover:no-underline"
+              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap outline-none select-none hover:no-underline"
             >
               <ArrowLeft className="size-4 transition-transform duration-200 group-hover/button:-translate-x-1" />
               Projects
@@ -231,7 +231,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     href={projectMeta.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs transition-all disabled:pointer-events-none disabled:opacity-50"
+                    className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs disabled:pointer-events-none disabled:opacity-50"
                   >
                     <Website className="size-4" />
                     Live Demo
@@ -242,7 +242,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     href={projectMeta.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs transition-all disabled:pointer-events-none disabled:opacity-50"
+                    className="inset-shadow bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-xs disabled:pointer-events-none disabled:opacity-50"
                   >
                     <Github className="size-4" />
                     Source Code

@@ -11,7 +11,7 @@ function Tag({ className, children, ...props }: React.ComponentProps<'span'>) {
     <span
       data-slot="tag"
       className={cn(
-        "text-muted-foreground retina:border-[0.5px] hover:text-foreground inline-flex items-center rounded-md border bg-zinc-50 px-1.5 py-0.5 font-mono text-xs shadow-2xs transition-colors hover:bg-neutral-100 dark:bg-zinc-900 dark:hover:bg-neutral-800 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
+        "text-muted-foreground retina:border-[0.5px] hover:text-foreground inline-flex items-center rounded-md border bg-zinc-50 px-1.5 py-0.5 font-mono text-xs shadow-2xs hover:bg-neutral-100 dark:bg-zinc-900 dark:hover:bg-neutral-800 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
         className
       )}
       {...props}
@@ -41,7 +41,7 @@ export function ExperiencePositionItem({ position }: { position: ExperiencePosit
         tabIndex={0}
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
-        className="group focus-visible:before:inset-ring-ring/50 relative block w-full cursor-pointer text-left outline-none before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:-z-1 before:rounded-lg before:transition-[background-color] before:ease-out hover:before:bg-neutral-100 focus-visible:before:inset-ring-2 dark:hover:before:bg-neutral-900/40"
+        className="group focus-visible:before:inset-ring-ring/50 relative block w-full cursor-pointer text-left outline-none before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:-z-1 before:rounded-lg hover:before:bg-neutral-100 focus-visible:before:inset-ring-2 dark:hover:before:bg-neutral-900/40"
       >
         <div className="relative z-1 mb-1 flex items-center gap-3">
           {/* Position Icon Box */}

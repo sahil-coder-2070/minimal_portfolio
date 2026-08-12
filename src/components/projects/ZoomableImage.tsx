@@ -76,7 +76,7 @@ export function ZoomableImage({
       <span
         onClick={() => setIsOpen(true)}
         className={cn(
-          "group border-border bg-muted/40 relative overflow-hidden rounded-xl border shadow-sm transition-all duration-300 cursor-zoom-in hover:border-neutral-400 dark:hover:border-neutral-700",
+          "group border-border bg-muted/40 relative overflow-hidden rounded-xl border shadow-sm cursor-zoom-in hover:border-neutral-400 dark:hover:border-neutral-700",
           isFill ? "block aspect-video w-full mb-8" : "inline-block my-4",
           className
         )}
@@ -101,8 +101,8 @@ export function ZoomableImage({
         )}
         
         {/* Overlay hover effect */}
-        <span className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/15 flex items-center justify-center">
-          <span className="bg-background/80 border-border text-foreground opacity-0 scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xs shadow-sm">
+        <span className="absolute inset-0 bg-black/0 group-hover:bg-black/15 flex items-center justify-center">
+          <span className="bg-background/80 border-border text-foreground opacity-0 scale-95 transition-[opacity,transform] duration-300 group-hover:opacity-100 group-hover:scale-100 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xs shadow-sm">
             <Maximize2 className="size-3.5" />
             <span>Click to zoom</span>
           </span>

@@ -412,7 +412,7 @@ const RepoRow = ({
   index
 }) => {
   const className =
-    "flex items-center gap-3 rounded-xl mx-2 px-2 py-2 transition-colors hover:bg-foreground/5";
+    "flex items-center gap-3 rounded-xl mx-2 px-2 py-2 hover:bg-foreground/5";
 
   const content = (
     <>
@@ -447,9 +447,9 @@ const Chevron = ({
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden
-    className="size-7 text-[#C4C9CC] dark:text-[#3E4346]"
+    className="size-7 text-neutral-400/70 dark:text-neutral-600 "
     initial={false}
-    animate={{ rotate: open ? 180 : 0 }}
+    animate={{ rotate: open ? 0 : 180 }}
     transition={transition}>
     <circle cx="12" cy="12" r="10" />
     <path d="m16 10-4 4-4-4" />
@@ -581,7 +581,7 @@ const GitHubActivity = ({
                 aria-label={
                   open ? "Hide top repositories" : "Show top repositories"
                 }
-                className="grid size-7 shrink-0 place-items-center rounded-full bg-neutral-200/80 text-neutral-700 transition-colors hover:bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700">
+                className="grid size-7 shrink-0 place-items-center rounded-full bg-neutral-200/80 text-neutral-700  dark:bg-neutral-800 dark:text-neutral-300 cursor-pointer">
                 <Chevron open={open} transition={transition} />
               </button>
             </div>

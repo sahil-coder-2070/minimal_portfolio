@@ -13,9 +13,9 @@ const CTA = () => {
           If you've read this far, you might be interested in what I do.
         </p>
         <div className="mt-4 flex w-full justify-center sm:mt-0 sm:w-auto sm:justify-end">
-          <div className="inset-shadow group inline-flex cursor-pointer items-center self-end rounded-md border border-black/10 bg-black/3 px-2 py-1 text-sm text-black shadow-md transition-all dark:border-white/15 dark:bg-white/15 dark:text-white dark:shadow-[0_0_5px_rgba(255,255,255,0.1)]">
+          <div className="inset-shadow group inline-flex cursor-pointer items-center self-end rounded-md border border-black/10 bg-black/3 px-2 py-1 text-sm text-black shadow-md dark:border-white/15 dark:bg-white/15 dark:text-white dark:shadow-[0_0_5px_rgba(255,255,255,0.1)]">
             <Link href={'/contact'}>
-              <div className="relative z-20 flex items-center gap-2 transition-all duration-300 group-hover:gap-8">
+              <div className="relative z-20 flex items-center gap-2 transition-[gap] duration-300 group-hover:gap-8">
                 <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full">
                   <Image
                     alt="Sahil's avatar"
@@ -26,7 +26,7 @@ const CTA = () => {
                     style={{ color: 'transparent' }}
                   />
                 </div>
-                <div className="absolute left-6 flex -translate-x-full transform items-center gap-0 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                <div className="absolute left-6 flex -translate-x-full transform items-center gap-0 opacity-0 transition-[transform,opacity] duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -46,7 +46,7 @@ const CTA = () => {
                     You
                   </div>
                 </div>
-                <span className="relative ml-0 block text-sm font-bold whitespace-nowrap transition-all duration-300 group-hover:ml-4">
+                <span className="relative ml-0 block text-sm font-bold whitespace-nowrap transition-[margin-left] duration-300 group-hover:ml-4">
                   Book A Free Call
                 </span>
               </div>
