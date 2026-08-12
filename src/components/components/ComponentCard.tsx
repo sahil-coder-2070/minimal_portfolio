@@ -8,6 +8,7 @@ interface ComponentCardProps {
   title: string;
   description?: string;
   href?: string;
+  badge?: string;
   children?: React.ReactNode;
 }
 
@@ -15,11 +16,12 @@ export default function ComponentCard({
   title,
   description,
   href = '#',
+  badge = 'React · Motion',
   children,
 }: ComponentCardProps) {
   return (
     <div className="h-full">
-      <div className="relative flex h-full flex-col gap-2 p-2 py-5 md:py-2 transition-[background-color] ease-out hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
+      <div className="relative flex h-full flex-col gap-2 p-2 py-5 md:py-2 hover:bg-neutral-100/60 dark:hover:bg-neutral-900/40">
         {/* Preview container matching Blog Image Container 1:1 */}
         <div className="relative select-none [--image-radius:var(--radius-xl)]">
           <div className="aspect-1200/630 rounded-[var(--image-radius)] bg-neutral-100/80 dark:bg-neutral-900/50 flex items-center justify-center p-3 sm:p-4 overflow-hidden">
@@ -43,11 +45,14 @@ export default function ComponentCard({
             )}
           </div>
 
-          {/* Footer Details: View Component Link */}
+          {/* Footer Details: Badge & View Component Link */}
           <div className="relative z-10 mt-2 space-y-3">
-            <div className="border-border flex items-center justify-end border-t pt-2.5">
+            <div className="border-border flex items-center justify-between border-t pt-2.5">
+              <span className="text-muted-foreground/80 font-mono text-xs font-medium">
+                {badge}
+              </span>
               <Link href={href}>
-                <div className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors duration-200">
+                <div className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors">
                   <span>View Component</span>
                   <ArrowRight className="size-3.5" />
                 </div>

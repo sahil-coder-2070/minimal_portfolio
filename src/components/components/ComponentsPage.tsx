@@ -70,6 +70,7 @@ export default function ComponentsPage() {
               title="Music Player"
               description="Interactive live music player widget with real-time audio spectrum animations, vinyl CD disc spin, and song metadata."
               href="/components/spotify"
+              badge="Widget · Audio"
             >
               <Spotify />
             </ComponentCard>
@@ -79,6 +80,7 @@ export default function ComponentsPage() {
               title="Mac Keyboard"
               description="Interactive Mac keyboard replica with real-time keystroke tracking, sound feedback, and Space Black / Silver themes."
               href="/components/mac-keyboard"
+              badge="Interactive · Sound"
             >
               <div className="transform scale-[0.4] xs:scale-[0.5] sm:scale-[0.6] origin-center my-2">
                 <CustomKeyboard theme="dark" enableSound={false} showPreview={true} />
