@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Container from "@/components/layouts/Container";
 import RepeatSeparator from "@/components/ui/repeat-separator";
 import CustomKeyboard from '@/components/ui/custom-keyboard';
+import CopyButton, { CopyIcon } from '@/components/ui/copy-button';
 import HighlightedCode from '@/components/common/HighlightedCode';
 import { ProjectHeaderActions } from '@/components/projects/ProjectHeaderActions';
 import { customKeyboardSourceCode } from '@/data/source-codes';
@@ -28,11 +29,13 @@ import { useTheme } from '@/components/landing/theme-provider';
 const packageManagers = ['bun', 'npm', 'pnpm', 'yarn'] as const;
 type PackageManager = (typeof packageManagers)[number];
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahilcodex.vercel.app';
+
 const installCommands: Record<PackageManager, string> = {
-  pnpm: 'pnpm dlx shadcn@latest add mac-keyboard',
-  npm: 'npx shadcn@latest add mac-keyboard',
-  yarn: 'yarn dlx shadcn@latest add mac-keyboard',
-  bun: 'bunx shadcn@latest add mac-keyboard',
+  pnpm: `pnpm dlx shadcn@latest add "${siteUrl}/r/keyboard.json"`,
+  npm: `npx shadcn@latest add "${siteUrl}/r/keyboard.json"`,
+  yarn: `yarn dlx shadcn@latest add "${siteUrl}/r/keyboard.json"`,
+  bun: `bunx shadcn@latest add "${siteUrl}/r/keyboard.json"`,
 };
 
 export default function MacKeyboardDocPage() {
@@ -95,7 +98,7 @@ export function cn(...inputs: ClassValue[]) {
           <div className="flex items-center justify-between p-2 px-4 sm:px-6">
             <Link
               href="/components"
-              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap transition-all outline-none select-none hover:no-underline"
+              className="group/button text-muted-foreground hover:text-foreground inline-flex h-7 shrink-0 cursor-pointer items-center justify-center gap-2 border-none px-0 text-sm font-medium whitespace-nowrap outline-none select-none hover:no-underline"
             >
               <ArrowLeft className="size-4 transition-transform duration-200 group-hover/button:-translate-x-1" />
               Components
@@ -137,7 +140,7 @@ export function cn(...inputs: ClassValue[]) {
 
             {/* 1. Live Component Preview Canvas (TOP) */}
             <div className="w-full">
-              <div className={`transition-all duration-300 overflow-hidden shadow-2xs ${
+              <div className={`overflow-hidden shadow-2xs ${
                 isZoomed
                   ? 'fixed inset-0 z-[9999] bg-background/95 backdrop-blur-md p-6 pt-20 sm:p-12 sm:pt-24 flex flex-col items-center justify-between rounded-none border-none animate-in fade-in duration-200'
                   : 'relative w-full rounded-2xl border border-border bg-card/60 p-4 sm:p-6 flex flex-col items-center justify-between min-h-[360px]'
@@ -154,7 +157,7 @@ export function cn(...inputs: ClassValue[]) {
                     {/* 1. Sound Toggle Button */}
                     <button
                       onClick={() => setSoundEnabled((prev) => !prev)}
-                      className={`p-1.5 rounded-lg border transition-colors ${
+                      className={`p-1.5 rounded-lg border ${
                         soundEnabled
                           ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-500'
                           : 'border-border bg-background text-muted-foreground hover:text-foreground'
@@ -167,7 +170,7 @@ export function cn(...inputs: ClassValue[]) {
                     {/* 2. Theme Toggle Button */}
                     <button
                       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground transition-colors"
+                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground"
                       title="Toggle Theme"
                     >
                       {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-600" />}
@@ -180,7 +183,7 @@ export function cn(...inputs: ClassValue[]) {
                         setSoundEnabled(true);
                         setReloadKey((prev) => prev + 1);
                       }}
-                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground transition-colors active:rotate-180 duration-300"
+                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground active:rotate-180"
                       title="Reset Canvas"
                     >
                       <RotateCcw className="h-4 w-4" />
@@ -189,7 +192,7 @@ export function cn(...inputs: ClassValue[]) {
                     {/* 4. Zoom / Maximize Toggle Button */}
                     <button
                       onClick={() => setIsZoomed((prev) => !prev)}
-                      className={`p-1.5 rounded-lg border transition-colors ${
+                      className={`p-1.5 rounded-lg border ${
                         isZoomed
                           ? 'border-primary bg-primary/10 text-primary hover:bg-primary/20'
                           : 'border-border bg-background text-muted-foreground hover:text-foreground'
@@ -216,7 +219,7 @@ export function cn(...inputs: ClassValue[]) {
                 <div className="inline-flex items-center rounded-full border border-border p-1 shadow-xs bg-background z-10">
                   <button
                     onClick={() => setCanvasTheme('dark')}
-                    className={`px-4 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                    className={`px-4 py-1.5 text-xs font-medium rounded-full ${
                       canvasTheme === 'dark'
                         ? 'bg-primary text-primary-foreground shadow-xs'
                         : 'text-muted-foreground hover:text-foreground'
@@ -226,7 +229,7 @@ export function cn(...inputs: ClassValue[]) {
                   </button>
                   <button
                     onClick={() => setCanvasTheme('light')}
-                    className={`px-4 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                    className={`px-4 py-1.5 text-xs font-medium rounded-full ${
                       canvasTheme === 'light'
                         ? 'bg-primary text-primary-foreground shadow-xs'
                         : 'text-muted-foreground hover:text-foreground'
@@ -253,7 +256,7 @@ export function cn(...inputs: ClassValue[]) {
               <div className="inline-flex rounded-lg p-1 text-xs font-medium bg-muted border border-border">
                 <button
                   onClick={() => setInstallTab('cli')}
-                  className={`px-4 py-1.5 rounded-md transition-colors ${
+                  className={`px-4 py-1.5 rounded-md ${
                     installTab === 'cli'
                       ? 'bg-background text-foreground shadow-xs font-semibold'
                       : 'text-muted-foreground hover:text-foreground'
@@ -263,7 +266,7 @@ export function cn(...inputs: ClassValue[]) {
                 </button>
                 <button
                   onClick={() => setInstallTab('manual')}
-                  className={`px-4 py-1.5 rounded-md transition-colors ${
+                  className={`px-4 py-1.5 rounded-md ${
                     installTab === 'manual'
                       ? 'bg-background text-foreground shadow-xs font-semibold'
                       : 'text-muted-foreground hover:text-foreground'
@@ -302,11 +305,7 @@ export function cn(...inputs: ClassValue[]) {
                           className="ml-auto p-1 text-muted-foreground hover:text-foreground"
                           aria-label="Copy Command"
                         >
-                          {copiedId === 'cli-cmd' ? (
-                            <Check className="h-3.5 w-3.5 text-emerald-500" />
-                          ) : (
-                            <Copy className="h-3.5 w-3.5" />
-                          )}
+                          <CopyIcon copied={copiedId === 'cli-cmd'} className="size-3.5" />
                         </button>
                       </div>
 
@@ -350,11 +349,7 @@ export function cn(...inputs: ClassValue[]) {
                         onClick={() => copyToClipboard('npm i motion clsx tailwind-merge @tabler/icons-react lucide-react', 'dep-cmd')}
                         className="text-muted-foreground hover:text-foreground"
                       >
-                        {copiedId === 'dep-cmd' ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-500" />
-                        ) : (
-                          <Copy className="h-3.5 w-3.5" />
-                        )}
+                        <CopyIcon copied={copiedId === 'dep-cmd'} className="size-3.5" />
                       </button>
                     </div>
                   </div>
@@ -417,7 +412,7 @@ export function cn(...inputs: ClassValue[]) {
                         <span>Copy</span>
                       </button>
 
-                      <div className={`transition-all duration-300 ${!isExpanded ? 'max-h-64 overflow-hidden' : 'max-h-[800px] overflow-y-auto'}`}>
+                      <div className={`transition-[max-height] duration-300 ${!isExpanded ? 'max-h-64 overflow-hidden' : 'max-h-[800px] overflow-y-auto'}`}>
                         <div className="p-4 overflow-x-auto">
                           <HighlightedCode code={customKeyboardSourceCode} isDark={isDark} />
                         </div>
@@ -427,7 +422,7 @@ export function cn(...inputs: ClassValue[]) {
                       <div className={`absolute inset-x-0 bottom-0 ${!isExpanded ? 'h-28 bg-gradient-to-t from-card via-card/80 to-transparent' : 'py-3 bg-gradient-to-t from-card to-transparent'} flex items-end justify-center pb-3 z-10`}>
                         <button
                           onClick={() => setIsExpanded((prev) => !prev)}
-                          className="px-4 py-1.5 rounded-lg text-xs font-semibold shadow-xs border border-border bg-background text-foreground hover:bg-muted transition-all flex items-center gap-1.5"
+                          className="px-4 py-1.5 rounded-lg text-xs font-semibold shadow-xs border border-border bg-background text-foreground hover:bg-muted flex items-center gap-1.5"
                         >
                           {isExpanded ? (
                             <>

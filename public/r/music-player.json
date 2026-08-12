@@ -1,0 +1,29 @@
+{
+  "name": "music-player",
+  "description": "Interactive live music player widget with real-time audio spectrum animations, vinyl CD disc spin, and song metadata",
+  "dependencies": [
+    "lucide-react",
+    "motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "tailwind": {
+    "config": {},
+    "css": "",
+    "utils": "@/lib/utils"
+  },
+  "files": [
+    {
+      "path": "components/ui/music-player.tsx",
+      "type": "registry:component",
+      "content": "'use client';\n\nimport { useState, useRef, useEffect } from 'react';\nimport { motion as Motion, AnimatePresence } from 'motion/react';\nimport { Check, Copy, ChevronDown, ChevronUp, RotateCcw, Maximize2, Minimize2, Volume2, VolumeX } from 'lucide-react';\n\nexport interface SpotifyData {\n  isPlaying: boolean;\n  title: string;\n  artist: string;\n  album: string;\n  albumArt: string;\n  songUrl: string;\n}\n\nexport function useSpotify() {\n  const [data, setData] = useState<SpotifyData | null>(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState<string | null>(null);\n\n  useEffect(() => {\n    const fetchSpotify = async () => {\n      try {\n        const res = await fetch('/api/spotify');\n        if (!res.ok) throw new Error('Failed to fetch');\n        const json = await res.json();\n        setData(json);\n      } catch (err) {\n        setError((err as Error).message);\n      } finally {\n        setLoading(false);\n      }\n    };\n    fetchSpotify();\n    const interval = setInterval(fetchSpotify, 10000);\n    return () => clearInterval(interval);\n  }, []);\n\n  return { data, loading, error };\n}\n\nexport default function MusicPlayer() {\n  const { data, loading } = useSpotify();\n  const [isExpanded, setIsExpanded] = useState(false);\n\n  const song = data || {\n    isPlaying: true,\n    title: 'Lofi Beats',\n    artist: 'Chillhop Music',\n    album: 'Lofi Study Sessions',\n    albumArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop',\n    songUrl: 'https://open.spotify.com',\n  };\n\n  return (\n    <div className=\"relative z-40 my-4 h-[88px] w-full select-none flex justify-center\">\n      <div className=\"relative flex justify-center w-[270px]\">\n        <Motion.div\n          layout\n          onClick={() => setIsExpanded((prev) => !prev)}\n          animate={{ height: isExpanded ? 284 : 88 }}\n          transition={{ type: 'spring', stiffness: 380, damping: 46 }}\n          className=\"absolute bottom-0 w-[270px] cursor-pointer overflow-hidden rounded-[24px] border border-neutral-800 bg-neutral-950 p-3 shadow-2xl text-white\"\n        >\n          <div className=\"flex items-center gap-3\">\n            <img\n              src={song.albumArt}\n              alt={song.title}\n              className={`size-14 rounded-full object-cover ${song.isPlaying ? 'animate-[spin_10s_linear_infinite]' : ''}`}\n            />\n            <div className=\"flex flex-col truncate\">\n              <span className=\"truncate text-sm font-semibold\">{song.title}</span>\n              <span className=\"truncate text-xs text-neutral-400\">{song.artist}</span>\n            </div>\n          </div>\n        </Motion.div>\n      </div>\n    </div>\n  );\n}\n"
+    },
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:util",
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n"
+    }
+  ],
+  "license": "MIT"
+}
