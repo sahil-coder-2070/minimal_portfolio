@@ -130,7 +130,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <head />
+      <body
+        className={`${geistSans.variable} ${pixelifySans.variable} min-h-screen font-sans antialiased`}
+      >
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -159,10 +162,6 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
-      </head>
-      <body
-        className={`${geistSans.variable} ${pixelifySans.variable} min-h-screen font-sans antialiased`}
-      >
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <PageTracker />
           <Analytics />

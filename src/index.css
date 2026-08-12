@@ -185,6 +185,16 @@ html {
   background-color: #525252; /* neutral-600 — subtle hover */
 }
 
+/* Code block elements inside <pre> must always be transparent */
+pre code,
+pre code span,
+pre .hljs {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
 /* Command list custom scrollbar — light mode (neutral-200) */
 .cmd-scrollbar {
   scrollbar-width: thin;

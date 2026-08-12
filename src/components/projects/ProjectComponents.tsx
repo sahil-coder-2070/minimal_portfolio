@@ -231,7 +231,7 @@ export const ProjectComponents = {
 
   // Inline code block
   code: ({ children, className, ...props }: CodeProps) => {
-    if (className && className.startsWith('language-')) {
+    if (className) {
       return (
         <code className={className} {...props}>
           {children}
@@ -240,7 +240,7 @@ export const ProjectComponents = {
     }
     return (
       <code
-        className="rounded-md bg-muted px-1.5 py-0.5 font-mono text-xs font-semibold text-foreground border border-border/60"
+        className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-xs font-semibold text-foreground border border-border/60"
         {...props}
       >
         {children}
@@ -282,7 +282,7 @@ export const ProjectComponents = {
       <div className="group relative my-6 w-full">
         <CopyButton text={codeText} />
         <pre
-          className="bg-neutral-950 dark:bg-neutral-900/95 border border-border overflow-x-auto rounded-xl p-4 sm:p-6 text-neutral-100 text-xs sm:text-sm font-mono leading-relaxed"
+          className="bg-neutral-950 dark:bg-neutral-900/95 border border-neutral-800 overflow-x-auto rounded-xl p-4 sm:p-6 text-neutral-100 text-xs sm:text-sm font-mono leading-relaxed [&_code]:bg-transparent! [&_code]:border-none! [&_code]:p-0! [&_code]:rounded-none! [&_code]:text-inherit!"
           {...props}
         >
           {children}
