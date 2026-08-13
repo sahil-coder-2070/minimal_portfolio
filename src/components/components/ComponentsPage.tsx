@@ -7,6 +7,7 @@ import RepeatSeparator from "@/components/ui/repeat-separator";
 import ComponentCard from "@/components/components/ComponentCard";
 import Spotify from "@/components/landing/Spotify";
 import CustomKeyboard from '@/components/ui/custom-keyboard';
+import LoaderAnimation from '@/components/ui/loader-animation';
 import Link from 'next/link';
 
 export default function ComponentsPage() {
@@ -64,6 +65,7 @@ export default function ComponentsPage() {
           <div className="border-border border-l"></div>
         </div>
 
+        {/* Row 1 */}
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <li>
             <ComponentCard
@@ -84,6 +86,25 @@ export default function ComponentsPage() {
             >
               <div className="transform scale-[0.4] xs:scale-[0.5] sm:scale-[0.6] origin-center my-2">
                 <CustomKeyboard theme="dark" enableSound={false} showPreview={true} />
+              </div>
+            </ComponentCard>
+          </li>
+        </ul>
+
+        {/* Continuous Horizontal Grid Separator between Row 1 and Row 2 */}
+        <div className="before:bg-border after:bg-border relative my-4 h-4 w-full before:absolute before:top-0 before:left-0 before:h-px before:w-full after:absolute after:bottom-0 after:left-0 after:h-px after:w-full" />
+
+        {/* Row 2 */}
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <li>
+            <ComponentCard
+              title="Page Loader"
+              description="Smooth multilingual greeting text loader built with Motion. Features smooth text transitions."
+              href="/components/loader-animation"
+              badge="Animation · UI"
+            >
+              <div className="my-6">
+                <LoaderAnimation />
               </div>
             </ComponentCard>
           </li>
