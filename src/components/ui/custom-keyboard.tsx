@@ -495,7 +495,11 @@ export function CustomKeyboard({
     };
   }, [triggerKey, releaseKey]);
 
-  const isDarkTheme = theme === "dark";
+  const isDarkTheme =
+    theme === "dark" ||
+    (theme === "auto" &&
+      typeof window !== "undefined" &&
+      document.documentElement.classList.contains("dark"));
 
   return (
     <KeyboardContext.Provider
@@ -554,7 +558,7 @@ export function CustomKeyboard({
               "h-full w-fit rounded-[10px] p-1 shadow-xl",
               isDarkTheme
                 ? "bg-[#161618] ring-1 ring-white/10 shadow-2xl"
-                : "bg-neutral-200 ring-1 ring-black/5 dark:bg-[#161618] dark:ring-white/10"
+                : "bg-[#e5e5e7] ring-1 ring-black/15 shadow-xl"
             )}
           >
             {/* Function Row */}
@@ -886,12 +890,12 @@ const Key = ({
           // Light vs Dark Theme keycap styles
           isDarkTheme
             ? "bg-[#28282c] text-white shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.08)_inset]"
-            : "bg-gray-100 text-neutral-700 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,1)_inset] dark:bg-[#28282c] dark:text-white dark:shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.08)_inset]",
+            : "bg-white text-neutral-800 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(255,255,255,1)_inset]",
           // Active press animation
           isPressed &&
             (isDarkTheme
               ? "scale-[0.98] bg-[#1e1e20] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.04)_inset]"
-              : "scale-[0.98] bg-gray-100/80 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,0.5)] dark:bg-[#1e1e20]"),
+              : "scale-[0.98] bg-neutral-200 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,0.5)_inset]"),
           className
         )}
       >
@@ -899,14 +903,14 @@ const Key = ({
           <div
             className={cn(
               "absolute left-[2px] top-[2px] h-[2.5px] w-[2.5px] rounded-full z-10 pointer-events-none",
-              isCapsActive ? "bg-emerald-400 shadow-[0_0_3px_#10b981]" : (isDarkTheme ? "bg-white/20" : "bg-neutral-900/20 dark:bg-white/20")
+              isCapsActive ? "bg-emerald-400 shadow-[0_0_3px_#10b981]" : (isDarkTheme ? "bg-white/20" : "bg-neutral-900/20")
             )}
           />
         )}
         <div
           className={cn(
             "flex h-full w-full flex-col items-center justify-center text-[5px] font-sans",
-            isDarkTheme ? "text-white" : "text-neutral-700 dark:text-white",
+            isDarkTheme ? "text-white" : "text-neutral-800",
             childrenClassName
           )}
         >
@@ -930,7 +934,11 @@ const ModifierKey = ({
 }) => {
   const { triggerKey, releaseKey, activeKeys, theme } = useKeyboard();
   const isPressed = keyCode ? activeKeys.has(keyCode) : false;
-  const isDarkTheme = theme === "dark";
+  const isDarkTheme =
+    theme === "dark" ||
+    (theme === "auto" &&
+      typeof window !== "undefined" &&
+      document.documentElement.classList.contains("dark"));
 
   const handleMouseDown = () => {
     if (keyCode) triggerKey(keyCode);
@@ -956,18 +964,18 @@ const ModifierKey = ({
           // Light vs Dark Theme keycap styles
           isDarkTheme
             ? "bg-[#28282c] text-white shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.08)_inset]"
-            : "bg-gray-100 text-neutral-700 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,1)_inset] dark:bg-[#28282c] dark:text-white dark:shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.08)_inset]",
+            : "bg-white text-neutral-800 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(255,255,255,1)_inset]",
           // Active press animation
           isPressed &&
             (isDarkTheme
               ? "scale-[0.98] bg-[#1e1e20] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.8),0px_1px_1px_0px_rgba(0,0,0,0.4),0px_1px_0px_0px_rgba(255,255,255,0.04)_inset]"
-              : "scale-[0.98] bg-gray-100/80 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,0.5)] dark:bg-[#1e1e20]"),
+              : "scale-[0.98] bg-neutral-200 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.25),0px_1px_1px_0px_rgba(0,0,0,0.06),0px_1px_0px_0px_rgba(255,255,255,0.5)_inset]"),
           className
         )}
       >
         <div className={cn(
           "flex h-full w-full flex-col items-start justify-between p-1 text-[5px] font-sans",
-          isDarkTheme ? "text-white" : "text-neutral-700 dark:text-white"
+          isDarkTheme ? "text-white" : "text-neutral-800"
         )}>
           {children}
         </div>
