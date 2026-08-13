@@ -1,0 +1,21 @@
+{
+  "name": "loader-animation",
+  "description": "Animated multilingual greeting loader component with smooth text transitions.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "tailwind": {
+    "config": {},
+    "css": "",
+    "utils": "@/lib/utils"
+  },
+  "files": [
+    {
+      "path": "components/ui/loader-animation.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport React, { useEffect, useState } from \"react\";\nimport { motion } from \"motion/react\";\n\nconst greetings = [\n  { lang: \"English\", text: \"Hello\" },\n  { lang: \"Hindi\", text: \"हेलो\" },\n  { lang: \"French\", text: \"Bonjour\" },\n  { lang: \"Dutch\", text: \"Hallo\" },\n  { lang: \"Japanese\", text: \"こんにちは\" },\n  { lang: \"Spanish\", text: \"Hola\" },\n  { lang: \"German\", text: \"Hallo\" },\n  { lang: \"Arabic\", text: \"مرحبا\" },\n  { lang: \"Thai\", text: \"สวัสดี\" },\n  { lang: \"Vietnamese\", text: \"Xin chào\" },\n  { lang: \"Bengali\", text: \"হ্যালো\" },\n  { lang: \"Urdu\", text: \"ہیلو\" },\n];\n\nexport interface LoaderAnimationProps {\n  className?: string;\n  intervalMs?: number;\n}\n\nexport function LoaderAnimation({\n  className = \"\",\n  intervalMs = 170,\n}: LoaderAnimationProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setIndex((prev) => (prev + 1) % greetings.length);\n    }, intervalMs);\n\n    return () => clearInterval(interval);\n  }, [intervalMs]);\n\n  return (\n    <div className={`flex items-center justify-center p-4 ${className}`}>\n      <div className=\"h-12 flex items-center justify-center\">\n        <motion.h2\n          key={index}\n          className=\"text-3xl font-medium tracking-tight text-foreground\"\n          initial={{ opacity: 0, scale: 0.9 }}\n          animate={{ opacity: 1, scale: 1 }}\n          transition={{ duration: 0.1 }}\n        >\n          {greetings[index].text}\n        </motion.h2>\n      </div>\n    </div>\n  );\n}\n\nexport default LoaderAnimation;\n"
+    }
+  ],
+  "license": "MIT"
+}
