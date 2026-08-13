@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Container from "@/components/layouts/Container";
 import RepeatSeparator from "@/components/ui/repeat-separator";
@@ -48,8 +49,16 @@ export default function MacKeyboardDocPage() {
   const [canvasTheme, setCanvasTheme] = useState<'dark' | 'light'>('dark');
   const [isZoomed, setIsZoomed] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
-  const isDark = resolvedTheme === 'dark';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark =
+    typeof window !== 'undefined'
+      ? document.documentElement.classList.contains('dark')
+      : resolvedTheme === 'dark';
 
   // Prevent background scroll when Zoom mode is active
   useEffect(() => {
@@ -140,105 +149,116 @@ export function cn(...inputs: ClassValue[]) {
 
             {/* 1. Live Component Preview Canvas (TOP) */}
             <div className="w-full">
-              <div className={`overflow-hidden shadow-2xs ${
-                isZoomed
-                  ? 'fixed inset-0 z-[9999] bg-background/95 backdrop-blur-md p-6 pt-20 sm:p-12 sm:pt-24 flex flex-col items-center justify-between rounded-none border-none animate-in fade-in duration-200'
-                  : 'relative w-full rounded-2xl border border-border bg-card/60 p-4 sm:p-6 flex flex-col items-center justify-between min-h-[360px]'
-              }`}>
-                {/* Canvas Top Bar with 4 Control Buttons - Flex flow prevents clipping */}
-                <div className={`w-full flex items-center justify-between text-xs z-10 ${
-                  isZoomed ? 'max-w-6xl' : 'mb-4'
-                }`}>
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                    {isZoomed ? 'Fullscreen Preview Mode' : 'Preview Canvas'}
-                  </span>
-
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    {/* 1. Sound Toggle Button */}
-                    <button
-                      onClick={() => setSoundEnabled((prev) => !prev)}
-                      className={`p-1.5 rounded-lg border ${
-                        soundEnabled
-                          ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-500'
-                          : 'border-border bg-background text-muted-foreground hover:text-foreground'
-                      }`}
-                      title={soundEnabled ? 'Sound Effects Enabled' : 'Sound Muted'}
-                    >
-                      {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-                    </button>
-
-                    {/* 2. Theme Toggle Button */}
-                    <button
-                      onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground"
-                      title="Toggle Theme"
-                    >
-                      {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-600" />}
-                    </button>
-
-                    {/* 3. Reload / Reset Button */}
-                    <button
-                      onClick={() => {
-                        setCanvasTheme('dark');
-                        setSoundEnabled(true);
-                        setReloadKey((prev) => prev + 1);
-                      }}
-                      className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground active:rotate-180"
-                      title="Reset Canvas"
-                    >
-                      <RotateCcw className="h-4 w-4" />
-                    </button>
-
-                    {/* 4. Zoom / Maximize Toggle Button */}
-                    <button
-                      onClick={() => setIsZoomed((prev) => !prev)}
-                      className={`p-1.5 rounded-lg border ${
-                        isZoomed
-                          ? 'border-primary bg-primary/10 text-primary hover:bg-primary/20'
-                          : 'border-border bg-background text-muted-foreground hover:text-foreground'
-                      }`}
-                      title={isZoomed ? 'Exit Fullscreen' : 'Fullscreen Zoom Mode'}
-                    >
-                      {isZoomed ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Component Preview - CONTINUOUS MOUNT (No Re-Fetching!) */}
-                <div key={reloadKey} className="my-auto w-full flex items-center justify-center py-6 overflow-visible">
-                  <div className={`transform transition-transform origin-center ${
-                    isZoomed
-                      ? 'scale-[0.8] xs:scale-[0.95] sm:scale-[1.15] md:scale-[1.3] lg:scale-[1.4]'
-                      : 'scale-[0.6] xs:scale-[0.75] sm:scale-[0.9] md:scale-[1.0]'
-                  }`}>
-                    <CustomKeyboard theme={canvasTheme} enableSound={soundEnabled} showPreview={true} />
-                  </div>
-                </div>
-
-                {/* Bottom Theme Selector Pill */}
-                <div className="inline-flex items-center rounded-full border border-border p-1 shadow-xs bg-background z-10">
-                  <button
-                    onClick={() => setCanvasTheme('dark')}
-                    className={`px-4 py-1.5 text-xs font-medium rounded-full ${
-                      canvasTheme === 'dark'
-                        ? 'bg-primary text-primary-foreground shadow-xs'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
+              {(() => {
+                const renderCanvas = (inZoom: boolean) => (
+                  <div
+                    className={
+                      inZoom
+                        ? 'fixed inset-0 z-[999999] w-screen h-screen bg-background p-6 sm:p-10 flex flex-col items-center justify-between overflow-hidden animate-in fade-in duration-100'
+                        : 'relative w-full rounded-2xl border border-border bg-card/60 p-4 sm:p-6 flex flex-col items-center justify-between min-h-[360px]'
+                    }
                   >
-                    Space Black (Dark)
-                  </button>
-                  <button
-                    onClick={() => setCanvasTheme('light')}
-                    className={`px-4 py-1.5 text-xs font-medium rounded-full ${
-                      canvasTheme === 'light'
-                        ? 'bg-primary text-primary-foreground shadow-xs'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    Silver (Light)
-                  </button>
-                </div>
-              </div>
+                    {/* Canvas Top Bar */}
+                    <div className={`w-full flex items-center justify-between text-xs z-10 ${inZoom ? 'max-w-6xl' : 'mb-4'}`}>
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                        {inZoom ? 'Fullscreen Preview Mode' : 'Preview Canvas'}
+                      </span>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          onClick={() => setSoundEnabled((prev) => !prev)}
+                          className={`p-1.5 rounded-lg border ${
+                            soundEnabled
+                              ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-500'
+                              : 'border-border bg-background text-muted-foreground hover:text-foreground'
+                          }`}
+                          title={soundEnabled ? 'Sound Effects Enabled' : 'Sound Muted'}
+                        >
+                          {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+                        </button>
+
+                        <button
+                          onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                          className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground"
+                          title="Toggle Theme"
+                        >
+                          {isDark ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-600" />}
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setCanvasTheme('dark');
+                            setSoundEnabled(true);
+                            setReloadKey((prev) => prev + 1);
+                          }}
+                          className="p-1.5 rounded-lg border border-border bg-background text-muted-foreground hover:text-foreground active:rotate-180"
+                          title="Reset Canvas"
+                        >
+                          <RotateCcw className="h-4 w-4" />
+                        </button>
+
+                        <button
+                          onClick={() => setIsZoomed((prev) => !prev)}
+                          className={`p-1.5 rounded-lg border ${
+                            inZoom
+                              ? 'border-primary bg-primary/10 text-primary hover:bg-primary/20'
+                              : 'border-border bg-background text-muted-foreground hover:text-foreground'
+                          }`}
+                          title={inZoom ? 'Exit Fullscreen' : 'Fullscreen Zoom Mode'}
+                        >
+                          {inZoom ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Component Preview */}
+                    <div key={reloadKey} className="my-auto w-full flex items-center justify-center py-6 overflow-visible">
+                      <div className={`transform transition-transform origin-center ${
+                        inZoom
+                          ? 'scale-[0.8] xs:scale-[0.95] sm:scale-[1.15] md:scale-[1.3] lg:scale-[1.4]'
+                          : 'scale-[0.6] xs:scale-[0.75] sm:scale-[0.9] md:scale-[1.0]'
+                      }`}>
+                        <CustomKeyboard theme={canvasTheme} enableSound={soundEnabled} showPreview={true} />
+                      </div>
+                    </div>
+
+                    {/* Bottom Theme Selector Pill */}
+                    <div className="inline-flex items-center rounded-full border border-border p-1 shadow-xs bg-background z-10">
+                      <button
+                        onClick={() => setCanvasTheme('dark')}
+                        className={`px-4 py-1.5 text-xs font-medium rounded-full ${
+                          canvasTheme === 'dark'
+                            ? 'bg-primary text-primary-foreground shadow-xs'
+                            : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                      >
+                        Space Black (Dark)
+                      </button>
+                      <button
+                        onClick={() => setCanvasTheme('light')}
+                        className={`px-4 py-1.5 text-xs font-medium rounded-full ${
+                          canvasTheme === 'light'
+                            ? 'bg-primary text-primary-foreground shadow-xs'
+                            : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                      >
+                        Silver (Light)
+                      </button>
+                    </div>
+                  </div>
+                );
+
+                if (isZoomed && mounted) {
+                  return (
+                    <>
+                      <div className="relative w-full rounded-2xl border border-border bg-card/60 p-4 sm:p-6 flex flex-col items-center justify-center min-h-[360px] opacity-0" />
+                      {createPortal(renderCanvas(true), document.body)}
+                    </>
+                  );
+                }
+
+                return renderCanvas(false);
+              })()}
             </div>
 
             {/* 2. Installation Section (BELOW CANVAS) */}
