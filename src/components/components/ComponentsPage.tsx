@@ -8,6 +8,7 @@ import ComponentCard from "@/components/components/ComponentCard";
 import Spotify from "@/components/landing/Spotify";
 import CustomKeyboard from '@/components/ui/custom-keyboard';
 import LoaderAnimation from '@/components/ui/loader-animation';
+import MacDock from '@/components/ui/mac-dock';
 import Link from 'next/link';
 
 export default function ComponentsPage() {
@@ -105,6 +106,18 @@ export default function ComponentsPage() {
             >
               <div className="my-6">
                 <LoaderAnimation />
+              </div>
+            </ComponentCard>
+          </li>
+          <li>
+            <ComponentCard
+              title="Mac Dock"
+              description="Interactive macOS style Dock component with spring icon scaling and hardware-accelerated live window preview popups on hover."
+              href="/components/mac-dock"
+              badge="Interactive · UI"
+            >
+              <div className="my-6 transform scale-[0.65] xs:scale-[0.75] sm:scale-[0.85] origin-center">
+                <MacDock />
               </div>
             </ComponentCard>
           </li>
