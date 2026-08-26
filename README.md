@@ -117,7 +117,7 @@
 ### Prerequisites
 
 - **Node.js** 18.17 or higher
-- **npm**, **pnpm**, or **bun** package manager
+- **pnpm** package manager (recommended)
 
 ### Installation
 
@@ -131,9 +131,9 @@ cd sahilcodex
 2. **Install dependencies**
 
 ```bash
-npm install
+pnpm install
 # or
-bun install
+npm install
 ```
 
 3. **Set up environment variables**
