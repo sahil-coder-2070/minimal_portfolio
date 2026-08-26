@@ -116,7 +116,7 @@
 
 ### Prerequisites
 
-- **Node.js** 18.17 or higher
+- **Node.js** 22.13 or higher
 - **pnpm** package manager (recommended)
 
 ### Installation
