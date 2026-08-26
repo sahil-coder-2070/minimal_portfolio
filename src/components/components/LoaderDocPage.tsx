@@ -28,7 +28,7 @@ export default function LoaderDocPage() {
   const [installTab, setInstallTab] = useState<'cli' | 'manual'>('cli');
   const [activePm, setActivePm] = useState<PackageManager>('pnpm');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
@@ -190,7 +190,7 @@ export default function Page() {
           <div className="space-y-8 px-4 sm:px-6">
             {/* Description */}
             <p className="text-muted-foreground text-base leading-relaxed font-normal">
-              Smooth multilingual greeting text loader built with Motion. Transitions seamlessly between global hello greetings without blocking main layout flow.
+              Multilingual greeting text loader built with Motion. Each word fades into the next without blocking the main layout.
             </p>
 
             {/* 1. Live Component Preview Canvas */}

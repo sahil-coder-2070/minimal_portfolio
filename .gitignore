@@ -32,3 +32,7 @@ next-env.d.ts
 *.sln
 *.sw?
 
+# Local agent tooling (skills installed for code review of this repo)
+.agents/
+skills-lock.json
+

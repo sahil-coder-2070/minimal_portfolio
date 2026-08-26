@@ -1,6 +1,6 @@
 ---
 title: "Nova GSAP | Interactive Web Experience"
-description: "A GSAP-powered animation project built with Vite and Tailwind CSS — delivering cinematic scroll and UI animations."
+description: "A GSAP-driven animation project built with Vite and Tailwind CSS. Sections fade, slide, and stagger as you scroll, with a 3D parallax layer."
 image: "https://raw.githubusercontent.com/sahilcodexx/nova-gsap/refs/heads/main/public/img/nova.webp"
 technologies:
   - GSAP (GreenSock Animation Platform)
@@ -26,95 +26,94 @@ learnings:
 isPublished: true
 ---
 
-# Nova GSAP — Cinematic Interactive Animation
+# Nova GSAP: Cinematic Interactive Animation
 
-**Nova GSAP** is an interactive web experience showcasing **smooth, cinematic UI animations** using the **GSAP animation library** and scroll-driven interaction patterns.  
-The project combines motion design with dynamic scroll triggers to create immersive transitions and interactive sections.
+Nova GSAP is an interactive web experience built with GSAP and ScrollTrigger. The project combines motion design with scroll-driven interaction patterns. Sections fade, slide, and stagger into view, with timeline-based motion that responds to user scrolling and pointer interaction.
 
-Animations include scroll reveals, element transitions, and timeline-based motion that respond to user scrolling and UI interaction. :contentReference[oaicite:0]{index=0}
-
----
-
-## What Users Experience
-
-- **Dynamic Scroll Animations** — Sections animate into view with fade, slide, and stagger effects
-- **Cinematic Timelines** — Motion sequences coordinated with scroll position
-- **Responsive Design** — Motion and layout work across screen sizes
-- **Performance-First UX** — Animations optimized to avoid jank and lag
+I built it to get past the basics of GSAP and into real timeline work. Most of the engineering went into coordinating multiple ScrollTriggers so they didn’t fight each other when a section re-entered the viewport.
 
 ---
 
-## Key Features
+## What users experience
 
-- **GSAP + ScrollTrigger** — Core animation logic powered by GreenSock’s animation engine :contentReference[oaicite:1]{index=1}
-- **Smooth Section Transitions** — Coordinated animations that guide users through content
-- **Interactive Motion Sequences** — Elements animate based on scroll position
-- **Tailwind CSS** — Lightweight utility-based UI styling
-- **Vite** — Fast build system for development and production
-
----
-
-## Why I Built This
-
-- To master **advanced GSAP animation techniques**
-- To create a **scroll-driven motion experience**
-- To explore **timeline sequencing and performance tuning**
-- To deliver a **portfolio-ready interactive project**
+- **Dynamic scroll animations.** Sections animate into view with fade, slide, and stagger effects.
+- **Cinematic timelines.** Motion sequences are coordinated with scroll position.
+- **Responsive design.** Motion and layout work across screen sizes.
+- **Performance-first UX.** Animations are tuned to avoid jank during fast scroll.
 
 ---
 
-## Tech Stack
+## Key features
+
+- **GSAP + ScrollTrigger.** Core animation logic powered by GreenSock’s animation engine.
+- **Smooth section transitions.** Coordinated animations that guide the user through the content.
+- **Interactive motion sequences.** Elements animate based on scroll position and pointer input.
+- **Tailwind CSS.** Lightweight utility-based UI styling.
+- **Vite.** Fast build system for development and production.
+
+---
+
+## Why I built this
+
+- To master advanced GSAP animation techniques.
+- To build a scroll-driven motion experience.
+- To explore timeline sequencing and performance tuning.
+- To have a portfolio-ready interactive project to send people.
+
+---
+
+## Tech stack
 
 ### Frontend
 
-- **GSAP** – Animation engine for timelines and scroll triggers :contentReference[oaicite:2]{index=2}
-- **Tailwind CSS** – Utility-first responsive design
-- **Vite** – Modern frontend tooling for fast builds
-- **Vanilla JavaScript** – For animation logic and DOM handling
+- **GSAP.** The animation engine, with ScrollTrigger for scroll-linked motion.
+- **Tailwind CSS.** Utility-first responsive design.
+- **Vite.** Modern frontend tooling for fast builds.
+- **Vanilla JavaScript.** For animation logic and DOM handling.
 
 ### Deployment
 
-- **Vercel** – Hosted live with instant access
+- **Vercel.** Hosted live with instant rollbacks.
 
 ---
 
-## Development Experience
+## Development experience
 
-### GSAP Animation Logic
+### GSAP animation logic
 
-- Built reusable animation functions and timeline sequences
-- Leveraged ScrollTrigger for scroll-based motion control
-- Ensured animations didn’t block rendering or affect layout during scroll
+- Built reusable animation functions and timeline sequences.
+- Used ScrollTrigger for scroll-based motion control.
+- Kept animation work on the GPU (transforms and opacity) so scroll stayed smooth.
 
-### UI & Responsive Animation
+### UI and responsive animation
 
-- Designed motion that adapts for mobile and desktop breakpoints
-- Used Tailwind for consistent spacing, typography, and layering
-- Created fluid transitions between sections
-
----
-
-## Impact & Results
-
-- Live, **interactive animation experience**
-- Smooth transitions throughout the user flow
-- Demonstrates advanced motion design skills
-- Strong foundation for future dynamic UI projects
+- Designed motion that adapts for mobile and desktop breakpoints.
+- Used Tailwind for consistent spacing, typography, and z-index layering.
+- Wrote fluid transitions between sections that hold up at any scroll speed.
 
 ---
 
-## Future Enhancements
+## Impact and results
 
-- **Dynamic Content Sections** — Load content and animate as users scroll deeper
-- **3D & Parallax Effects** — Add layered motion for depth
-- **Configurable Timelines** — Let users toggle motion intensity
-- **Accessibility Enhancements** — Reduce motion for preference settings
+- A live, interactive animation experience.
+- Smooth transitions throughout the user flow.
+- Demonstrates advanced motion design skills.
+- Strong foundation for future dynamic UI projects.
 
 ---
 
-## Key Learnings
+## Future enhancements
 
-- How to orchestrate animation timelines with GSAP
-- Efficient use of ScrollTrigger for scroll-linked motion
-- Combining UI design with motion principles
-- Frontend performance considerations with smooth animation
+- **Dynamic content sections.** Load more content and animate as the user scrolls deeper.
+- **3D and parallax effects.** Add layered motion for depth.
+- **Configurable timelines.** Let users dial motion intensity up or down.
+- **Accessibility enhancements.** Reduce motion based on the user’s OS preference.
+
+---
+
+## Key learnings
+
+- How to coordinate animation timelines with GSAP.
+- How to use ScrollTrigger efficiently for scroll-linked motion.
+- How to combine UI design with motion principles.
+- How to keep frontend performance intact during smooth animation.

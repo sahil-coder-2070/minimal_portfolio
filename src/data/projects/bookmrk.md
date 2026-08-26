@@ -1,6 +1,6 @@
 ---
-title: "Bookmrk | Privacy-First Bookmark Manager"
-description: "A lightweight, local-first Chrome extension and bookmark manager dashboard built with Next.js, React, TypeScript, and Tailwind CSS. Features keyboard-first navigation and visual workspace boards."
+title: "Bookmrk: Privacy-First Bookmark Manager"
+description: "A Chrome extension and web dashboard for managing bookmarks. Everything is stored locally in IndexedDB, no server, no account. Boards, Cmd-K search, keyboard shortcuts."
 image: "/projects/bookmrkit.avif"
 technologies:
   - React / Next.js
@@ -28,23 +28,25 @@ learnings:
 
 # Bookmrk (Bookmark Manager)
 
-A modern, keyboard-first, local-first bookmark manager and tab organizer. Built using React, TypeScript, Vite/Next.js, and Tailwind CSS. Designed to help developers and power users organize, explore, and access their bookmarks instantly without leaving the keyboard.
+A keyboard-first, local-first bookmark manager and tab organizer. Built with React, TypeScript, Next.js, and Tailwind CSS. Designed to help developers and power users organize, explore, and access their bookmarks instantly without leaving the keyboard.
+
+I built it because I had four thousand bookmarks across three browsers and no way to find any of them.
 
 ---
 
-## Key Features
+## Key features
 
-*   **Keyboard-First Navigation:** Open boards, switch tabs, search bookmarks, and edit links strictly using shortcuts and CMD+K command palette.
-*   **Visual Board Workspaces:** Group your bookmarks in clean visual cards and cards grids, creating workspaces for different projects, clients, or topics.
-*   **Local-First Architecture:** Keeps your bookmarks stored locally inside the browser's storage (IndexedDB / LocalStorage) for instant loads and 100% privacy.
-*   **Smart Tagging & Search:** Assign customizable labels, tag items, and utilize fuzzy-search parameters to retrieve links in milliseconds.
-*   **Chrome Extension Sync:** Easily save tabs or links in a single click using the companion Chrome extension.
+- **Keyboard-first navigation.** Open boards, switch tabs, search bookmarks, and edit links using shortcuts and a Cmd-K command palette.
+- **Visual board workspaces.** Group bookmarks in clean visual cards and grids, with workspaces for different projects, clients, or topics.
+- **Local-first architecture.** Bookmarks are stored locally in IndexedDB and LocalStorage for instant loads and zero server round-trips.
+- **Smart tagging and search.** Customizable labels, tags, and fuzzy search to retrieve links in milliseconds.
+- **Chrome extension sync.** One click to save tabs or links from the companion Chrome extension.
 
 ---
 
-## Tech Stack & Architecture
+## Tech stack and architecture
 
-*   **Frontend:** Next.js / React, TypeScript, Tailwind CSS.
-*   **Storage:** LocalStorage / IndexedDB.
-*   **Components:** Custom CMD+K command bar, visual cards grids, and custom modal systems.
-*   **Design Philosophy:** Sleek minimalist layout, dark mode, high-contrast visual focus states.
+- **Frontend.** Next.js, React, TypeScript, Tailwind CSS.
+- **Storage.** LocalStorage and IndexedDB.
+- **Components.** Custom Cmd-K command bar, visual card grids, custom modal systems.
+- **Design philosophy.** Minimalist layout, dark mode, high-contrast focus states.

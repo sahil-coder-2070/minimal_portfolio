@@ -155,7 +155,6 @@ async function fetchRepos(login) {
         href: `https://github.com/${fullName}`,
         logo:
           owner.toLowerCase() === login.toLowerCase() ? undefined : (
-            // eslint-disable-next-line @next/next/no-img-element
             <img src={`https://github.com/${owner}.png?size=64`} alt="" />
           ),
       };

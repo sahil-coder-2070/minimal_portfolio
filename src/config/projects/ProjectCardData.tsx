@@ -23,7 +23,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'Movie Finder is a React web app that allows users to search, browse, and discover movies instantly. It fetches real-time movie data from the TMDB API and presents it in a clean, responsive UI for seamless exploration.',
+      'Searches TMDB for movies, posters, and ratings. React + Vite, built in three days when I was learning hooks. The search input is debounced so the API request doesn’t fire on every keystroke.',
     links: {
       website: 'https://find-moviename.vercel.app/',
       github: 'https://github.com/sahilcodexx/movie-app',
@@ -72,7 +72,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'Nova Gaming is an interactive, animation-driven web experience built using GSAP. It focuses on smooth scroll-based animations, cinematic transitions, and modern UI motion to deliver an immersive frontend experience with high performance and responsiveness.',
+      'An animation-heavy landing page built around GSAP and ScrollTrigger. Sections fade, slide, and stagger as you scroll, with a 3D parallax layer and a config that respects the user’s reduced-motion setting.',
     links: {
       website: 'https://nova-gsap.vercel.app/',
       github: 'https://github.com/sahilcodexx/nova-gsap',
@@ -116,7 +116,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'ChefyAI is an AI-powered recipe generator that lets users instantly create personalized recipes based on their input. It combines a modern frontend with seamless AI integration for a smooth and engaging user experience.',
+      'Pastes in whatever’s in your fridge, gets back a recipe. React + Framer Motion on the front, Puter.js for the AI call and client-side storage. The state management is the part I’m most proud of, since the recipe steps animate as they stream in.',
     links: {
       website: 'https://chefyai.vercel.app/',
       github: 'https://github.com/sahilcodexx/ai-recipe',
@@ -160,7 +160,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'Image Editor AI is an open-source AI-powered image editing tool built with Next.js. It provides an interface to apply intelligent edits using modern AI models and image processing features, allowing users to manipulate and transform images efficiently.',
+      'Open-source image editor with AI models for background removal, style transfer, and cleanup. Next.js on the front, Convex for state, still actively shipping. The slow part was wiring the AI outputs back into the canvas without freezing the UI.',
     links: {
       website: 'https://repimly.vercel.app/',
       github: 'https://github.com/sahilcodexx/Image-Editor-AI',
@@ -204,7 +204,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'Price Tracker is an open-source web application that allows users to monitor product prices from e-commerce platforms. It enables users to track price changes over time, receive updates, and make smarter purchasing decisions through automated tracking and data visualization features.',
+      'Paste a product link from Amazon or Flipkart, get a price history chart and an email when it drops. Firecrawl handles the scraping, Supabase stores the history, Next.js Server Actions handle the writes. Still in development, currently adding per-user watchlists.',
     links: {
       website: 'https://trackhatke.vercel.app/',
       github: 'https://github.com/sahilcodexx/price-tracker',
@@ -248,7 +248,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'AI-powered git commit message generator that writes your commit messages for you! Uses OpenRouter AI to generate meaningful and conventional commit messages. Supports free trials and your own API key.',
+      'A CLI and npm package that writes your commit message for you. Reads the staged diff, sends it to OpenRouter, returns a conventional commit. Bring your own key or use the hosted version with a free trial.',
     links: {
       website: 'https://tcxcommit.vercel.app/',
       github: 'https://github.com/sahilcodexx/tcxcommit',
@@ -288,7 +288,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'An interactive 2D/3D mechanical keyboard simulator package and landing page for React. Experience high-fidelity clicky switch sounds, multi-casing themes (Dolch, Sand, Scarlet, etc.), mobile/web haptics, and custom volume levels.',
+      'An interactive mechanical keyboard for the browser. Real switch sounds pre-decoded through the Audio Context API, several keycap themes (Dolch, Sand, Scarlet), haptics on mobile, and a volume slider. The latency tuning took longer than the rest of the project combined.',
     links: {
       website: 'https://keyui.vercel.app/',
       github: 'https://github.com/sahilcodexx/MechanicalKeyboard',
@@ -332,7 +332,7 @@ export const ProjectCardData = [
       height: 1080,
     },
     description:
-      'A modern, privacy-first local bookmark and tab manager Chrome extension and web dashboard. Keep your links organized in boards, utilize search command palettes, assign custom keyboard shortcuts, and export bookmarks cleanly.',
+      'A Chrome extension and web dashboard for managing bookmarks. Everything is stored locally in IndexedDB, no server, no account. Boards for grouping, a Cmd-K palette for search, keyboard shortcuts for the heavy users, and a clean export when you want out.',
     links: {
       website: 'https://bookmrkit.vercel.app/',
       github: 'https://github.com/sahilcodexx/Bookmrk',

@@ -7,15 +7,13 @@ date: '2026-05-13'
 isPublished: true
 ---
 
-# Getting Started with Neovim and LazyVim: A Professional Developer's Guide
+# Getting Started with Neovim and LazyVim
 
-For years, developers have sought the ultimate development environment. While modern IDEs like VS Code and WebStorm are highly capable, they often introduce significant memory overhead, custom configuration lock-ins, and a mouse-dependent workflow that breaks coding flow.
+I switched from VS Code to LazyVim about a year ago. The honest reason: VS Code had gotten slow on my machine, and I was curious whether a terminal editor could actually keep up. This post is the cheat sheet I wish I’d had at the start. The modal model, the config layout, and the keybindings you actually use day to day.
 
-**Neovim** offers a compelling alternative: a keyboard-driven, modal text editor designed for speed, extensibility, and minimal resource usage. However, configuring Neovim from scratch can require hundreds of lines of Lua code.
+**Neovim** is the editor. **LazyVim** is a pre-configured layer on top of it that ships sane defaults for LSP, completion, file trees, and fuzzy search, so you don’t have to write hundreds of lines of Lua to get a working IDE.
 
-This is where **LazyVim** shines. Built on top of the modern, high-performance plugin manager `lazy.nvim`, LazyVim provides an out-of-the-box experience with sensible IDE-like defaults (LSP diagnostics, auto-completion, interactive fuzzy search, and file trees) while maintaining the lightning-fast performance of raw Neovim.
-
-This guide walks through the architectural advantages of LazyVim, essential modal mechanics, configuration paradigms, and key navigation workflows to help transition your development stack to the terminal.
+Below: the parts of Neovim I had to learn to be productive, and how LazyVim fills in the rest.
 
 ---
 
@@ -25,7 +23,7 @@ LazyVim is not just another pre-configured set of plugins; it is a structured fr
 
 1. **Lazy Loading by Default:** Plugins are only loaded when triggered by specific file types or keybindings, keeping startup times under 50 milliseconds.
 2. **First-Class LSP Support:** Auto-completion, syntax formatting, linting, and diagnostics are pre-configured and operate asynchronously.
-3. **Structured Configuration:** It separates default settings from user custom modifications, making updates seamless.
+3. **Structured Configuration:** It separates default settings from user custom modifications, so updates don’t overwrite your setup.
 4. **Active Ecosystem:** Integrates with Mason, Telescope, Treesitter, and Neo-tree natively, providing modern workspace visuals.
 
 ---

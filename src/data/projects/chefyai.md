@@ -1,6 +1,6 @@
 ---
-title: "ChefyAI - AI-Powered Recipe Generator"
-description: "An AI-driven web app that instantly generates unique recipes using modern frontend tech and Puter.js database."
+title: "ChefyAI: AI-Powered Recipe Generator"
+description: "Type in whatever’s in your fridge, get back a recipe. React + Framer Motion on the front, Puter.js for the AI call and client-side storage."
 image: "https://raw.githubusercontent.com/sahilcodexx/ai-recipe/refs/heads/main/public/stage-1768141052622.webp"
 technologies:
   - React
@@ -11,7 +11,7 @@ technologies:
   - Vite
 github: "https://github.com/sahilcodexx/ai-recipe"
 live: "https://chefyai.vercel.app/"
-timeline: "1 months"
+timeline: "1 month"
 role: "Frontend Developer"
 team: "Solo Project"
 status: "Completed"
@@ -29,105 +29,104 @@ isPublished: true
 
 # ChefyAI: AI-Powered Recipe Generator
 
-**ChefyAI** is a modern web application that generates delicious and personalized recipes instantly using AI.  
-Built with an intuitive interface and smooth animations, ChefyAI lets users generate ready-to-cook recipes with minimal input.
+ChefyAI is a web app that generates recipes from whatever ingredients you have on hand. You type in a prompt, the AI returns a full recipe with steps, ingredients, and timing. Recipes save to a client-side database so you can come back to them later.
 
-This project highlights my ability to blend **AI capabilities with modern frontend development** to deliver an engaging and efficient user experience.
-
----
-
-## What Users Can Do
-
-- **Instant Recipe Generation**: Enter a prompt or idea and receive a custom AI-generated recipe
-- **Clear Instructions**: Recipes include step-by-step guidance
-- **Fast, Responsive UI**: Smooth interactive experience powered by Framer Motion
-- **Mobile-Friendly Layout**: Works beautifully on phones and tablets
-- **No Backend Required**: Fully client-side using Puter.js NoSQL database
-- **Visual Feedback**: Clean icons and transitions for a delightful experience
+I built it because I kept ending up with half a bag of something and no idea what to do with it. Most recipe apps assume I already know what I want to cook. I wanted one that worked from whatever was in the fridge.
 
 ---
 
-## Key Features
+## What users can do
 
-- **AI Integration** – Generate unique recipes using Puter AI API
-- **Interactive UI** – Built with React & Tailwind CSS for fast interactions
-- **Framer Motion Animations** – Smooth motion throughout the application
-- **Lucide Icons** – Clean, modern iconography
-- **Client-Side Database** – Uses Puter.js NoSQL for storing user interactions
-- **Vercel Deployment** – Fast, globally distributed deployment
-
----
-
-## Why I Built This
-
-- I wanted to **make cooking easier and fun** by leveraging AI
-- There are many recipe apps, but few offer **instant personalized recipes**
-- I aimed to blend **AI, UX, and performance** in a single elegant application
-- Wanted to explore **React animations and client-side database architecture**
+- **Instant recipe generation.** Enter a prompt or idea, receive a custom AI-generated recipe.
+- **Clear instructions.** Recipes include step-by-step guidance.
+- **Fast, responsive UI.** Smooth interactive experience powered by Framer Motion.
+- **Mobile-friendly layout.** Works on phones and tablets.
+- **No backend required.** Fully client-side using Puter.js NoSQL database.
+- **Visual feedback.** Clean icons and transitions.
 
 ---
 
-## Tech Stack
+## Key features
+
+- **AI integration.** Generate unique recipes using the Puter AI API.
+- **Interactive UI.** Built with React and Tailwind CSS for fast interactions.
+- **Framer Motion animations.** Smooth motion throughout the application.
+- **Lucide icons.** Clean iconography.
+- **Client-side database.** Uses Puter.js NoSQL for storing user interactions and saved recipes.
+- **Vercel deployment.** Fast, globally distributed hosting.
+
+---
+
+## Why I built this
+
+- I wanted to make cooking easier by using AI to suggest recipes from what I already had.
+- There are many recipe apps, but few offer instant personalized recipes from a free-form prompt.
+- I wanted to blend AI, UX, and performance in a single app.
+- I wanted to explore React animations and client-side database architecture.
+
+---
+
+## Tech stack
 
 ### Frontend
 
-- **React** – Component-based UI logic
-- **Tailwind CSS** – Utility-first styling
-- **Framer Motion** – UI animations for fluid interactions
-- **Lucide Icons** – Lightweight and expressive icons
+- **React.** Component-based UI logic.
+- **Tailwind CSS.** Utility-first styling.
+- **Framer Motion.** UI animations for fluid interactions.
+- **Lucide icons.** Lightweight and expressive icons.
 
-### Database & Deployment
+### Database and deployment
 
-- **Puter.js NoSQL DB** – Simple but powerful client-side data store
-- **Vite** – Fast development and build tooling
-- **Vercel** – Continuous deployment and hosting
-
----
-
-## Development Experience
-
-### Building UI with React
-
-- Designed reusable components
-- Focused on accessibility and responsive layouts
-- Built real-time UI feedback for user actions
-
-### AI Workflow
-
-- Connected the app with Puter AI API
-- Ensured clean prompt inputs and fast results
-- Managed loading states and error handling gracefully
-
-### Animation & UX
-
-- Used Framer Motion to elevate UI responsiveness
-- Added subtle animations for better user engagement
+- **Puter.js NoSQL DB.** Simple client-side data store.
+- **Vite.** Fast development and build tooling.
+- **Vercel.** Continuous deployment and hosting.
 
 ---
 
-## Impact & Results
+## Development experience
 
-- **Live Deployment**: Successfully deployed on Vercel
-- **User Engagement**: Smooth recipe generation flow
-- **Minimal Dependencies**: No backend server needed
-- **Scalable UI**: Built with performance in mind
+### Building the UI with React
+
+- Designed reusable components for the input, the recipe display, and the saved-recipe list.
+- Focused on accessibility and responsive layouts.
+- Built real-time UI feedback for user actions.
+
+### AI workflow
+
+- Connected the app with the Puter AI API.
+- Kept prompt inputs clean and results fast.
+- Managed loading states and error handling gracefully.
+
+### Animation and UX
+
+- Used Framer Motion for the per-step reveal animation as the AI streams the recipe.
+- Added subtle animations to make the UI feel alive without slowing it down.
 
 ---
 
-## Future Enhancements
+## Impact and results
 
-- **User Accounts & Favorites**
-- **Save & Share Recipes**
-- **Diet & Cuisine Filters**
-- **Image Generation for Recipes**
-- **Offline Support with IndexedDB**
-- **Analytics Dashboard for User Trends**
+- **Live deployment.** Successfully deployed on Vercel.
+- **User engagement.** Smooth recipe generation flow.
+- **Minimal dependencies.** No backend server needed.
+- **Scalable UI.** Built with performance in mind.
 
 ---
 
-## Key Learnings
+## Future enhancements
 
-- **AI-Integrated Frontend**: Combining OpenAI-style APIs with React
-- **Client-Side DB**: Leveraging Puter.js for simple state persistence
-- **Responsive & Animated UI**: Using Framer Motion for polished interfaces
-- **Deploying Modern Web Apps**: From local builds to production on Vercel
+- **User accounts and favorites.** Save recipes to a personal account.
+- **Save and share recipes.** Share via link.
+- **Diet and cuisine filters.** Filter by what you can eat and what you’re in the mood for.
+- **Image generation for recipes.** Generate a photo for each recipe.
+- **Offline support with IndexedDB.** Work without a network.
+- **Analytics dashboard for user trends.** See which recipes get used.
+
+---
+
+## Key learnings
+
+- **AI-integrated frontend.** Combining AI APIs with React and a streaming response.
+- **Client-side DB.** Using Puter.js for simple state persistence.
+- **Responsive and animated UI.** Using Framer Motion for polished interfaces.
+- **Deploying modern web apps.** From local builds to production on Vercel.

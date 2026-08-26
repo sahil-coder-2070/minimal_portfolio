@@ -1,6 +1,6 @@
 ---
 title: "Image Editor AI"
-description: "Image Editor AI is an open-source AI-powered image editing tool built with Next.js. It provides an interface to apply intelligent edits using modern AI models and image processing features, allowing users to manipulate and transform images efficiently."
+description: "An open-source AI image editor built with Next.js and Convex. Background removal, style transfer, and standard crop/resize/adjust tools in one canvas-based UI."
 image: "/projects/repimly.avif"
 technologies:
   - TypeScript
@@ -27,97 +27,97 @@ isPublished: true
 
 # Image Editor AI
 
-**Image Editor AI** is an open-source, AI-powered image editing tool built with Next.js. It provides a modern interface to apply intelligent edits using the latest AI models and image processing features. This allows users to manipulate and transform images with ease and efficiency.
+Image Editor AI is an open-source, AI-powered image editing tool built with Next.js. It provides an interface to apply edits using AI models (background removal, image enhancement, style transfer) along with the standard crop, resize, and color adjustment tools.
 
-This project showcases my ability to build a full-stack application with a focus on user experience, performance, and cutting-edge technology.
-
----
-
-## What Users Can Do
-
-- **Apply AI-powered edits**: Utilize AI models for tasks like background removal, image enhancement, and style transfer.
-- **Manipulate Images**: Perform standard image editing tasks such as cropping, resizing, and color adjustments.
-- **Transform Images**: Apply various filters and effects to images.
-- **Seamless User Experience**: Enjoy a clean and intuitive interface that makes image editing a breeze.
+This project is my attempt to build a single editor that combines the AI features I actually use with the basic editing tools that AI-only tools always leave out.
 
 ---
 
-## Key Features
+## What users can do
 
-- **AI-Powered Editing**: Integrates with modern AI models for intelligent image manipulation.
-- **Rich Editing Toolset**: A comprehensive set of tools for both basic and advanced image editing.
-- **Next.js & React**: Built with a modern, performant, and scalable tech stack.
-- **TypeScript**: Ensures type safety and improves developer experience.
-- **TailwindCSS**: A utility-first CSS framework for rapid UI development.
-- **Open Source**: The project is open-source, inviting contributions from the community.
+- **Apply AI-powered edits.** Use AI models for background removal, image enhancement, and style transfer.
+- **Manipulate images.** Standard image editing tasks: crop, resize, color adjustments.
+- **Transform images.** Apply filters and effects.
+- **Clean interface.** A canvas-based UI that keeps the basic tools within reach.
 
 ---
 
-## Why I Built This
+## Key features
+
+- **AI-powered editing.** Integrates with AI models for image manipulation.
+- **Rich editing toolset.** Basic and advanced image editing in one place.
+- **Next.js and React.** Built with a TypeScript-first stack.
+- **TypeScript.** End-to-end type safety.
+- **Tailwind CSS.** Utility-first CSS for fast UI work.
+- **Open source.** The project is open-source, contributions welcome.
+
+---
+
+## Why I built this
 
 - To explore the intersection of AI and web development.
-- To build a practical tool that can be used by anyone.
-- To deepen my knowledge of Next.js, TypeScript, and modern front-end technologies.
-- To create a project that can be a foundation for future explorations in AI-powered applications.
+- To build a practical tool anyone can use.
+- To deepen my knowledge of Next.js, TypeScript, and modern frontend technologies.
+- To create a foundation for future work in AI-powered applications.
 
 ---
 
-## Tech Stack
+## Tech stack
 
 ### Frontend
 
-- **Next.js**: A React framework for building server-rendered and statically generated web applications.
-- **React**: A JavaScript library for building user interfaces.
-- **Tailwind CSS**: A utility-first CSS framework for creating custom designs.
-- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Next.js.** React framework for server-rendered and statically generated web apps.
+- **React.** JavaScript library for building user interfaces.
+- **Tailwind CSS.** Utility-first CSS framework for custom designs.
+- **TypeScript.** Typed superset of JavaScript that compiles to plain JavaScript.
 
-### Backend & AI
+### Backend and AI
 
-- **Next.js API Routes**: Used for serverless functions to interact with AI models.
-- **AI Models**: Integration with various image processing and generation models.
+- **Next.js API routes.** Serverless functions for talking to AI models.
+- **AI models.** Integration with various image processing and generation models.
 
 ---
 
-## Development Experience
+## Development experience
 
-### Full-Stack Development
+### Full-stack development
 
-- Built both the front-end and back-end of the application using Next.js.
+- Built both the front-end and back-end using Next.js.
 - Implemented API routes to handle requests to AI models.
-- Managed the state of the application using React hooks and context.
+- Managed application state using React hooks and context.
 
-### AI Integration
+### AI integration
 
 - Researched and integrated various AI models for image editing.
 - Handled asynchronous communication with AI services.
-- Optimized the performance of AI-powered features.
+- Tuned the performance of AI-powered features.
 
-### UI & Design
+### UI and design
 
 - Designed a clean and user-friendly interface with Tailwind CSS.
-- Focused on creating an intuitive and responsive user experience.
+- Focused on an intuitive and responsive user experience.
 - Implemented a component-based architecture for the UI.
 
 ---
 
-## Impact & Results
+## Impact and results
 
 - A functional prototype of an AI-powered image editor.
 - A well-structured and scalable codebase.
-- A valuable learning experience in building full-stack AI applications.
+- A useful learning experience in building full-stack AI applications.
 
 ---
 
-## Future Enhancements
+## Future enhancements
 
-- **More AI Features**: Add more AI-powered editing tools like object detection and image generation.
-- **User Accounts**: Allow users to save their work and create a gallery of their edited images.
-- **Real-time Collaboration**: Enable multiple users to edit an image together in real-time.
-- **Plugin System**: Create a plugin system to allow developers to add their own editing tools.
+- **More AI features.** Object detection, image generation.
+- **User accounts.** Save work and create a gallery of edited images.
+- **Real-time collaboration.** Multiple users editing the same image at once.
+- **Plugin system.** Let developers add their own editing tools.
 
 ---
 
-## Key Learnings
+## Key learnings
 
 - How to build a full-stack application with Next.js.
 - How to integrate AI models into a web application.

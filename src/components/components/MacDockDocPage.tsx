@@ -28,7 +28,7 @@ export default function MacDockDocPage() {
   const [installTab, setInstallTab] = useState<'cli' | 'manual'>('cli');
   const [activePm, setActivePm] = useState<PackageManager>('pnpm');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);

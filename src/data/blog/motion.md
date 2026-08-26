@@ -11,7 +11,7 @@ isPublished: true
 
 # Animating Components in React with Framer Motion
 
-Framer Motion is a powerful animation library for React that makes creating smooth, interactive animations a breeze. Whether you're building a simple hover effect or complex page transitions, Framer Motion provides an intuitive API that integrates seamlessly with React's component model. In this comprehensive guide, we'll explore everything from basic animations to advanced techniques, complete with practical examples and best practices.
+Most animation tutorials for React start with `<motion.div animate={{ opacity: 1 }} />` and stop there. This one starts there too, but it’s mostly about the parts I had to figure out twice: layout animations, gesture handlers, variants, and the cases where Framer Motion’s defaults fight you instead of helping.
 
 ## Why Choose Framer Motion?
 
@@ -545,9 +545,9 @@ Always check that animations don't cause motion sickness or interfere with scree
 
 Layout animations are powerful but can be expensive. Use them judiciously.
 
-### 6. Leverage Variants for Maintainability
+### 6. Use variants for shared transitions
 
-Variants make your code more readable and maintainable, especially in larger projects.
+Variants let several components share the same animation states (`hidden`, `visible`) by name. The win is that you can coordinate a parent and its children without prop-drilling the animation state through every layer.
 
 ## Common Pitfalls to Avoid
 

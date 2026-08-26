@@ -61,7 +61,7 @@ export default function ComponentsSection() {
           <li>
             <ComponentCard
               title="Page Loader"
-              description="Smooth multilingual greeting text loader built with Motion. Features smooth text transitions."
+              description="Multilingual greeting text loader built with Motion. Each word fades into the next without blocking the page."
               href="/components/loader-animation"
               badge="Animation · UI"
             >

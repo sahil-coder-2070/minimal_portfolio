@@ -344,7 +344,7 @@ export default function SpotifyDocPage() {
   const [installTab, setInstallTab] = useState<'cli' | 'manual'>('cli');
   const [activePm, setActivePm] = useState<PackageManager>('pnpm');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isZoomed, setIsZoomed] = useState(false);

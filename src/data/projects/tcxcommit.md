@@ -26,9 +26,9 @@ learnings:
 isPublished: true
 ---
 
-# tcxcommit - AI Git Commit Message Generator
+# tcxcommit
 
-**tcxcommit** is a command-line tool that uses artificial intelligence to generate meaningful and conventional git commit messages. Simply stage your changes and let tcxcommit create the perfect commit message for you. It supports both free trials and your own OpenRouter API key.
+A small CLI that writes your commit message. Stage your changes, run `tcxcommit`, and it sends the diff to OpenRouter and returns a conventional commit. Five free trial commits, then either bring your own API key or use the hosted version.
 
 ---
 

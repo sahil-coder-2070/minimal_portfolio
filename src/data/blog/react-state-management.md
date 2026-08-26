@@ -11,7 +11,7 @@ isPublished: true
 
 # State Management in React: A Beginner's Guide
 
-State management is one of the core concepts in React that every developer needs to master. Whether you're building a simple counter app or a complex e-commerce platform, understanding how to manage state effectively is crucial for creating robust, maintainable applications. In this comprehensive guide, we'll explore React's built-in state management solutions, from the basics of `useState` to advanced patterns with `useReducer` and the Context API.
+State in React is the part of a component that changes over time. That’s it. The rest of this post is about the three tools React gives you for managing it (`useState`, `useReducer`, and the Context API) and when each one is actually the right choice. Most state problems I’ve seen in the wild come from picking the wrong one.
 
 ## What is State in React?
 
