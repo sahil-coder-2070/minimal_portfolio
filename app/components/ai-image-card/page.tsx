@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import AiImageCardDocPage from '@/components/components/AiImageCardDocPage';
 
 export const metadata: Metadata = {
-  title: 'AI Image Card — Animated Image Generation UI Component | Sahil',
+  title: 'Image Generation Card — Animated UI Component | Sahil',
   description:
-    'AI-style image generation card with a blinking grid build-up, blur-to-focus reveal, shine sweep, and live generation timer. Built with Motion.',
+    'Animated UI component that recreates the image generation state used in ChatGPT, DALL·E, and Midjourney — blinking grid build-up, blur-to-focus reveal, shine sweep, and a live generation timer. Built with Motion.',
   openGraph: {
-    title: 'AI Image Card Component — Sahil',
+    title: 'Image Generation Card — Sahil',
     description:
-      'AI-style image generation card with a blinking grid build-up, blur-to-focus reveal, shine sweep, and live generation timer.',
+      'Animated UI component that recreates the image generation state used in ChatGPT, DALL·E, and Midjourney — blinking grid build-up, blur-to-focus reveal, shine sweep, and a live generation timer.',
   },
 };
 

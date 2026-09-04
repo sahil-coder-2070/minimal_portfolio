@@ -312,7 +312,7 @@ export default function Page() {
             <ProjectHeaderActions
               previousSlug={null}
               nextSlug={null}
-              projectTitle="AI Image Card"
+              projectTitle="Image Generation Card"
               basePath="components"
             />
           </div>
@@ -328,7 +328,7 @@ export default function Page() {
               data-slot="doc-title"
               className="px-4 sm:px-6 py-3 text-3xl font-semibold tracking-tight text-balance md:max-w-md"
             >
-              AI Image Card
+              Image Generation Card
             </h1>
           </div>
         </div>
@@ -338,9 +338,11 @@ export default function Page() {
           <div className="space-y-8 px-4 sm:px-6">
             {/* Description */}
             <p className="text-muted-foreground text-base leading-relaxed font-normal">
-              A self-contained AI-style image generation card. A subtle blinking grid builds up,
-              then a blur-to-focus reveal sweeps the image in with a soft shine, ending on a
-              live generation timer. Built with Motion and a canvas grid.
+              A self-contained UI component that recreates the image generation state
+              you see in tools like ChatGPT, DALL·E, and Midjourney. A subtle blinking
+              grid builds up, then a blur-to-focus reveal sweeps the image in with a
+              soft shine, ending on a live generation timer. Built with Motion and a
+              canvas grid — no AI or model calls required.
             </p>
 
             {/* 1. Live Component Preview Canvas */}

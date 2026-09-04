@@ -112,10 +112,10 @@ export default function ComponentsPage() {
           </li>
           <li>
             <ComponentCard
-              title="AI Image Card"
-              description="AI-style image generation card with a blinking grid build-up, blur-to-focus reveal, shine sweep, and live generation timer."
+              title="Image Generation Card"
+              description="Recreates the AI image-generation state used in ChatGPT, DALL·E, and Midjourney — blinking grid, blur-to-focus reveal, shine sweep, and a live generation timer."
               href="/components/ai-image-card"
-              badge="Animation · AI"
+              badge="UI · Animation"
             >
               <div
                 className="my-2 aspect-square"
