@@ -8,7 +8,7 @@ import ComponentCard from '@/components/components/ComponentCard';
 import Spotify from '@/components/landing/Spotify';
 import CustomKeyboard from '@/components/ui/custom-keyboard';
 import LoaderAnimation from '@/components/ui/loader-animation';
-import MacDock from '@/components/ui/mac-dock';
+import AiImageCard from '@/components/ui/ai-image-card';
 import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
@@ -72,13 +72,16 @@ export default function ComponentsSection() {
           </li>
           <li>
             <ComponentCard
-              title="Mac Dock"
-              description="Interactive macOS style Dock component with spring icon scaling and hardware-accelerated live window preview popups on hover."
-              href="/components/mac-dock"
-              badge="Interactive · UI"
+              title="AI Image Card"
+              description="AI-style image generation card with a blinking grid build-up, blur-to-focus reveal, shine sweep, and live generation timer."
+              href="/components/ai-image-card"
+              badge="Animation · AI"
             >
-              <div className="my-6 transform scale-[0.65] xs:scale-[0.75] sm:scale-[0.85] origin-center">
-                <MacDock />
+              <div
+                className="my-2 aspect-square"
+                style={{ width: 'clamp(150px, 22vw, 220px)' }}
+              >
+                <AiImageCard generateDuration={3} />
               </div>
             </ComponentCard>
           </li>

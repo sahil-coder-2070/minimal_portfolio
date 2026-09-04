@@ -9,6 +9,7 @@ import Spotify from "@/components/landing/Spotify";
 import CustomKeyboard from '@/components/ui/custom-keyboard';
 import LoaderAnimation from '@/components/ui/loader-animation';
 import MacDock from '@/components/ui/mac-dock';
+import AiImageCard from '@/components/ui/ai-image-card';
 import Link from 'next/link';
 
 export default function ComponentsPage() {
@@ -109,6 +110,28 @@ export default function ComponentsPage() {
               </div>
             </ComponentCard>
           </li>
+          <li>
+            <ComponentCard
+              title="AI Image Card"
+              description="AI-style image generation card with a blinking grid build-up, blur-to-focus reveal, shine sweep, and live generation timer."
+              href="/components/ai-image-card"
+              badge="Animation · AI"
+            >
+              <div
+                className="my-2 aspect-square"
+                style={{ width: 'clamp(150px, 22vw, 220px)' }}
+              >
+                <AiImageCard generateDuration={3} />
+              </div>
+            </ComponentCard>
+          </li>
+        </ul>
+
+        {/* Continuous Horizontal Grid Separator between Row 2 and Row 3 */}
+        <div className="before:bg-border after:bg-border relative my-4 h-4 w-full before:absolute before:top-0 before:left-0 before:h-px before:w-full after:absolute after:bottom-0 after:left-0 after:h-px after:w-full" />
+
+        {/* Row 3 */}
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <li>
             <ComponentCard
               title="Mac Dock"
